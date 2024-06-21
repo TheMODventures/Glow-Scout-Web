@@ -1,9 +1,146 @@
-import React from 'react'
+import TreatmentCard from "@/components/myCustom/TreatmentCard";
+import SpasSearch from "@/components/spasComponent/SpasSearch";
 
 const page = () => {
-  return (
-    <div>spas page</div>
-  )
-}
+  
+  let dummyData = [
+    {
+      image: "/images/salon-spas/salon-1.png",
+      imageAlt: "Salon 1",
+      label: "Lorem Ipsum",
+      title: "Salon 1",
+      description: "Lorem ipsum dolor sit amet.",
+    },
+    {
+      image: "/images/salon-spas/salon-2.png",
+      imageAlt: "Salon 2",
+      label: "Lorem Ipsum",
+      title: "Salon 2",
+      description: "Consectetur adipiscing elit.",
+    },
+    {
+      image: "/images/salon-spas/salon-3.png",
+      imageAlt: "Salon 3",
+      label: "Lorem Ipsum",
+      title: "Salon 3",
+      description: "Ut ut nibh faucibus.",
+    },
+    {
+      image: "/images/salon-spas/salon-4.png",
+      imageAlt: "Salon 4",
+      label: "Lorem Ipsum",
+      title: "Salon 4",
+      description: "Etiam sed dolor ac diam.",
+    },
+    {
+      image: "/images/salon-spas/salon-5.png",
+      imageAlt: "Salon 5",
+      label: "Lorem Ipsum",
+      title: "Salon 5",
+      description: "Pellentesque at vehicula elit.",
+    },
+    {
+      image: "/images/salon-spas/salon-6.png",
+      imageAlt: "Salon 5",
+      label: "Lorem Ipsum",
+      title: "Salon 5",
+      description: "Pellentesque at vehicula elit.",
+    },
+    {
+      image: "/images/salon-spas/salon-7.png",
+      imageAlt: "Salon 5",
+      label: "Lorem Ipsum",
+      title: "Salon 5",
+      description: "Pellentesque at vehicula elit.",
+    },
+    {
+      image: "/images/salon-spas/salon-8.png",
+      imageAlt: "Salon 2",
+      label: "Lorem Ipsum",
+      title: "Salon 2",
+      description: "Consectetur adipiscing elit.",
+    },
+    {
+      image: "/images/salon-spas/salon-1.png",
+      imageAlt: "Salon 1",
+      label: "Lorem Ipsum",
+      title: "Salon 1",
+      description: "Lorem ipsum dolor sit amet.",
+    },
+    {
+      image: "/images/salon-spas/salon-2.png",
+      imageAlt: "Salon 2",
+      label: "Lorem Ipsum",
+      title: "Salon 2",
+      description: "Consectetur adipiscing elit.",
+    },
+    {
+      image: "/images/salon-spas/salon-3.png",
+      imageAlt: "Salon 3",
+      label: "Lorem Ipsum",
+      title: "Salon 3",
+      description: "Ut ut nibh faucibus.",
+    },
+    {
+      image: "/images/salon-spas/salon-4.png",
+      imageAlt: "Salon 4",
+      label: "Lorem Ipsum",
+      title: "Salon 4",
+      description: "Etiam sed dolor ac diam.",
+    },
+    {
+      image: "/images/salon-spas/salon-5.png",
+      imageAlt: "Salon 5",
+      label: "Lorem Ipsum",
+      title: "Salon 5",
+      description: "Pellentesque at vehicula elit.",
+    },
+    {
+      image: "/images/salon-spas/salon-6.png",
+      imageAlt: "Salon 5",
+      label: "Lorem Ipsum",
+      title: "Salon 5",
+      description: "Pellentesque at vehicula elit.",
+    },
+    {
+      image: "/images/salon-spas/salon-7.png",
+      imageAlt: "Salon 5",
+      label: "Lorem Ipsum",
+      title: "Salon 5",
+      description: "Pellentesque at vehicula elit.",
+    },
+    {
+      image: "/images/salon-spas/salon-8.png",
+      imageAlt: "Salon 2",
+      label: "Lorem Ipsum",
+      title: "Salon 2",
+      description: "Consectetur adipiscing elit.",
+    },
+  ];
 
-export default page
+  return (
+    <div className=" py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
+      <div className="text-center pb-5">
+        <h2 className="text-4xl">Salons & Spas</h2>
+        <p className="mt-2 text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
+          faucibus.
+        </p>
+      </div>
+
+      <div className="my-5">
+       <SpasSearch />
+      </div>
+
+      <div className="container my-5">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6 mb-2">
+          {dummyData.map((item, index) => (
+            <TreatmentCard key={index} {...item} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default page;
