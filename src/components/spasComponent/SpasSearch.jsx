@@ -43,10 +43,10 @@ function TreatmentSearch() {
   }
 
   return (
-    <div className="flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent my-4">
+    <div className="flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent my-4  m-auto w-full md:max-w-5xl">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className=" w-2/3">
-         <div className='md:bg-[#F6E9CE] dark:bg-zinc-800 py-6 md:rounded-full  flex flex-col md:flex-row items-center justify-around mt-6"'>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+         <div className='md:bg-[#F6E9CE] dark:bg-zinc-800 py-6 md:rounded-full   flex flex-col md:flex-row items-center justify-around mt-6"'>
          <div className='flex justify-between items-center flex-col md:flex-row'>
                 <Select>
                   <FormControl className=' border-darkMahron text-darkMahron py-2 h-12 px-4 min-w-40 rounded-full mb-4 md:mb-0 md:mr-4'>

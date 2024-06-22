@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/components/ui/use-toast'; 
+import Container from './Container';
 
 
 // Define your schema using Zod
@@ -44,9 +45,10 @@ function SelectForm() {
   }
 
   return (
-    <div className="flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
+    <Container>
+    <div className="container mx-auto w-full md:max-w-5xl flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6 m-auto">
+        <form onSubmit={form.handleSubmit(onSubmit)} className=" w-full">
          <div className='md:bg-[#F6E9CE] dark:bg-zinc-800 py-6 md:rounded-full md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-between mt-6"'>
          <div>
           <FormField
@@ -109,6 +111,7 @@ function SelectForm() {
         </form>
       </Form>
     </div>
+    </Container>
   );
 }
 
