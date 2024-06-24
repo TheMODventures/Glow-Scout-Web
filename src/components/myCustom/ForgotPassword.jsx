@@ -16,7 +16,6 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 
-
 const FormSchema = z.object({
   email: z.string().email({
     message: "Invalid email address.",
@@ -25,7 +24,6 @@ const FormSchema = z.object({
 
 function ForgotPassword() {
   const { toast } = useToast();
-
 
   const form = useForm({
     resolver: zodResolver(FormSchema),
@@ -48,10 +46,8 @@ function ForgotPassword() {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      <h3 className="py-4 text-[#351120] text-3xl mb-4">
-      Forgot Password?
-      </h3>
-     
+      <h3 className="py-4 text-[#351120] text-3xl mb-4">Forgot Password?</h3>
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -64,15 +60,15 @@ function ForgotPassword() {
           />
 
           <div className="flex justify-center items-center">
-          <Link href='/auth/login'>
-          <Button
-              variant="outline"
-              size="lg"
-              className=" rounded-full mx-2"
-            >
-              Sign Up new account
-            </Button>
-          </Link>
+            <Link href="/auth/login">
+              <Button
+                variant="outline"
+                size="lg"
+                className=" rounded-full mx-2"
+              >
+                Sign Up new account
+              </Button>
+            </Link>
             <Button
               type="submit"
               variant="myCustom"

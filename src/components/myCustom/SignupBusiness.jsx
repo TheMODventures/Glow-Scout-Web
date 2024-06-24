@@ -1,10 +1,8 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Image from "next/image";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,7 +16,6 @@ import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
-
 import { useState } from "react";
 
 const FormSchema = z.object({
@@ -32,7 +29,6 @@ const FormSchema = z.object({
     message: "Password must be at least 8 characters.",
   }),
 });
-
 function SignupBusiness() {
   const { toast } = useToast();
 
@@ -61,9 +57,7 @@ function SignupBusiness() {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      <h3 className="py-4 text-[#351120] text-3xl mb-4">
-      Sign Up as Business
-      </h3>
+      <h3 className="py-4 text-[#351120] text-3xl mb-4">Sign Up as Business</h3>
       <div className="flex space-x-4 mb-4">
         <Button className="bg-white">
           <Image
@@ -120,7 +114,7 @@ function SignupBusiness() {
                   onClick={() => setPasswordType("password")}
                   className="cursor-pointer"
                 />
-              )} 
+              )}
             </span>
           </div>
           <div className="text-zinc-500 mb-4">
@@ -145,7 +139,6 @@ function SignupBusiness() {
     </div>
   );
 }
-
 const SignupFormField = ({ name, placeholder, inputType, formControl }) => {
   return (
     <FormField

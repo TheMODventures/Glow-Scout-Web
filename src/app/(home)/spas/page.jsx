@@ -2,7 +2,6 @@ import TreatmentCard from "@/components/myCustom/TreatmentCard";
 import SpasSearch from "@/components/spasComponent/SpasSearch";
 
 const page = () => {
-  
   let dummyData = [
     {
       image: "/images/salon-spas/salon-1.png",
@@ -129,7 +128,7 @@ const page = () => {
       </div>
 
       <div className="my-5">
-       <SpasSearch />
+        <SpasSearch />
       </div>
 
       <div className="container my-5">
