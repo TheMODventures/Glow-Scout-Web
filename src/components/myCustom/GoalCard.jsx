@@ -10,7 +10,7 @@ import {
 
 const GoalCard = ({ number, name, img }) => {
   return (
-    <Card className="min-h-40">
+    <Card className="shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 min-h-40">
       <div className=" p-4">
         <div>
           <div>

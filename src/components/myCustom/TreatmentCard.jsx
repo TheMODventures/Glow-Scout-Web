@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const TreatmentCard = ({ image, imageAlt, label, title, description }) => {
   return (
-    <div className="my-5">
+    <div className="my-5 p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
       <div className="relative w-full rounded-xl">
         <Image
           className="rounded-xl static w-full h-full object-cover"
@@ -11,8 +11,8 @@ const TreatmentCard = ({ image, imageAlt, label, title, description }) => {
           alt={imageAlt}
           // fill={true}
           style={{ objectFit: "cover" }}
-          height={300}
-          width={300}
+          height={500}
+          width={800}
         />
         {label ? (
           <p className="absolute top-0 right-0 p-3 bg-lighttext rounded-b-lg rounded-tr-lg">

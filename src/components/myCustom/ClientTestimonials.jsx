@@ -51,7 +51,7 @@ const ClientTestimonials = () => {
           <CarouselContent>
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index}>
-                <Card className="rounded-none bg-noneborder bg-transparent shadow-none border-none">
+                <Card className="hover:shadow-xl hover:transform hover:scale-105 duration-300 rounded-none bg-noneborder bg-transparent shadow-none border-none">
                   <CardContent className="p-0 flex aspect-square items-center justify-center">
                     <div className="flex flex-col md:flex-row justify-center items-center gap-5">
                       <div>

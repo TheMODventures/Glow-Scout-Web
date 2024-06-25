@@ -77,7 +77,7 @@ const page = () => {
               daily routine. From hydrating serums to powerful antioxidants,
               discover the secrets to achieving radiant and healthy skin.
             </p>
-            <Link href={"auth/user"}>
+            <Link href={"/blog-single/1"}>
               <Button
                 variant="outline"
                 size="lg"
@@ -104,7 +104,7 @@ const page = () => {
       <div className="my-5">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 mb-2">
           {dummyData.map((item, index) => (
-            <Link href={"#"} key={index}>
+            <Link href={`blog-single/${index}`} key={index}>
               <TreatmentCard key={index} {...item} />
             </Link>
           ))}
