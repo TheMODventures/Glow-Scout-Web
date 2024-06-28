@@ -14,15 +14,16 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
+    NavigationMenu,
+    NavigationMenuContent,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    NavigationMenuTrigger,
+  } from "@/components/ui/navigation-menu"
+  import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 
+  
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
@@ -67,8 +68,10 @@ function Login() {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      <h3 className="py-4 text-[#351120] text-3xl mb-4">Log In</h3>
-
+      <h3 className="py-4 text-[#351120] text-3xl mb-4">
+      Log In
+      </h3>
+      
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -97,45 +100,40 @@ function Login() {
                   onClick={() => setPasswordType("password")}
                   className="cursor-pointer"
                 />
-              )}
+              )} 
             </span>
           </div>
           <div className="text-zinc-500 mb-4">
-            Forgot password?{" "}
-            <Link
-              href="/auth/forgot-password"
-              className=" text-[#351120] font-bold"
-            >
-              Reset now
+          Forgot password?{" "}
+            <Link href="/auth/forgot-password" className=" text-[#351120] font-bold">
+            Reset now
             </Link>
           </div>
 
           <div className="flex justify-center items-center text-center">
-            <Link href="#">
-              <NavigationMenu>
-                <NavigationMenuList>
-                  <NavigationMenuItem className="outline rounded-full text-[#351120] mx-4">
-                    <NavigationMenuTrigger>Sign Up</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <Link href="/auth/user" legacyBehavior passHref>
-                        <NavigationMenuLink
-                          className={navigationMenuTriggerStyle()}
-                        >
-                          Sign Up As User
-                        </NavigationMenuLink>
-                      </Link>
-                      <Link href="/auth/business" legacyBehavior passHref>
-                        <NavigationMenuLink
-                          className={navigationMenuTriggerStyle()}
-                        >
-                          Sign Up As Business
-                        </NavigationMenuLink>
-                      </Link>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                </NavigationMenuList>
-              </NavigationMenu>
-            </Link>
+        
+          <Link href='#'>
+          <NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem className='outline rounded-full text-[#351120] mx-4'>
+      <NavigationMenuTrigger>Sign Up</NavigationMenuTrigger>
+      <NavigationMenuContent>
+      <Link href="/auth/user" legacyBehavior passHref>
+    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+    Sign Up As User
+    </NavigationMenuLink>
+  </Link>
+  <Link href="/auth/business" legacyBehavior passHref>
+    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+    Sign Up As Business
+    </NavigationMenuLink>
+  </Link>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+    
+  </NavigationMenuList>
+</NavigationMenu>
+          </Link>
 
             <Button
               type="submit"
@@ -143,7 +141,7 @@ function Login() {
               size="lg"
               className=" rounded-full"
             >
-              Log In
+                Log In
             </Button>
           </div>
         </form>

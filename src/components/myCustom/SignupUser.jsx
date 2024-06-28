@@ -61,7 +61,9 @@ function SignupForm() {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      <h3 className="py-4 text-[#351120] text-3xl mb-4">Sign Up as User</h3>
+      <h3 className="py-4 text-[#351120] text-3xl mb-4">
+        Sign Up as User
+      </h3>
       <div className="flex space-x-4 mb-4">
         <Button className="bg-white">
           <Image
@@ -118,7 +120,7 @@ function SignupForm() {
                   onClick={() => setPasswordType("password")}
                   className="cursor-pointer"
                 />
-              )}
+              )} 
             </span>
           </div>
           <div className="text-zinc-500 mb-4">

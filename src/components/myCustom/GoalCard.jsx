@@ -10,7 +10,7 @@ import {
 
 const GoalCard = ({ number, name, img }) => {
   return (
-    <Card className="shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 min-h-40">
+    <Card className='min-h-40'>
       <div className=" p-4">
         <div>
           <div>
@@ -18,14 +18,15 @@ const GoalCard = ({ number, name, img }) => {
             <h3 className="text-xl">{name}</h3>
           </div>
           <div className="flex justify-end">
-            <Image
-              src={img}
-              alt="Anti-Aging"
-              className="mt-auto"
-              width={50}
-              height={50}
-            />
+          <Image
+            src={img}
+            alt="Anti-Aging"
+            className="mt-auto"
+            width={50}
+            height={50}
+          />
           </div>
+          
         </div>
       </div>
     </Card>

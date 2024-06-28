@@ -1,13 +1,13 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
+import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import {Button} from '@/components/ui/button'
+import { ArrowUpRight } from 'lucide-react'
 
 const HeroSection = () => {
   return (
     <div className=" dark:bg-zinc-900 py-12 px-6 md:px-14 lg:px-24 flex flex-col md:flex-row items-center justify-between text-darkMahron relative isolate ">
-      {/* <div
+    {/* <div
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
         aria-hidden="true"
       >
@@ -28,19 +28,15 @@ const HeroSection = () => {
           Glow Scout
         </h2>
         <p className="text-lg font-normal font-raleway mb-6">
-          &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />{" "}
-          Ut ut nibh faucibus. Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit.
-          <br />
+        &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/> Ut ut nibh
+          faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/>
           Ut ut nibh faucibus.&rdquo;
         </p>
-        <Link href={"auth/user"}>
-          <Button variant="outline" size="lg" className=" rounded-full p-5">
-            Sign Up
-            <span className="text-sm text-white bg-[#351120]  rounded-full mx-2">
-              <ArrowUpRight size={20} color="#fff" />
-            </span>
-          </Button>
+        <Link href={'auth/user'}>
+        <Button variant="outline" size="lg" className=" rounded-full p-5">
+          Sign Up
+          <span className="text-sm text-white bg-[#351120]  rounded-full mx-2"><ArrowUpRight size={20} color="#fff" /></span>
+        </Button>
         </Link>
       </div>
       <div className="flex-1 flex justify-center md:justify-end mt-6 md:mt-0 relative">
@@ -74,7 +70,7 @@ const HeroSection = () => {
       </div> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HeroSection;
+export default HeroSection
