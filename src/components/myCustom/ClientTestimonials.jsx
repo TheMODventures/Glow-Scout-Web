@@ -39,12 +39,12 @@ const ClientTestimonials = () => {
         
 
   return (
-    <div className="mx-auto py-20 md:mt-6 font-raleway bg-lightbg">
+    <div className="mx-auto py-20 md:mt-6 font-raleway bg-[#FEF5E3]">
         <div className="text-center">
         <h2 className="text-4xl">Client’s Testimonials</h2>
       </div>
 
-      <div className='container flex items-center justify-center'>
+      <div className='container flex flex-col items-center justify-center'>
       <Carousel
         opts={{ align: "start" }}
         className='md:w-[600px] lg:w-[700px] w-[300px]'

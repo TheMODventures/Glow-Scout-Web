@@ -76,7 +76,7 @@ const TrandingTreatment = () => {
   return (
     <div className="mx-auto py-20 md:mt-6 font-raleway relative">
       <div className="text-center">
-        <h2 className="text-4xl">Trending Treatments</h2>
+        <h2 className="text-4xl px-6">Trending Treatments</h2>
         <p className="mt-2 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh faucibus.</p>
       </div>
 
@@ -84,7 +84,7 @@ const TrandingTreatment = () => {
         <Carousel opts={{ align: "start" }} className="w-full container">
           <CarouselContent className="flex space-x-4">
             {treatments.map((treatment, index) => (
-              <CarouselItem key={index} className="px-2 md:basis-1/3 lg:basis-1/5 xl:basis-1/6">
+              <CarouselItem key={index} className="px-2  md:basis-1/3 lg:basis-1/5 xl:basis-1/6">
                 <Card className="rounded-none bg-transparent shadow-none border-none">
                   <CardContent>
                     <TreatmentCard {...treatment} />
