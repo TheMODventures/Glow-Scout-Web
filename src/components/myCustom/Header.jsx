@@ -33,7 +33,8 @@ const Header = () => {
       <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full">
         <div className="flex items-center">
           <Link href="/" className="ml-4 lg:ml-0">
-            <h1 className="text-xl md:text-3xl font-bold text-green font-valky text-[#351120]">
+            <h1 className="text-xl md:text-3xl  text-green text-[#351120] w-[221px] h-[48px] 
+            top-[51px] left-[64px] font-valky font-normal text-[42px] leading-[47.76px] glow-scout">
               Glow Scout
             </h1>
           </Link>
@@ -45,7 +46,7 @@ const Header = () => {
               <Button asChild variant="ghost" key={i} size="lg">
                 <Link
                   href={route.href}
-                  className="font-raleway text-[#351120] font-bold text-lg "
+                  className="font-raleway text-[#351120] font-medium text-lg "
                 >
                   {route.label}
                 </Link>
