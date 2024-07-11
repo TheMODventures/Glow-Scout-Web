@@ -4,7 +4,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-// import AnalyticsComponent from '../../../../components/businessDashboard/analyticsComponent'
+import AnalyticsComponent from '../../../../components/businessDashboard/analyticsComponent'
 
 const page = () => {
   return (
@@ -18,7 +18,7 @@ const page = () => {
       </TabsList>
       <TabsContent value="analytics" className="w-[800px]">
 
-       {/* <AnalyticsComponent /> */}
+       <AnalyticsComponent />
         
       </TabsContent>
       
