@@ -46,7 +46,7 @@ function SelectForm() {
 
   return (
     <Container>
-    <div className="container mx-auto w-fullz md:max-w-5xl flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
+    <div className="container mx-auto w-full md:max-w-5xl flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className=" w-full">
          <div className='md:bg-[#F6E9CE] dark:bg-zinc-800 py-3 md:rounded-full md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-between mt-6"'>

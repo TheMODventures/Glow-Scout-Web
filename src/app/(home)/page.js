@@ -8,7 +8,7 @@ import SignupAsBusiness from "@/components/homeComponet/SinupAsBusiness";
 
 export default function Widget() {
   return (
-    <>z
+    <>
       <HeroSection />
       <div className="mb-5">
         <BookNow />

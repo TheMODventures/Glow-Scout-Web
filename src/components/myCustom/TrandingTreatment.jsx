@@ -84,7 +84,7 @@ const TrandingTreatment = () => {
         <Carousel opts={{ align: "start" }} className="w-full container">
           <CarouselContent className="flex space-x-4">
             {treatments.map((treatment, index) => (
-              <CarouselItem key={index} className="px-2  md:basis-1/3 lg:basis-1/5 xl:basis-1/6">
+              <CarouselItem key={index} className="px-2  md:basis-1/3 lg:basis-1/4 xl:basis-1/6">
                 <Card className="rounded-none bg-transparent shadow-none border-none">
                   <CardContent>
                     <TreatmentCard {...treatment} />

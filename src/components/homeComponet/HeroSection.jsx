@@ -20,15 +20,15 @@ const HeroSection = () => {
         />
       </div> */}
       <div className="flex-1  text-left  md:pr-20">
-        <h1 className=" text-5xl md:text-6xl font-light font-raleway text-darkMahron">
+        <h1 className=" text-5xl md:text-6xl font-thin font-raleway text-darkMahron">
           REVEAL YOUR <br />
           BEAUTY WITH
         </h1>
         
-        <h2 className="text-6xl md:text-[80px] font-normal mb-2 font-valky leading-[80px] md:leading-[150px]">
+        <h2 className="text-3xl md:text-[80px] font-normal mb-2 font-valky leading-[80px] md:leading-[100px]">
           Glow Scout
         </h2>
-        <p className="md:text-lg font-normal font-raleway mb-6 pr-4">
+        <p className="md:text-lg font-normal font-raleway mb-6 pr -4">
         &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Ut ut nibh faucibus.&rdquo;
@@ -69,7 +69,7 @@ const HeroSection = () => {
           }}
         />
       </div> */}
-      </div>z
+      </div>
     </div>
   )
 }
