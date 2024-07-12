@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import {
-  CaretSortIcon,
+  TriangleDownIcon,
   CheckIcon,
   ChevronDownIcon,
   ChevronUpIcon,
@@ -27,7 +27,7 @@ const SelectTrigger = React.forwardRef(({ className, children, ...props }, ref) 
     {...props}>
     {children}
     <SelectPrimitive.Icon asChild>
-      <CaretSortIcon className="h-4 w-4 opacity-50" />
+      <TriangleDownIcon className="h-6 w-6 text-[#351120]" />
     </SelectPrimitive.Icon>
   </SelectPrimitive.Trigger>
 ))

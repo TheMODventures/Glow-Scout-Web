@@ -20,8 +20,8 @@ const TreatmentCard = ({image,imageAlt , label, title, description}  ) => {
                       {/* <p className='absolute top-0 right-0 p-3 bg-lighttext rounded-b-lg rounded-tr-lg'>{label}</p> */}
                     </div>
                     <div className="pt-2">
-                      <h3 className="text-lg font-bold">{title}</h3>
-                      <p className="mt-2 text-sm">{description}</p>
+                      <h3 className="text-xl font-bold">{title}</h3>
+                      <p className=" text-sm">{description}</p>
                     </div>
                   </div>
   )

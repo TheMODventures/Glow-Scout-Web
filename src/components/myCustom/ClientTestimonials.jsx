@@ -3,7 +3,6 @@
 import React from 'react'
 import Image from 'next/image'
 import { Star, StarHalf } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -39,12 +38,12 @@ const ClientTestimonials = () => {
         
 
   return (
-    <div className="mx-auto py-20 md:mt-6 font-raleway bg-[#FEF5E3]">
+    <div className="mx-auto py-40  font-raleway bg-[#FEF5E3]">
         <div className="text-center">
-        <h2 className="text-4xl">Client’s Testimonials</h2>
+        <h2 className="text-6xl">Client’s Testimonials</h2>
       </div>
 
-      <div className='container flex flex-col items-center justify-center'>
+      <div className='pt-20 container flex flex-col items-center'>
       <Carousel
         opts={{ align: "start" }}
         className='md:w-[600px] lg:w-[700px] w-[300px]'
@@ -55,18 +54,18 @@ const ClientTestimonials = () => {
         <CarouselContent>
           {testimonials.map((testimonial, index) => (
             <CarouselItem key={index}>
-              <Card className='rounded-none bg-noneborder bg-transparent shadow-none border-none'>
-                <CardContent className="p-0 flex aspect-square items-center justify-center">
+              
+                
                 <div className='flex flex-col md:flex-row justify-center items-center gap-5'>
         <div>
-            <Image src={testimonial.image} alt="testimonial" width={400} height={400} />
+            <Image src={testimonial.image} alt="testimonial" width={200} height={300} className='w-50 h-80'/>
         </div>
         <div className='p-6'>
           <h3 className=' text-[#351120] text-4xl font-bold pb-3'>{testimonial.name}</h3>
-            <p className='py-3 w-[300px]'>{testimonial.review}</p>
+            <p className='py-3 w-[300px] text-xl'>{testimonial.review}</p>
             <div>
             <div className="relative">
-        <div className="flex gap-2">
+        <div className="flex gap-2 text-xl">
           { Array.from({ length: 5 }, (_, index) => (
               <Star fill="#111" strokeWidth={0} key={`star-${index}`}/>
           ))}
@@ -80,8 +79,6 @@ const ClientTestimonials = () => {
             </div>
         </div>
       </div>
-                </CardContent>
-              </Card>
             </CarouselItem>
           ))}
         </CarouselContent>

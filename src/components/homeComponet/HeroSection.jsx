@@ -48,7 +48,7 @@ const HeroSection = () => {
           width={800}
           height={400}
         />
-        <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
+        {/* <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
           <Image
             src="/images/home/hero-1.png"
             alt="Decoration"
@@ -56,7 +56,7 @@ const HeroSection = () => {
             width={50}
             height={50}
           />
-        </div>
+        </div> */}
         {/* <div
         className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
         aria-hidden="true"
