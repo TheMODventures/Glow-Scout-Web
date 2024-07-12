@@ -81,7 +81,7 @@ const TrandingTreatment = () => {
         height={300}
         alt="bg"
         src={"/images/shadow-1.png"}
-        className=" absolute top-0 right-0 z-0"
+        className=" absolute top-0 right-0 z-0 hidden md:block"
       />
 
       <div className="text-center">
@@ -118,7 +118,7 @@ const TrandingTreatment = () => {
         height={300}
         alt="bg"
         src={"/images/shadow-2.png"}
-        className=" absolute bottom-0 left-0 border-none  rounded-xl z-[-1000]"
+        className=" absolute bottom-0 left-0 border-none  rounded-xl z-[-1000] hidden md:block"
       />
     </div>
   );
