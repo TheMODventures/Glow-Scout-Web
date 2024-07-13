@@ -20,21 +20,21 @@ const HeroSection = () => {
         />
       </div> */}
       <div className="flex-1  text-left  md:pr-20">
-        <h1 className=" text-5xl md:text-6xl font-thin font-raleway text-darkMahron">
+        <h1 className=" text-[40px] leading-10 md:text-6xl font-thin font-raleway text-darkMahron">
           REVEAL YOUR <br />
           BEAUTY WITH
         </h1>
         
-        <h2 className="text-3xl md:text-[80px] font-normal mb-2 font-valky leading-[80px] md:leading-[100px]">
+        <h2 className="text-6xl md:text-[80px] font-normal mb-2 font-valky leading-[80px] md:leading-[100px]">
           Glow Scout
         </h2>
-        <p className="md:text-lg font-normal font-raleway mb-6 pr -4">
+        <p className="md:text-lg font-normal font-raleway mb-6 pr -4 w-[300px] md:w-auto">
         &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Ut ut nibh faucibus.&rdquo;
         </p>
         <Link href={'auth/user'}>
-        <Button variant="outline" size="lg" className=" rounded-full px-3 border-darkMahron">
+        <Button variant="outline" size="lg" className=" rounded-full border-2  font-bold px-3 border-darkMahron">
           Sign Up
           <span className="text-sm text-white bg-[#351120]  rounded-full mx-2"><ArrowUpRight size={20} color="#fff" /></span>
         </Button>
