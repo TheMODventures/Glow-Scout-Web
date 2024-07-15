@@ -2,36 +2,19 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import Image from "next/image";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 
 import { useState } from "react";
-
-const FormSchema = z.object({
-  name: z.string().min(2, {
-    message: "name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Invalid email address.",
-  }),
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
-});
+import SignupFormField from "../spasComponent/SignupFormField";
+import { SignupUserSchema } from "@/validation/auth.validation";
 
 function SignupForm() {
   const { toast } = useToast();
@@ -39,7 +22,7 @@ function SignupForm() {
   const [passwordType, setPasswordType] = useState("password");
 
   const form = useForm({
-    resolver: zodResolver(FormSchema),
+    resolver: zodResolver(SignupUserSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -102,14 +85,14 @@ function SignupForm() {
             placeholder="Email"
             formControl={form.control}
           />
-          <div className=" relative">
+          <div className="relative">
             <SignupFormField
               name="password"
               placeholder="Password"
               inputType={passwordType}
               formControl={form.control}
             />
-            <span className="absolute right-3 top-2 text-zinc-500 cursor-pointer">
+            <span className="absolute right-14 top-4 text-zinc-500 cursor-pointer">
               {passwordType === "password" ? (
                 <FaRegEyeSlash
                   onClick={() => setPasswordType("text")}
@@ -146,25 +129,6 @@ function SignupForm() {
   );
 }
 
-const SignupFormField = ({ name, placeholder, inputType, formControl }) => {
-  return (
-    <FormField
-      control={formControl}
-      name={name}
-      render={({ field }) => (
-        <FormItem>
-          <FormControl>
-            <Input
-              placeholder={placeholder}
-              type={inputType || "text"}
-              {...field}
-            />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-};
+
 
 export default SignupForm;

@@ -2,33 +2,23 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
+import SignupFormField from "../spasComponent/SignupFormField";
+import {ForgotSchema} from "@/validation/auth.validation"
 
 
-const FormSchema = z.object({
-  email: z.string().email({
-    message: "Invalid email address.",
-  }),
-});
 
 function ForgotPassword() {
   const { toast } = useToast();
 
 
   const form = useForm({
-    resolver: zodResolver(FormSchema),
+    resolver: zodResolver(ForgotSchema),
     defaultValues: {
       email: "",
     },
@@ -88,25 +78,6 @@ function ForgotPassword() {
   );
 }
 
-const SignupFormField = ({ name, placeholder, inputType, formControl }) => {
-  return (
-    <FormField
-      control={formControl}
-      name={name}
-      render={({ field }) => (
-        <FormItem>
-          <FormControl>
-            <Input
-              placeholder={placeholder}
-              type={inputType || "text"}
-              {...field}
-            />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-};
+
 
 export default ForgotPassword;

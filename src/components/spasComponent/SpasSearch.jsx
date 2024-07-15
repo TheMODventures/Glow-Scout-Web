@@ -8,6 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from '@/component
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/components/ui/use-toast'; 
 import { Input } from '@/components/ui/input';
+import SignupFormField from './SignupFormField';
 
 // Define your schema using Zod
 const FormSchema = z.object({
@@ -103,27 +104,7 @@ function TreatmentSearch() {
 
 
 
-const SignupFormField = ({ name, placeholder, inputType, formControl }) => {
-    return (
-      <FormField
-        control={formControl}
-        name={name}
-        render={({ field }) => (
-          <FormItem>
-            <FormControl>
-              <Input
-                placeholder={placeholder}
-                type={inputType || "text"}
-                {...field}
-                className="border-darkMahron border-2 text-darkMahron  px-4 min-w-80 rounded-full mb-4 md:mb-0 md:mr-4 py-3 w-80 h-12"
-              />
-            </FormControl>
-            {/* <FormMessage /> */}
-          </FormItem>
-        )}
-      />
-    );
-  };
+
 
 
   export default TreatmentSearch;

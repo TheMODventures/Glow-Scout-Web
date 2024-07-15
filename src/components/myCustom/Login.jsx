@@ -2,44 +2,32 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
   Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
 } from "@/components/ui/form";
 import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-  } from "@/components/ui/navigation-menu"
-  import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
-  
-import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 
 import { useState } from "react";
+import SignupFormField from "../spasComponent/SignupFormField";
+import { LoginSchema } from "@/validation/auth.validation";
 
-const FormSchema = z.object({
-  email: z.string().email({
-    message: "Invalid email address.",
-  }),
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
-});
+
 
 function Login() {
   const { toast } = useToast();
@@ -47,7 +35,7 @@ function Login() {
   const [passwordType, setPasswordType] = useState("password");
 
   const form = useForm({
-    resolver: zodResolver(FormSchema),
+    resolver: zodResolver(LoginSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -68,10 +56,8 @@ function Login() {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      <h3 className="py-4 text-[#351120] text-3xl mb-4">
-      Log In
-      </h3>
-      
+      <h3 className="py-4 text-[#351120] text-3xl mb-4">Log In</h3>
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -89,7 +75,7 @@ function Login() {
               inputType={passwordType}
               formControl={form.control}
             />
-            <span className="absolute right-3 top-2 text-zinc-500 cursor-pointer">
+            <span className="absolute right-14 top-4 text-zinc-500 cursor-pointer">
               {passwordType === "password" ? (
                 <FaRegEyeSlash
                   onClick={() => setPasswordType("text")}
@@ -100,40 +86,45 @@ function Login() {
                   onClick={() => setPasswordType("password")}
                   className="cursor-pointer"
                 />
-              )} 
+              )}
             </span>
           </div>
           <div className="text-zinc-500 mb-4">
-          Forgot password?{" "}
-            <Link href="/auth/forgot-password" className=" text-[#351120] font-bold">
-            Reset now
+            Forgot password?{" "}
+            <Link
+              href="/auth/forgot-password"
+              className=" text-[#351120] font-bold"
+            >
+              Reset now
             </Link>
           </div>
 
           <div className="flex justify-center items-center text-center">
-        
-          <Link href='#'>
-          <NavigationMenu>
-  <NavigationMenuList>
-    <NavigationMenuItem className='outline rounded-full text-[#351120] mx-4'>
-      <NavigationMenuTrigger>Sign Up</NavigationMenuTrigger>
-      <NavigationMenuContent>
-      <Link href="/auth/user" legacyBehavior passHref>
-    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-    Sign Up As User
-    </NavigationMenuLink>
-  </Link>
-  <Link href="/auth/business" legacyBehavior passHref>
-    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-    Sign Up As Business
-    </NavigationMenuLink>
-  </Link>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-    
-  </NavigationMenuList>
-</NavigationMenu>
-          </Link>
+            <Link href="#">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem className="outline rounded-full text-[#351120] mx-4">
+                    <NavigationMenuTrigger>Sign Up</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <Link href="/auth/user" legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={navigationMenuTriggerStyle()}
+                        >
+                          Sign Up As User
+                        </NavigationMenuLink>
+                      </Link>
+                      <Link href="/auth/business" legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={navigationMenuTriggerStyle()}
+                        >
+                          Sign Up As Business
+                        </NavigationMenuLink>
+                      </Link>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </Link>
 
             <Button
               type="submit"
@@ -141,7 +132,7 @@ function Login() {
               size="lg"
               className=" rounded-full"
             >
-                Log In
+              Log In
             </Button>
           </div>
         </form>
@@ -173,25 +164,5 @@ function Login() {
   );
 }
 
-const SignupFormField = ({ name, placeholder, inputType, formControl }) => {
-  return (
-    <FormField
-      control={formControl}
-      name={name}
-      render={({ field }) => (
-        <FormItem>
-          <FormControl>
-            <Input
-              placeholder={placeholder}
-              type={inputType || "text"}
-              {...field}
-            />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
-  );
-};
 
 export default Login;
