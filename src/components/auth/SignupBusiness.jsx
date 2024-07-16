@@ -13,7 +13,7 @@ import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 
 import { useState } from "react";
-import SignupFormField from "../spasComponent/SignupFormField";
+import SignupFormField from "../reuseableComponenet/InputFormField";
 import { SignupBusinessSchema } from "@/validation/auth.validation";
 
 

@@ -1,8 +1,16 @@
+
+
 export default function Loading() {
-    // You can add any UI inside Loading, including a Skeleton.
-    return (
-      <div>
-        Loading...
-      </div>
+ 
+  return (
+    <div className="flex flex-col items-center justify-center h-screen w-screen bg-gray-100
+    dark:bg-gray-900">
+
+      <p>
+        Loading... <span className="animate-spin"></span>
+      </p>
+     
+    </div>
     );
-  }
+
+}

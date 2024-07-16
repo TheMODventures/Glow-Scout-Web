@@ -3,19 +3,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
-import SignupFormField from "../spasComponent/SignupFormField";
-import {ForgotSchema} from "@/validation/auth.validation"
-
-
+import SignupFormField from "../reuseableComponenet/InputFormField";
+import { ForgotSchema } from "@/validation/auth.validation";
 
 function ForgotPassword() {
   const { toast } = useToast();
-
 
   const form = useForm({
     resolver: zodResolver(ForgotSchema),
@@ -38,10 +33,8 @@ function ForgotPassword() {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      <h3 className="py-4 text-[#351120] text-3xl mb-4">
-      Forgot Password?
-      </h3>
-     
+      <h3 className="py-4 text-[#351120] text-3xl mb-4">Forgot Password?</h3>
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -54,15 +47,15 @@ function ForgotPassword() {
           />
 
           <div className="flex justify-center items-center">
-          <Link href='/auth/login'>
-          <Button
-              variant="outline"
-              size="lg"
-              className=" rounded-full mx-2"
-            >
-              Sign Up new account
-            </Button>
-          </Link>
+            <Link href="/auth/login">
+              <Button
+                variant="outline"
+                size="lg"
+                className=" rounded-full mx-2"
+              >
+                Sign Up new account
+              </Button>
+            </Link>
             <Button
               type="submit"
               variant="myCustom"
@@ -77,7 +70,5 @@ function ForgotPassword() {
     </div>
   );
 }
-
-
 
 export default ForgotPassword;

@@ -1,31 +1,33 @@
 "use client";
 
 import { useState } from "react";
-import { Heart, Star, StarHalf, Clock, MapPin } from "lucide-react";
-import Link from "next/link";
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import TreatmentCard from "@/components/myCustom/TreatmentCard";
 
 const testimonials = [
   {
     name: "Ashley K.",
     stars: 5,
-    review: "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+    review:
+      "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
   },
   {
     name: "Ashley F.",
     stars: 4,
-    review: "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+    review:
+      "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
   },
-  // Additional dummy data...
 ];
 
 const Reviews = () => {
   const [favourite, setFavourite] = useState(false);
   const [reviews, setReviews] = useState(testimonials.slice(0, 4));
   const [allReviewsShown, setAllReviewsShown] = useState(false);
-  const [newReview, setNewReview] = useState({ name: "", stars: 0, review: "" });
+  const [newReview, setNewReview] = useState({
+    name: "",
+    stars: 0,
+    review: "",
+  });
   const [submitMessage, setSubmitMessage] = useState("");
 
   const handleViewMore = () => {
@@ -55,8 +57,6 @@ const Reviews = () => {
   return (
     <div className="container font-raleway mx-auto px-4">
       <div>
-       
-
         <div className="mt-8">
           <h2 className="text-3xl font-bold mb-4">Reviews</h2>
           {reviews.map((testimonial, index) => (

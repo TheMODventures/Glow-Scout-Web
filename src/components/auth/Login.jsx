@@ -5,9 +5,7 @@ import { useForm } from "react-hook-form";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-} from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -24,10 +22,8 @@ import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 
 import { useState } from "react";
-import SignupFormField from "../spasComponent/SignupFormField";
+import SignupFormField from "../reuseableComponenet/InputFormField";
 import { LoginSchema } from "@/validation/auth.validation";
-
-
 
 function Login() {
   const { toast } = useToast();
@@ -163,6 +159,5 @@ function Login() {
     </div>
   );
 }
-
 
 export default Login;

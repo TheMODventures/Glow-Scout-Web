@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 
 
 
-const SignupFormField = ({ name, placeholder, inputType, formControl }) => {
+const InputFormField = ({ name, placeholder, inputType, formControl }) => {
     return (
       <FormField
         control={formControl}
@@ -27,4 +27,4 @@ const SignupFormField = ({ name, placeholder, inputType, formControl }) => {
   };
 
 
-  export default SignupFormField
+  export default InputFormField

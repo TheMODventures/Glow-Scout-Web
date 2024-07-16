@@ -1,5 +1,5 @@
-import TreatmentCard from "@/components/myCustom/TreatmentCard";
-import TreatmentSearch from "@/components/treatmentComponent/TreatmentSearch";
+import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
+import TreatmentSearch from "@/components/helper/treatmentComponent/TreatmentSearch";
 
 const page = () => {
   let dummyData = [
