@@ -14,18 +14,26 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 import Search from "@/components/reuseableComponenet/Search";
-import { SearchSchema } from "@/validation/page.validation";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-function TreatmentSearch() {
+function FilterSearch({
+  schema,
+  placeholder,
+  buttonText,
+  selectItems,
+  onSubmit,
+}) {
   const { toast } = useToast();
+  const pathname = usePathname();
 
   const form = useForm({
-    resolver: zodResolver(SearchSchema),
+    resolver: zodResolver(schema),
   });
 
-  function onSubmit(data) {
+  function handleSubmit(data) {
     try {
-      console.log(data);
+      onSubmit(data);
       toast({
         title: "Form submitted!",
         description: "Your form has been submitted successfully.",
@@ -44,7 +52,7 @@ function TreatmentSearch() {
   return (
     <div className="flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent my-4  m-auto w-full md:max-w-5xl">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full">
           <div className='md:bg-[#F6E9CE] dark:bg-zinc-800 py-6 md:rounded-full   flex flex-col md:flex-row items-center justify-around mt-6"'>
             <div className="flex justify-between items-center flex-col md:flex-row">
               <Select>
@@ -54,20 +62,36 @@ function TreatmentSearch() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="saveMoney">Save Money</SelectItem>
-                  <SelectItem value="travel">Travel</SelectItem>
-                  <SelectItem value="learnNewSkill">Learn New Skill</SelectItem>
+                  {selectItems.map((item, index) => {
+                    return (
+                      <SelectItem key={index} value={item.value}>
+                        {item.label}
+                      </SelectItem>
+                    );
+                  })}
                 </SelectContent>
               </Select>
               <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
                 |
               </span>
               <div>
-                <Input
-                  placeholder="Please enter your location"
-                  type="search"
-                  className="border-darkMahron border-2 text-darkMahron  px-4 min-w-80 rounded-full mb-4 md:mb-0 md:mr-4 py-3 w-80 h-12"
-                />
+                {pathname == "/treatment" ? (
+                  <Link href="#">
+                    <Button
+                      variant="myCustom"
+                      size="lg"
+                      className="rounded-full px-4 min-w-80  mb-4 md:mb-0 md:mr-4 py-3 w-80 h-12"
+                    >
+                      Compare Treatments
+                    </Button>
+                  </Link>
+                ) : (
+                  <Input
+                    placeholder="Please enter your location"
+                    type="search"
+                    className="border-darkMahron border-2 text-darkMahron  px-4 min-w-80 rounded-full mb-4 md:mb-0 md:mr-4 py-3 w-80 h-12"
+                  />
+                )}
               </div>
               <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
                 |
@@ -78,7 +102,7 @@ function TreatmentSearch() {
               <div>
                 <Search
                   name="goal"
-                  placeholder="Search by Treatment or Spa"
+                  placeholder={placeholder}
                   formControl={form.control}
                 />
               </div>
@@ -89,7 +113,7 @@ function TreatmentSearch() {
                   size="sm"
                   className="rounded-full"
                 >
-                  Book Now!
+                  {buttonText}
                 </Button>
               </div>
             </div>
@@ -100,4 +124,4 @@ function TreatmentSearch() {
   );
 }
 
-export default TreatmentSearch;
+export default FilterSearch;

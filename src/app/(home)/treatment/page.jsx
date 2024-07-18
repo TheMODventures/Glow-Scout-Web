@@ -1,7 +1,25 @@
+"use client";
+
 import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
-import TreatmentSearch from "@/components/helper/treatmentComponent/TreatmentSearch";
+import FilterSearch from "@/components/reuseableComponenet/FilterSearch";
+import FilterSelect  from "@/components/reuseableComponenet/FilterSelect";
 
 const page = () => {
+  const selectitems = [
+    {
+      value: "saveMoney",
+      label: "Save Money",
+    },
+    {
+      value: "saveTime",
+      label: "Save Time",
+    },
+    {
+      value: "saveBoth",
+      label: "Save Both",
+    },
+  ];
+
   let dummyData = [
     {
       image: "/images/home/tranding-1.png",
@@ -125,6 +143,10 @@ const page = () => {
     },
   ];
 
+  function spaSubmitHandler(data) {
+    console.log("Spa search submitted:", data);
+  }
+
   return (
     <div className=" py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
       <div className="text-center pb-5">
@@ -136,7 +158,14 @@ const page = () => {
       </div>
 
       <div className="my-5">
-        <TreatmentSearch />
+        {/* <TreatmentSearch /> */}
+        <FilterSearch
+          onSubmit={spaSubmitHandler}
+          schema={FilterSelect}
+          placeholder="Search for Treatment"
+          buttonText="Book Now!"
+          selectItems={selectitems}
+        />
       </div>
 
       <div className="container my-5">

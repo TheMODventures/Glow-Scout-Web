@@ -1,6 +1,9 @@
+"use client";
+
 import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
-import SpasSearch from "@/components/helper/spasComponent/SpasSearch";
 import Link from "next/link";
+import FilterSearch from "@/components/reuseableComponenet/FilterSearch";
+import { SearchSchema } from "@/validation/page.validation";
 
 const page = () => {
   let dummyData = [
@@ -118,6 +121,25 @@ const page = () => {
     },
   ];
 
+  const selectitems = [
+    {
+      value: "saveMoney",
+      label: "Save Money",
+    },
+    {
+      value: "saveTime",
+      label: "Save Time",
+    },
+    {
+      value: "saveBoth",
+      label: "Save Both",
+    },
+  ];
+
+  function spaSubmitHandler(data) {
+    console.log("Spa search submitted:", data);
+  }
+
   return (
     <div className=" py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
       <div className="text-center pb-5">
@@ -129,7 +151,13 @@ const page = () => {
       </div>
 
       <div className="my-5">
-        <SpasSearch />
+        <FilterSearch
+          onSubmit={spaSubmitHandler}
+          schema={SearchSchema}
+          placeholder="Filters"
+          buttonText="Book Now!"
+          selectItems={selectitems}
+        />
       </div>
 
       <div className="container my-5">

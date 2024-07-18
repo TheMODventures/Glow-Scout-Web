@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import Container from "./Container";
-import { BookSchema } from "@/validation/auth.validation";
+import { BookSchema } from "@/validation/page.validation";
 
 function SelectForm() {
   const { toast } = useToast();
