@@ -3,19 +3,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl } from "@/components/ui/form";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 import Search from "@/components/reuseableComponenet/Search";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import FilterSelect from "./FilterSelect";
 
 function FilterSearch({
   schema,
@@ -55,22 +49,7 @@ function FilterSearch({
         <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full">
           <div className='md:bg-[#F6E9CE] dark:bg-zinc-800 py-6 md:rounded-full   flex flex-col md:flex-row items-center justify-around mt-6"'>
             <div className="flex justify-between items-center flex-col md:flex-row">
-              <Select>
-                <FormControl className=" border-darkMahron text-darkMahron py-2 h-12 px-4 min-w-40 rounded-full mb-4 md:mb-0 md:mr-4">
-                  <SelectTrigger>
-                    <SelectValue placeholder="Filters" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {selectItems.map((item, index) => {
-                    return (
-                      <SelectItem key={index} value={item.value}>
-                        {item.label}
-                      </SelectItem>
-                    );
-                  })}
-                </SelectContent>
-              </Select>
+              <FilterSelect selectItems={selectItems}/>
               <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
                 |
               </span>

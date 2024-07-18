@@ -25,7 +25,7 @@ const AuthCommon = ({ params }) => {
         <h2 className="text-7xl md:text-8xl font-normal mb-4 font-valky leading-[80px] md:leading-[100px]">
           Glow <br /> Scout
         </h2>
-        <p className="text-lg font-normal font-raleway text-[#EEEEEE]">
+        <p className="text-lg font-normal font-raleway text-lighttext">
           &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
           nibh faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing
           elit. Ut ut nibh faucibus.&rdquo;

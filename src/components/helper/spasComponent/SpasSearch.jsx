@@ -14,7 +14,7 @@ import {
 import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 import Search from "@/components/reuseableComponenet/Search";
-import { SearchSchema } from "@/validation/page.validation";
+import { SearchSchema } from "@/validation/common.validation";
 
 function TreatmentSearch() {
   const { toast } = useToast();

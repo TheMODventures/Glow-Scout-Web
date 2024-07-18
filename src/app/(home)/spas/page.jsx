@@ -3,7 +3,7 @@
 import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
 import Link from "next/link";
 import FilterSearch from "@/components/reuseableComponenet/FilterSearch";
-import { SearchSchema } from "@/validation/page.validation";
+import { SearchSchema } from "@/validation/common.validation";
 
 const page = () => {
   let dummyData = [
