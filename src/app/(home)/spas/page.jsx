@@ -150,7 +150,7 @@ const page = () => {
         </p>
       </div>
 
-      <div className="my-5">
+      
         <FilterSearch
           onSubmit={spaSubmitHandler}
           schema={SearchSchema}
@@ -158,7 +158,7 @@ const page = () => {
           buttonText="Book Now!"
           selectItems={selectitems}
         />
-      </div>
+      
 
       <div className="container my-5">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6 mb-2">

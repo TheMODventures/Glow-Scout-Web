@@ -191,4 +191,61 @@ const CarouselNext = React.forwardRef(({ className, variant = "outline", size = 
 })
 CarouselNext.displayName = "CarouselNext"
 
-export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext };
+
+const CarouselDots = React.forwardRef((props, ref) => {
+  const { api } = useCarousel();
+  const [updateState, setUpdateState] = React.useState(false);
+  const toggleUpdateState = React.useCallback(
+    () => setUpdateState(prevState => !prevState),
+    []
+  );
+
+  React.useEffect(() => {
+    if (api) {
+      api.on("select", toggleUpdateState);
+      api.on("reInit", toggleUpdateState);
+
+      return () => {
+        api.off("select", toggleUpdateState);
+        api.off("reInit", toggleUpdateState);
+      };
+    }
+  }, [api, toggleUpdateState]);
+
+  const numberOfSlides = api?.scrollSnapList().length || 0;
+  const centerSlide = Math.floor(numberOfSlides / 2);
+  const currentSlide = api?.selectedScrollSnap() || centerSlide;
+
+  React.useEffect(() => {
+    if (api) {
+      api.scrollTo(centerSlide);
+    }
+  }, [api, centerSlide]);
+
+  if (numberOfSlides > 1) {
+    return (
+      <div ref={ref} className={`flex justify-center ${props.className}`}>
+        {Array.from({ length: numberOfSlides }, (_, i) => (
+          <Button
+            key={i}
+            className={`mx-1 h-2 w-2 rounded-full p-0 transition-transform duration-200 ${
+              i === currentSlide
+                ? "scale-150 transform bg-[#351120] hover:bg-[#351120]"
+                : "scale-100 bg-[#351120] hover:bg-gray-400"
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+            onClick={() => api?.scrollTo(i)}
+          />
+        ))}
+      </div>
+    );
+  } else {
+    return <></>;
+  }
+});
+
+CarouselDots.displayName = "CarouselDots";
+
+
+
+export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext , CarouselDots};

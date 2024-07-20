@@ -9,6 +9,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  CarouselDots
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -25,6 +26,24 @@ const ClientTestimonials = () => {
         "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
     },
 
+    {
+      name: "Ashley F.",
+      image: "/images/home/testimonial-1.png",
+      review:
+        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+    },
+    {
+      name: "Ashley F.",
+      image: "/images/home/testimonial-1.png",
+      review:
+        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+    },
+    {
+      name: "Ashley F.",
+      image: "/images/home/testimonial-1.png",
+      review:
+        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+    },
     {
       name: "Ashley F.",
       image: "/images/home/testimonial-1.png",
@@ -90,8 +109,10 @@ const ClientTestimonials = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
+          
           <CarouselPrevious />
           <CarouselNext />
+          <CarouselDots/>
         </Carousel>
       </div>
     </div>

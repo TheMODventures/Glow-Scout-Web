@@ -2,7 +2,7 @@
 
 import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
 import FilterSearch from "@/components/reuseableComponenet/FilterSearch";
-import FilterSelect from "@/components/reuseableComponenet/FilterSelect";
+import FilterSelect from "@/components/reuseableComponenet/FormSelect";
 
 const page = () => {
   const selectitems = [
@@ -157,7 +157,7 @@ const page = () => {
         </p>
       </div>
 
-      <div className="my-5">
+     
         <FilterSearch
           onSubmit={spaSubmitHandler}
           schema={FilterSelect}
@@ -165,7 +165,7 @@ const page = () => {
           buttonText="Book Now!"
           selectItems={selectitems}
         />
-      </div>
+     
 
       <div className="container my-5">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6 mb-2">

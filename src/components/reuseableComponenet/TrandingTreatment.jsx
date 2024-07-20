@@ -92,7 +92,7 @@ const TrandingTreatment = () => {
         </p>
       </div>
 
-      <div className="my-20 z-50 container">
+      <div className="my-20 z-50">
         <Carousel
           opts={{ align: "start" }}
           className="w-full md:container ml-8 overflow-hidden"
@@ -101,14 +101,14 @@ const TrandingTreatment = () => {
             {treatments.map((treatment, index) => (
               <CarouselItem
                 key={index}
-                className="px-2 basis-1/2  md:basis-1/3 lg:basis-1/4 xl:basis-1/6"
+                className="basis-1/2  md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
               >
                 <TreatmentCard {...treatment} />
               </CarouselItem>
             ))}
           </CarouselContent>
           <CarouselPrevious style={{ left: "0rem" }} />
-          <CarouselNext style={{ right: "-1rem" }} />
+          <CarouselNext style={{ right: "0rem" }} />
         </Carousel>
       </div>
 

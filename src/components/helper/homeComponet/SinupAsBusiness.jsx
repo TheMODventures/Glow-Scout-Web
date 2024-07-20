@@ -16,7 +16,7 @@ const SinupAsBusiness = () => {
           <Button
             variant="outline"
             size="lg"
-            className=" rounded-full p-5 border-darkMahron font-bold"
+            className=" rounded-full border-2  p-5 border-darkMahron font-raleway text-lg font-extrabold"
           >
             Sign Up as Business
             <span className="text-sm text-white bg-[#351120]  rounded-full mx-2">
