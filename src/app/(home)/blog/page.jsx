@@ -52,11 +52,11 @@ const page = () => {
     },
   ];
   return (
-    <div className="container py-20 md:mt-6 font-raleway  mb-4">
-      <div className="border-b border-darkMahron">
-        <div className="text-center pb-5">
-          <h2 className="text-4xl">Blogs by Glow Scout</h2>
-          <p className="mt-2 text-lg">
+    <div className="container py-6  font-raleway  mb-4">
+      <div className="border-b border-t border-darkMahron">
+        <div className="text-center py-5">
+          <h2 className="text-6xl font-thin">Blogs by Glow Scout</h2>
+          <p className="mt-2 text-xl">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
             faucibus.
           </p>
@@ -96,8 +96,8 @@ const page = () => {
       </div>
 
       <div className="text-center pt-20">
-        <h2 className="text-4xl">Blogs by Glow Scout</h2>
-        <p className="mt-2 text-lg">
+        <h2 className="text-6xl">Trending Topics</h2>
+        <p className="mt-2 text-xl">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>

@@ -141,8 +141,8 @@ const page = () => {
   }
 
   return (
-    <div className=" py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
-      <div className="text-center pb-5">
+    <div className=" py-6 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
+      <div className="text-center pb-3">
         <h2 className="text-4xl">Salons & Spas</h2>
         <p className="mt-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
@@ -150,7 +150,7 @@ const page = () => {
         </p>
       </div>
 
-      
+      <div className="hidden md:block">
         <FilterSearch
           onSubmit={spaSubmitHandler}
           schema={SearchSchema}
@@ -158,10 +158,10 @@ const page = () => {
           buttonText="Book Now!"
           selectItems={selectitems}
         />
-      
+      </div>
 
-      <div className="container my-5">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6 mb-2">
+      <div className="container my-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
           {dummyData.map((item, index) => (
             <Link href={`spa-single/${index}`} key={index}>
               <TreatmentCard key={index} {...item} />

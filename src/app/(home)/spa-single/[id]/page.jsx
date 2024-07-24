@@ -5,6 +5,7 @@ import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import VisitSpa from "@/components/helper/spasComponent/VisitSpa";
+import Image from "next/image";
 
 const page = ({ params }) => {
   const id = params.id;
@@ -43,22 +44,37 @@ const page = ({ params }) => {
       stars: 5,
       review:
         "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+      path: "/images/home/testimonial-1.png",
     },
-
     {
       name: "Ashley F.",
       stars: 4,
       review:
         "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+      path: "/images/home/testimonial-1.png",
+    },
+    {
+      name: "Ashley F.",
+      stars: 4,
+      review:
+        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+      path: "/images/home/testimonial-1.png",
+    },
+    {
+      name: "Ashley F.",
+      stars: 4,
+      review:
+        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+      path: "/images/home/testimonial-1.png",
     },
   ];
 
   return (
-    <div className="container font-raleway mx-auto px-4 ">
+    <div className="container font-raleway mx-auto px-4 max-w-screen-lg">
       <VisitSpa />
 
-      <div className=" py-20 md:mt-6 font-raleway  border-b border-darkMahron">
-        <div className="text-center pb-5">
+      <div className="py-6 font-raleway border-b border-darkMahron">
+        <div className="text-center pb-3">
           <h2 className="text-4xl">Treatments Offered</h2>
           <p className="mt-2 text-lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
@@ -66,8 +82,8 @@ const page = ({ params }) => {
           </p>
         </div>
 
-        <div className="container my-5">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6 mb-2">
+        <div className="my-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
             {dummyData.map((item, index) => (
               <TreatmentCard key={index} {...item} />
             ))}
@@ -75,91 +91,77 @@ const page = ({ params }) => {
         </div>
       </div>
 
-      <div className=" py-20 md:mt-6 font-raleway">
+      <div className="py-6 md:mt-6 font-raleway">
         <div className="text-center pb-5">
           <h2 className="text-6xl font-raleway">Reviews</h2>
         </div>
-        <div>
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="flex flex-col md:flex-row justify-center items-center gap-5"
-            >
-              <div>
-                <div className="p-6">
-                  <h3 className=" text-[#351120] text-4xl font-bold pb-3">
-                    {testimonial.name}
-                  </h3>
-                  <p className="py-3 w-[400px]">{testimonial.review}</p>
-                  <div>
-                    <div className="relative">
-                      <div className="flex gap-2">
-                        {Array.from({ length: 5 }, (_, index) => (
-                          <Star
-                            fill="#111"
-                            strokeWidth={0}
-                            key={`star-${index}`}
-                          />
-                        ))}
-                      </div>
-                      <div className="flex gap-2 absolute top-0">
-                        <Star fill="#E5BA1F" strokeWidth={0} />
-                        <Star fill="#E5BA1F" strokeWidth={0} />
-                        <Star fill="#E5BA1F" strokeWidth={0} />
-                        <Star fill="#E5BA1F" strokeWidth={0} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className=" text-[#351120] text-4xl font-bold pb-3">
-                  {testimonial.name}
-                </h3>
-                <p className="py-3 w-[400px]">{testimonial.review}</p>
-                <div>
-                  <div className="relative">
-                    <div className="flex gap-2">
-                      {Array.from({ length: 5 }, (_, index) => (
-                        <Star
-                          fill="#111"
-                          strokeWidth={0}
-                          key={`star-${index}`}
-                        />
-                      ))}
-                    </div>
-                    <div className="flex gap-2 absolute top-0">
-                      <Star fill="#E5BA1F" strokeWidth={0} />
-                      <Star fill="#E5BA1F" strokeWidth={0} />
-                      <Star fill="#E5BA1F" strokeWidth={0} />
-                      <Star fill="#E5BA1F" strokeWidth={0} />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
+        <div className="grid md:grid-cols-2 gap-5">
+  {testimonials.map((testimonial, index) => (
+    <div key={index} className="grid grid-cols-1 md:grid-cols gap-5 items-center">
+<div className="flex justify-between items-center">
+      <Image
+        width={160}
+        height={200}
+        src={testimonial.path}
+        alt={testimonial.name}
+        className="block md:hidden w-40 h-60 rounded-xl object-cover mb-4 md:mb-0"
+      />
+      <div className="px-6 py-3">
+        <h3 className="text-[#351120] text-4xl font-bold pb-3">
+          {testimonial.name}
+        </h3>
+        <p className="py-3 w-full md:w-[400px]">
+          {testimonial.review}
+        </p>
+        <div className="relative">
+          <div className="flex gap-2">
+            {Array.from({ length: 5 }, (_, index) => (
+              <Star
+                fill="#111"
+                strokeWidth={0}
+                key={`star-${index}`}
+              />
+            ))}
+          </div>
+          <div className="flex gap-2 absolute top-0">
+            {Array.from(
+              { length: testimonial.stars },
+              (_, index) => (
+                <Star
+                  fill="#E5BA1F"
+                  strokeWidth={0}
+                  key={`filled-star-${index}`}
+                />
+              )
+            )}
+          </div>
         </div>
+      </div>
+      </div>
+    </div>
+  ))}
+</div>
 
-        <div className="flex justify-center items-center my-20">
+
+        <div className="flex justify-center items-center my-10">
           <Button
             type="submit"
             variant="myCustom"
             size="lg"
-            className="rounded-full m-auto"
+            className="rounded-full"
           >
             View all
           </Button>
         </div>
 
-        <div className="container border border-darkMahron rounded-xl p-4">
+        <div className="border border-darkMahron rounded-xl py-5 px-4 my-8">
           <div className="pb-5">
             <h2 className="text-4xl">Add your review</h2>
           </div>
           <div className="flex gap-4">
             <Input
               placeholder="Type your message here."
-              className=" border-b-1 bordeer-t-0  border-darkMahron"
+              className="border-b-1 border-t-0 border-darkMahron flex-1"
             />
             <div>
               <p>Ratings</p>

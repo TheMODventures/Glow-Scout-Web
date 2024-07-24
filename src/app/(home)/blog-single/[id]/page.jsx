@@ -6,20 +6,23 @@ const page = ({ params }) => {
   const id = params.id;
 
   return (
-    <div className="container py-20 md:mt-6 font-raleway mb-4 relative">
-      <div className="text-center pb-5">
-        <h2 className="text-4xl md:text-6xl">
+    <div className="container py-6 font-raleway mb-4 relative">
+<div className="border-t-2 border-darkMahron">
+
+      <div className="text-center py-10">
+        <h2 className="text-4xl md:text-6xl font-thin text-darkMahron  ">
           Reviewing the latest beauty <br /> innovations in 2024
         </h2>
-        <p> blog id: {id}</p>
+        {/* <p> blog id: {id}</p> */}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
-        <div>
+        <div className="">
           <TreatmentCard
             image={"/images/blog/single-1.png"}
             imageAlt={"blog"}
             label={"Featured Blog"}
+            
           />
         </div>
         <Container>
@@ -117,6 +120,7 @@ const page = ({ params }) => {
         </Container>
       </div>
       <BlogProgress />
+      </div>
     </div>
   );
 };

@@ -2,11 +2,11 @@ import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
 
 const page = () => {
   return (
-    <div className="container py-20 md:mt-6 font-raleway  mb-4">
-      <div>
-        <div className="text-center pb-5">
-          <h2 className="text-4xl">About Us</h2>
-          <p className="mt-2 text-lg">
+    <div className="container py-6 md:mt-6 font-raleway  mb-4">
+      <div className="border-t-2 border-darkMahron">
+        <div className="text-center py-5">
+          <h2 className="text-6xl text-darkMahron">About Us</h2>
+          <p className="mt-2 text-xl text-darkMahron">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
             faucibus.
           </p>
@@ -20,10 +20,10 @@ const page = () => {
             />
           </div>
           <div className="flex justify-center items-start flex-col gap-4 p-5">
-            <h2 className="text-2xl md:text-4xl font-light">
+            <h2 className="text-4xl md:text-6xl font-light text-darkMahron">
               What is Glow Scout?
             </h2>
-            <p className="mt-2 text-lg">
+            <p className="mt-2 text-lg md:text-2xl text-darkMahron font-thin">
               &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
               ut nibh faucibus. Lorem ipsum dolor sit amet, consectetur
               adipiscing elit. Ut ut nibh faucibus. Lorem ipsum dolor sit amet,

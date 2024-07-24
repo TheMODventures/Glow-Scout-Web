@@ -148,16 +148,16 @@ const page = () => {
   }
 
   return (
-    <div className=" py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
+    <div className="py-6 md:mt-3 font-raleway relative isolate border-t-2 border-darkMahron">
       <div className="text-center pb-5">
         <h2 className="text-4xl">Treatments</h2>
-        <p className="mt-2 text-lg">
+        <p className="mt-2 text-xl">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
       </div>
 
-     
+     <div className="hidden md:block">
         <FilterSearch
           onSubmit={spaSubmitHandler}
           schema={FilterSelect}
@@ -165,10 +165,10 @@ const page = () => {
           buttonText="Book Now!"
           selectItems={selectitems}
         />
-     
+     </div>
 
       <div className="container my-5">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6 mb-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
           {dummyData.map((item, index) => (
             <TreatmentCard key={index} {...item} />
           ))}

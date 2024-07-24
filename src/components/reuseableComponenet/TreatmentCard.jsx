@@ -2,8 +2,8 @@ import Image from "next/image";
 const TreatmentCard = ({ image, imageAlt, label, title, description }) => {
   return (
     
-    <div className="my-5">
-      <div className="relative w-full rounded-xl">
+    <div className="my-3">
+      <div className="relative w-full h-56 md:h-full rounded-xl">
         <Image
           className="rounded-xl static w-full h-full object-cover"
           src={image}
@@ -19,8 +19,8 @@ const TreatmentCard = ({ image, imageAlt, label, title, description }) => {
         ) : null}
       </div>
       <div className="pt-2">
-        <h3 className="text-xl font-bold">{title}</h3>
-        <p className=" text-sm">{description}</p>
+        <h3 className="text-2xl font-bold">{title}</h3>
+        <p className=" text-base">{description}</p>
       </div>
     </div>
     

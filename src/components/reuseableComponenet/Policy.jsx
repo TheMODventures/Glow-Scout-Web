@@ -3,11 +3,12 @@ import Link from "next/link";
 
 const Policy = ({ title, content }) => {
   return (
-    <div className="container py-20 md:mt-6 font-raleway  mb-4">
+    <div className="container py-6 font-raleway  mb-4">
+      <div className="border-t-2 border-darkMahron">
       <div>
-        <div className="text-center pb-10">
-          <h2 className="text-4xl">{title}</h2>
-          <p className="mt-2 text-lg">{content}</p>
+        <div className="text-center py-10">
+          <h2 className="text-6xl font-thin text-darkMahron">{title}</h2>
+          <p className="mt-2 text-lg md:text-xl font-thin text-darkMahron">{content}</p>
         </div>
         <p className="px-6">
           This {title} outlines the manner in which{" "}
@@ -21,7 +22,6 @@ const Policy = ({ title, content }) => {
           Policy.
         </p>
       </div>
-
       <div className="my-5">
         <div className="p-6 text-darkMahron">
           <div className="space-y-6">
@@ -54,6 +54,7 @@ const Policy = ({ title, content }) => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

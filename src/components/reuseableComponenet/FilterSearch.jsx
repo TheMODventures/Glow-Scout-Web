@@ -46,63 +46,65 @@ function FilterSearch({
 
   return (
     <Container>
-    <div className=" mx-auto w-full md:max-w-5xl flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full">
-          <div className='md:bg-[#F6E9CE]  py-3 md:rounded-full md:px-12  flex flex-col md:flex-row items-center  mt-6'>
-            <div className="flex justify-between items-center flex-col md:flex-row">
-              <FormSelect selectItems={selectItems} placeholder="Filters" name="goal" customClass="min-w-60"
-                  />
-              <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
-                |
-              </span>
-              <div>
-                {pathname == "/treatment" ? (
-                  <Link href="#">
-                    <Button
-                      variant="myCustom"
-                      size="lg"
-                      className="rounded-full px-4 min-w-60  mb-4 md:mb-0 md:mr-4 py-3  h-12"
-                    >
-                      Compare Treatments
-                    </Button>
-                  </Link>
-                ) : (
-                  <Input
-                    placeholder="Please enter your location"
-                    type="search"
-                    className="border-darkMahron border-2 text-darkMahron  px-4 min-w-80 rounded-full mb-4 md:mb-0 md:mr-4 py-3 w-80 h-12"
-                  />
-                )}
+      <div className="w-full max-w-3xl mx-auto flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full">
+            <div className="md:bg-[#F6E9CE] py-3 md:rounded-full md:px-12 flex flex-col md:flex-row items-center mt-6">
+              <div className="flex justify-between items-center flex-col md:flex-row w-full">
+                <FormSelect
+                  selectItems={selectItems}
+                  placeholder="Filters"
+                  name="goal"
+                  customClass="min-w-30"
+                />
+                <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
+                  |
+                </span>
+                <div>
+                  {pathname === "/treatment" ? (
+                    <Link href="#">
+                      <Button
+                        variant="myCustom"
+                        size="lg"
+                        className="rounded-full px-4 min-w-40 mb-4 md:mb-0 md:mr-4 h-10"
+                      >
+                        Compare Treatments
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Input
+                      placeholder="Please enter your location"
+                      type="search"
+                      className="border-darkMahron border text-darkMahron px-4 min-w-40 rounded-full mb-4 md:mb-0 md:mr-4  w-40 h-10"
+                    />
+                  )}
+                </div>
+                <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
+                  |
+                </span>
               </div>
-              <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
-                |
-              </span>
-            </div>
-
-            <div className="flex relative mt-4 md:mt-0">
-              <div>
+              <div className="flex relative mt-4 md:mt-0 w-full md:w-auto">
                 <Search
                   name="goal"
                   placeholder={placeholder}
                   formControl={form.control}
+                  className="flex-grow"
                 />
-              </div>
-              <div className=" absolute right-2 md:right-6 bottom-6 md:bottom-2">
-                <Button
-                  type="submit"
-                  variant="myCustom"
-                  size="sm"
-                  className="rounded-full"
-                >
-                  {buttonText}
-                </Button>
+                <div className="absolute right-2 md:right-6 bottom-6 md:bottom-2">
+                  <Button
+                    type="submit"
+                    variant="myCustom"
+                    size="sm"
+                    className="rounded-full"
+                  >
+                    {buttonText}
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
-      </Form>
-    </div>
+          </form>
+        </Form>
+      </div>
     </Container>
   );
 }
