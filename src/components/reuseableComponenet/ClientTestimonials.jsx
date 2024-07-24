@@ -55,7 +55,7 @@ const ClientTestimonials = () => {
   return (
     <div className="mx-auto py-40  font-raleway bg-[#FEF5E3]">
       <div className="text-center">
-        <h2 className="text-6xl">Client’s Testimonials</h2>
+        <h2 className="text-2xl md:text-[40px]">Client’s Testimonials</h2>
       </div>
 
       <div className="pt-20 container flex flex-col items-center">
@@ -74,9 +74,9 @@ const ClientTestimonials = () => {
                     <Image
                       src={testimonial.image}
                       alt="testimonial"
-                      width={200}
-                      height={300}
-                      className="w-50 h-80"
+                      width={250}
+                      height={350}
+                      className="w-60 h-96"
                     />
                   </div>
                   <div className="p-6">

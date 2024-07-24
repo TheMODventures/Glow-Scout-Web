@@ -228,7 +228,7 @@ const CarouselDots = React.forwardRef((props, ref) => {
         {Array.from({ length: numberOfSlides }, (_, i) => (
           <Button
             key={i}
-            className={`mx-1 h-2 w-2 rounded-full p-0 transition-transform duration-200 ${
+            className={`mx-1 mt-4 h-2 w-2 rounded-full p-0 transition-transform duration-200 ${
               i === currentSlide
                 ? "scale-150 transform bg-[#351120] hover:bg-[#351120]"
                 : "scale-100 bg-[#351120] hover:bg-gray-400"

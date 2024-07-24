@@ -103,7 +103,7 @@ const page = () => {
         </div>
       </div>
 
-      <div className="flex justify-center items-center my-10">
+      <div className="flex justify-center items-center my-20">
         <Button
           type="submit"
           variant="myCustom"

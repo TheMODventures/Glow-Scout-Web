@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/carousel";
 import TreatmentCard from "./TreatmentCard";
 import Image from "next/image";
-import { Box } from "lucide-react";
 
 const treatments = [
   {
@@ -74,13 +73,6 @@ const treatments = [
   },
 ];
 
-const hidden = `
-    @media (max-width: 768px) {
-      .carousel-next {
-        display: none;
-      }
-    }
-  `;
 const TrandingTreatment = () => {
   return (
     <div className="mx-auto py-20  font-raleway relative rounded-full border-0">
@@ -93,14 +85,14 @@ const TrandingTreatment = () => {
       />
 
       <div className="text-center">
-        <h2 className="text-5xl px-6">Trending Treatments</h2>
+        <h2 className="text-5xl px-6 md:mt-16 font-thin">Trending Treatments</h2>
         <p className="mt-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
       </div>
 
-      <div className="my-20 z-50">
+      <div className="my-16 z-50 container">
         <Carousel
           opts={{ align: "start" }}
           className="w-full md:container ml-8 overflow-hidden"
@@ -115,11 +107,11 @@ const TrandingTreatment = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <div className="hidden md:block">
+          <div className="hidden  md:block">
           <CarouselPrevious style={{ left: "0rem" }} />
-          <CarouselNext  style={{ right: "0rem" }} />
-        
-          </div>        </Carousel>
+          <CarouselNext style={{ right: "0rem" }} />
+          </div>
+        </Carousel>
       </div>
 
       <Image

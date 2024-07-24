@@ -25,7 +25,7 @@ const FilterSelect = ({ selectItems, placeholder, Control , name ,customClass}) 
           <Select onValueChange={field.onChange}>
             <FormControl className={` border-darkMahron text-darkMahron py-2 px-4  rounded-full mb-4 md:mb-0 md:mr-4 ${customClass}`}>
               <SelectTrigger>
-                <SelectValue placeholder={placeholder} />
+                <SelectValue placeholder={placeholder} className="selectinputvalue" />
               </SelectTrigger>
             </FormControl>
             <SelectContent>

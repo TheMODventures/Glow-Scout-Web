@@ -67,3 +67,52 @@
     background-color: #f8f8f8;
   }
 }
+
+
+/* home page css start */
+
+.home-hero-section{
+  overflow-x: hidden;
+}
+
+@media (min-width: 800px) and (max-width: 1064px) {
+  .home-hero-section .hero-image {
+    width: 500px;
+    height: 500px;
+  }
+
+  .home-hero-section .hero-circle-image{
+    width: 350px;
+    height: 450px;
+  }
+
+  .home-hero-section .hero-image-3{
+    right: 350px;
+    top: 170px;
+  }
+
+  .home-hero-section .hero-booknow{
+    left: 0px;
+    margin-left: 6rem;
+  }
+}
+
+@media (min-width: 1055px) and (max-width: 1064px) {
+  .home-hero-section .hero-image-3{
+    right: 350px;
+    top: 140px;
+  }
+}
+
+@media (min-width: 975px) and (max-width: 1030px) {
+  .home-hero-section .hero-image-3{
+    right: 350px;
+    top: 270px;
+  }
+}
+
+@media(max-width: 410px){
+  .mycustomselect{
+    font-size: 10px;;
+  }
+}

@@ -30,22 +30,22 @@ const Header = () => {
 
   return (
     <header className="sm:flex sm:justify-between py-3 px-4 bg-[#F8F8F8]">
-      <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full">
+      <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full z-50">
         <div className="flex items-center">
           <Link href="/" className="ml-4 lg:ml-0">
-            <h1 className="text-xl md:text-3xl font-bold text-green font-valky text-[#351120]">
+            <h1 className="text-xl md:text-3xl  text-green font-valky text-[#351120] font-black	">
               Glow Scout
             </h1>
           </Link>
         </div>
 
         <div className="flex items-center">
-          <nav className="mx-6 items-center space-x-4 lg:space-x-6 hidden md:block font-bold">
+          <nav className="mx-6 items-center space-x-4 lg:space-x-6 hidden md:block">
             {routes.map((route, i) => (
               <Button asChild variant="ghost" key={i} size="lg">
                 <Link
                   href={route.href}
-                  className="font-raleway text-[#351120] font-[900] text-lg "
+                  className="font-raleway text-[#351120] font-black text-lg "
                 >
                   {route.label}
                 </Link>
@@ -61,7 +61,7 @@ const Header = () => {
               type="submit"
               variant="myCustom"
               size="lg"
-              className=" hidden md:block rounded-full font-raleway text-[#F6E9CE] px-4"
+              className=" hidden md:block rounded-full font-raleway text-[#F6E9CE] px-4 font-black	"
               aria-label="login"
             >
               <Link href="/auth/user">Sign In/Up</Link>

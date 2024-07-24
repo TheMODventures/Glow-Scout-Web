@@ -3,21 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
-import BookNow from '@/components/reuseableComponenet/BookNow'
+import BookNow from "@/components/reuseableComponenet/BookNow";
+
+
 const HeroSection = () => {
   return (
-    <>
-    <div className="h-screen dark:bg-zinc-900  px-6 md:px-14 lg:px-24 flex flex-col md:flex-row items-center justify-between text-darkMahron relative isolate ">
-      <div className="flex-1  text-left  md:pr-20">
-        <h1 className=" text-[40px] leading-5 md:text-5xl font-thin font-raleway text-darkMahron">
+    <div className="home-hero-section">
+    <div className=" dark:bg-zinc-900 pt-12 pb-40 px-6 md:px-14 lg:px-24 flex flex-col md:flex-row items-center justify-between text-darkMahron relative  ">
+      <div className="flex-1  text-left">
+        <h1 className="text-[40px] leading-10 lg:text-6xl font-thin font-raleway text-darkMahron">
           REVEAL YOUR <br />
           BEAUTY WITH
         </h1>
 
-        <h2 className="text-6xl md:text-[60px] font-normal font-valky leading-[80px] md:leading-[100px]">
+        <h2 className="text-6xl md:text-[80px] font-normal mb-2 font-valky leading-[80px] md:leading-[100px]">
           Glow Scout
         </h2>
-        <p className="md:text-lg font-normal font-raleway mb-2 pr -4 w-[300px] md:w-auto">
+        <p className="md:text-lg font-normal font-raleway mb-6 pr -4 w-[300px] md:w-auto">
           &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
           nibh faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing
           elit. Ut ut nibh faucibus.&rdquo;
@@ -35,18 +37,55 @@ const HeroSection = () => {
           </Button>
         </Link>
       </div>
-      <div className="flex-1 flex justify-center md:justify-end mt-6 md:mt-0 relative bg-[#FEF5E3] rounded-full">
-        <Image
-          src="/images/home/hero2.png"
+      <div className="flex-1 md:flex justify-center md:justify-end hidden">
+      <Image
+          src="/images/home/frame.png"
           alt="Woman"
-          className="rounded h-[520px]"
-          width={800}
-          height={400}
+          className="w-10 absolute top-[50px] right-[400px] z-10 hero-image-3"
+          width={160}
+          height={160}
+        />
+      <Image
+          src="/images/home/circle.png"
+          alt="Woman"
+          className=" w-[430px]  absolute bottom-10 right-[60px] z-10 hero-circle-image"
+          width={460}
+          height={460}
+        />
+        <Image
+          src="/images/home/color-hero.png"
+          alt="Woman"
+          className=" absolute  bottom-[0px] right-0 z-0"
+          width={660}
+          height={660}
+        />
+        <Image
+          src="/images/home/hero-1.png"
+          alt="Woman"
+          className="absolute  bottom-[0px] right-0 z-10 hero-image"
+          width={600}
+          height={600}
+        />
+        
+      </div>
+
+      <div className="flex-1 flex justify-center md:justify-end md:hidden pt-[300px]">
+      <Image
+          src="/images/home/hero-mobile.png"
+          alt="Woman"
+          className=" absolute  bottom-[0px]"
+          width={300}
+          height={300}
         />
       </div>
+      <div className="absolute bottom-[20px] md:bottom-4 md:left-[200px]   z-20 md:w-[800px] mx-2 md:mx-0 hero-booknow">
+    <BookNow />
     </div>
-      {/* <BookNow /> */}
-      </>
+      
+    </div>
+    
+     
+     </div>
   );
 };
 

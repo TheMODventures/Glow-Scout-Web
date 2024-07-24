@@ -8,8 +8,8 @@ import { Card } from "@/components/ui/card";
 const VisitSpa = () => {
   const [favourite, setFavourite] = useState(false);
   return (
-    <div className="border-b border-darkMahron pb-5 mb-10 md:mx-10">
-      <h1 className="text-4xl mt-3">Crystal Calm Spa</h1>
+    <div className="border-b border-darkMahron pb-5 mb-20">
+      <h1 className="text-4xl  mt-6">Crystal Calm Spa</h1>
       <div className="grid grid-cols-1 md:grid-cols-5 md:gap-6 mb-2">
         <div className="col-span-2">
           <div className="relative">
@@ -18,7 +18,7 @@ const VisitSpa = () => {
               alt="Main Spa Image"
               width={600}
               height={400}
-              className="w-full rounded-xl md:h-[430px] object-cover my-5"
+              className="w-full rounded-xl md:h-[500px] object-cover my-5"
             />
             <button className="absolute top-0 right-0 p-3 bg-lighttext rounded-b-lg rounded-tr-lg">
               View all images
@@ -32,30 +32,30 @@ const VisitSpa = () => {
             alt="Spa"
             width={100}
             height={200}
-            className="w-full md:h-[210px] rounded-xl object-cover"
+            className="w-full md:h-[240px] rounded-xl"
           />
           <Image
             src="/images/salon-spas/spa-3.png"
             alt="Spa"
             width={100}
             height={200}
-            className="w-full md:h-[210px] rounded-xl object-cover"
+            className="w-full md:h-[240px] rounded-xl"
           />
         </div>
 
-        <div className="col-span-2 py-5 flex justify-center">
-          <Card className="p-5 border-darkMahron w-full max-w-96 h-full flex flex-col max-h-[430px]">
+        <div className="col-span-2 py-5">
+          <Card className="p-6 border-darkMahron h-full flex flex-col max-h-[500px]">
             <div>
-              <h2 className="text-xl font-semibold mb-2">Crystal Calm Spa</h2>
-              <div className="flex justify-between items-center mb-2">
+              <h2 className="text-2xl font-semibold mb-4">Crystal Calm Spa</h2>
+              <div className="flex justify-between items-center mb-4">
                 <p>Add to favourites</p>
                 <button onClick={() => setFavourite(!favourite)}>
                   <Heart size={20} color={favourite ? "red" : "black"} />
                 </button>
               </div>
-              <div className="pt-2 pb-3">
+              <div className="py-4">
                 <p>Rating</p>
-                <div className="flex items-center border-b border-darkMahron pb-2 mb-2">
+                <div className="flex items-center border-b border-darkMahron pb-4 mb-4">
                   <Star fill="#E5BA1F" strokeWidth={0} size={18} />
                   <Star fill="#E5BA1F" strokeWidth={0} size={18} />
                   <StarHalf fill="#E5BA1F" strokeWidth={0} size={18} />
@@ -64,11 +64,11 @@ const VisitSpa = () => {
                   <p className="text-[12px] ml-2">(5,212)</p>
                 </div>
                 <div className="py-4 border-b border-darkMahron">
-                  <p className="flex gap-2 items-center mb-1">
+                  <p className="flex gap-2 items-center mb-2">
                     <Clock size={16} strokeWidth={0.5} />
                     Open until 12:00p.m.
                   </p>
-                  <address className="flex gap-2 items-center mb-1 not-italic">
+                  <address className="flex gap-2 items-center mb-2 not-italic">
                     <MapPin size={16} strokeWidth={0.5} />
                     13th Street 47 W 13th St, New York
                   </address>
