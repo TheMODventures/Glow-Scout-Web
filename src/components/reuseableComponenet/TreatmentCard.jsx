@@ -1,15 +1,14 @@
 import Image from "next/image";
-const TreatmentCard = ({ image, imageAlt, label, title, description }) => {
+const TreatmentCard = ({ image, imageAlt, label, title, description, imageHeightWeb }) => {
   return (
     
     <div className="my-3">
-      <div className="relative w-full h-56 md:h-full rounded-xl">
+      <div className={`relative w-full h-56 md:h-${imageHeightWeb} xl:h-80 rounded-xl`}>
         <Image
           className="rounded-xl static w-full h-full object-cover"
           src={image}
           alt={imageAlt}
-          style={{ objectFit: "cover" }}
-          height={500}
+          height={1000}
           width={800}
         />
         {label ? (
@@ -19,8 +18,8 @@ const TreatmentCard = ({ image, imageAlt, label, title, description }) => {
         ) : null}
       </div>
       <div className="pt-2">
-        <h3 className="text-2xl font-bold">{title}</h3>
-        <p className=" text-base">{description}</p>
+        <h3 className="text-lg md:text-2xl  font-bold">{title}</h3>
+        <p className="text-sm md:text-base">{description}</p>
       </div>
     </div>
     

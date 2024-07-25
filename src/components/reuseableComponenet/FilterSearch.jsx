@@ -46,10 +46,10 @@ function FilterSearch({
 
   return (
     <Container>
-      <div className="w-full max-w-3xl mx-auto flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
+      <div className="w-full md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(handleSubmit)} className="w-full">
-            <div className="md:bg-[#F6E9CE] py-3 md:rounded-full md:px-12 flex flex-col md:flex-row items-center mt-6">
+            <div className="md:bg-[#F6E9CE] py-2 md:rounded-full md:px-12 flex flex-col md:flex-row items-center mt-6">
               <div className="flex justify-between items-center flex-col md:flex-row w-full">
                 <FormSelect
                   selectItems={selectItems}
@@ -75,7 +75,7 @@ function FilterSearch({
                     <Input
                       placeholder="Please enter your location"
                       type="search"
-                      className="border-darkMahron border text-darkMahron px-4 min-w-40 rounded-full mb-4 md:mb-0 md:mr-4  w-40 h-10"
+                      className="border-darkMahron border-2 text-darkMahron px-4 min-w-40 rounded-full mb-4 md:mb-0 md:mr-4  w-40 h-10"
                     />
                   )}
                 </div>
@@ -83,12 +83,12 @@ function FilterSearch({
                   |
                 </span>
               </div>
-              <div className="flex relative mt-4 md:mt-0 w-full md:w-auto">
+              <div className="flex relative mt-4 md:mt-0 w-full ">
                 <Search
                   name="goal"
                   placeholder={placeholder}
                   formControl={form.control}
-                  className="flex-grow"
+                  className=""
                 />
                 <div className="absolute right-2 md:right-6 bottom-6 md:bottom-2">
                   <Button

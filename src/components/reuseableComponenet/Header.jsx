@@ -33,23 +33,23 @@ const Header = () => {
       <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full z-50">
         <div className="flex items-center">
           <Link href="/" className="ml-4 lg:ml-0">
-            <h1 className="text-xl md:text-3xl  text-green font-valky text-[#351120] font-black	">
+            <h1 className="text-xl md:text-3xl  font-valky text-[#351120] font-bold	">
               Glow Scout
             </h1>
           </Link>
         </div>
 
         <div className="flex items-center">
-          <nav className="mx-6 items-center space-x-4 lg:space-x-6 hidden md:block">
+          <nav className="mx-6 items-center space-x-4 lg:space-x-6 hidden md:block font-bold">
             {routes.map((route, i) => (
               <Button asChild variant="ghost" key={i} size="lg">
                 <Link
                   href={route.href}
-                  className="font-raleway text-[#351120] font-black text-lg "
+                  className="font-raleway text-[#351120] font-bold text-lg "
                 >
                   {route.label}
                 </Link>
-              </Button>
+              </Button>   
             ))}
           </nav>
         </div>

@@ -17,24 +17,28 @@ const page = ({ params }) => {
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh faucibus.",
       label: "Lorem Ipsum",
+      imageHeightWeb: "full"
     },
     {
       image: "/images/home/tranding-2.png",
       title: "Botox Injections",
       description: "Consectetur adipiscing elit.",
       label: "Lorem Ipsum",
+      imageHeightWeb: "full"
     },
     {
       image: "/images/home/tranding-3.png",
       title: "Chemical Peel",
       description: "Ut ut nibh faucibus.",
       label: "Lorem Ipsum",
+      imageHeightWeb: "full"
     },
     {
       image: "/images/home/tranding-4.png",
       title: "Microdermabrasion",
       description: "Etiam sed dolor ac diam.",
       label: "Lorem Ipsum",
+      imageHeightWeb: "full"
     },
   ];
 
@@ -73,7 +77,7 @@ const page = ({ params }) => {
     <div className="container font-raleway mx-auto px-4 max-w-screen-lg">
       <VisitSpa />
 
-      <div className="py-6 font-raleway border-b border-darkMahron">
+      <div className="py-6 font-raleway md:pb-36 border-b border-darkMahron">
         <div className="text-center pb-3">
           <h2 className="text-4xl">Treatments Offered</h2>
           <p className="mt-2 text-lg">
@@ -85,7 +89,7 @@ const page = ({ params }) => {
         <div className="my-3">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
             {dummyData.map((item, index) => (
-              <TreatmentCard key={index} {...item} />
+              <TreatmentCard key={index} {...item}  />
             ))}
           </div>
         </div>

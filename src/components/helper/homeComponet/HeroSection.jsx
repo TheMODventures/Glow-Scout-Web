@@ -19,7 +19,7 @@ const HeroSection = () => {
         <h2 className="text-6xl md:text-[80px] font-normal mb-2 font-valky leading-[80px] md:leading-[100px]">
           Glow Scout
         </h2>
-        <p className="md:text-lg font-normal font-raleway mb-6 pr -4 w-[300px] md:w-auto">
+        <p className="md:text-lg font-normal font-raleway mb-6 pr-4 w-[300px] md:w-auto">
           &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
           nibh faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing
           elit. Ut ut nibh faucibus.&rdquo;
@@ -37,7 +37,7 @@ const HeroSection = () => {
           </Button>
         </Link>
       </div>
-      <div className="flex-1 md:flex justify-center md:justify-end hidden">
+      <div className="flex-1 md:flex justify-center rounded-t-full md:justify-end hidden">
       <Image
           src="/images/home/frame.png"
           alt="Woman"
@@ -55,7 +55,7 @@ const HeroSection = () => {
         <Image
           src="/images/home/color-hero.png"
           alt="Woman"
-          className=" absolute  bottom-[0px] right-0 z-0"
+          className=" absolute rounded-full bottom-[0px] right-0 z-0"
           width={660}
           height={660}
         />
@@ -73,12 +73,12 @@ const HeroSection = () => {
       <Image
           src="/images/home/hero-mobile.png"
           alt="Woman"
-          className=" absolute  bottom-[0px]"
+          className=" absolute h-[450px] bottom-[0px]"
           width={300}
           height={300}
         />
       </div>
-      <div className="absolute bottom-[20px] md:bottom-4 md:left-[200px]   z-20 md:w-[800px] mx-2 md:mx-0 hero-booknow">
+    <div className="absolute bottom-[20px] md:bottom-4 md:left-[200px] lg:left-[280px] 2xl:left-[600px]  z-20 md:w-[800px] mx-2 md:mx-0 hero-booknow">
     <BookNow />
     </div>
       
