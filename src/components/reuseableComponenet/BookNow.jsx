@@ -65,7 +65,7 @@ function SelectForm() {
               placeholder="Select your Goals"
               name="goal"
               Control={form.control}
-              customClass="md:min-w-60"
+              // customClass="md:min-w-60"
             />
             <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block pl-6 ">
               |
@@ -78,7 +78,7 @@ function SelectForm() {
               placeholder="Select your Location"
               name="location"
               Control={form.control}
-              customClass="md:min-w-60"
+              customClass="w-full"
             />
           </div>
 
