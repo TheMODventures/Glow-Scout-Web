@@ -15,7 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-const FilterSelect = ({ selectItems, placeholder, Control , name ,customClass}) => {
+const FilterSelect = ({ selectItems, placeholder, Control , name }) => {
   return (
     <FormField
       control={Control}
@@ -23,7 +23,7 @@ const FilterSelect = ({ selectItems, placeholder, Control , name ,customClass}) 
       render={({ field }) => (
         <FormItem>
           <Select onValueChange={field.onChange}>
-            <FormControl className={`border-2 border-darkMahron text-darkMahron py-2 px-4  rounded-full mb-4 md:mb-0 md:mr-4 ${customClass}`}>
+            <FormControl className={`border-2 border-darkMahron text-darkMahron py-2 px-4  rounded-full mb-4 md:mb-0 md:mr-4 `}>
               <SelectTrigger>
                 <SelectValue placeholder={placeholder} className="selectinputvalue" />
               </SelectTrigger>

@@ -9,7 +9,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  CarouselDots
+  CarouselDots,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
@@ -55,7 +55,10 @@ const ClientTestimonials = () => {
   return (
     <div className="mx-auto py-40  font-raleway bg-[#FEF5E3]">
       <div className="text-center">
-        <h2 className="text-2xl md:text-[40px]">Client’s Testimonials</h2>
+        <h2 className="text-4xl text-darkMahron md:text-[40px]">Client’s Testimonials</h2>
+        <p className="text-lg md:text-base text-darkMahron py-5 text-center px-4">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit a quis.
+        </p>
       </div>
 
       <div className="pt-20 container flex flex-col items-center">
@@ -69,26 +72,26 @@ const ClientTestimonials = () => {
           <CarouselContent>
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index}>
-                <div className="flex flex-col md:flex-row justify-center items-center gap-5">
-                  <div>
+                <div className="flex flex-row justify-center items-center gap-5">
+                  <div className="">
                     <Image
                       src={testimonial.image}
                       alt="testimonial"
                       width={250}
                       height={350}
-                      className="w-60 h-96"
+                      className="object-cover"
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className=" text-[#351120] text-4xl font-bold pb-3">
+                    <h3 className=" text-[#351120] text-3xl md:text-4xl font-bold pb-3">
                       {testimonial.name}
                     </h3>
-                    <p className="py-3 w-[300px] text-xl">
+                    <p className="py-3 w-[300px] text-sm md:text-xl">
                       {testimonial.review}
                     </p>
                     <div>
                       <div className="relative">
-                        <div className="flex gap-2 text-xl">
+                        <div className="flex gap-2 text-lg md:text-xl">
                           {Array.from({ length: 5 }, (_, index) => (
                             <Star
                               fill="#111"
@@ -109,10 +112,11 @@ const ClientTestimonials = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          
-          <CarouselPrevious />
-          <CarouselNext />
-          <CarouselDots/>
+          <div className="hidden md:block">
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
+          <CarouselDots />
         </Carousel>
       </div>
     </div>
