@@ -85,7 +85,9 @@ const TrandingTreatment = () => {
       />
 
       <div className="text-center">
-        <h2 className="text-5xl px-6 md:mt-16 font-thin">Trending Treatments</h2>
+        <h2 className="text-5xl px-6 md:mt-16 font-thin">
+          Trending Treatments
+        </h2>
         <p className="mt-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
@@ -108,8 +110,8 @@ const TrandingTreatment = () => {
             ))}
           </CarouselContent>
           <div className="hidden  md:block">
-          <CarouselPrevious style={{ left: "0rem" }} />
-          <CarouselNext style={{ right: "0rem" }} />
+            <CarouselPrevious style={{ left: "0rem" }} />
+            <CarouselNext style={{ right: "0rem" }} />
           </div>
         </Carousel>
       </div>

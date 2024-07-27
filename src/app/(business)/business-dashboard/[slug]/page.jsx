@@ -1,30 +1,60 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-// import AnalyticsComponent from '../../../../components/businessDashboard/analyticsComponent'
+'use client'
+import React, { useState } from 'react';
+import AnalyticsComponent from '@/components/helper/businessDashboard/AnalyticsComponent';
+import ServicesComponent from '@/components/helper/businessDashboard/ServicesComponent';
 
-const page = () => {
+const Page = () => {
+  const [activeTab, setActiveTab] = useState('analytics');
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'analytics':
+        return <AnalyticsComponent />;
+      case 'services':
+        return <ServicesComponent/>;
+      case 'account':
+        return <div>Account Settings Content</div>;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div className="flex justify-center items-center mt-10 md:mt-28">
-      <Tabs
-        defaultValue="analytics"
-        className="w-[500px] h-10 flex flex-col items-center"
-      >
-        <TabsList className="h-14 rounded-full px-4 grid w-full grid-cols-3  bg-[#F6E9CE] m-auto">
-          <TabsTrigger value="analytics" className="rounded-full py-2">
+    <div className="flex justify-center items-center mt-10 px-4 md:px-0">
+      <div className="w-full max-w-[500px] flex flex-col items-center">
+        <div className="h-14 rounded-full px-4 flex justify-center items-center w-full  space-x-5 bg-[#F6E9CE] m-auto">
+          <button
+            onClick={() => setActiveTab('analytics')}
+            className={`rounded-full py-2 border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+              activeTab === 'analytics' ? 'bg-darkMahron text-white' : ''
+            }`}
+          >
             Analytics
-          </TabsTrigger>
-          <TabsTrigger value="services" className="rounded-full py-2">
+          </button>
+          <button
+            onClick={() => setActiveTab('services')}
+            className={`rounded-full py-2 border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+              activeTab === 'services' ? 'bg-darkMahron text-white' : ''
+            }`}
+          >
             Services
-          </TabsTrigger>
-          <TabsTrigger value="account" className="rounded-full py-2">
+          </button>
+          <button
+            onClick={() => setActiveTab('account')}
+            className={`rounded-full py-2 border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+              activeTab === 'account' ? 'bg-darkMahron text-white' : ''
+            }`}
+          >
             Settings
-          </TabsTrigger>
-        </TabsList>
-        <TabsContent value="analytics" className="w-[800px]">
-          {/* <AnalyticsComponent /> */}
-        </TabsContent>
-      </Tabs>
+          </button>
+        </div>
+        <div className="w-full md:min-w-[800px] lg:min-w-[900px] xl:min-w-[1100px] mt-5">
+          {renderContent()}
+         
+        </div>
+      </div>
     </div>
   );
 };
 
-export default page;
+export default Page;
