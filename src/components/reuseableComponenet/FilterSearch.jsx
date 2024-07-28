@@ -62,7 +62,7 @@ function FilterSearch({
                 </span>
                 <div>
                   {pathname === "/treatment" ? (
-                    <Link href="#">
+                    <Link href="/compare-treatment">
                       <Button
                         variant="myCustom"
                         size="lg"

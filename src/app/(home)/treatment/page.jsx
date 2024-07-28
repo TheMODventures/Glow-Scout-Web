@@ -204,7 +204,7 @@ const TreatmentPage = () => {
                     |
                   </span>
                   <div>
-                    <Link href="#">
+                    <Link href="/compare-treatment">
                       <Button
                         variant="myCustom"
                         size="lg"

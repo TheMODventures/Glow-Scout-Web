@@ -119,7 +119,7 @@ const SettingComponent = () => {
                 className="flex flex-col items-center justify-center cursor-pointer"
               >
                 <Add />
-                <span className="text-darkMahron">Add Images</span>
+                <span className="text-darkMahron">Add Cover Images</span>
               </label>
             </div>
             <div className="w-full sm:w-1/3 h-32 flex flex-col items-center justify-center border-2 bg-gray-100 border-darkMahron rounded-lg">
@@ -144,7 +144,7 @@ const SettingComponent = () => {
             </div>
           </div>
 
-          <h2 className="text-xl font-thin text-darkMahron mb-4">
+          <h2 className="text-xl pt-3 font-thin border-t-2 border-darkMahron text-darkMahron mb-4">
             Contact details
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
