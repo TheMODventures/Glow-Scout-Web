@@ -1,9 +1,17 @@
-import { Image } from "@radix-ui/react-avatar";
+
+import Image from "next/image";
 import React from "react";
 
 const AnalyticsComponent = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 font-raleway">
+      <Image
+        width={300}
+        height={300}
+        alt="bg"
+        src={"/images/shadow-1.png"}
+        className="absolute top-14 right-0 z-0 hidden md:block"
+      />
       <div className="bg-card text-card-foreground p-4 rounded-lg text-darkMahron shadow-md font-raleway">
         <p className="text-muted-foreground pb-4">Visitors on Spa - Live</p>
         <p className="text-4xl font-bold">1,1462</p>
@@ -39,6 +47,13 @@ const AnalyticsComponent = () => {
         <p className="text-muted-foreground pb-4">Reviews Negative</p>
         <p className="text-4xl font-bold">4,512</p>
       </div>
+      <Image
+        width={300}
+        height={300}
+        alt="bg"
+        src={"/images/shadow-2.png"}
+        className="absolute bottom-0 left-0 z-0 hidden md:block"
+      />
     </div>
   );
 };

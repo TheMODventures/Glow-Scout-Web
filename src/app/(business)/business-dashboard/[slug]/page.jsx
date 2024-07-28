@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import AnalyticsComponent from '@/components/helper/businessDashboard/AnalyticsComponent';
 import ServicesComponent from '@/components/helper/businessDashboard/ServicesComponent';
 import Image from 'next/image';
+import SettingCompoent from '@/components/helper/businessDashboard/SettingCompoent';
 
 const Page = () => {
   const [activeTab, setActiveTab] = useState('analytics');
@@ -14,7 +15,7 @@ const Page = () => {
       case 'services':
         return <ServicesComponent/>;
       case 'account':
-        return <div>Account Settings Content</div>;
+        return <SettingCompoent/>;
       default:
         return null;
     }
@@ -22,13 +23,7 @@ const Page = () => {
 
   return (
     <div className="flex h-full  justify-center items-center mt-10 px-4 md:px-0">
-      <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-1.png"}
-        className="absolute top-14 right-0 z-0 hidden md:block"
-      />
+      
       <div className="w-full max-w-[500px] flex flex-col items-center">
         <div className="h-14 rounded-full px-4 flex justify-center items-center w-full  space-x-5 bg-[#F6E9CE] m-auto">
           <button
@@ -61,13 +56,7 @@ const Page = () => {
          
         </div>
       </div>
-      <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-2.png"}
-        className="absolute bottom-0 left-0 z-0 hidden md:block"
-      />
+     
     </div>
   );
 };

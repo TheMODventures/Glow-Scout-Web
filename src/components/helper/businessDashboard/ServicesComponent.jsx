@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
 import ServiceForm from "@/components/reuseableComponenet/ServiceForm";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
+
+
 
 const ServicesComponent = () => {
   const [currentView, setCurrentView] = useState("list"); 
@@ -46,11 +46,17 @@ const ServicesComponent = () => {
     setCurrentView("edit");
   };
 
- 
-  const pathname = usePathname();
+
 
   return (
     <div className="container my-5">
+       <Image
+        width={300}
+        height={300}
+        alt="bg"
+        src={"/images/shadow-1.png"}
+        className="absolute top-14 right-0 z-0 hidden md:block"
+      />
       {currentView === "list" && (
         <>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
@@ -78,6 +84,13 @@ const ServicesComponent = () => {
       {currentView === "edit" && selectedTreatment && (
         <ServiceForm isEdit={true} initialData={selectedTreatment} />
       )}
+      <Image
+        width={300}
+        height={300}
+        alt="bg"
+        src={"/images/shadow-2.png"}
+        className="absolute bottom-0 left-0 z-0 hidden md:block"
+      />
     </div>
   );
 };

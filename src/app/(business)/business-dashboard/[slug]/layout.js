@@ -2,6 +2,7 @@ import "@/app/globals.css";
 import BusinessHeader from "@/components/helper/businessDashboard/BusinessHeader";
 import { Toaster } from "@/components/ui/toaster";
 import localFont from "next/font/local";
+import Image from "next/image";
 
 const valky = localFont({
   src: [
@@ -38,9 +39,12 @@ export default function RootLayout({ children }) {
       <body>
         <div>
           <BusinessHeader />
+
           {children}
           <Toaster />
+          
         </div>
+       
       </body>
     </html>
   );
