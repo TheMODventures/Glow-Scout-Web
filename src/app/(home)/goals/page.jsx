@@ -87,7 +87,7 @@ const page = () => {
   ];
 
   return (
-    <div className="py-6 md:py-20 md:mt-6 font-raleway  border-t-2 border-darkMahron">
+    <div className="py-6 md:py-10 md:mt-6 font-raleway  border-t-2 border-darkMahron">
         <Image
         width={300}
         height={300}

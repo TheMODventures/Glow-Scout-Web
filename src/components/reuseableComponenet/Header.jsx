@@ -44,7 +44,7 @@ const Header = () => {
               <Button asChild variant="ghost" key={i} size="lg">
                 <Link
                   href={route.href}
-                  className="font-raleway text-[#351120] font-bold text-lg"
+                  className="font-raleway text-[#351120] font-bold text-xl"
                 >
                   {route.label}
                 </Link>
@@ -142,7 +142,7 @@ const Header = () => {
       <Link
         key={i}
         href={route.href}
-        className="block px-2 py-1 text-lg"
+        className="block px-2 py-1 text-xl"
       >
         {route.label}
       </Link>

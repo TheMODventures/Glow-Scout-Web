@@ -35,7 +35,7 @@ const HeroSection = () => {
           </Button>
         </Link>
       </div>
-      <div className="w-full md:w-1/2 h-[400px] md:h-[600px] lg:h-[800px]  relative">
+      <div className="w-full md:w-1/2 h-[400px] md:h-[600px] lg:h-auto relative">
         <Image
           src="/images/home/Hero.png"
           alt="Woman"
