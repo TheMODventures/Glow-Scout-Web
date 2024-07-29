@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const ScotWorkSection = () => {
   return (
-    <div className=" bg-[#FEF5E3] text-center py-20 rounded-t-3xl border font-raleway">
+    <div className=" bg-[#FEF5E3] text-center py-20 rounded-t-4xl border font-raleway">
       <Container>
         <h2 className="text-5xl md:text-4xl mb-8 mt-8 font-raleway font-thin text-darkMahron">
           How Glow Scout Works
