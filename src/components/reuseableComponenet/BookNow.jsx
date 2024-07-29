@@ -58,16 +58,16 @@ function SelectForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className=" w-full">
-        <div className="bg-[#F6E9CE99]  shadow-lg py-3 md:rounded-full grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-5 md:flex-row container grid-flow-row-dense items-center justify-center">
+        <div className="bg-[#F6E9CE99]  shadow-lg py-3 md:rounded-full grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-2 md:flex-row container grid-flow-row-dense items-center justify-center">
           <div class="md:col-span-2 flex">
             <FormSelect
               selectItems={goalData}
               placeholder="Select your Goals"
               name="goal"
               Control={form.control}
-              // customClass="md:min-w-60"
+              customClass="w-full"
             />
-            <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block pl-6 xl:pl-12 ">
+            <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block xl:pl-12 ">
               |
             </span>
           </div>

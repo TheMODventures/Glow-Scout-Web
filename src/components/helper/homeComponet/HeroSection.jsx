@@ -35,7 +35,7 @@ const HeroSection = () => {
           </Button>
         </Link>
       </div>
-      <div className="w-full md:w-1/2 h-[400px] md:h-[600px] lg:h-auto relative">
+      <div className="w-full md:w-1/2 h-[400px] md:h-[600px] lg:h-[800px]  relative">
         <Image
           src="/images/home/Hero.png"
           alt="Woman"
@@ -44,7 +44,7 @@ const HeroSection = () => {
 
         />
       </div>
-      <div className="absolute bottom-4 lg:bottom-10  left-1/2 transform -translate-x-1/2 z-20 w-full md:max-w-[800px]">
+      <div className="absolute bottom-4 lg:bottom-8  left-1/2 transform -translate-x-1/2 z-20 w-full md:max-w-[800px]">
         <BookNow />
       </div>
     </div>
