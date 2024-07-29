@@ -116,7 +116,7 @@ const page = () => {
           type="submit"
           variant="myCustom"
           size="lg"
-          className="rounded-full m-auto text-white font-semibold"
+          className="rounded-full m-auto text-white text-xl font-normal"
         >
           Next
         </Button>
