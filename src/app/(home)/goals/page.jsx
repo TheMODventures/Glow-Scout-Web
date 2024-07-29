@@ -93,9 +93,9 @@ const page = () => {
         height={300}
         alt="bg"
         src={"/images/shadow-1.png"}
-        className="absolute top-14 right-0 z-0 hidden md:block"
+        className="absolute top-20 right-0 z-0 hidden md:block"
       />
-      <div className="text-center pb-5 text-darkMahron">
+      <div className="text-center pb-5 text-darkMahron z-auto">
         <h2 className="text-4xl md:text-5xl">Select Goal for your Skin</h2>
         <p className="mt-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
@@ -126,7 +126,7 @@ const page = () => {
         height={300}
         alt="bg"
         src={"/images/shadow-2.png"}
-        className="absolute bottom-0 left-0 z-0 hidden md:block"
+        className="absolute -bottom-10  left-0 z-0 hidden md:block"
       />
     </div>
   );
