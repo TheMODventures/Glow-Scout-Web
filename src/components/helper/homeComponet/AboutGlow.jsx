@@ -14,12 +14,12 @@ const AboutGlow = () => {
         />
       </div>
       <div className="text-center md:text-left max-w-lg">
-        <h2 className="text-3xl md:text-6xl mb-4 font-raleway font-thin text-center">
+        <h2 className="text-4xl md:text-6xl  mb-4 font-raleway font-thin text-center">
           About
           <br />
           &rdquo;Glow Scout&rdquo;
         </h2>
-        <p className="md:text-lg leading-relaxed pb-3 px-3 md:px-1 font-raleway text-center">
+        <p className="md:text-xl leading-relaxed pb-3 px-3 md:px-1 font-raleway text-center w-[100%]">
           &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
           nibh faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing
           elit. Ut ut nibh faucibus. Lorem ipsum dolor sit amet, consectetur

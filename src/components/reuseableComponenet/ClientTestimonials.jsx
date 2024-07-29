@@ -51,12 +51,9 @@ const ClientTestimonials = () => {
 
   return (
     <div className="mx-auto py-40 font-raleway bg-[#FEF5E3]">
-      <div className="text-center">
-        <h2 className="text-4xl md:text-5xl text-darkMahron md:text-[40px]">
-          Client’s Testimonials
-        </h2>
-      
-      </div>
+   
+        <h2 className="text-center text-darkMahron pb-5 text-4xl md:text-6xl font-thin"> Client Testimonials </h2>
+ 
 
       <div className="pt-14 container flex flex-col items-center">
         <Carousel

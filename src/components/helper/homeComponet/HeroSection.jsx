@@ -9,7 +9,7 @@ const HeroSection = () => {
   return (
     <div className="relative h-full  lg:h-screen flex flex-col md:flex-row">
       <div className="flex-1 min-h-max text-center lg:text-left lg:pl-12 flex flex-col justify-center sm:py-20 items-start  px-4 lg:px-0 ">
-        <h1 className="text-4xl text-start md:text-5xl lg:text-6xl xl:text-7xl font-thin font-raleway text-darkMahron mb-4 lg:mb-6">
+        <h1 className="mt-6 md:mt-0 text-4xl text-start md:text-5xl lg:text-6xl xl:text-7xl font-thin font-raleway text-darkMahron mb-4 lg:mb-6">
           REVEAL YOUR <br />
           BEAUTY WITH
         </h1>
@@ -35,7 +35,7 @@ const HeroSection = () => {
           </Button>
         </Link>
       </div>
-      <div className="w-full md:w-1/2 h-[400px] md:h-[600px] lg:h-auto relative">
+      <div className="w-full md:w-1/2  h-[400px] md:h-[600px] lg:h-auto relative">
         <Image
           src="/images/home/Hero.png"
           alt="Woman"

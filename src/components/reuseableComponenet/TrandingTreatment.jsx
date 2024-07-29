@@ -84,13 +84,11 @@ const TrandingTreatment = () => {
         className=" absolute top-0 right-0 z-0 hidden md:block"
       />
 
-      <div className="text-center text-darkMahron mx-2">
-        <h2 className="text-4xl md:text-5xl px-6 md:mt-16 font-thin">
-          Trending Treatments
-        </h2>
-        <p className="mt-4 text-base md:text-lg">
+      <div className="text-center text-darkMahron pb-5">
+        <h2 className="text-4xl md:text-6xl font-thin "> Trending Treatments </h2>
+        <p className="m-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
-          faucibus.
+            faucibus.
         </p>
       </div>
 
