@@ -87,15 +87,16 @@ const page = () => {
   ];
 
   return (
-    <div className="py-6 md:py-10 md:mt-6 font-raleway md:mx-10 border-t-2 border-darkMahron">
-        <Image
+    <div className="relative py-6 md:py-10 md:mt-6 font-raleway  border-t-2 border-darkMahron">
+      <Image
         width={300}
         height={300}
         alt="bg"
         src={"/images/shadow-1.png"}
-        className="absolute top-32 right-0 z-0 hidden md:block"
+        className="absolute top-0 right-0 z-0 hidden md:block"
+        style={{ zIndex: 1 }}
       />
-      <div className="text-center pb-5 text-darkMahron z-auto">
+      <div className="relative z-10 text-center pb-5 text-darkMahron y-50">
         <h2 className="text-4xl md:text-5xl">Select Goal for your Skin</h2>
         <p className="mt-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
@@ -103,30 +104,31 @@ const page = () => {
         </p>
       </div>
 
-      <div className="container my-5">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2 z-auto">
+      <div className="relative z-10 container my-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2 y-50">
           {dummyData.map((item, index) => (
-            <GoalCard key={index} {...item}  />
+            <GoalCard key={index} {...item} />
           ))}
         </div>
-      </div>
 
-      <div className="flex justify-center items-center my-20 z-auto">
-        <Button
-          type="submit"
-          variant="myCustom"
-          size="lg"
-          className="rounded-full m-auto text-white text-xl font-normal"
-        >
-          Next
-        </Button>
+        <div className="flex justify-center items-center my-20 y-50">
+          <Button
+            type="submit"
+            variant="myCustom"
+            size="lg"
+            className="rounded-full m-auto text-white text-xl font-normal"
+          >
+            Next
+          </Button>
+        </div>
       </div>
       <Image
         width={300}
         height={300}
         alt="bg"
         src={"/images/shadow-2.png"}
-        className="absolute -bottom-10  left-0 z-0 hidden md:block"
+        className="absolute bottom-48 left-0 z-0 hidden md:block"
+        style={{ zIndex: 1 }}
       />
     </div>
   );

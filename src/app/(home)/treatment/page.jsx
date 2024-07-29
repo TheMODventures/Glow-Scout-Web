@@ -14,6 +14,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import FormSelect from "@/components/reuseableComponenet/FormSelect";
 import Container from "@/components/reuseableComponenet/Container";
+import Image from "next/image";
 
 const TreatmentPage = () => {
   const selectItems = [
@@ -179,7 +180,7 @@ const TreatmentPage = () => {
   }
 
   return (
-    <div className="py-6 md:py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
+    <div className="py-6 md:py-10 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
         <Image
         width={300}
         height={300}
@@ -188,7 +189,7 @@ const TreatmentPage = () => {
         className="absolute top-20 right-0 z-0 hidden md:block"
       />
       <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-5xl font-thin">Treatments</h2>
+        <h2 className="text-4xl md:text-6xl font-thin">Treatments</h2>
         <p className="m-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
@@ -196,10 +197,10 @@ const TreatmentPage = () => {
       </div>
 
       <Container>
-        <div className="hidden mx-auto w-full md:max-w-5xl md:flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
+        <div className="hidden mx-auto w-full md:max-w-6xl md:flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
-              <div className="md:bg-[#F6E9CE]  py-3 md:rounded-full md:px-12  flex flex-col md:flex-row items-center  mt-6">
+              <div className="md:bg-[#F6E9CE]  pl-5  py-1 md:rounded-full h-20 flex flex-col md:flex-row items-center  mt-6">
                 <div className="flex justify-between items-center flex-col md:flex-row">
                   <FormSelect
                     selectItems={selectItems}
@@ -215,7 +216,7 @@ const TreatmentPage = () => {
                       <Button
                         variant="myCustom"
                         size="lg"
-                        className="rounded-full px-4 min-w-60  mb-4 md:mb-0 md:mr-4 py-3  h-12"
+                        className="rounded-full px-4 min-w-60  mb-4 md:mb-0 md:mr-4 py-3 "
                       >
                         Compare Treatments
                       </Button>
@@ -226,7 +227,7 @@ const TreatmentPage = () => {
                   </span>
                 </div>
 
-                <div className="flex relative mt-4 md:mt-0">
+                <div className="flex relative mt-4 md:mt-0 h-auto">
                   <div>
                     <Search
                       name="goal"
@@ -234,7 +235,7 @@ const TreatmentPage = () => {
                       formControl={form.control}
                     />
                   </div>
-                  <div className=" absolute right-2 md:right-6 bottom-6 md:bottom-2">
+                  <div className=" absolute right-2 md:right-6 bottom-6 md:bottom-[6px]">
                     <Button
                       type="submit"
                       variant="myCustom"
@@ -261,7 +262,7 @@ const TreatmentPage = () => {
       </div>
       
      <div className="md:hidden flex justify-end items-end sticky bottom-3 left-3">
-  <Link href={'/compare-treatment'} className="py-2 px-4 bg-darkMahron text-white rounded-full shadow-md transform transition-transform hover:scale-105">
+  <Link href={'/compare-treatment'} className="py-1 px-4 bg-darkMahron text-white rounded-full shadow-md transform transition-transform hover:scale-105">
     Compare
   </Link>
 </div>
