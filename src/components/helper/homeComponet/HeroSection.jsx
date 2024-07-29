@@ -44,7 +44,7 @@ const HeroSection = () => {
 
         />
       </div>
-      <div className="absolute bottom-4 lg:bottom-10  left-1/2 transform -translate-x-1/2 z-20 w-full md:max-w-[800px]  px-2">
+      <div className="absolute bottom-4 lg:bottom-10  left-1/2 transform -translate-x-1/2 z-20 w-full md:max-w-[800px]">
         <BookNow />
       </div>
     </div>
