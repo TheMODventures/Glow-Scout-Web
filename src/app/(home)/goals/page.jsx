@@ -87,24 +87,17 @@ const page = () => {
   ];
 
   return (
-    <div className="relative py-6 md:py-10 md:mt-6 font-raleway  border-t-2 border-darkMahron">
-      <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-1.png"}
-        className="absolute top-0 right-0 z-0 hidden md:block"
-        style={{ zIndex: 1 }}
-      />
-      <div className="relative z-10 text-center pb-5 text-darkMahron y-50">
-        <h2 className="text-4xl md:text-5xl">Select Goal for your Skin</h2>
-        <p className="mt-2 text-lg">
+    <div className=" py-10 md:mt-6 font-raleway ">
+      
+      <div className="text-center text-darkMahron pb-5">
+        <h2 className="text-4xl md:text-6xl font-thin">  Select Goal for your Skin </h2>
+        <p className="m-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
       </div>
 
-      <div className="relative z-10 container my-5">
+      <div className=" container my-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2 y-50">
           {dummyData.map((item, index) => (
             <GoalCard key={index} {...item} />
@@ -122,14 +115,7 @@ const page = () => {
           </Button>
         </div>
       </div>
-      <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-2.png"}
-        className="absolute bottom-48 left-0 z-0 hidden md:block"
-        style={{ zIndex: 1 }}
-      />
+      
     </div>
   );
 };

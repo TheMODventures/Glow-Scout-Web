@@ -180,14 +180,8 @@ const TreatmentPage = () => {
   }
 
   return (
-    <div className="py-6 md:py-10 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
-        <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-1.png"}
-        className="absolute top-20 right-0 z-0 hidden md:block"
-      />
+    <div className="py-6 md:py-10 md:mt-6 font-raleway relative isolate">
+       
       <div className="text-center text-darkMahron pb-5">
         <h2 className="text-4xl md:text-6xl font-thin">Treatments</h2>
         <p className="m-2 text-lg">
@@ -197,10 +191,10 @@ const TreatmentPage = () => {
       </div>
 
       <Container>
-        <div className="hidden mx-auto w-full md:max-w-6xl md:flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
+        <div className="hidden mx-auto w-full md:max-w-6xl md:flex justify-center items-center flex-col bg-opacity-60  bg-[#F6E9CE] md:bg-transparent">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
-              <div className="md:bg-[#F6E9CE]  pl-5  py-1 md:rounded-full h-20 flex flex-col md:flex-row items-center  mt-6">
+              <div className="md:bg-[#F6E9CE]  bg-opacity-60  pl-5  py-1 md:rounded-full h-[60px] flex flex-col md:flex-row items-center  mt-6">
                 <div className="flex justify-between items-center flex-col md:flex-row">
                   <FormSelect
                     selectItems={selectItems}
@@ -226,7 +220,6 @@ const TreatmentPage = () => {
                     |
                   </span>
                 </div>
-
                 <div className="flex relative mt-4 md:mt-0 h-auto">
                   <div>
                     <Search
@@ -266,13 +259,7 @@ const TreatmentPage = () => {
     Compare
   </Link>
 </div>
-<Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-2.png"}
-        className="absolute -bottom-10  left-0 z-0 hidden md:block"
-      />
+
     </div>
   );
 };

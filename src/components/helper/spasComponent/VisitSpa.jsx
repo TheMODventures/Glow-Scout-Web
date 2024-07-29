@@ -18,7 +18,7 @@ const VisitSpa = () => {
               alt="Main Spa Image"
               width={600}
               height={400}
-              className="w-full rounded-xl md:h-[500px] object-cover my-5"
+              className="w-full rounded-xl md:h-[600px] object-cover my-5"
             />
             <button className="absolute top-0 right-0 p-3 bg-lighttext rounded-b-lg rounded-tr-lg">
               View all images
@@ -32,30 +32,30 @@ const VisitSpa = () => {
             alt="Spa"
             width={100}
             height={200}
-            className="w-full md:h-[240px] rounded-xl"
+            className="w-full md:h-[295px] rounded-xl"
           />
           <Image
             src="/images/salon-spas/spa-3.png"
             alt="Spa"
             width={100}
             height={200}
-            className="w-full md:h-[240px] rounded-xl"
+            className="w-full md:h-[295px] rounded-xl"
           />
         </div>
 
         <div className="col-span-2 py-5">
-          <Card className="p-6 border-darkMahron h-full flex flex-col max-h-[500px]">
+          <Card className="p-6 border-darkMahron h-full flex flex-col max-h-[600px]">
             <div>
-              <h2 className="text-2xl font-semibold mb-4  text-darkMahron ">Crystal Calm Spa</h2>
-              <div className="flex justify-between items-center mb-4">
-                <p>Add to favourites</p>
+              <h2 className="text-4xl font-medium mb-4  text-darkMahron ">Crystal Calm Spa</h2>
+              <div className="flex justify-between items-center md:mb-4 mb-2">
+                <p className="text-darkMahron text-base md:text-lg">Add to favourites</p>
                 <button onClick={() => setFavourite(!favourite)}>
                   <Heart size={20} color={favourite ? "red" : "black"} />
                 </button>
               </div>
               <div className="py-4">
-                <p>Rating</p>
-                <div className="flex items-center border-b border-darkMahron pb-4 mb-4">
+                <p className="text-darkMahron text-base md:text-lg">Rating</p>
+                <div className="flex items-center border-b border-darkMahron md:pb-8 pb-4 mb-4">
                   <Star fill="#E5BA1F" strokeWidth={0} size={18} />
                   <Star fill="#E5BA1F" strokeWidth={0} size={18} />
                   <StarHalf fill="#E5BA1F" strokeWidth={0} size={18} />
@@ -63,18 +63,18 @@ const VisitSpa = () => {
                   <Star fill="#111" strokeWidth={0} size={18} />
                   <p className="text-[12px] ml-2">(5,212)</p>
                 </div>
-                <div className="py-4 border-b border-darkMahron">
-                  <p className="flex gap-2 items-center mb-2">
-                    <Clock size={16} strokeWidth={0.5} />
+                <div className="md:py-14 py-4 border-b border-darkMahron gap-y-7">
+                  <p className="flex gap-2 items-center mb-2 text-darkMahron text-base md:text-xl">
+                    <Clock size={26} strokeWidth={1} />
                     Open until 12:00p.m.
                   </p>
-                  <address className="flex gap-2 items-center mb-2 not-italic">
-                    <MapPin size={16} strokeWidth={0.5} />
+                  <address className="flex gap-2 items-center mb-2 not-italic text-darkMahron text-base md:text-xl">
+                    <MapPin size={26} strokeWidth={1} />
                     13th Street 47 W 13th St, New York
                   </address>
                   <Link
                     href="#"
-                    className="text-darkMahron underline font-bold"
+                    className="text-darkMahron underline font-bold  text-base md:text-xl"
                   >
                     Get directions
                   </Link>
@@ -86,7 +86,7 @@ const VisitSpa = () => {
                 type="button"
                 variant="outline"
                 size="lg"
-                className="rounded-xl w-full mb-4"
+                className="rounded-xl w-full mb-4  text-darkMahron text-base md:text-xl"
               >
                 Visit Website
               </Button>
@@ -94,7 +94,7 @@ const VisitSpa = () => {
                 type="button"
                 variant="myCustom"
                 size="lg"
-                className="rounded-xl w-full"
+                className="rounded-xl w-full  text-white text-base md:text-xl"
               >
                 Book Now
               </Button>

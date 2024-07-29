@@ -47,14 +47,8 @@ const SettingComponent = ({ type, details, reviews }) => {
   };
 
   return (
-    <div className={`flex flex-col items-center p-3 md:p-8 ${type === "user" ? "border-t-2 border-darkMahron" : ""}`}>
-      <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-1.png"}
-        className="absolute top-14 right-0 z-0 hidden md:block"
-      />
+    <div className={`flex flex-col items-center p-3 md:p-8 `}>
+    
       <div className="p-4 sm:p-8 my-10 mx-auto bg-white rounded-xl border-2 border-darkMahron max-w-full lg:max-w-4xl">
         <h1 className="text-3xl sm:text-5xl font-raleway font-thin mb-6 text-center text-darkMahron">
           Settings
@@ -246,13 +240,7 @@ const SettingComponent = ({ type, details, reviews }) => {
           </button>
         </div>
       </div>
-      <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-2.png"}
-        className="absolute bottom-0 left-0 z-0 hidden md:block"
-      />
+     
     </div>
   );
 };

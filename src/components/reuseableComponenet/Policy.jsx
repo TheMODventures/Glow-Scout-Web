@@ -4,12 +4,13 @@ import Link from "next/link";
 const Policy = ({ title, content }) => {
   return (
     <div className="container py-6 font-raleway  mb-4">
-      <div className="border-t-2 border-darkMahron">
       <div>
-        <div className="text-center py-10">
-          <h2 className="text-6xl font-thin text-darkMahron">{title}</h2>
-          <p className="mt-2 text-lg md:text-xl font-thin text-darkMahron">{content}</p>
-        </div>
+      <div className="text-center text-darkMahron pb-5">
+        <h2 className="text-4xl md:text-6xl font-thin">  {title} </h2>
+        <p className="m-2 text-lg">
+         {content}
+        </p>
+      </div>
         <p className="px-6">
           This {title} outlines the manner in which{" "}
           <Link href={"/"} className=" font-bold text-darkMahron">
@@ -54,7 +55,6 @@ const Policy = ({ title, content }) => {
             </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const FilterSelect = ({ selectItems, placeholder, Control , name }) => {
       render={({ field }) => (
         <FormItem>
           <Select onValueChange={field.onChange}>
-            <FormControl className={`border-2 border-darkMahron text-darkMahron py-2 px-4  rounded-full mb-4 md:mb-0 md:mr-4 `}>
+            <FormControl className={`border-2 h-10 w-60  border-darkMahron text-darkMahron py-2 px-4  rounded-full mb-4 md:mb-0 md:mr-4 `}>
               <SelectTrigger>
                 <SelectValue placeholder={placeholder} className="selectinputvalue" />
               </SelectTrigger>

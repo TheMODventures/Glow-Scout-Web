@@ -7,21 +7,16 @@ const PlanAndPricing = () => {
 
   return (
     <div className="mx-auto min-h-screen font-raleway relative px-4">
-      <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-1.png"}
-        className="absolute top-0 right-0 z-0 hidden md:block"
-      />
+      
       <div className="flex justify-center items-center min-h-screen">
         <div className="p-6 rounded-lg w-full max-w-3xl h-auto">
-          <h1 className="text-2xl md:text-3xl xl:text-5xl font-bold text-center text-darkMahron mb-2">
-            Plans & Pricing
-          </h1>
-          <p className="text-center text-darkMahron mb-6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh faucibus.
-          </p>
+        <div className="text-center text-darkMahron pb-5">
+        <h2 className="text-4xl md:text-6xl font-thin">  Plans & Pricing </h2>
+        <p className="m-2 text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
+          faucibus.
+        </p>
+      </div>
           <div className="bg-white border-2 border-darkMahron rounded-lg px-4 py-5 md:px-16">
             <div className="flex justify-center md:justify-end mb-4">
               <div className="flex border-2 border-gray-300 rounded-full p-1">
@@ -109,13 +104,7 @@ const PlanAndPricing = () => {
           </div>
         </div>
       </div>
-      <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-2.png"}
-        className="absolute bottom-0 left-0 border-none rounded-xl z-[-1000] hidden md:block"
-      />
+     
     </div>
   );
 };

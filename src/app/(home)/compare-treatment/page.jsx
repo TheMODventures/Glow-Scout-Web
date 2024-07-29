@@ -20,22 +20,15 @@ const Add = () => {
 };
 const CompareTreatments = () => {
   return (
-    <div className="flex flex-col items-center p-3 md:p-8 border-t-2 border-darkMahron">
-      <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-1.png"}
-        className="absolute top-14 right-0 z-0 hidden md:block"
-      />
-      <h1 className="text-3xl md:text-5xl font-thin mb-2 font-relway text-darkMahron">
-        Compare Treatments
-      </h1>
-      <p className="text-center mb-8 text-base text-darkMahron">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
-        faucibus.
-      </p>
-
+    <div className="flex flex-col items-center px-3 md:px-8 py-10 ">
+      
+      <div className="text-center text-darkMahron pb-5">
+        <h2 className="text-4xl md:text-6xl font-thin">  Compare Treatments </h2>
+        <p className="m-2 text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
+          faucibus.
+        </p>
+      </div>
       <div className="grid grid-cols-2 md:gap-8 w-full max-w-4xl">
         <div className="flex flex-col items-center pr-2 md:pr-4 border-r-2 border-gray-200 col-span-1 ">
           <div className="w-[100%] h-[35%] md:p-4 rounded-lg">
@@ -84,13 +77,7 @@ const CompareTreatments = () => {
       <button className="mt-8 px-6 py-2 bg-darkMahron text-white text-lg font-semibold rounded-full">
         Next
       </button>
-      <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-2.png"}
-        className="absolute bottom-0 left-0 z-0 hidden md:block"
-      />
+      
     </div>
   );
 };

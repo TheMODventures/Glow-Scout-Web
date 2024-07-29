@@ -52,15 +52,15 @@ const page = () => {
     },
   ];
   return (
-    <div className="container py-6  font-raleway  mb-4">
-      <div className="border-b border-t border-darkMahron">
-        <div className="text-center py-5">
-          <h2 className="text-6xl font-thin">Blogs by Glow Scout</h2>
-          <p className="mt-2 text-xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
-            faucibus.
-          </p>
-        </div>
+    <div className="container py-10  font-raleway  mb-4">
+      <div className="border-b border-darkMahron">
+      <div className="text-center text-darkMahron pb-5">
+        <h2 className="text-4xl md:text-6xl font-thin"> Blogs by Glow Scout </h2>
+        <p className="m-2 text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
+          faucibus.
+        </p>
+      </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
         <Suspense fallback={<Skeleton className="w-[100px] h-[20px] rounded-full" /> } >

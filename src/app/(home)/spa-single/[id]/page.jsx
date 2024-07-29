@@ -77,49 +77,49 @@ const SpaSingle = ({ params }) => {
       name: "Ashley K.",
       stars: 5,
       review:
-        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
       path: "/images/home/testimonial-1.png",
     },
     {
-      name: "Ashley F.",
+      name: "Client 2",
       stars: 4,
       review:
-        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
       path: "/images/home/testimonial-1.png",
     },
     {
-      name: "Ashley F.",
+      name: "Client 3",
       stars: 4,
       review:
-        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
       path: "/images/home/testimonial-1.png",
     },
     {
-      name: "Ashley F.",
+      name: "Client 4",
       stars: 4,
       review:
-        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
+        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
       path: "/images/home/testimonial-1.png",
     },
   ];
 
   return (
-    <div className="container border-t-2 border-darkMahron font-raleway mx-auto px-4 max-w-screen-lg">
+    <div className=" font-raleway mx-auto px-4 max-w-screen-2xl">
       <VisitSpa />
 
       <div className="py-6 font-raleway md:pb-36 border-b border-darkMahron">
-        <div className="text-center pb-3 text-darkMahron ">
-          <h2 className="text-4xl  ">Treatments Offered</h2>
-          <p className="mt-2 text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
+      <div className="text-center text-darkMahron pb-5">
+        <h2 className="text-4xl md:text-6xl font-thin">  Treatments Offered </h2>
+        <p className="m-2 text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
             faucibus.
-          </p>
-        </div>
+        </p>
+      </div>
 
         <div className="my-3">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
             {dummyData.map((item, index) => (
-              <TreatmentCard key={index} {...item}  />
+              <TreatmentCard key={index} {...item} imageHeightWeb={56}  />
             ))}
           </div>
         </div>
@@ -129,7 +129,7 @@ const SpaSingle = ({ params }) => {
         <div className="text-center pb-5">
           <h2 className="text-4xl md:text-6xl font-raleway  text-darkMahron ">Reviews</h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-5 mt-5">
   {testimonials.map((testimonial, index) => (
     <div key={index} className="grid grid-cols-1 md:grid-cols gap-5 items-center">
 <div className="flex justify-between items-center">
@@ -141,10 +141,10 @@ const SpaSingle = ({ params }) => {
         className="block md:hidden w-40 h-60 rounded-xl object-cover mb-4 md:mb-0"
       />
       <div className="px-6 py-3">
-        <h3 className="text-[#351120] text-4xl font-bold pb-3">
+        <h3 className="text-darkMahron text-5xl font-bold pb-3">
           {testimonial.name}
         </h3>
-        <p className="py-3 w-full md:w-[400px]">
+        <p className="py-3 w-full md:w-[550px] text-xl font-normal">
           {testimonial.review}
         </p>
         <div className="relative">
@@ -177,40 +177,41 @@ const SpaSingle = ({ params }) => {
 </div>
 
 
-        <div className="flex justify-center items-center my-10">
+        <div className="flex justify-center items-center my-16">
           <Button
             type="submit"
             variant="myCustom"
             size="lg"
-            className="rounded-full"
+            className="rounded-full text-xl"
           >
             View all
           </Button>
         </div>
 
-        <div className="border border-darkMahron text-darkMahron  rounded-xl py-5 px-4 my-8">
-          <div className="pb-5">
-            <h2 className="text-4xl">Add your review</h2>
-          </div>
-          <div className="flex gap-4">
-            <Input
-              placeholder="Type your message here."
-              className="border-b-1 border-t-0 border-darkMahron flex-1"
-            />
-            <div>
-              <p>Ratings</p>
-              <div className="flex gap-2">
-              {Array.from({ length: 5 }, (_, starIndex) => (
-                  <Star1
-                    key={starIndex}
-                    filled={starIndex < localReviews[0].rating}
-                    onClick={() => handleStarClick(0, starIndex)}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        <div className="border border-darkMahron text-darkMahron rounded-xl py-5 px-4 my-8 ">
+  <div className="pb-10">
+    <h2 className="text-5xl">Add your review</h2>
+  </div>
+  <div className="flex justify-between items-center gap-4">
+    <Input
+      placeholder="Write your review here....."
+      className="border-b text-xl border-darkMahron w-full md:min-w-[1024px] "
+    />
+    <div className="flex flex-col">
+      <p className="text-lg text-darkMahron">Ratings</p>
+      <div className="flex gap-2 justify-center">
+        {Array.from({ length: 5 }, (_, starIndex) => (
+          <Star1
+            key={starIndex}
+            filled={starIndex < localReviews[0].rating}
+            onClick={() => handleStarClick(0, starIndex)}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
   );

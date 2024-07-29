@@ -2,15 +2,15 @@ import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
 
 const page = () => {
   return (
-    <div className="container py-6 md:mt-6 font-raleway  mb-4">
-      <div className="border-t-2 border-darkMahron">
-        <div className="text-center py-5">
-          <h2 className="text-6xl text-darkMahron">About Us</h2>
-          <p className="mt-2 text-xl text-darkMahron">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
-            faucibus.
-          </p>
-        </div>
+    <div className="container py-10  md:mt-6 font-raleway  mb-4">
+      
+      <div className="text-center text-darkMahron pb-5">
+        <h2 className="text-4xl md:text-6xl font-thin"> About Us </h2>
+        <p className="m-2 text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
+          faucibus.
+        </p>
+      </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
           <div className=" ">
@@ -44,7 +44,7 @@ const page = () => {
           services, you consent to the practices described in this Privacy
           Policy.
         </p>
-      </div>
+    
 
       <div className="my-5">
         <div className="p-6 text-darkMahron">

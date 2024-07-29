@@ -169,44 +169,42 @@ const SpaPage = () => {
   }
 
   return (
-    <div className="py-6 md:py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
+    <div className="py-6 md:py-10 md:mt-6 font-raleway relative isolate">
       <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl">Salons & Spas</h2>
+        <h2 className="text-4xl md:text-6xl font-thin"> Salons & Spas </h2>
         <p className="m-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
       </div>
 
-
-<Container>
-        <div className="hidden mx-auto w-full md:max-w-5xl md:flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
+      <Container>
+        <div className="hidden mx-auto w-full md:max-w-6xl md:flex justify-center bg-opacity-60  items-center flex-col bg-[#F6E9CE] md:bg-transparent">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
-              <div className="md:bg-[#F6E9CE]  py-3 md:rounded-full md:px-12  flex flex-col md:flex-row items-center  mt-6">
-                <div className="flex justify-between items-center flex-col md:flex-row">
+              <div className="md:bg-[#F6E9CE] bg-opacity-60  pl-5  py-1 md:rounded-full h-[60px] flex flex-col md:flex-row items-center  mt-6">
+                <div className="flex justify-between  items-center flex-col md:flex-row">
                   <FormSelect
                     selectItems={selectItems}
                     placeholder="Filters"
                     name="goal"
-                    customClass="min-w-60"
+                    customClass=""
                   />
                   <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
                     |
                   </span>
                   <div>
-                  <Input
-                    placeholder="Please enter your location"
-                    type="search"
-                    className="border-darkMahron border-2 text-darkMahron  px-4 min-w-80 rounded-full mb-4 md:mb-0 md:mr-4 py-3 w-80 h-12"
-                  />
+                    <Input
+                      placeholder="Please enter your location"
+                      type="search"
+                      className="border-darkMahron border-2 text-darkMahron  px-4  rounded-full mb-4 md:mb-0 md:mr-4 py-3 w-60 h-10"
+                    />
                   </div>
                   <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
                     |
                   </span>
                 </div>
-
-                <div className="flex relative mt-4 md:mt-0">
+                <div className="flex relative mt-4 md:mt-0 h-auto">
                   <div>
                     <Search
                       name="goal"
@@ -214,7 +212,7 @@ const SpaPage = () => {
                       formControl={form.control}
                     />
                   </div>
-                  <div className=" absolute right-2 md:right-6 bottom-6 md:bottom-2">
+                  <div className=" absolute right-2 md:right-6 bottom-6 md:bottom-[6px]">
                     <Button
                       type="submit"
                       variant="myCustom"
@@ -230,7 +228,6 @@ const SpaPage = () => {
           </Form>
         </div>
       </Container>
-      
 
       <div className="container my-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">

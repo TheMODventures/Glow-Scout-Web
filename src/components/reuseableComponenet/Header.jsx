@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sm:flex sm:justify-between py-3 px-4 bg-[#F8F8F8]">
+    <header className="sm:flex sm:justify-between py-3 px-4 bg-[#F8F8F8]  border-b-2 border-darkMahron">
       <div className="relative  sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full z-50">
         <div className="flex items-center justify-between">
           <Link href="/">

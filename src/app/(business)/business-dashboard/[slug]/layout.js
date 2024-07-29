@@ -39,12 +39,25 @@ export default function RootLayout({ children }) {
       <body>
         <div>
           <BusinessHeader />
-
-          {children}
+          <Image
+            width={300}
+            height={300}
+            alt="bg"
+            src={"/images/shadow-1.png"}
+            className="absolute top-[70px] right-0 z-1 hidden md:block"
+            style={{ zIndex: -1 }}
+          />
+          <div className="relative z-10">{children}</div>
+          <Image
+            width={300}
+            height={300}
+            alt="bg"
+            src={"/images/shadow-2.png"}
+            className="absolute -bottom-48 left-0 z-1 hidden md:block"
+            style={{ zIndex: -1 }}
+          />
           <Toaster />
-          
         </div>
-       
       </body>
     </html>
   );
