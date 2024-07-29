@@ -62,7 +62,7 @@ const Header = () => {
                 type="button"
                 variant="myCustom"
                 size="lg"
-                className="hidden md:block rounded-full font-raleway text-[#F6E9CE] px-4 font-black"
+                className="hidden md:block rounded-full font-raleway md:text-xl text-[#F6E9CE] px-4 font-black"
                 aria-label="login"
                 onClick={toggleDropdown}
               >
