@@ -15,7 +15,7 @@ const InputFormField = ({ name, placeholder, inputType, formControl }) => {
               type={inputType || "text"}
               {...field}
               className={cn(
-                inputType === "password" ? "w-full max-w-40" : "w-full  max-w-80",
+                inputType === "password" ? "w-full max-w-80" : "w-full  max-w-[640px]",
                 "border-[#35112033] text-darkMahron px-4 mb-4 md:mb-0 py-3 h-12"
               )}
             />

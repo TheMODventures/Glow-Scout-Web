@@ -19,7 +19,7 @@ const Input = React.forwardRef(({ className, type, ...props }, ref) => {
         />
       )}
       {type === "password" && (
-        <div className="relative flex justify-start items-center h-9 w-full max-w-80 border-b-[1px] border-input rounded-sm  bg-transparent shadow-sm">
+        <div className="relative flex justify-start items-center h-9 w-full max-w-full border-b-[1px] border-input rounded-sm  bg-transparent shadow-sm">
           <input
             type={passwordType}
             className={cn(

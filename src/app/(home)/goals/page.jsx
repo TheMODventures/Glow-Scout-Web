@@ -1,5 +1,6 @@
 import GoalCard from "@/components/reuseableComponenet/GoalCard";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const page = () => {
   let dummyData = [
@@ -86,9 +87,16 @@ const page = () => {
   ];
 
   return (
-    <div className=" py-20 md:mt-6 font-raleway  border-t-2 border-darkMahron">
-      <div className="text-center pb-5">
-        <h2 className="text-4xl">Select Goal for your Skin</h2>
+    <div className="py-6 md:py-20 md:mt-6 font-raleway  border-t-2 border-darkMahron">
+        <Image
+        width={300}
+        height={300}
+        alt="bg"
+        src={"/images/shadow-1.png"}
+        className="absolute top-14 right-0 z-0 hidden md:block"
+      />
+      <div className="text-center pb-5 text-darkMahron">
+        <h2 className="text-4xl md:text-5xl">Select Goal for your Skin</h2>
         <p className="mt-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
@@ -96,9 +104,9 @@ const page = () => {
       </div>
 
       <div className="container my-5">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6 mb-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
           {dummyData.map((item, index) => (
-            <GoalCard key={index} {...item} />
+            <GoalCard key={index} {...item}  />
           ))}
         </div>
       </div>
@@ -108,11 +116,18 @@ const page = () => {
           type="submit"
           variant="myCustom"
           size="lg"
-          className="rounded-full m-auto"
+          className="rounded-full m-auto text-white font-semibold"
         >
-          Book Now!
+          Next
         </Button>
       </div>
+      <Image
+        width={300}
+        height={300}
+        alt="bg"
+        src={"/images/shadow-2.png"}
+        className="absolute bottom-0 left-0 z-0 hidden md:block"
+      />
     </div>
   );
 };
