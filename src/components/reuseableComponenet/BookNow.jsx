@@ -67,7 +67,7 @@ function SelectForm() {
               Control={form.control}
               // customClass="md:min-w-60"
             />
-            <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block pl-6 ">
+            <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block pl-6 xl:pl-12 ">
               |
             </span>
           </div>
