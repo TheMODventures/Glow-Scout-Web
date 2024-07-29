@@ -52,15 +52,13 @@ const ClientTestimonials = () => {
   return (
     <div className="mx-auto py-40 font-raleway bg-[#FEF5E3]">
       <div className="text-center">
-        <h2 className="text-4xl text-darkMahron md:text-[40px]">
+        <h2 className="text-4xl md:text-5xl text-darkMahron md:text-[40px]">
           Client’s Testimonials
         </h2>
-        <p className="text-lg md:text-base text-darkMahron py-5 text-center px-4">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit a quis.
-        </p>
+      
       </div>
 
-      <div className="pt-20 container flex flex-col items-center">
+      <div className="pt-14 container flex flex-col items-center">
         <Carousel
           opts={{ align: "start" }}
           className=" md:w-[600px] lg:w-[700px] w-screen mx-2"
