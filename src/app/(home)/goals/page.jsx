@@ -93,7 +93,7 @@ const page = () => {
         height={300}
         alt="bg"
         src={"/images/shadow-1.png"}
-        className="absolute top-20 right-0 z-0 hidden md:block"
+        className="absolute top-32 right-0 z-0 hidden md:block"
       />
       <div className="text-center pb-5 text-darkMahron z-auto">
         <h2 className="text-4xl md:text-5xl">Select Goal for your Skin</h2>
@@ -104,14 +104,14 @@ const page = () => {
       </div>
 
       <div className="container my-5">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2 z-auto">
           {dummyData.map((item, index) => (
             <GoalCard key={index} {...item}  />
           ))}
         </div>
       </div>
 
-      <div className="flex justify-center items-center my-20">
+      <div className="flex justify-center items-center my-20 z-auto">
         <Button
           type="submit"
           variant="myCustom"
