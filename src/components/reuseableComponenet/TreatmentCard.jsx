@@ -18,7 +18,7 @@ const TreatmentCard = ({ image, imageAlt, label, title, description, imageHeight
         ) : null}
       </div>
       <div className="pt-2">
-        <h3 className="text-lg md:text-2xl  font-bold">{title}</h3>
+        <h3 className="text-lg md:text-2xl  font-thin text-darkMahron">{title}</h3>
         <p className="text-sm md:text-base">{description}</p>
       </div>
     </div>
