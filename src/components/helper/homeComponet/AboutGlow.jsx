@@ -14,7 +14,7 @@ const AboutGlow = () => {
         />
       </div>
       <div className="text-center md:text-left max-w-lg">
-        <h2 className="text-3xl md:text-6xl mb-4 font-raleway text-center">
+        <h2 className="text-3xl md:text-6xl mb-4 font-raleway font-thin text-center">
           About
           <br />
           &rdquo;Glow Scout&rdquo;
