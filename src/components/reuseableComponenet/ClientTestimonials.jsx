@@ -80,7 +80,7 @@ const ClientTestimonials = () => {
                     />
                   </div>
                   <div className="p-6 text-center md:text-left">
-                    <h3 className="text-[#351120] text-3xl md:text-4xl font-bold pb-3">
+                    <h3 className="text-[#351120] text-3xl md:text-5xl font-bold pb-3">
                       {testimonial.name}
                     </h3>
                     <p className="py-3 w-full md:w-[300px] text-sm md:text-xl">
