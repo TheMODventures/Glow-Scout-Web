@@ -169,10 +169,10 @@ const SpaPage = () => {
   }
 
   return (
-    <div className=" py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
-      <div className="text-center pb-5">
+    <div className="py-6 md:py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
+      <div className="text-center text-darkMahron pb-5">
         <h2 className="text-4xl">Salons & Spas</h2>
-        <p className="mt-2 text-lg">
+        <p className="m-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
@@ -180,7 +180,7 @@ const SpaPage = () => {
 
 
 <Container>
-        <div className=" mx-auto w-full md:max-w-5xl flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
+        <div className="hidden mx-auto w-full md:max-w-5xl md:flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
               <div className="md:bg-[#F6E9CE]  py-3 md:rounded-full md:px-12  flex flex-col md:flex-row items-center  mt-6">
@@ -233,7 +233,7 @@ const SpaPage = () => {
       
 
       <div className="container my-5">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6 mb-2">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
           {dummyData.map((item, index) => (
             <Link href={`spa-single/${index}`} key={index}>
               <TreatmentCard key={index} {...item} />

@@ -179,17 +179,17 @@ const TreatmentPage = () => {
   }
 
   return (
-    <div className=" py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
-      <div className="text-center pb-5">
+    <div className="py-6 md:py-20 md:mt-6 font-raleway relative isolate border-t-2 border-darkMahron">
+      <div className="text-center text-darkMahron pb-5">
         <h2 className="text-4xl">Treatments</h2>
-        <p className="mt-2 text-lg">
+        <p className="m-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
       </div>
 
       <Container>
-        <div className=" mx-auto w-full md:max-w-5xl flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
+        <div className="hidden mx-auto w-full md:max-w-5xl md:flex justify-center items-center flex-col bg-[#F6E9CE] md:bg-transparent">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
               <div className="md:bg-[#F6E9CE]  py-3 md:rounded-full md:px-12  flex flex-col md:flex-row items-center  mt-6">
@@ -254,9 +254,9 @@ const TreatmentPage = () => {
       </div>
       
      <div className="md:hidden flex justify-end items-end sticky bottom-3 left-3">
-  <button className="py-2 px-4 bg-darkMahron text-white rounded-full shadow-md transform transition-transform hover:scale-105">
+  <Link href={'/compare-treatment'} className="py-2 px-4 bg-darkMahron text-white rounded-full shadow-md transform transition-transform hover:scale-105">
     Compare
-  </button>
+  </Link>
 </div>
     </div>
   );

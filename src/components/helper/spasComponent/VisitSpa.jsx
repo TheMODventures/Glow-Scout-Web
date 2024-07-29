@@ -9,7 +9,7 @@ const VisitSpa = () => {
   const [favourite, setFavourite] = useState(false);
   return (
     <div className="border-b border-darkMahron pb-5 mb-20">
-      <h1 className="text-4xl  mt-6">Crystal Calm Spa</h1>
+      <h1 className="text-4xl text-darkMahron  mt-6">Crystal Calm Spa</h1>
       <div className="grid grid-cols-1 md:grid-cols-5 md:gap-6 mb-2">
         <div className="col-span-2">
           <div className="relative">
@@ -46,7 +46,7 @@ const VisitSpa = () => {
         <div className="col-span-2 py-5">
           <Card className="p-6 border-darkMahron h-full flex flex-col max-h-[500px]">
             <div>
-              <h2 className="text-2xl font-semibold mb-4">Crystal Calm Spa</h2>
+              <h2 className="text-2xl font-semibold mb-4  text-darkMahron ">Crystal Calm Spa</h2>
               <div className="flex justify-between items-center mb-4">
                 <p>Add to favourites</p>
                 <button onClick={() => setFavourite(!favourite)}>

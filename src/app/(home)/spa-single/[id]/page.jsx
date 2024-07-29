@@ -6,8 +6,38 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import VisitSpa from "@/components/helper/spasComponent/VisitSpa";
 import Image from "next/image";
+import React, { useState } from "react";
 
-const page = ({ params }) => {
+function Star1({ filled, onClick }) {
+  return (
+    <svg
+      onClick={onClick}
+      className={`w-5 h-5 cursor-pointer ${
+        filled ? "text-yellow-500" : "text-gray-700"
+      }`}
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.97a1 1 0 00.95.69h4.188c.969 0 1.371 1.24.588 1.81l-3.396 2.465a1 1 0 00-.364 1.118l1.286 3.97c.3.921-.755 1.688-1.54 1.118l-3.396-2.465a1 1 0 00-1.176 0l-3.396 2.465c-.784.57-1.838-.197-1.54-1.118l1.286-3.97a1 1 0 00-.364-1.118L2.326 9.397c-.783-.57-.38-1.81.588-1.81h4.188a1 1 0 00.95-.69l1.286-3.97z" />
+    </svg>
+  );
+}
+const SpaSingle = ({ params }) => {
+  const [localReviews, setLocalReviews] = useState([
+    { rating: 0 },
+    { rating: 0 },
+    { rating: 0 },
+    { rating: 0 },
+  ]);
+
+  const handleStarClick = (reviewIndex, starIndex) => {
+    setLocalReviews((prevReviews) =>
+      prevReviews.map((review, index) =>
+        index === reviewIndex ? { ...review, rating: starIndex + 1 } : review
+      )
+    );
+  };
   const id = params.id;
 
   let dummyData = [
@@ -74,12 +104,12 @@ const page = ({ params }) => {
   ];
 
   return (
-    <div className="container font-raleway mx-auto px-4 max-w-screen-lg">
+    <div className="container border-t-2 border-darkMahron font-raleway mx-auto px-4 max-w-screen-lg">
       <VisitSpa />
 
       <div className="py-6 font-raleway md:pb-36 border-b border-darkMahron">
-        <div className="text-center pb-3">
-          <h2 className="text-4xl">Treatments Offered</h2>
+        <div className="text-center pb-3 text-darkMahron ">
+          <h2 className="text-4xl  ">Treatments Offered</h2>
           <p className="mt-2 text-lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
             faucibus.
@@ -97,7 +127,7 @@ const page = ({ params }) => {
 
       <div className="py-6 md:mt-6 font-raleway">
         <div className="text-center pb-5">
-          <h2 className="text-6xl font-raleway">Reviews</h2>
+          <h2 className="text-4xl md:text-6xl font-raleway  text-darkMahron ">Reviews</h2>
         </div>
         <div className="grid md:grid-cols-2 gap-5">
   {testimonials.map((testimonial, index) => (
@@ -158,7 +188,7 @@ const page = ({ params }) => {
           </Button>
         </div>
 
-        <div className="border border-darkMahron rounded-xl py-5 px-4 my-8">
+        <div className="border border-darkMahron text-darkMahron  rounded-xl py-5 px-4 my-8">
           <div className="pb-5">
             <h2 className="text-4xl">Add your review</h2>
           </div>
@@ -170,8 +200,12 @@ const page = ({ params }) => {
             <div>
               <p>Ratings</p>
               <div className="flex gap-2">
-                {Array.from({ length: 5 }, (_, index) => (
-                  <Star fill="#111" strokeWidth={0} key={`star-${index}`} />
+              {Array.from({ length: 5 }, (_, starIndex) => (
+                  <Star1
+                    key={starIndex}
+                    filled={starIndex < localReviews[0].rating}
+                    onClick={() => handleStarClick(0, starIndex)}
+                  />
                 ))}
               </div>
             </div>
@@ -182,4 +216,4 @@ const page = ({ params }) => {
   );
 };
 
-export default page;
+export default SpaSingle;

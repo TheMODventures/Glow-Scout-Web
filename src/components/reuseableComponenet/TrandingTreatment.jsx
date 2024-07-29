@@ -84,11 +84,11 @@ const TrandingTreatment = () => {
         className=" absolute top-0 right-0 z-0 hidden md:block"
       />
 
-      <div className="text-center">
-        <h2 className="text-5xl px-6 md:mt-16 font-thin">
+      <div className="text-center text-darkMahron mx-2">
+        <h2 className="text-4xl md:text-5xl px-6 md:mt-16 font-thin">
           Trending Treatments
         </h2>
-        <p className="mt-2 text-lg">
+        <p className="mt-4 text-base md:text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
@@ -97,7 +97,7 @@ const TrandingTreatment = () => {
       <div className="my-16 z-50 container">
         <Carousel
           opts={{ align: "start" }}
-          className="w-full md:container ml-8 overflow-hidden"
+          className="w-full md:container md:ml-8 overflow-hidden"
         >
           <CarouselContent className="flex space-x-4">
             {treatments.map((treatment, index) => (
