@@ -53,14 +53,14 @@ const CompareTreatments = () => {
           <div className="mt-20 md:mt-14 w-full h-[80%] md:p-2 border-2 border-darkMahron rounded-lg">
             <h3 className="font-semibold text-darkMahron text-lg">Description</h3>
             <p className="text-base mt-5 text-darkMahron">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
               nibh faucibus.
             </p>
             <p className="hidden md:block text-base text-darkMahron">
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
