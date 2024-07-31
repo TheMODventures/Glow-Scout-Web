@@ -20,10 +20,10 @@ const page = () => {
             />
           </div>
           <div className="flex justify-center items-start flex-col gap-4 p-5">
-            <h2 className="text-4xl md:text-6xl font-light text-darkMahron">
+            <h2 className="text-3xl md:text-4xl font-light text-darkMahron">
               What is Glow Scout?
             </h2>
-            <p className="mt-2 text-lg md:text-2xl text-darkMahron font-thin">
+            <p className="mt-2 text-base md:text-lg text-darkMahron font-thin">
               &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
               ut nibh faucibus. Lorem ipsum dolor sit amet, consectetur
               adipiscing elit. Ut ut nibh faucibus. Lorem ipsum dolor sit amet,
