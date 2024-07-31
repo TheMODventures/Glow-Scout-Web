@@ -17,6 +17,7 @@ const DynamicAuthForm = ({
   linkText,
   linkHref,
   onSubmit,
+  btnLink,
 }) => {
   const { toast } = useToast();
 
@@ -104,6 +105,7 @@ const DynamicAuthForm = ({
             </div>
           )}
           <div className="flex justify-center items-center">
+          <Link href={btnLink}>
             <Button
               type="submit"
               variant="myCustom"
@@ -116,6 +118,7 @@ const DynamicAuthForm = ({
                 ? "Sign Up"
                 : "Send Code"}
             </Button>
+            </Link>
           </div>
         </form>
       </Form>

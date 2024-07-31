@@ -17,6 +17,7 @@ const AuthCommon = ({ params }) => {
       linkText: "Are you a business? ",
       linkHref: "/auth/business",
       onSubmit: (data) => console.log("User Signup:", data),
+      btnLink: "/setting",
     },
     "business": {
       formType: "signup",
@@ -25,6 +26,7 @@ const AuthCommon = ({ params }) => {
       linkText: "Are you a user? ",
       linkHref: "/auth/user",
       onSubmit: (data) => console.log("Business Signup:", data),
+      btnLink: "/business-dashboard/1",
     },
     "login": {
       formType: "login",
@@ -33,6 +35,7 @@ const AuthCommon = ({ params }) => {
       linkText: "Forgot password? ",
       linkHref: "/auth/forgot-password",
       onSubmit: (data) => console.log("Login:", data),
+      btnLink: "/setting",
     },
     "forgot-password": {
       formType: "forgot-password",
@@ -41,6 +44,7 @@ const AuthCommon = ({ params }) => {
       linkText: null,
       linkHref: null,
       onSubmit: (data) => console.log("Forgot Password:", data),
+      btnLink: "/auth/user",
     },
   };
 

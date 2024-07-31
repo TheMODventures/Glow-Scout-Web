@@ -12,7 +12,7 @@ const SinupAsBusiness = () => {
           People are seeking for the specialist. <br /> Join us now and serve
           your skills
         </p>
-        <Link href={"business-dashboard/1"}>
+        <Link href={"/auth/business"}>
           <Button
             variant="outline"
             size="lg"
