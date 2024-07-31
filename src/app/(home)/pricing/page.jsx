@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const PlanAndPricing = () => {
@@ -38,13 +39,13 @@ const PlanAndPricing = () => {
                 </button>
               </div>
             </div>
-            <div className="py-4 text-darkMahron grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="py-4 text-darkMahron grid grid-cols-1 md:grid-cols-3 gap-y-4 gap-x-5">
               <div className="bg-white p-4 border-l border-darkMahron md:border-0 md:border-transparent">
                 <h2 className="text-xl md:text-2xl font-semibold">
                   $19 <span className="text-muted-foreground text-base">/month</span>
                 </h2>
                 <h3 className="text-lg font-bold">Silver</h3>
-                <p className="text-lg font-medium text-darkMahron font-raleway">Unleash the power of automation.</p>
+                <p className="text-lg font-semibold text-darkMahron font-raleway my-2">Unleash the power of automation.</p>
                 <ul className="list-disc list-inside text-darkMahron mb-4">
                   <li>Lorem Ipsum</li>
                   <li>Lorem Ipsum</li>
@@ -59,7 +60,7 @@ const PlanAndPricing = () => {
                   $29 <span className="text-muted-foreground text-base">/month</span>
                 </h2>
                 <h3 className="text-lg font-bold">Gold</h3>
-                <p className="text-lg font-medium text-darkMahron font-raleway">Unleash the power of automation.</p>
+                <p className="text-lg font-semibold text-darkMahron font-raleway my-2">Unleash the power of automation.</p>
                 <ul className="list-disc list-inside text-darkMahron mb-4">
                   <li>Lorem Ipsum</li>
                   <li>Lorem Ipsum</li>
@@ -74,7 +75,7 @@ const PlanAndPricing = () => {
                   $39 <span className="text-muted-foreground text-base">/month</span>
                 </h2>
                 <h3 className="text-lg font-bold">Platinum</h3>
-                <p className="text-lg font-medium text-darkMahron font-raleway">Unleash the power of automation.</p>
+                <p className="text-lg font-semibold text-darkMahron font-raleway my-2">Unleash the power of automation.</p>
                 <ul className="list-disc list-inside text-darkMahron mb-4">
                   <li>Lorem Ipsum</li>
                   <li>Lorem Ipsum</li>
@@ -98,9 +99,11 @@ const PlanAndPricing = () => {
             </div>
           </div>
           <div className="flex justify-center items-center">
+          <Link href={'/business-dashboard/1'}>
             <button className="py-3 px-8 bg-darkMahron font-bold text-white mt-6 rounded-full">
               Next
             </button>
+            </Link>
           </div>
         </div>
       </div>

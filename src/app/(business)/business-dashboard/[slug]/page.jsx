@@ -34,7 +34,7 @@ const Page = () => {
         <div className="h-14 text-xl rounded-full px-4 flex justify-center items-center w-full  space-x-5 bg-[#F6E9CE] m-auto">
           <button
             onClick={() => setActiveTab("analytics")}
-            className={`rounded-full text-xl text-center  py-2 border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+            className={`rounded-full text-xl text-center border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
               activeTab === "analytics" ? "bg-darkMahron text-white" : ""
             }`}
           >
@@ -42,7 +42,7 @@ const Page = () => {
           </button>
           <button
             onClick={() => setActiveTab("services")}
-            className={`rounded-full py-2 text-xl text-center border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+            className={`rounded-full text-xl text-center border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
               activeTab === "services" ? "bg-darkMahron text-white" : ""
             }`}
           >
@@ -50,14 +50,14 @@ const Page = () => {
           </button>
           <button
             onClick={() => setActiveTab("account")}
-            className={`rounded-full py-2 border-2 text-xl text-center border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+            className={`rounded-full  border-2 text-xl text-center border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
               activeTab === "account" ? "bg-darkMahron text-white" : ""
             }`}
           >
             Settings
           </button>
         </div>
-        <div className="w-full md:min-w-[800px] lg:min-w-[900px] xl:min-w-[1100px] mt-5">
+        <div className="w-full md:min-w-[800px] lg:min-w-[900px] xl:min-w-[1100px] ">
           {renderContent()}
         </div>
       </div>

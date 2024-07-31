@@ -70,18 +70,18 @@ const Header = () => {
               </Button>
 
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-52 bg-white rounded-2xl px-2 shadow-md overflow-hidden">
+                <div className="absolute font-raleway right-0 mt-2 w-52 bg-white rounded-2xl px-2 shadow-md overflow-hidden">
                   <div className="px-2 py-4">
-                  <div className="flex justify-start font-bold  pb-1 items-start border-b border-darkMahron text-darkMahron ">
-                    <h2  onClick={()=>setIsDropdownOpen(false)} className="cursor-pointer text-2xl font-normal">
+                  <div className="flex justify-start font-extrabold  pb-1 items-start border-b border-darkMahron text-darkMahron ">
+                    <h2  onClick={()=>setIsDropdownOpen(false)} className="cursor-pointer text-2xl font-bold">
                       Sign Up as
                     </h2>
     
                     </div>
                     {dropDownData.map((item, i) => (
-                      <div key={i} className="mt-2">
+                      <div key={i} className="">
                         <Link href={item.href}>
-                          <button className="w-full text-start px-1 py-2 text-sm text-darkMahron bg-transparent shadow-none hover:ring-0 hover:rounded-md hover:bg-gray-100 focus:outline-none">
+                          <button className="w-full text-start px-1 py-2 text-lg text-darkMahron bg-transparent shadow-none hover:ring-0 hover:rounded-md hover:bg-gray-100 focus:outline-none">
                             {item.label}
                           </button>
                         </Link>
@@ -113,14 +113,14 @@ const Header = () => {
               {isDropdownOpen && (
                 <div className="absolute left-0 mt-2 w-52 bg-white rounded-2xl px-2 shadow-md overflow-hidden">
                   <div className="px-2 py-4">
-                  <div className="flex justify-start font-bold  pb-1 items-start border-b border-darkMahron text-darkMahron ">
-                    <h2  onClick={()=>setIsDropdownOpen(false)} className="cursor-pointer text-2xl font-normal">
+                  <div className="flex justify-start  pb-1 items-start border-b border-darkMahron text-darkMahron ">
+                    <h2  onClick={()=>setIsDropdownOpen(false)} className="cursor-pointer text-2xl font-bold">
                       Sign Up as
                     </h2>
     
                     </div>
                     {dropDownData.map((item, i) => (
-                      <div key={i} className="mt-2">
+                      <div key={i} className="">
                         <Link href={item.href}>
                           <button className="w-full text-start px-1 py-2 text-sm text-darkMahron bg-transparent shadow-none hover:ring-0 hover:rounded-md hover:bg-gray-100 focus:outline-none">
                             {item.label}

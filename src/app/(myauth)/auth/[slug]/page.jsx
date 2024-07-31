@@ -26,7 +26,7 @@ const AuthCommon = ({ params }) => {
       linkText: "Are you a user? ",
       linkHref: "/auth/user",
       onSubmit: (data) => console.log("Business Signup:", data),
-      btnLink: "/business-dashboard/1",
+      btnLink: "/pricing",
     },
     "login": {
       formType: "login",

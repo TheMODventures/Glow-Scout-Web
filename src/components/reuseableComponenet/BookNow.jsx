@@ -8,6 +8,7 @@ import { useToast } from "@/components/ui/use-toast";
 import Container from "./Container";
 import { BookSchema } from "@/validation/common.validation";
 import FormSelect from "./FormSelect";
+import Link from "next/link";
 
 function SelectForm() {
   const itemsDate = [
@@ -67,7 +68,7 @@ function SelectForm() {
               Control={form.control}
               customClass="w-full"
             />
-            <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block xl:pl-12 ">
+            <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block ">
               |
             </span>
           </div>
@@ -83,6 +84,7 @@ function SelectForm() {
           </div>
 
           <div class="col-span-2 md:col-span-1 flex justify-center">
+            <Link href={'/spa-single/1'}>
             <Button
               type="submit"
               variant="myCustom"
@@ -91,6 +93,7 @@ function SelectForm() {
             >
               Book Now!
             </Button>
+            </Link>
           </div>
         </div>
       </form>

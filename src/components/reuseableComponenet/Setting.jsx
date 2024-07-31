@@ -47,7 +47,7 @@ const SettingComponent = ({ type, details, reviews }) => {
   };
 
   return (
-    <div className={`flex flex-col items-center p-3 md:p-8 `}>
+    <div className={`flex flex-col items-center p-3 md:p-8 font-raleway`}>
     
       <div className="p-4 sm:p-8 my-10 mx-auto bg-white rounded-xl border-2 border-darkMahron max-w-full lg:max-w-4xl">
         <h1 className="text-3xl sm:text-5xl font-raleway font-thin mb-6 text-center text-darkMahron">
@@ -57,7 +57,7 @@ const SettingComponent = ({ type, details, reviews }) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-5">
           {/* Details Section */}
           <div className="col-span-1 pr-0 lg:pr-5 lg:border-r-2 border-darkMahron">
-            <h2 className="text-xl font-thin text-darkMahron mb-4">Details</h2>
+            <h2 className="text-xl font-semibold text-darkMahron mb-4">Details</h2>
             {details.map((detail, index) => (
               <input
                 key={index}
@@ -69,7 +69,7 @@ const SettingComponent = ({ type, details, reviews }) => {
 
             {type === "user" && (
               <>
-                <h2 className="text-xl font-thin mb-4 mt-6 w-full">
+                <h2 className="text-xl font-semibold mb-4 mt-6 w-full">
                   Previous Reviews
                 </h2>
 
@@ -96,9 +96,9 @@ const SettingComponent = ({ type, details, reviews }) => {
             {type === "business" && (
               <>
                 <div className="flex justify-between gap-x-5 text-darkMahron">
-                  <h2 className="text-xl font-thin mb-4 w-full">Timings</h2>
-                  <p className="text-base font-thin mb-4">Open</p>
-                  <p className="text-base font-thin mb-4">Close</p>
+                  <h2 className="text-xl font-semibold mb-4 w-full">Timings</h2>
+                  <p className="text-base font-semibold mb-4">Open</p>
+                  <p className="text-base font-semibold mb-4">Close</p>
                 </div>
                 <div className="grid grid-cols-1 gap-2">
                   {[
@@ -134,7 +134,7 @@ const SettingComponent = ({ type, details, reviews }) => {
           <div className="col-span-2">
             {type === "user" && (
               <>
-                <h2 className="text-xl font-thin text-darkMahron mb-4">
+                <h2 className="text-xl font-semibold text-darkMahron mb-4">
                   Profile picture
                 </h2>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
@@ -155,7 +155,7 @@ const SettingComponent = ({ type, details, reviews }) => {
             )}
             {type === "business" && (
               <>
-                <h2 className="text-xl font-thin text-darkMahron mb-4">
+                <h2 className="text-xl font-semibold text-darkMahron mb-4">
                   Gallery
                 </h2>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
@@ -193,7 +193,7 @@ const SettingComponent = ({ type, details, reviews }) => {
               </>
             )}
 
-            <h2 className="text-xl pt-3 font-thin border-t-2 border-darkMahron text-darkMahron mb-4">
+            <h2 className="text-xl pt-3 font-semibold border-t-2 border-darkMahron text-darkMahron mb-4">
               Contact details
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
