@@ -1,6 +1,8 @@
 import GoalCard from "@/components/reuseableComponenet/GoalCard";
 import { Button } from "@/components/ui/button";
+
 import Image from "next/image";
+import Link from "next/link";
 
 const page = () => {
   let dummyData = [
@@ -100,11 +102,15 @@ const page = () => {
       <div className=" container my-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2 y-50">
           {dummyData.map((item, index) => (
+            <label htmlFor="input">
+              <input name="input" type="radio" className="hidden"/>
             <GoalCard key={index} {...item} />
+            </label>
           ))}
         </div>
 
         <div className="flex justify-center items-center my-20 y-50">
+          <Link href={'/treatment'}>
           <Button
             type="submit"
             variant="myCustom"
@@ -113,6 +119,7 @@ const page = () => {
           >
             Next
           </Button>
+          </Link>
         </div>
       </div>
       

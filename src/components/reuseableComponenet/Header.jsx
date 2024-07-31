@@ -21,6 +21,7 @@ const Header = () => {
   const dropDownData = [
     { href: "/auth/user", label: "User" },
     { href: "/auth/business", label: "Business" },
+    { href: "/auth/login", label: "Login" },
   ];
 
   const toggleDropdown = () => {
@@ -39,7 +40,7 @@ const Header = () => {
         </div>
 
         <div className="flex items-center">
-          <nav className="mx-6 items-center space-x-1 lg:space-x-6 hidden md:block font-bold">
+          <nav className="mx-6 items-center space-x-1 lg:space-x-16 hidden md:block font-bold">
             {routes.map((route, i) => (
               <button key={i} >
                 <Link

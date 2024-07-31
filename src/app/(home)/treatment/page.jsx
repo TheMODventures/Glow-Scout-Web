@@ -248,9 +248,13 @@ const TreatmentPage = () => {
 
       <div className="container my-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
+          
           {dummyData.map((item, index) => (
+          <Link href={'/spas'}>
             <TreatmentCard key={index} {...item} imageHeightWeb={"[350px]"} />
+            </Link>  
           ))}
+
         </div>
       </div>
       

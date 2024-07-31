@@ -35,7 +35,7 @@ const ScotWorkSection = () => {
           </div>
         </div>
 
-        <Link href="/">
+        <Link href="/auth/user">
           <Button
             type="submit"
             variant="myCustom"
