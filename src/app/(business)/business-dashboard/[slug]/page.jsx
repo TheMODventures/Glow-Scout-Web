@@ -31,10 +31,10 @@ const Page = () => {
   return (
     <div className="flex h-full  justify-center items-center mt-10 px-4 md:px-0">
       <div className="w-full max-w-[500px] flex flex-col items-center">
-        <div className="h-14 rounded-full px-4 flex justify-center items-center w-full  space-x-5 bg-[#F6E9CE] m-auto">
+        <div className="h-14 text-xl rounded-full px-4 flex justify-center items-center w-full  space-x-5 bg-[#F6E9CE] m-auto">
           <button
             onClick={() => setActiveTab("analytics")}
-            className={`rounded-full py-2 border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+            className={`rounded-full text-xl text-center  py-2 border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
               activeTab === "analytics" ? "bg-darkMahron text-white" : ""
             }`}
           >
@@ -42,7 +42,7 @@ const Page = () => {
           </button>
           <button
             onClick={() => setActiveTab("services")}
-            className={`rounded-full py-2 border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+            className={`rounded-full py-2 text-xl text-center border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
               activeTab === "services" ? "bg-darkMahron text-white" : ""
             }`}
           >
@@ -50,7 +50,7 @@ const Page = () => {
           </button>
           <button
             onClick={() => setActiveTab("account")}
-            className={`rounded-full py-2 border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+            className={`rounded-full py-2 border-2 text-xl text-center border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
               activeTab === "account" ? "bg-darkMahron text-white" : ""
             }`}
           >

@@ -56,7 +56,9 @@ const ServicesComponent = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
             {dummyData.map((item, index) => (
                <button key={index} onClick={() => handleEditClick(item)}> 
+               <div className="">
                <TreatmentCard {...item} imageHeightWeb={"[100px]"} />
+               </div>
              </button>
             ))}
           </div>

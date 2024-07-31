@@ -44,7 +44,7 @@ const PlanAndPricing = () => {
                   $19 <span className="text-muted-foreground text-base">/month</span>
                 </h2>
                 <h3 className="text-lg font-bold">Silver</h3>
-                <p>Unleash the power of automation.</p>
+                <p className="text-lg font-medium text-darkMahron font-raleway">Unleash the power of automation.</p>
                 <ul className="list-disc list-inside text-darkMahron mb-4">
                   <li>Lorem Ipsum</li>
                   <li>Lorem Ipsum</li>
@@ -59,7 +59,7 @@ const PlanAndPricing = () => {
                   $29 <span className="text-muted-foreground text-base">/month</span>
                 </h2>
                 <h3 className="text-lg font-bold">Gold</h3>
-                <p>Unleash the power of automation.</p>
+                <p className="text-lg font-medium text-darkMahron font-raleway">Unleash the power of automation.</p>
                 <ul className="list-disc list-inside text-darkMahron mb-4">
                   <li>Lorem Ipsum</li>
                   <li>Lorem Ipsum</li>
@@ -74,7 +74,7 @@ const PlanAndPricing = () => {
                   $39 <span className="text-muted-foreground text-base">/month</span>
                 </h2>
                 <h3 className="text-lg font-bold">Platinum</h3>
-                <p>Unleash the power of automation.</p>
+                <p className="text-lg font-medium text-darkMahron font-raleway">Unleash the power of automation.</p>
                 <ul className="list-disc list-inside text-darkMahron mb-4">
                   <li>Lorem Ipsum</li>
                   <li>Lorem Ipsum</li>
