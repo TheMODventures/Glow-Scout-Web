@@ -250,7 +250,7 @@ const TreatmentPage = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
           
           {dummyData.map((item, index) => (
-          <Link href={'/spas'}>
+          <Link href={'/spas'} key={index}>
             <TreatmentCard key={index} {...item} imageHeightWeb={"[350px]"} />
             </Link>  
           ))}

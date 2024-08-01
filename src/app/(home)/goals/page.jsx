@@ -102,7 +102,7 @@ const page = () => {
       <div className=" container my-5">
         <div className="md:mx-24 grid grid-cols-2 md:grid-cols-4 gap-y-4 mt-6 mb-2 gap-x-2">
           {dummyData.map((item, index) => (
-            <label htmlFor="input">
+            <label htmlFor="input" key={index}>
               <input name="input" type="radio" className="hidden"/>
             <GoalCard key={index} {...item} />
             </label>
