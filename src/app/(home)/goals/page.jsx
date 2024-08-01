@@ -100,7 +100,7 @@ const page = () => {
       </div>
 
       <div className=" container my-5">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2 y-50">
+        <div className="md:mx-24 grid grid-cols-2 md:grid-cols-4 gap-y-4 mt-6 mb-2 gap-x-2">
           {dummyData.map((item, index) => (
             <label htmlFor="input">
               <input name="input" type="radio" className="hidden"/>
@@ -109,7 +109,7 @@ const page = () => {
           ))}
         </div>
 
-        <div className="flex justify-center items-center my-20 y-50">
+        <div className="flex justify-center items-center my-20 ">
           <Link href={'/treatment'}>
           <Button
             type="submit"
