@@ -34,7 +34,7 @@ const Page = () => {
         <div className="h-14 rounded-full px-4 flex justify-center items-center w-full  space-x-5 bg-[#F6E9CE] m-auto">
           <button
             onClick={() => setActiveTab("analytics")}
-            className={`rounded-full text-base md:text-xl text-center border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+            className={`rounded-full text-base md:text-xl font-raleway text-center border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
               activeTab === "analytics" ? "bg-darkMahron text-white" : ""
             }`}
           >
@@ -42,7 +42,7 @@ const Page = () => {
           </button>
           <button
             onClick={() => setActiveTab("services")}
-            className={`rounded-full text-base md:text-xl text-center border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+            className={`rounded-full text-base md:text-xl font-raleway text-center border-2 border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
               activeTab === "services" ? "bg-darkMahron text-white" : ""
             }`}
           >
@@ -50,7 +50,7 @@ const Page = () => {
           </button>
           <button
             onClick={() => setActiveTab("account")}
-            className={`rounded-full  border-2 text-base md:text-xl text-center border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
+            className={`rounded-full  border-2 text-base font-raleway md:text-xl text-center border-darkMahron w-full h-10 text-darkMahron transition-colors duration-300 ${
               activeTab === "account" ? "bg-darkMahron text-white" : ""
             }`}
           >
