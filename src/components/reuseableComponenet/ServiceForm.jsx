@@ -64,7 +64,7 @@ const ServiceForm = ({ isEdit, initialData }) => {
                 <input type="file" className="hidden" />
                 </>
               ) : (
-                <div className="bg-gray-100 flex justify-center rounded-md items-center border-2 border-darkMahron rounded-lg h-40 w-full max-w-[300px]">
+                <div className="bg-gray-100 flex justify-center items-center border-2 border-darkMahron rounded-lg h-40 w-full max-w-[300px]">
                   <label className="flex flex-col items-center cursor-pointer">
                     <Add />
                     <span className="text-darkMahron">Add Image</span>
