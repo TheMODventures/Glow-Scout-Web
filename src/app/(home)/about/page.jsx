@@ -23,7 +23,7 @@ const page = () => {
             <h2 className="text-3xl md:text-4xl font-light text-darkMahron">
               What is Glow Scout?
             </h2>
-            <p className="mt-2 text-base md:text-lg text-darkMahron font-thin">
+            <p className="mt-2 text-base md:text-lg text-darkMahron px-2 font-thin">
               &rdquo;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
               ut nibh faucibus. Lorem ipsum dolor sit amet, consectetur
               adipiscing elit. Ut ut nibh faucibus. Lorem ipsum dolor sit amet,

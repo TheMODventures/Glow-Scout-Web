@@ -13,7 +13,7 @@ const Header = () => {
 
   const routes = [
     { href: "/", label: "Home" },
-    { href: "/goals", label: "Goals" },
+    { href: "/treatment", label: "Treatments" },
     { href: "/spas", label: "Spas" },
     { href: "/blog", label: "Blog" },
   ];
@@ -66,17 +66,13 @@ const Header = () => {
             <ProfileButton />
           ) : (
             <div className="relative">
-              <Button
-                type="button"
-                variant="myCustom"
-                size="lg"
-                className="hidden md:block rounded-full py-2 font-raleway md:text-xl text-[#F6E9CE] px-4 font-black"
-                aria-label="login"
-                onClick={toggleDropdown}
-              >
-                Sign In/Up
-              </Button>
-
+              <button
+                    className="hidden md:block rounded-full font-raleway bg-darkMahron text-[#F6E9CE] px-4 py-2 font-normal text-lg"
+                    aria-label="login"
+                    onClick={toggleDropdown}
+                  >
+                    Sign In/Up
+                  </button>
               {isDropdownOpen && (
                 <div className="absolute font-raleway right-0 mt-2 w-52 bg-white rounded-2xl px-2 shadow-md overflow-hidden">
                   <div className="px-2 py-4">
@@ -111,12 +107,11 @@ const Header = () => {
               <div className="fixed right-0 top-0 w-full h-screen bg-white shadow-lg z-50 md:hidden">
                 <div className="relative p-4">
                   <button
-                    type="button"
-                    className="rounded-full font-raleway bg-darkMahron text-[#F6E9CE] px-4 py-2 font-black bg-myCustom text-lg"
+                    className="rounded-full font-raleway bg-darkMahron text-[#F6E9CE] px-6 py-2 font-black bg-myCustom text-lg"
                     aria-label="login"
                     onClick={toggleDropdown}
                   >
-                    Sign In/Up
+                    Sign In
                   </button>
                   {isDropdownOpen && (
                     <div className="absolute left-2 mt-2 w-52 bg-white rounded-2xl px-2 shadow-md overflow-hidden">

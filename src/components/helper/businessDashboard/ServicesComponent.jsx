@@ -66,7 +66,7 @@ const ServicesComponent = () => {
           <div className="flex justify-end items-end sticky bottom-3 left-3">
             <button
               onClick={handleAddClick}
-              className="py-2 px-4 bg-darkMahron text-white rounded-full shadow-md transform transition-transform hover:scale-105"
+              className="py-2 px-4 bg-darkMahron text-2xl text-white rounded-full shadow-md transform transition-transform hover:scale-105"
             >
               +
             </button>
