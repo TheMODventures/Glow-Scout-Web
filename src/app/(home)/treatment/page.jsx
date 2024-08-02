@@ -246,7 +246,7 @@ const TreatmentPage = () => {
       </Container>
 
 
-      <div className="mx-2 md:mx-0 md:container my-5">
+      <div className="container my-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
           
           {dummyData.map((item, index) => (
