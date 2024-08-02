@@ -12,14 +12,14 @@ const TreatmentCard = ({ image, imageAlt, label, title, description, imageHeight
           width={800}
         />
         {label ? (
-          <p className="absolute top-0 right-0 p-3 bg-lighttext rounded-b-lg rounded-tr-lg">
+          <p className="absolute font-raleway top-0 right-0 p-3 bg-lighttext rounded-b-lg rounded-tr-lg">
             {label}
           </p>
         ) : null}
       </div>
       <div className="pt-2">
-        <h3 className="text-start text-lg md:text-2xl  font-semibold text-darkMahron">{title}</h3>
-        <p className="text-start text-sm md:text-base">{description}</p>
+        <h3 className="text-start text-lg md:text-2xl  font-semibold text-darkMahron font-raleway ">{title}</h3>
+        <p className="text-start text-sm md:text-base font-raleway ">{description}</p>
       </div>
     </div>
     
