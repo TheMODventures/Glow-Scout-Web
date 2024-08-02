@@ -49,7 +49,7 @@ const ServicesComponent = () => {
 
 
   return (
-    <div className="container my-5">
+    <div className="md:container my-5">
        
       {currentView === "list" && (
         <>
@@ -62,6 +62,7 @@ const ServicesComponent = () => {
              </button>
             ))}
           </div>
+
           <div className="flex justify-end items-end sticky bottom-3 left-3">
             <button
               onClick={handleAddClick}

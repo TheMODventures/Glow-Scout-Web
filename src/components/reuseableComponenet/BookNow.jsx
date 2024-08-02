@@ -59,8 +59,8 @@ function SelectForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className=" w-full">
-        <div className="bg-[#F6E9CE99]  shadow-lg py-3 md:rounded-full grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-2 md:flex-row container grid-flow-row-dense items-center justify-center">
-          <div class="md:col-span-2 flex">
+        <div className="bg-[#F6E9CE99]  shadow-lg py-3 rounded-xl md:rounded-full grid grid-cols-2 md:grid-cols-5 gap-1 md:gap-2 md:flex-row md:container px-4 grid-flow-row-dense items-center justify-center">
+          <div class="md:col-span-2 flex w-full">
             <FormSelect
               selectItems={goalData}
               placeholder="Select your Goals"
@@ -73,7 +73,7 @@ function SelectForm() {
             </span>
           </div>
 
-          <div class="md:col-span-2">
+          <div class="md:col-span-2 w-full">
             <FormSelect
               selectItems={itemsDate}
               placeholder="Select your Location"
@@ -83,18 +83,19 @@ function SelectForm() {
             />
           </div>
 
-          <div class="col-span-2 md:col-span-1 flex justify-center">
-            <Link href={'/spa-single/1'}>
-            <Button
-              type="submit"
-              variant="myCustom"
-              size="lg"
-              className="rounded-full w-full"
-            >
-              Book Now!
-            </Button>
-            </Link>
-          </div>
+          <div className="col-span-2 md:col-span-1 flex justify-center w-full">
+  <Link href={'/spa-single/1'} className="w-full">
+    <Button
+      type="submit"
+      variant="myCustom"
+      size="lg"
+      className="rounded-full w-full"
+    >
+      Book Now!
+    </Button>
+  </Link>
+</div>
+
         </div>
       </form>
     </Form>

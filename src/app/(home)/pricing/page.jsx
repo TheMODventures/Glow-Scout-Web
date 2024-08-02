@@ -10,10 +10,10 @@ const PlanAndPricing = () => {
     <div className="mx-auto min-h-screen font-raleway relative px-4">
       
       <div className="flex justify-center items-center min-h-screen">
-        <div className="p-6 rounded-lg w-full max-w-3xl h-auto">
+        <div className="md:p-6 py-6 rounded-lg w-full max-w-3xl h-auto">
         <div className="text-center text-darkMahron pb-5">
         <h2 className="text-4xl md:text-6xl font-thin">  Plans & Pricing </h2>
-        <p className="m-2 text-lg">
+        <p className="m-2 text-sm md:text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
@@ -40,7 +40,7 @@ const PlanAndPricing = () => {
               </div>
             </div>
             <div className="py-4 text-darkMahron grid grid-cols-1 md:grid-cols-3 gap-y-4 gap-x-5">
-              <div className="bg-white p-4 border-l border-darkMahron md:border-0 md:border-transparent">
+              <div className="bg-white p-4 md:border-l border-darkMahron md:border-0 md:border-transparent">
                 <h2 className="text-xl md:text-2xl font-semibold">
                   $19 <span className="text-muted-foreground text-base">/month</span>
                 </h2>
@@ -55,7 +55,7 @@ const PlanAndPricing = () => {
                   Choose Plan
                 </button>
               </div>
-              <div className="bg-white border-l border-darkMahron p-4">
+              <div className="bg-white md:border-l border-darkMahron p-4">
                 <h2 className="text-xl md:text-2xl font-semibold">
                   $29 <span className="text-muted-foreground text-base">/month</span>
                 </h2>
@@ -70,7 +70,7 @@ const PlanAndPricing = () => {
                   Choose Plan
                 </button>
               </div>
-              <div className="bg-white border-l border-darkMahron p-4">
+              <div className="bg-white md:border-l border-darkMahron p-4">
                 <h2 className="text-xl md:text-2xl font-semibold">
                   $39 <span className="text-muted-foreground text-base">/month</span>
                 </h2>

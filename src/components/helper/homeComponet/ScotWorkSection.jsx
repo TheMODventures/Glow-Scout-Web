@@ -5,9 +5,9 @@ import Link from "next/link";
 
 const ScotWorkSection = () => {
   return (
-    <div className=" bg-[#FEF5E3] text-center py-20 rounded-t-[50px] border font-raleway">
+    <div className=" bg-[#FEF5E3] text-center py-10 md:py-20 rounded-t-[50px] border font-raleway">
       <Container>
-        <h2 className="font-raleway text-4xl md:text-6xl font-thin  mb-8 mt-8   pb-5 text-darkMahron">
+        <h2 className="font-raleway text-5xl md:text-6xl font-thin  my-8 mx-5 md:mx-0  pb-5 text-darkMahron">
           How Glow Scout Works
         </h2>
         <div className=" px-5 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 gap-6">

@@ -43,7 +43,7 @@ const ServiceForm = ({ isEdit, initialData }) => {
   const headerText = isEdit ? "Update Treatment" : "Create Treatment";
 
   return (
-    <div className="mx-auto min-h-screen font-raleway relative px-4">
+    <div className="mx-auto min-h-screen font-raleway relative md:px-4">
        
       <div className="mt-10 lg:mt-20 xl:mt-30 flex items-center justify-center">
         <div className="bg-white border-2 border-darkMahron rounded-lg px-8 py-4 sm:py-8 sm:px-20 w-full h-full md:max-w-[70%] md:max-h-[50%]">

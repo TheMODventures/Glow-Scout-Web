@@ -23,8 +23,8 @@ const CompareTreatments = () => {
     <div className="flex flex-col items-center px-3 md:px-8 py-10 ">
       
       <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-6xl font-thin">  Compare Treatments </h2>
-        <p className="m-2 text-lg">
+        <h2 className="text-4xl md:text-6xl font-normal">  Compare Treatments </h2>
+        <p className="m-2 text-sm md:text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
@@ -43,9 +43,9 @@ const CompareTreatments = () => {
               Chemical Peels
             </h2>
           </div>
-          <div className="mt-20 md:mt-14 w-full h-[80%] md:p-2 border-2 border-darkMahron rounded-lg">
+          <div className="mt-20 md:mt-14 w-full h-[80%] p-3 border-2 border-darkMahron rounded-lg">
             <h3 className="font-semibold text-darkMahron text-lg">Description</h3>
-            <p className="text-base mt-5 text-darkMahron">
+            <p className="text-sm md:text-base mt-5 text-darkMahron">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut

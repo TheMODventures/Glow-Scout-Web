@@ -229,7 +229,7 @@ const SpaPage = () => {
         </div>
       </Container>
 
-      <div className="container my-5">
+      <div className="mx-2 md:mx-0 md:container my-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
           {dummyData.map((item, index) => (
             <Link href={`spa-single/${index}`} key={index}>

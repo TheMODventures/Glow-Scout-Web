@@ -7,11 +7,11 @@ const Policy = ({ title, content }) => {
       <div>
       <div className="text-center text-darkMahron pb-5">
         <h2 className="text-4xl md:text-6xl font-thin">  {title} </h2>
-        <p className="m-2 text-lg">
+        <p className="m-2 text-sm md:text-lg">
          {content}
         </p>
       </div>
-        <p className="px-6">
+        <p className="px-1 md:px-6">
           This {title} outlines the manner in which{" "}
           <Link href={"/"} className=" font-bold text-darkMahron">
             Glow Scout
@@ -24,7 +24,7 @@ const Policy = ({ title, content }) => {
         </p>
       </div>
       <div className="my-5">
-        <div className="p-6 text-darkMahron">
+        <div className="p-1 md:p-6 text-darkMahron">
           <div className="space-y-6">
             <div>
               <h2 className="font-semibold text-lg">

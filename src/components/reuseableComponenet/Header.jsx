@@ -33,7 +33,7 @@ const Header = () => {
       <div className="relative  sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full z-50">
         <div className="flex items-center justify-between">
           <Link href="/">
-            <h1 className="text-xl md:text-3xl font-valky text-[#351120] font-bold">
+            <h1 className="text-3xl font-valky text-[#351120] font-bold">
               Glow Scout
             </h1>
           </Link>

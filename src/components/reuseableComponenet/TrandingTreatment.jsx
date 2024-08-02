@@ -75,7 +75,7 @@ const treatments = [
 
 const TrandingTreatment = () => {
   return (
-    <div className="mx-auto py-20  font-raleway relative rounded-full border-0">
+    <div className="mx-auto py-10 md:py-20  font-raleway relative rounded-full border-0">
       <Image
         width={300}
         height={300}
@@ -85,19 +85,19 @@ const TrandingTreatment = () => {
       />
 
       <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-6xl font-thin "> Trending Treatments </h2>
+        <h2 className="text-5xl md:text-6xl font-thin "> Trending Treatments </h2>
         <p className="m-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
             faucibus.
         </p>
       </div>
 
-      <div className="my-16 z-50 container">
+      <div className="my-5 md:my-16 z-50 md:container mx-3">
         <Carousel
           opts={{ align: "start" }}
           className="w-full md:container md:ml-8 overflow-hidden"
         >
-          <CarouselContent className="flex space-x-4">
+          <CarouselContent className="flex md:space-x-4">
             {treatments.map((treatment, index) => (
               <CarouselItem
                 key={index}

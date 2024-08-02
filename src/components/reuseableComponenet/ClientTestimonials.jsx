@@ -50,10 +50,14 @@ const ClientTestimonials = () => {
   ];
 
   return (
-    <div className="mx-auto py-40 font-raleway bg-[#FEF5E3]">
-   
-        <h2 className="text-center text-darkMahron pb-5 text-4xl md:text-6xl font-thin"> Client Testimonials </h2>
- 
+    <div className="mx-auto py-24 md:py-40 font-raleway bg-[#FEF5E3]">
+   <div className="text-center text-darkMahron pb-5">
+        <h2 className="text-center text-darkMahron text-4xl md:text-6xl font-thin"> Client Testimonials </h2>
+        <p className="m-2 text-base md:text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
+            faucibus.
+        </p>
+   </div>
 
       <div className="pt-14 container flex flex-col items-center">
         <Carousel
@@ -66,8 +70,8 @@ const ClientTestimonials = () => {
           <CarouselContent>
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index}>
-                <div className="flex  justify-center items-center md:gap-5 gap-3">
-                  <div className="flex-shrink-0 md:w-full md:h-full md:max-w-60 md:max-h-96">
+                <div className="flex  justify-between items-center md:gap-5 gap-2">
+                  <div className="ml-3 md:ml-0 flex-shrink-0 md:w-full md:h-full md:max-w-60 md:max-h-96">
                     <Image
                       src={testimonial.image}
                       alt="testimonial"
@@ -76,7 +80,7 @@ const ClientTestimonials = () => {
                       className="object-cover w-full h-full"
                     />
                   </div>
-                  <div className="p-6 text-center md:text-left">
+                  <div className="p-2 md:p-6 text-left">
                     <h3 className="text-[#351120] text-3xl md:text-5xl font-bold pb-3">
                       {testimonial.name}
                     </h3>

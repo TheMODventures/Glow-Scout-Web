@@ -47,7 +47,7 @@ const SettingComponent = ({ type, details, reviews }) => {
   };
 
   return (
-    <div className={`flex flex-col items-center p-3 md:p-8 font-raleway`}>
+    <div className={`flex flex-col items-center  md:p-8 font-raleway`}>
     
       <div className="p-4 sm:p-8 my-10 mx-auto bg-white rounded-xl border-2 border-darkMahron max-w-full lg:max-w-4xl">
         <h1 className="text-3xl sm:text-5xl font-raleway font-thin mb-6 text-center text-darkMahron">

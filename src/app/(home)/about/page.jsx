@@ -19,7 +19,7 @@ const page = () => {
               imageAlt="Featured Blog"
             />
           </div>
-          <div className="flex justify-center items-start flex-col gap-4 p-5">
+          <div className="flex justify-center items-start flex-col gap-4 md:p-5">
             <h2 className="text-3xl md:text-4xl font-light text-darkMahron">
               What is Glow Scout?
             </h2>
@@ -36,7 +36,7 @@ const page = () => {
             </p>
           </div>
         </div>
-        <p className="px-6">
+        <p className="px-1 md:px-6">
           This About Us outlines the manner in which Glow Scout collects, uses,
           maintains, and discloses information gathered from users
           (&rdquo;you&rdquo; or &rdquo;your&rdquo;) of our website, products,
@@ -47,7 +47,7 @@ const page = () => {
     
 
       <div className="my-5">
-        <div className="p-6 text-darkMahron">
+        <div className="p-1 md:p-6 text-darkMahron">
           <div className="space-y-6">
             <div>
               <h2 className="font-semibold text-lg">

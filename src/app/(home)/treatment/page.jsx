@@ -246,7 +246,7 @@ const TreatmentPage = () => {
       </Container>
 
 
-      <div className="container my-5">
+      <div className="mx-2 md:mx-0 md:container my-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
           
           {dummyData.map((item, index) => (
@@ -258,7 +258,7 @@ const TreatmentPage = () => {
         </div>
       </div>
       
-     <div className="md:hidden flex justify-end items-end sticky bottom-3 left-3">
+      <div className="md:hidden flex justify-end items-end sticky bottom-3 mr-3">
   <Link href={'/compare-treatment'} className="py-1 px-4 bg-darkMahron text-white rounded-full shadow-md transform transition-transform hover:scale-105">
     Compare
   </Link>
