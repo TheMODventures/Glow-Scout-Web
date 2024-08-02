@@ -29,8 +29,8 @@ const CompareTreatments = () => {
           faucibus.
         </p>
       </div>
-      <div className="grid grid-cols-2 md:gap-8 w-full max-w-4xl">
-        <div className="flex flex-col items-center pr-2 md:pr-4 border-r-2 border-gray-200 col-span-1 ">
+      <div className="grid grid-cols-2 md:gap-8 w-full max-w-4xl h-full">
+        <div className="flex flex-col items-center pr-2 md:pr-4 border-r-2 border-gray-200 col-span-1 h-full">
           <div className="w-[100%] h-[25%] md:p-4 rounded-lg">
             <Image
               width={300}
@@ -43,21 +43,15 @@ const CompareTreatments = () => {
               Chemical Peels
             </h2>
           </div>
-          <div className="mt-20 md:mt-14 w-full h-[80%] p-3 border-2 border-darkMahron rounded-lg">
+          <div className="mt-20 md:mt-14 w-full h-[80%] p-3 border-2 border-darkMahron rounded-lg max-h-[300px] md:max-h-96">
             <h3 className="font-semibold text-darkMahron text-lg">Description</h3>
-            <p className="text-[] md:text-base mt-5 text-darkMahron">
+            <p className="text-[10px] md:text-lg mt-5 text-darkMahron">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
-              nibh faucibus.
-            </p>
-            <p className="hidden md:block text-base text-darkMahron">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
-              nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
-              nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
-              nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
-              nibh faucibus.
+              nibh faucibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
+              nibh faucibus. 
             </p>
           </div>
         </div>
