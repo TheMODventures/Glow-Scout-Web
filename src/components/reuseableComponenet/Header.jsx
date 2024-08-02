@@ -13,7 +13,7 @@ const Header = () => {
 
   const routes = [
     { href: "/", label: "Home" },
-    { href: "/treatment", label: "Treatments" },
+    { href: "/goals", label: "Goals" },
     { href: "/spas", label: "Spas" },
     { href: "/blog", label: "Blog" },
   ];
@@ -47,12 +47,12 @@ const Header = () => {
         </div>
 
         <div className="flex items-center">
-          <nav className="mx-6 items-center space-x-1 lg:space-x-16 hidden md:block font-bold">
+          <nav className="mx-6 items-center space-x-1 lg:space-x-16 hidden md:block font-normal">
             {routes.map((route, i) => (
               <button key={i}>
                 <Link
                   href={route.href}
-                  className="font-raleway text-[#351120] font-bold text-xl"
+                  className="font-raleway text-[#351120] font-normal text-xl"
                 >
                   {route.label}
                 </Link>
@@ -87,7 +87,7 @@ const Header = () => {
                     {dropDownData.map((item, i) => (
                       <div key={i} className="">
                         <Link href={item.href}>
-                          <button className="w-full text-start px-1 py-2 text-lg text-darkMahron bg-transparent shadow-none hover:ring-0 hover:rounded-md hover:bg-gray-100 focus:outline-none">
+                          <button className="w-full text-start px-1 py-2 text-lg font-normal text-darkMahron bg-transparent shadow-none hover:ring-0 hover:rounded-md hover:bg-gray-100 focus:outline-none">
                             {item.label}
                           </button>
                         </Link>
