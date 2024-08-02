@@ -68,8 +68,8 @@ const data = [
                 <p className="text-lg font-semibold text-darkMahron font-raleway my-2">Unleash the power of automation.</p>
                 <div className="list-disc list-inside text-darkMahron mb-4">
                   {
-                    data.map((items)=>(
-                      <div className="flex justify-start items-start gap-1">
+                    data.map((items, key )=>(
+                      <div key={key} className="flex justify-start items-start gap-1">
                         <div className="text-sm">{items.icon}</div>
                         <p className="text-sm font-normal">{items.label}</p>
                       </div>
@@ -88,8 +88,8 @@ const data = [
                 <p className="text-lg font-semibold text-darkMahron font-raleway my-2">Unleash the power of automation.</p>
                 <div className="list-disc list-inside text-darkMahron mb-4">
                 {
-                    data.map((items)=>(
-                      <div className="flex justify-start items-start gap-1">
+                    data.map((items, key )=>(
+                      <div key={key} className="flex justify-start items-start gap-1">
                         <div className="text-sm">{items.icon}</div>
                         <p className="text-sm font-normal">{items.label}</p>
                       </div>
@@ -108,8 +108,8 @@ const data = [
                 <p className="text-lg font-semibold text-darkMahron font-raleway my-2">Unleash the power of automation.</p>
                 <div className="list-disc list-inside text-darkMahron mb-4">
                 {
-                    data.map((items)=>(
-                      <div className="flex justify-start items-start gap-1">
+                    data.map((items, key)=>(
+                      <div key={key} className="flex justify-start items-start gap-1">
                         <div className="text-sm">{items.icon}</div>
                         <p className="text-sm font-normal">{items.label}</p>
                       </div>
