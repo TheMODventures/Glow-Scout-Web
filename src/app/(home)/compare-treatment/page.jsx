@@ -23,8 +23,8 @@ const CompareTreatments = () => {
     <div className="flex flex-col items-center px-3 md:px-8 py-10 ">
       
       <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-6xl font-normal">Treatments </h2>
-        <p className="m-2 text-sm md:text-lg font-light">
+        <h2 className="text-4xl md:text-6xl font-normal font-raleway">Treatments </h2>
+        <p className="m-2 text-sm md:text-lg font-light font-raleway">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
@@ -39,13 +39,13 @@ const CompareTreatments = () => {
               alt="Chemical Peels"
               className="w-full h-full object-cover rounded-lg mb-2"
             />
-            <h2 className="text-lg md:text-3xl font-medium text-darkMahron text-left">
+            <h2 className="text-lg md:text-3xl font-medium text-darkMahron font-raleway text-left">
               Chemical Peels
             </h2>
           </div>
           <div className="mt-20 md:mt-14 w-full h-[80%] p-3 border-2 border-darkMahron rounded-lg max-h-[300px] md:max-h-96">
-            <h3 className="font-semibold text-darkMahron text-lg">Description</h3>
-            <p className="text-[10px] md:text-lg mt-5 text-darkMahron">
+            <h3 className="font-semibold text-darkMahron font-raleway text-lg">Description</h3>
+            <p className="text-[10px] md:text-lg font-raleway mt-5 text-darkMahron">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
               nibh faucibus. Lorem ipsum dolor sit amet, consectetur elit. Ut ut
@@ -61,14 +61,14 @@ const CompareTreatments = () => {
             <div className="mb-2">
               <Add />
             </div>
-            <p className="text-sm md:ext-base font-thin text-darkMahron">
+            <p className="text-sm md:ext-base font-raleway font-thin text-darkMahron">
               Select Treatment to compare
             </p>
           </div>
         </div>
       </div>
 
-      <button className="mt-8 px-6 py-2 bg-darkMahron text-white text-lg font-semibold rounded-full">
+      <button className="mt-8 px-6 py-2 font-raleway bg-darkMahron text-white text-lg font-semibold rounded-full">
         Next
       </button>
       
