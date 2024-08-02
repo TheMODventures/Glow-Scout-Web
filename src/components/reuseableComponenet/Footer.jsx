@@ -16,7 +16,7 @@ const Footer = () => {
               </div>
               <div className="flex flex-col md:flex-row  md:space-y-0 md:space-x-24 font-raleway text-center text-lighttext">
                 <div>
-                  <h3 className="font-semibold mb-2 text-xl">Quick Links</h3>
+                  <h3 className="font-semibold mb-2 text-lg md:text-xl">Quick Links</h3>
                   <ul className="space-y-2 py-2">
                     <li>
                       <Link href="/" className="hover:underline text-base md:text-lg">
@@ -63,7 +63,7 @@ const Footer = () => {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-semibold mt-2 md:mt-0 mb-2 text-xl">Follow Us</h3>
+                  <h3 className="font-semibold mt-2 md:mt-0 mb-2 text-lg md:text-xl">Follow Us</h3>
                   <ul className="space-y-2  py-2">
                     <li>
                       <Link href="#" className="hover:underline text-base md:text-lg">

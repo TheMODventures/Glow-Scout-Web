@@ -62,7 +62,7 @@ const AuthCommon = ({ params }) => {
         className="absolute rotate-[60deg] opacity-50 top-[-150px] left-0 border-none rounded-xl hidden md:block"
       />
       <div className="bg-[#351120] text-lighttext px-20 py-16 md:py-28 md:w-1/2 flex flex-col justify-center">
-        <h1 className="text-3xl md:text-6xl font-thin mb-4 font-raleway">
+        <h1 className="text-2xl md:text-6xl font-thin mb-4 font-raleway">
           REVEAL YOUR <br />
           BEAUTY WITH
         </h1>

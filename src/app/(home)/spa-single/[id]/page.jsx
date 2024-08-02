@@ -107,7 +107,7 @@ const SpaSingle = ({ params }) => {
     <div className=" font-raleway mx-auto px-4 max-w-screen-2xl">
       <VisitSpa />
 
-      <div className="py-6 font-raleway md:pb-36 border-b border-darkMahron">
+      <div className="py-4 font-raleway md:pb-36 border-b border-darkMahron">
         <div className="text-center text-darkMahron pb-5">
           <h2 className="text-4xl md:text-6xl font-thin">
             {" "}
@@ -130,11 +130,11 @@ const SpaSingle = ({ params }) => {
 
       <div className="py-6 md:mt-6 font-raleway">
         <div className="text-center pb-5">
-          <h2 className="text-4xl md:text-6xl font-raleway  text-darkMahron ">
+          <h2 className="text-4xl md:text-6xl font-raleway font-semibold  text-darkMahron ">
             Reviews
           </h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-5 mt-5">
+        <div className="grid md:grid-cols-2 gap-5 mt-2 md:mt-5">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
@@ -149,7 +149,7 @@ const SpaSingle = ({ params }) => {
                   className="block md:hidden w-40 h-56 rounded-xl object-cover mb-4 md:mb-0"
                 />
                 <div className="px-6 py-3">
-                  <h3 className="text-darkMahron md:text-5xl text-xl font-bold md:pb-3 pb-1">
+                  <h3 className="text-darkMahron md:text-5xl text-2xl font-bold md:pb-3 pb-1">
                     {testimonial.name}
                   </h3>
                   <p className="md:py-3 w-full md:w-[550px] md:text-xl text-[12px] font-normal">
@@ -196,24 +196,25 @@ const SpaSingle = ({ params }) => {
           <div className="pb-10">
             <h2 className="text-5xl">Add your review</h2>
           </div>
-          <div className="flex justify-between items-center gap-4">
-            <Input
-              placeholder="Write your review here....."
-              className="border-b text-xl border-darkMahron w-full md:min-w-[1024px] "
-            />
-            <div className="flex flex-col">
-              <p className="text-lg text-darkMahron">Ratings</p>
-              <div className="flex gap-2 justify-center">
-                {Array.from({ length: 5 }, (_, starIndex) => (
-                  <Star1
-                    key={starIndex}
-                    filled={starIndex < localReviews[0].rating}
-                    onClick={() => handleStarClick(0, starIndex)}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+  <Input
+    placeholder="Write your review here....."
+    className="border-b text-xl border-darkMahron w-full md:w-auto md:min-w-[1024px]"
+  />
+  <div className="flex flex-row items-center">
+    <p className="text-lg text-darkMahron mr-2 mb-2">Ratings</p>
+    <div className="flex gap-2">
+      {Array.from({ length: 5 }, (_, starIndex) => (
+        <Star1
+          key={starIndex}
+          filled={starIndex < localReviews[0].rating}
+          onClick={() => handleStarClick(0, starIndex)}
+        />
+      ))}
+    </div>
+  </div>
+</div>
+
         </div>
       </div>
     </div>

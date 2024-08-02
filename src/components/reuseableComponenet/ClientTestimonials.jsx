@@ -59,7 +59,7 @@ const ClientTestimonials = () => {
         </p>
    </div>
 
-      <div className="pt-14 container flex flex-col items-center">
+      <div className="pt-8 container flex flex-col items-center">
         <Carousel
           opts={{ align: "start" }}
           className=" md:w-[600px] lg:w-[700px] w-screen mx-2"

@@ -184,7 +184,7 @@ const TreatmentPage = () => {
        
       <div className="text-center text-darkMahron pb-5">
         <h2 className="text-4xl md:text-6xl font-thin">Treatments</h2>
-        <p className="m-2 text-lg">
+        <p className="m-2 text-sm md:text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
