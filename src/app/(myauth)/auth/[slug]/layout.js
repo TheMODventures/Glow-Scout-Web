@@ -1,7 +1,7 @@
 import "@/app/globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import localFont from "next/font/local";
-
+import ReduxProvider from "@/app/ReduxProvider";
 const valky = localFont({
   src: [
     {
@@ -35,10 +35,10 @@ export default function RootLayout({ children }) {
       className={`${valky.variable} ${raleway.variable} font-sans`}
     >
       <body>
-        <div>
+        <ReduxProvider>
           {children}
           <Toaster />
-        </div>
+        </ReduxProvider>
       </body>
     </html>
   );

@@ -3,7 +3,7 @@ import BusinessHeader from "@/components/helper/businessDashboard/BusinessHeader
 import { Toaster } from "@/components/ui/toaster";
 import localFont from "next/font/local";
 import Image from "next/image";
-
+import ReduxProvider from "@/app/ReduxProvider";
 const valky = localFont({
   src: [
     {
@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
       className={`${valky.variable} ${raleway.variable} font-sans`}
     >
       <body>
-        <div>
+        <ReduxProvider>
           <BusinessHeader />
           <Image
             width={300}
@@ -57,7 +57,7 @@ export default function RootLayout({ children }) {
             style={{ zIndex: -1 }}
           />
           <Toaster />
-        </div>
+        </ReduxProvider>
       </body>
     </html>
   );

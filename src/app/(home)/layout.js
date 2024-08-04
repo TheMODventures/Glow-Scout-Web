@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import Header from "@/components/reuseableComponenet/Header";
 import Footer from "@/components/reuseableComponenet/Footer";
 import Image from "next/image";
+import ReduxProvider from "@/app/ReduxProvider";
 
 const valky = localFont({
   src: [
@@ -38,28 +39,28 @@ export default function RootLayout({ children }) {
       className={`${valky.variable} ${raleway.variable} font-sans`}
     >
       <body>
-        <Header />
-        <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-1.png"}
-        className="absolute top-24 right-0 z-1 hidden md:block"
-        style={{ zIndex: -1 }}
-      />
-      <div className="relative z-10">
-        {children}
-        </div>
-        <Image
-        width={300}
-        height={300}
-        alt="bg"
-        src={"/images/shadow-2.png"}
-        className="absolute -bottom-56 left-0 z-1 hidden md:block"
-        style={{ zIndex: -1 }}
-      />
-        <Footer />
-        <Toaster />
+        <ReduxProvider>
+          <Header />
+          <Image
+            width={300}
+            height={300}
+            alt="bg"
+            src={"/images/shadow-1.png"}
+            className="absolute top-24 right-0 z-1 hidden md:block"
+            style={{ zIndex: -1 }}
+          />
+          <div className="relative z-10">{children}</div>
+          <Image
+            width={300}
+            height={300}
+            alt="bg"
+            src={"/images/shadow-2.png"}
+            className="absolute -bottom-56 left-0 z-1 hidden md:block"
+            style={{ zIndex: -1 }}
+          />
+          <Footer />
+          <Toaster />
+        </ReduxProvider>
       </body>
     </html>
   );

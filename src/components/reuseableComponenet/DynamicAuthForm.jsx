@@ -4,12 +4,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import SignupFormField from "./InputFormField";
-
+import { useRouter } from 'next/navigation';
+import { setUser, setStatus, setError } from '@/redux/auth/authSlice';
 const DynamicAuthForm = ({
   formType,
   title,
@@ -20,27 +20,51 @@ const DynamicAuthForm = ({
   btnLink,
 }) => {
   const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm({
     resolver: zodResolver(schema),
-    defaultValues:
-      formType === "login"
-        ? { email: "", password: "" }
-        : { email: "" },
+    defaultValues: {
+      name: "",
+      email: "",
+      password: ""
+    },
   });
 
-  function handleSubmit(data) {
-    onSubmit(data);
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
+  async function handleSubmit(data) {
+    try {
+      console.log('User Input:', data); // Print user input
+      dispatch(setStatus('loading'));
+      const response = await onSubmit(data);
+      console.log('API Response:', response.data); // Print API response
 
+      dispatch(setUser(response.data));
+      dispatch(setStatus('succeeded'));
+
+      toast({
+        title: "Success",
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+            <code className="text-white">{JSON.stringify(response.data, null, 2)}</code>
+          </pre>
+        ),
+      });
+
+      router.push(btnLink);  // Redirect on success
+    } catch (error) {
+      console.error('API call error:', error);
+      dispatch(setError(error));
+      dispatch(setStatus('failed'));
+      toast({
+        title: "Error",
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md bg-red-500 p-4">
+            <code className="text-white">{JSON.stringify(error.response?.data || error.message, null, 2)}</code>
+          </pre>
+        ),
+      });
+    }
+  }
   return (
     <div className="flex flex-col items-center justify-center px-4 md:px-0">
       <h3 className="py-4 text-[#351120] text-3xl mb-4">{title}</h3>
@@ -85,8 +109,8 @@ const DynamicAuthForm = ({
           )}
           <SignupFormField
             name="email"
-            placeholder="Email"
-            formControl={form.control}
+              placeholder="Email"
+              formControl={form.control}
           />
           {["signup", "login"].includes(formType) && (
             <SignupFormField
@@ -105,7 +129,7 @@ const DynamicAuthForm = ({
             </div>
           )}
           <div className="flex justify-center items-center">
-          <Link href={btnLink}>
+            {/* <Link href={btnLink}> */}
             <Button
               type="submit"
               variant="myCustom"
@@ -118,7 +142,7 @@ const DynamicAuthForm = ({
                 ? "Sign Up"
                 : "Send Code"}
             </Button>
-            </Link>
+            {/* </Link/> */}
           </div>
         </form>
       </Form>

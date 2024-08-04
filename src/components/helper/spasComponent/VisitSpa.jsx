@@ -90,6 +90,7 @@ const VisitSpa = () => {
               >
                 Visit Website
               </Button>
+              <Link href={'/appointment'}>
               <Button
                 type="button"
                 variant="myCustom"
@@ -98,6 +99,7 @@ const VisitSpa = () => {
               >
                 Book Now
               </Button>
+              </Link>
             </div>
           </Card>
         </div>

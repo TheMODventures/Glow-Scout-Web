@@ -7,6 +7,43 @@ import SettingComponent from "@/components/reuseableComponenet/Setting";
 const Page = () => {
   const [activeTab, setActiveTab] = useState("analytics");
 
+  const [details, setDetails] = useState([
+    { placeholder: "Enter Spa name", value:  "" },
+    { placeholder: "Enter address", value: "" , icon: 'location'},
+  ]);
+
+  const [contactDetail, setContactDetail] = useState([
+    { placeholder: "Mobile/Telephone", value: "" },
+    { placeholder: "Facebook handle", value: "" },
+    { placeholder: "Email address", value:  "" },
+    { placeholder: "Instagram handle", value: "" },
+    { placeholder: "Alternate Email address", value: "" },
+    { placeholder: "Snapchat handle", value: "" },
+  ]);
+
+  const handleDetailsChange = (index, value) => {
+    setDetails((prevDetails) =>
+      prevDetails.map((detail, i) =>
+        i === index ? { ...detail, value } : detail
+      )
+    );
+    // console.log(details);
+    
+  };
+
+  const handleContactDetailChange = (index, value) => {
+    setContactDetail((prevContactDetail) =>
+      prevContactDetail.map((contact, i) =>
+        i === index ? { ...contact, value } : contact
+      )
+    );
+    // console.log(contactDetail);
+    
+  };
+  const handleSave = () =>{
+    console.log(details);
+    console.log(contactDetail);
+  }
   const renderContent = () => {
     switch (activeTab) {
       case "analytics":
@@ -17,10 +54,11 @@ const Page = () => {
         return (
           <SettingComponent
             type="business"
-            details={[
-              { placeholder: "Enter Spa name" },
-              { placeholder: "Enter address" },
-            ]}
+            details={details}
+              contactDetail={contactDetail}
+              onDetailsChange={handleDetailsChange}
+              onContactDetailChange={handleContactDetailChange}
+              saveBtnFunc = {handleSave}
           />
         );
       default:

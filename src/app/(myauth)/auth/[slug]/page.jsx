@@ -1,10 +1,9 @@
-// auth/page.js
-
 "use client";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import DynamicAuthForm from "@/components/reuseableComponenet/DynamicAuthForm";
 import { LoginSchema, SignupSchema, ForgotSchema } from "@/validation/auth.validation";
+import axiosInstance from '@/axiosInstance';
 
 const AuthCommon = ({ params }) => {
   const slug = params.slug;
@@ -16,8 +15,8 @@ const AuthCommon = ({ params }) => {
       schema: SignupSchema,
       linkText: "Are you a business? ",
       linkHref: "/auth/business",
-      onSubmit: (data) => console.log("User Signup:", data),
-      btnLink: "/setting",
+      onSubmit: (data) => axiosInstance.post('/auth/register', { ...data, role: 'user', loginType: 'EMAIL_PASSWORD' },{withCredentials:true}),
+      btnLink: "/auth/login",
     },
     "business": {
       formType: "signup",
@@ -25,7 +24,7 @@ const AuthCommon = ({ params }) => {
       schema: SignupSchema,
       linkText: "Are you a user? ",
       linkHref: "/auth/user",
-      onSubmit: (data) => console.log("Business Signup:", data),
+      onSubmit: (data) => axiosInstance.post('/auth/register', { ...data, role: 'business', loginType: 'EMAIL_PASSWORD' },{withCredentials:true}),
       btnLink: "/pricing",
     },
     "login": {
@@ -34,7 +33,7 @@ const AuthCommon = ({ params }) => {
       schema: LoginSchema,
       linkText: "Forgot password? ",
       linkHref: "/auth/forgot-password",
-      onSubmit: (data) => console.log("Login:", data),
+      onSubmit: (data) => axiosInstance.post('/auth/login', data,{withCredentials:true}),
       btnLink: "/setting",
     },
     "forgot-password": {
@@ -43,7 +42,7 @@ const AuthCommon = ({ params }) => {
       schema: ForgotSchema,
       linkText: null,
       linkHref: null,
-      onSubmit: (data) => console.log("Forgot Password:", data),
+      onSubmit: (data) => axiosInstance.post('/auth/otp', data),
       btnLink: "/auth/user",
     },
   };

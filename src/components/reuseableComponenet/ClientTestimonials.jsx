@@ -71,7 +71,7 @@ const ClientTestimonials = () => {
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index}>
                 <div className="flex  justify-between items-center md:gap-5 gap-2">
-                  <div className="ml-3 md:ml-0 flex-shrink-0 md:w-full md:h-full md:max-w-60 md:max-h-96">
+                  <div className="ml-3 md:ml-0 flex-shrink-0 w-40 h-56 md:w-full md:h-full md:max-w-60 md:max-h-96">
                     <Image
                       src={testimonial.image}
                       alt="testimonial"
