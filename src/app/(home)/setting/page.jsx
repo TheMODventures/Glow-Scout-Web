@@ -4,8 +4,11 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "@/redux/auth/authSlice";
 import axiosInstance from "@/axiosInstance";
+import { useToast } from "@/components/ui/use-toast";
+
 const Setting = () => {
   const user = useSelector(selectUser);
+  const { toast } = useToast();
   const [userUpdateData, setUserUpdateData] = useState({
     name: "",
     city: "",
@@ -32,6 +35,10 @@ const Setting = () => {
     { placeholder: "Snapchat handle", value: "" },
   ]);
 
+  const nameRegex = /^[A-Za-z\s]+$/;
+  const phoneRegex = /^\d{1,12}$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   const handleDetailsChange = (index, value) => {
     const newDetails = details.map((detail, i) =>
       i === index ? { ...detail, value } : detail
@@ -40,7 +47,21 @@ const Setting = () => {
 
     const updatedData = { ...userUpdateData };
     if (index === 0) {
-      updatedData.name = value;
+      if (nameRegex.test(value)) {
+        updatedData.name = value;
+      } else {
+        toast({
+          title: <p className="text-red-500 text-xl ">Error</p>,
+          description: (
+            <div className="mt-2 w-[280px] rounded-md  border-2 border-red-500 p-2">
+              <p className="text-red-500 text-lg text-center">
+                Invalid name. Only letters and spaces are allowed.
+              </p>
+            </div>
+          ),
+        });
+        return;
+      }
     } else if (index === 1) {
       updatedData.city = value;
     }
@@ -55,16 +76,81 @@ const Setting = () => {
 
     const updatedData = { ...userUpdateData };
     if (index === 0) {
-      updatedData.phone = value;
+      if (phoneRegex.test(value)) {
+        updatedData.phone = value;
+      } else {
+        toast({
+          title: <p className="text-red-500 text-xl ">Error</p>,
+          description: (
+            <div className="mt-2 w-[280px] rounded-md  border-2 border-red-500 p-2">
+              <p className="text-red-500 text-lg text-center">
+                Invalid phone number. Must be numeric and a maximum of 12
+                digits.
+              </p>
+            </div>
+          ),
+        });
+
+        return;
+      }
     } else if (index === 2) {
-      updatedData.email = value;
+      if (emailRegex.test(value)) {
+        updatedData.email = value;
+      } else {
+        toast({
+          title: <p className="text-red-500 text-xl ">Error</p>,
+          description: (
+            <div className="mt-2 w-[280px] rounded-md  border-2 border-red-500 p-2">
+              <p className="text-red-500 text-lg text-center">
+                Invalid email address.
+              </p>
+            </div>
+          ),
+        });
+
+        return;
+      }
     } else if (index === 4) {
-      updatedData.alternateEmail = value;
+      if (emailRegex.test(value)) {
+        updatedData.alternateEmail = value;
+      } else {
+        toast({
+          title: <p className="text-red-500 text-xl ">Error</p>,
+          description: (
+            <div className="mt-2 w-[280px] rounded-md  border-2 border-red-500 p-2">
+              <p className="text-red-500 text-lg text-center">
+                Invalid alternate email address.
+              </p>
+            </div>
+          ),
+        });
+        return;
+      }
     }
     setUserUpdateData(updatedData);
   };
 
   const handleSave = async () => {
+    if (
+      userUpdateData.name.trim() === "" ||
+      userUpdateData.city.trim() === "" ||
+      userUpdateData.phone.trim() === "" ||
+      userUpdateData.email.trim() === "" ||
+      userUpdateData.alternateEmail.trim() === "" ||
+      userUpdateData.profileImage === ""
+    ) {
+      toast({
+        title: <p className="text-red-500 text-xl ">Error</p>,
+        description: (
+          <div className="mt-2 w-[280px] rounded-md  border-2 border-red-500 p-2">
+            <p className="text-red-500 text-lg text-center">
+              All fields must be filled out.
+            </p>
+          </div>
+        ),
+      });
+      return;
+    }
     try {
       const formData = new FormData();
       formData.append("name", userUpdateData.name);
@@ -75,20 +161,20 @@ const Setting = () => {
       if (userUpdateData.profileImage) {
         formData.append("profileImage", userUpdateData.profileImage);
       }
-  
+
       const response = await axiosInstance.put("/users/update", formData, {
-        withCredentials: true, 
+        withCredentials: true,
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-  
+
       console.log("API Response: ", response.data);
     } catch (error) {
       console.error("Error:", error);
     }
   };
-  
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {

@@ -9,13 +9,15 @@ import { cn } from "@/lib/utils"
 const ToastProvider = ToastPrimitives.Provider
 
 const ToastViewport = React.forwardRef(({ className, ...props }, ref) => (
-  <ToastPrimitives.Viewport
-    ref={ref}
-    className={cn(
-      "fixed top-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:bottom-0 sm:right-0 sm:top-auto sm:flex-col md:max-w-[420px]",
-      className
-    )}
-    {...props} />
+<ToastPrimitives.Viewport
+  ref={ref}
+  className={cn(
+    "fixed top-0 right-0 z-[100] flex max-h-screen w-full flex-col p-4 sm:w-auto md:max-w-[420px]",
+    className
+  )}
+  {...props}
+/>
+
 ))
 ToastViewport.displayName = ToastPrimitives.Viewport.displayName
 
@@ -73,7 +75,7 @@ ToastClose.displayName = ToastPrimitives.Close.displayName
 const ToastTitle = React.forwardRef(({ className, ...props }, ref) => (
   <ToastPrimitives.Title
     ref={ref}
-    className={cn("text-sm font-semibold [&+div]:text-xs", className)}
+    className={cn("text-xl font-semibold [&+div]:text-xs", className)}
     {...props} />
 ))
 ToastTitle.displayName = ToastPrimitives.Title.displayName

@@ -37,17 +37,17 @@ const DynamicAuthForm = ({
       console.log('User Input:', data); // Print user input
       dispatch(setStatus('loading'));
       const response = await onSubmit(data);
-      console.log('API Response:', response); // Print API response
-      localStorage.setItem("accessToken",response.data.accessToken);
+      console.log('API Response:', response.data); // Print API response
+      localStorage.setItem("accessToken",response.data.data.accessToken);
       dispatch(setUser(response.data.data.user));
       dispatch(setStatus('succeeded'));
 
       toast({
-        title: "Success",
+        title: (<p className="text-darkMahron text-xl">Success</p>),
         description: (
-          <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-            <code className="text-white">{JSON.stringify(response.data, null, 2)}</code>
-          </pre>
+          <div className="mt-2 w-[340px] rounded-md border-2 border-darkMahron  p-2">
+            <p className="text-darkMahron text-lg text-center">{JSON.stringify(response.data.message, null, 2)}</p>
+          </div>
         ),
       });
 
@@ -57,11 +57,11 @@ const DynamicAuthForm = ({
       dispatch(setError(error));
       dispatch(setStatus('failed'));
       toast({
-        title: "Error",
+        title: (<p className="text-red-500 text-xl">Error</p>),
         description: (
-          <pre className="mt-2 w-[340px] rounded-md bg-red-500 p-4">
-            <code className="text-white">{JSON.stringify(error.response?.data || error.message, null, 2)}</code>
-          </pre>
+          <div className="mt-2 w-[340px] rounded-md  border-2 border-red-500 p-2">
+            <p className="text-red-500 text-lg text-center">Invalid Credentials</p>
+          </div>
         ),
       });
     }
