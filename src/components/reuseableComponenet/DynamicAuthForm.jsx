@@ -10,6 +10,7 @@ import { useToast } from "@/components/ui/use-toast";
 import SignupFormField from "./InputFormField";
 import { useRouter } from 'next/navigation';
 import { setUser, setStatus, setError } from '@/redux/auth/authSlice';
+import { useDispatch } from "react-redux";
 const DynamicAuthForm = ({
   formType,
   title,
@@ -21,7 +22,7 @@ const DynamicAuthForm = ({
 }) => {
   const { toast } = useToast();
   const router = useRouter();
-
+  const dispatch = useDispatch();
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -36,9 +37,9 @@ const DynamicAuthForm = ({
       console.log('User Input:', data); // Print user input
       dispatch(setStatus('loading'));
       const response = await onSubmit(data);
-      console.log('API Response:', response.data); // Print API response
-
-      dispatch(setUser(response.data));
+      console.log('API Response:', response); // Print API response
+      localStorage.setItem("accessToken",response.data.accessToken);
+      dispatch(setUser(response.data.data.user));
       dispatch(setStatus('succeeded'));
 
       toast({

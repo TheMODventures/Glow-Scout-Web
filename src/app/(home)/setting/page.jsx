@@ -72,21 +72,23 @@ const Setting = () => {
       formData.append("phone", userUpdateData.phone);
       formData.append("email", userUpdateData.email);
       formData.append("alternateEmail", userUpdateData.alternateEmail);
-
       if (userUpdateData.profileImage) {
         formData.append("profileImage", userUpdateData.profileImage);
       }
-
+  
       const response = await axiosInstance.put("/users/update", formData, {
-        withCredentials: true,
-        headers: { "Content-Type": "multipart/form-data" },
+        withCredentials: true, 
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
-
+  
       console.log("API Response: ", response.data);
     } catch (error) {
       console.error("Error:", error);
     }
   };
+  
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
