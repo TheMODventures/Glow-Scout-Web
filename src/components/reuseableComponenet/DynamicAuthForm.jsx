@@ -60,7 +60,7 @@ const DynamicAuthForm = ({
         title: (<p className="text-red-500 text-xl">Error</p>),
         description: (
           <div className="mt-2 w-[340px] rounded-md  border-2 border-red-500 p-2">
-            <p className="text-red-500 text-lg text-center">Invalid Credentials</p>
+            <p className="text-red-500 text-lg text-center">Something Went Wrong</p>
           </div>
         ),
       });
