@@ -37,11 +37,11 @@ const DynamicAuthForm = ({
       console.log('User Input:', data); // Print user input
       dispatch(setStatus('loading'));
       const response = await onSubmit(data);
-      console.log('API Response:', response.data); // Print API response
-      localStorage.setItem("accessToken",response.data.data.accessToken);
+      console.log('API Response:', response); // Print API response
+      localStorage.setItem("accessToken", response.data.data.accessToken);
       dispatch(setUser(response.data.data.user));
       dispatch(setStatus('succeeded'));
-
+  
       toast({
         title: (<p className="text-darkMahron text-xl">Success</p>),
         description: (
@@ -50,11 +50,14 @@ const DynamicAuthForm = ({
           </div>
         ),
       });
-
-      router.push(btnLink);  // Redirect on success
+  if (formType === "login"&&response.data.data.user.role === 'business' ) {
+    router.push('/pricing');
+  }else{
+    router.push(btnLink);  // Redirect on success
+  }
     } catch (error) {
       console.error('API call error:', error);
-      dispatch(setError(error));
+      dispatch(setError(error.message)); // Ensure dispatching only serializable data
       dispatch(setStatus('failed'));
       toast({
         title: (<p className="text-red-500 text-xl">Error</p>),
@@ -66,6 +69,7 @@ const DynamicAuthForm = ({
       });
     }
   }
+  
   return (
     <div className="flex flex-col items-center justify-center px-4 md:px-0">
       <h3 className="py-4 text-[#351120] text-3xl mb-4">{title}</h3>
