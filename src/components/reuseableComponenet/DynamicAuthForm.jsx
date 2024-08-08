@@ -39,7 +39,10 @@ const DynamicAuthForm = ({
       const response = await onSubmit(data);
       console.log("API Response:", response); // Print API response
       localStorage.setItem("accessToken", response.data.data.accessToken);
-      localStorage.setItem("id", response.data.data.user._id);
+      if (formType === "login") {
+        localStorage.setItem("id", response.data.data.user._id);
+      }
+
       dispatch(setUser(response.data.data.user));
       dispatch(setStatus("succeeded"));
 
@@ -55,11 +58,8 @@ const DynamicAuthForm = ({
           </div>
         ),
       });
-      if (formType === "login" && response.data.data.user.role === "business") {
-        router.push("/pricing");
-      } else {
         router.push(btnLink);  // Redirect on success
-      }
+
     } catch (error) {
       console.error("API call error:", error);
       dispatch(setError(error.message)); // Ensure dispatching only serializable data
@@ -71,7 +71,7 @@ const DynamicAuthForm = ({
               X
             </p>
             <p className="text-white text-base text-center">
-              {JSON.stringify(error.response.data.message, null, 2)}
+              {JSON.stringify(error.response.data.message, null, 2) || JSON.stringify(error.response.message, null, 2)}
             </p>
           </div>
         ),

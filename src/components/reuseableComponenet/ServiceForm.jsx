@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import axiosInstance from "@/axiosInstance";
 
 const Add = () => {
   return (
@@ -122,7 +123,7 @@ const ServiceForm = ({ isEdit, initialData }) => {
                     objectFit="cover"
                     className="absolute rounded-md inset-0 w-full h-full object-cover opacity-70"
                   />
-                  <input onChange={handleFileChange} value={updateTreatmentData.image} type="file" className="hidden" />
+                  <input onChange={handleFileChange} type="file" className="hidden" />
                 </>
               ) : (
                 <div className="bg-gray-100 flex justify-center items-center border-2 border-darkMahron rounded-lg h-40 w-full max-w-[300px]">
@@ -130,7 +131,6 @@ const ServiceForm = ({ isEdit, initialData }) => {
                     <Add />
                     <span className="text-darkMahron">Add Image</span>
                     <input
-                      value={updateTreatmentData.image}
                       onChange={handleFileChange}
                       type="file"
                       className="hidden"
@@ -144,7 +144,6 @@ const ServiceForm = ({ isEdit, initialData }) => {
                     <EditImageIcon />
                     <span className="text-black">Edit Image</span>
                     <input
-                      value={updateTreatmentData.image}
                       type="file"
                       className="hidden"
                     />
