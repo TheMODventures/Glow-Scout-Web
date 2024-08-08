@@ -1,7 +1,7 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import {useRouter} from "next/navigation";
 const CheckIcon = () => {
   return (
       <svg
@@ -20,12 +20,19 @@ const CheckIcon = () => {
   );
 };
 const PlanAndPricing = () => {
+  const router = useRouter();
   const [isMonthly, setIsMonthly] = useState(true);
+  const [selectedPlan, setSelectedPlan] = useState('platinum'); 
 const data = [
   {icon: <CheckIcon/>, label: "Lorem Ipsum"},
   {icon: <CheckIcon/>, label: "Lorem Ipsum"},
   {icon: <CheckIcon/>, label: "Lorem Ipsum"},
 ]
+const handleNext = () =>{
+  if (selectedPlan) {
+    router.push(`/business-dashboard/1`)
+  }
+}
   return (
     <div className="mx-auto min-h-screen font-raleway relative px-4">
       
@@ -41,20 +48,10 @@ const data = [
           <div className="bg-white border-2 border-darkMahron rounded-lg px-4 py-5 md:px-16">
             <div className="flex justify-center md:justify-end mb-4">
               <div className="flex border-2 border-gray-300 rounded-full p-1">
-                <button
-                  onClick={() => setIsMonthly(true)}
-                  className={`px-4 py-1 rounded-full ${
-                    isMonthly ? "bg-darkMahron text-white" : "text-gray-800"
-                  }`}
-                >
+                <button onClick={() => setIsMonthly(true)} className={`px-4 py-1 rounded-full ${isMonthly ? "bg-darkMahron text-white" : "text-gray-800"}`}>
                   Monthly
                 </button>
-                <button
-                  onClick={() => setIsMonthly(false)}
-                  className={`px-4 py-1 rounded-full ${
-                    !isMonthly ? "bg-darkMahron text-white" : "text-gray-800"
-                  }`}
-                >
+                <button onClick={() => setIsMonthly(false)} className={`px-4 py-1 rounded-full ${!isMonthly ? "bg-darkMahron text-white" : "text-gray-800"}`}>
                   Annual
                 </button>
               </div>
@@ -76,8 +73,8 @@ const data = [
                     ))
                   }
                 </div>
-                <button className="bg-transparent block md:hidden ml-3 text-darkMahron border-2 font-bold border-darkMahron p-2 rounded-full w-full">
-                  Choose Plan
+                <button onClick={()=>setSelectedPlan('silver')} className={` block md:hidden ml-3 text-darkMahron border-2 font-bold border-darkMahron p-2 rounded-full w-full ${selectedPlan === "silver" ? "bg-darkMahron text-white" : "bg-transparent text-darkMahron" }`}>
+                {selectedPlan === "silver"? "Selected" : "Choose Plan"}
                 </button>
               </div>
               <div className="bg-white md:border-l border-darkMahron p-4">
@@ -96,8 +93,8 @@ const data = [
                     ))
                   }
                 </div>
-                <button className="bg-transparent block md:hidden ml-3 text-darkMahron border-2 font-bold border-darkMahron p-2 rounded-full w-full">
-                  Choose Plan
+                <button onClick={()=>setSelectedPlan('gold')} className={` block md:hidden ml-3 text-darkMahron border-2 font-bold border-darkMahron p-2 rounded-full w-full ${selectedPlan === "gold" ? "bg-darkMahron text-white" : "bg-transparent text-darkMahron" }`}>
+                {selectedPlan === "gold"? "Selected" : "Choose Plan"}
                 </button>
               </div>
               <div className="bg-white md:border-l border-darkMahron p-4">
@@ -116,29 +113,27 @@ const data = [
                     ))
                   }
                 </div>
-                <button className="text-white block md:hidden bg-darkMahron p-2 rounded-lg w-full  ml-3">
-                  Selected
+                <button onClick={()=>setSelectedPlan('platinum')}   className={`block md:hidden ml-3 text-darkMahron border-2 font-bold border-darkMahron p-2 rounded-full w-full ${selectedPlan === "platinum" ? "bg-darkMahron text-white" : "bg-transparent text-darkMahron" }`}>
+                {selectedPlan === "platinum"? "Selected" : "Choose Plan"}
                 </button>
               </div>
             </div>
             <div className="md:flex hidden md:flex-row justify-center items-center gap-4 md:gap-x-10 xl:gap-x-16 mb-4">
-              <button className="bg-transparent text-darkMahron border-2 font-bold border-darkMahron px-4 py-2  rounded-full w-full md:w-1/4">
-                Choose Plan
+              <button onClick={()=>setSelectedPlan('silver')} className={` border-2 font-bold border-darkMahron px-4 py-2  rounded-full w-1/4 ${selectedPlan === "silver"? "bg-darkMahron text-white": "bg-transparent text-darkMahron"}`}>
+              {selectedPlan === "silver"? "Selected" : "Choose Plan"}
               </button>
-              <button className="bg-transparent text-darkMahron border-2 font-bold border-darkMahron px-4 py-2  rounded-full w-full md:w-1/4">
-                Choose Plan
+              <button onClick={()=>setSelectedPlan('gold')} className={` border-2 font-bold border-darkMahron px-4 py-2  rounded-full w-1/4 ${selectedPlan === "gold"? "bg-darkMahron text-white": "bg-transparent text-darkMahron"}`}>
+              {selectedPlan === "gold"? "Selected" : "Choose Plan"}
               </button>
-              <button className="text-white bg-darkMahron px-4 py-2 rounded-full w-full md:w-1/4">
-                Selected
+              <button onClick={()=>setSelectedPlan('platinum')} className={` border-2 font-bold border-darkMahron px-4 py-2  rounded-full w-1/4 ${selectedPlan === "platinum"? "bg-darkMahron text-white": "bg-transparent text-darkMahron"}`}>
+                {selectedPlan === "platinum"? "Selected" : "Choose Plan"}
               </button>
             </div>
           </div>
           <div className="flex justify-center items-center">
-          <Link href={'/business-dashboard/1'}>
-            <button className="py-3 px-8 bg-darkMahron font-bold text-white mt-6 rounded-full">
+            <button onClick={handleNext} className="py-3 px-8 bg-darkMahron font-bold text-white mt-6 rounded-full">
               Next
             </button>
-            </Link>
           </div>
         </div>
       </div>

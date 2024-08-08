@@ -1,6 +1,5 @@
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import React from "react";
-
 
 const Add = () => {
   return (
@@ -23,12 +22,12 @@ const Add = () => {
 const EditImageIcon = () => {
   return (
     <svg
-      className="w-8 h-8 text-darkMahron  rounded-lg mb-2" 
+      className="w-8 h-8 text-darkMahron  rounded-lg mb-2"
       viewBox="0 0 24 24"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      fill="currentColor" 
+      fill="currentColor"
     >
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g fill="currentColor" fillRule="nonzero">
@@ -38,13 +37,71 @@ const EditImageIcon = () => {
     </svg>
   );
 };
+
 const ServiceForm = ({ isEdit, initialData }) => {
-  const { title, description, image } = initialData || {};
+  const [updateTreatmentData, setUpdataTreatmentData] = useState({
+    title: "",
+    description: "",
+    image: "",
+    goal: "",
+    price: 0,
+  });
+  
   const headerText = isEdit ? "Update Treatment" : "Create Treatment";
+  
+  useEffect(() => {
+    if (isEdit && initialData) {
+      setUpdataTreatmentData({
+        title: initialData.title || "",
+        description: initialData.description || "",
+        image: initialData.image || "",
+        goal: initialData.goal || "",
+        price: initialData.price || 0,
+      });
+    }
+  }, [isEdit, initialData]);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const apiUrl = isEdit ? `/treatment/${initialData.id}` : "/treatment";
+      const method = isEdit ? "put" : "post";
+
+      const formData = new FormData();
+      for (const key in updateTreatmentData) {
+        formData.append(key, updateTreatmentData[key]);
+      }
+
+      const response = await axiosInstance[method](apiUrl, formData, {
+        withCredentials: true,
+      });
+
+      console.log("Response:", response.data);
+      alert("Operation successful");
+    } catch (error) {
+      console.error("Error submitting form: ", error);
+    }
+  };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUpdataTreatmentData({
+      ...updateTreatmentData,
+      [name]: value,
+    });
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setUpdataTreatmentData({
+      ...updateTreatmentData,
+      image: file,
+    });
+  };
 
   return (
     <div className="mx-auto min-h-screen font-raleway relative md:px-4">
-       
       <div className="mt-10 lg:mt-20 xl:mt-30 flex items-center justify-center">
         <div className="bg-white border-2 border-darkMahron rounded-lg px-8 py-4 sm:py-8 sm:px-20 w-full h-full md:max-w-[70%] md:max-h-[50%]">
           <h1 className="text-3xl sm:text-5xl font-raleway font-thin mb-6 text-center text-darkMahron">
@@ -52,40 +109,55 @@ const ServiceForm = ({ isEdit, initialData }) => {
           </h1>
           <div className="mb-6 flex justify-center">
             <div className="relative w-64 h-40 border rounded-lg overflow-hidden">
-              {isEdit && image ? (
-               <>
-               <Image
-                  src={image}
-                  alt="Edit Image"
-                  layout="fill"
-                  objectFit="cover"
-                  className="absolute rounded-md inset-0 w-full h-full object-cover opacity-70"
-                />
-                <input type="file" className="hidden" />
+              {isEdit && updateTreatmentData.image ? (
+                <>
+                  <Image
+                    src={
+                      typeof updateTreatmentData.image === "string"
+                        ? updateTreatmentData.image
+                        : URL.createObjectURL(updateTreatmentData.image)
+                    }
+                    alt="Edit Image"
+                    layout="fill"
+                    objectFit="cover"
+                    className="absolute rounded-md inset-0 w-full h-full object-cover opacity-70"
+                  />
+                  <input onChange={handleFileChange} value={updateTreatmentData.image} type="file" className="hidden" />
                 </>
               ) : (
                 <div className="bg-gray-100 flex justify-center items-center border-2 border-darkMahron rounded-lg h-40 w-full max-w-[300px]">
                   <label className="flex flex-col items-center cursor-pointer">
                     <Add />
                     <span className="text-darkMahron">Add Image</span>
-                    <input type="file" className="hidden" />
+                    <input
+                      value={updateTreatmentData.image}
+                      onChange={handleFileChange}
+                      type="file"
+                      className="hidden"
+                    />
                   </label>
                 </div>
               )}
               {isEdit && (
                 <div className="absolute inset-0 flex items-center rounded-md justify-center border-2 border-darkMahron">
-                  <div className="flex flex-col items-center">
+                  <label className="flex flex-col items-center">
                     <EditImageIcon />
                     <span className="text-black">Edit Image</span>
-                  </div>
+                    <input
+                      value={updateTreatmentData.image}
+                      type="file"
+                      className="hidden"
+                    />
+                  </label>
                 </div>
               )}
             </div>
           </div>
-          <form className="grid grid-cols-2 gap-4">
+          <form onSubmit={handleFormSubmit} className="grid grid-cols-2 gap-4">
             <div className="mb-4 col-span-2 sm:col-span-1">
               <input
-                defaultValue={title}
+                value={updateTreatmentData.title}
+                onChange={handleInputChange}
                 type="text"
                 placeholder="Treatment name"
                 className="w-full p-2 border-b border-darkMahron focus:outline-none focus:border-darkMahron"
@@ -93,7 +165,8 @@ const ServiceForm = ({ isEdit, initialData }) => {
             </div>
             <div className="mb-4 col-span-2 sm:col-span-1">
               <select
-                defaultValue={isEdit ? "goal1" : ""}
+                value={updateTreatmentData.goal}
+                onChange={handleInputChange}
                 className="w-full p-2 border border-darkMahron rounded-full focus:outline-none focus:border-darkMahron"
               >
                 <option value="" disabled>
@@ -106,7 +179,8 @@ const ServiceForm = ({ isEdit, initialData }) => {
             </div>
             <div className="mb-4 col-span-2 sm:col-span-1">
               <input
-                defaultValue={description}
+                value={updateTreatmentData.description}
+                onChange={handleInputChange}
                 type="text"
                 placeholder="Description"
                 className="w-full p-2 border-b border-darkMahron focus:outline-none focus:border-darkMahron"
@@ -114,7 +188,8 @@ const ServiceForm = ({ isEdit, initialData }) => {
             </div>
             <div className="mb-4 col-span-2 sm:col-span-1">
               <input
-              defaultValue={isEdit ? "$100" : ""}
+                value={updateTreatmentData.price}
+                onChange={handleInputChange}
                 type="tel"
                 placeholder="Price"
                 className="w-full p-2 border-b border-darkMahron focus:outline-none focus:border-darkMahron"
@@ -137,7 +212,6 @@ const ServiceForm = ({ isEdit, initialData }) => {
           </form>
         </div>
       </div>
-      
     </div>
   );
 };

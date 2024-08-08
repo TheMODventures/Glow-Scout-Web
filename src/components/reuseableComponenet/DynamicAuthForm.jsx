@@ -39,6 +39,7 @@ const DynamicAuthForm = ({
       const response = await onSubmit(data);
       console.log("API Response:", response); // Print API response
       localStorage.setItem("accessToken", response.data.data.accessToken);
+      localStorage.setItem("id", response.data.data.user._id);
       dispatch(setUser(response.data.data.user));
       dispatch(setStatus("succeeded"));
 
