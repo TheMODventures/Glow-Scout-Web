@@ -117,16 +117,7 @@ const LocationIcon = ({ className }) => {
   );
 };
 
-const SettingComponent = ({
-  onImageChange,
-  saveBtnFunc,
-  type,
-  details,
-  reviews,
-  contactDetail,
-  onDetailsChange,
-  onContactDetailChange,
-}) => {
+const SettingComponent = ({ onImageChange,saveBtnFunc, type, details, reviews, contactDetail, onDetailsChange, onContactDetailChange,}) => {
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [localReviews, setLocalReviews] = useState(reviews);
   const [isImageUploading, setIsImageUploading] = useState(false);

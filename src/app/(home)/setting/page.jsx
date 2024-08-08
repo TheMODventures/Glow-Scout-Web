@@ -17,27 +17,40 @@ const Setting = () => {
     alternateEmail: "",
     profileImage: "",
   });
-
   const [details, setDetails] = useState([
     { placeholder: "Enter your name", value: userUpdateData.name },
     { placeholder: "Enter your city", value: userUpdateData.city },
   ]);
-
   const [contactDetail, setContactDetail] = useState([
     { placeholder: "Mobile/Telephone", value: userUpdateData.phone },
     { placeholder: "Facebook handle", value: "" },
     { placeholder: "Email address", value: userUpdateData.email },
     { placeholder: "Instagram handle", value: "" },
-    {
-      placeholder: "Alternate Email address",
-      value: userUpdateData.alternateEmail,
-    },
+    { placeholder: "Alternate Email address", value: userUpdateData.alternateEmail },
     { placeholder: "Snapchat handle", value: "" },
   ]);
+
+  const [errors, setErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    alternateEmail: "",
+  });
 
   const nameRegex = /^[A-Za-z\s]+$/;
   const phoneRegex = /^\d{1,12}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const showToast = (title, description, color = "red") => {
+    toast({
+      title: <p className={`text-${color}-500 text-xl`}>{title}</p>,
+      description: (
+        <div className={`mt-2 w-[280px] rounded-md border-2 border-${color}-500 p-2`}>
+          <p className={`text-${color}-500 text-lg text-center`}>{description}</p>
+        </div>
+      ),
+    });
+  };
 
   const handleDetailsChange = (index, value) => {
     const newDetails = details.map((detail, i) =>
@@ -46,26 +59,21 @@ const Setting = () => {
     setDetails(newDetails);
 
     const updatedData = { ...userUpdateData };
+    const updatedErrors = { ...errors };
+
     if (index === 0) {
       if (nameRegex.test(value)) {
         updatedData.name = value;
+        updatedErrors.name = "";
       } else {
-        toast({
-          title: <p className="text-red-500 text-xl ">Error</p>,
-          description: (
-            <div className="mt-2 w-[280px] rounded-md  border-2 border-red-500 p-2">
-              <p className="text-red-500 text-lg text-center">
-                Invalid name. Only letters and spaces are allowed.
-              </p>
-            </div>
-          ),
-        });
-        return;
+        updatedErrors.name = "Name doesn't contain any number";
       }
     } else if (index === 1) {
       updatedData.city = value;
     }
+
     setUserUpdateData(updatedData);
+    setErrors(updatedErrors);
   };
 
   const handleContactDetailChange = (index, value) => {
@@ -75,59 +83,33 @@ const Setting = () => {
     setContactDetail(newContactDetail);
 
     const updatedData = { ...userUpdateData };
+    const updatedErrors = { ...errors };
+
     if (index === 0) {
       if (phoneRegex.test(value)) {
         updatedData.phone = value;
+        updatedErrors.phone = "";
       } else {
-        toast({
-          title: <p className="text-red-500 text-xl ">Error</p>,
-          description: (
-            <div className="mt-2 w-[280px] rounded-md  border-2 border-red-500 p-2">
-              <p className="text-red-500 text-lg text-center">
-                Invalid phone number. Must be numeric and a maximum of 12
-                digits.
-              </p>
-            </div>
-          ),
-        });
-
-        return;
+        updatedErrors.phone = "Invalid phone no, phone is >=12 numbers";
       }
     } else if (index === 2) {
       if (emailRegex.test(value)) {
         updatedData.email = value;
+        updatedErrors.email = "";
       } else {
-        toast({
-          title: <p className="text-red-500 text-xl ">Error</p>,
-          description: (
-            <div className="mt-2 w-[280px] rounded-md  border-2 border-red-500 p-2">
-              <p className="text-red-500 text-lg text-center">
-                Invalid email address.
-              </p>
-            </div>
-          ),
-        });
-
-        return;
+        updatedErrors.email = "Invalid Email";
       }
     } else if (index === 4) {
       if (emailRegex.test(value)) {
         updatedData.alternateEmail = value;
+        updatedErrors.alternateEmail = "";
       } else {
-        toast({
-          title: <p className="text-red-500 text-xl ">Error</p>,
-          description: (
-            <div className="mt-2 w-[280px] rounded-md  border-2 border-red-500 p-2">
-              <p className="text-red-500 text-lg text-center">
-                Invalid alternate email address.
-              </p>
-            </div>
-          ),
-        });
-        return;
+        updatedErrors.alternateEmail = "Invalid alternate email";
       }
     }
+
     setUserUpdateData(updatedData);
+    setErrors(updatedErrors);
   };
 
   const handleSave = async () => {
@@ -139,16 +121,27 @@ const Setting = () => {
       userUpdateData.alternateEmail.trim() === "" ||
       userUpdateData.profileImage === ""
     ) {
-      toast({
-        title: <p className="text-red-500 text-xl ">Error</p>,
-        description: (
-          <div className="mt-2 w-[280px] rounded-md  border-2 border-red-500 p-2">
-            <p className="text-red-500 text-lg text-center">
-              All fields must be filled out.
-            </p>
-          </div>
-        ),
-      });
+      showToast("Error", "All fields must be filled out.","red");
+      return;
+    }
+    if (userUpdateData.email === userUpdateData.alternateEmail) {
+      showToast("Error", "Email and Alternate Email can't be same.","red");
+      return;
+    }
+    if ( errors.name ) {
+      showToast("Error", errors.name,"red");
+      return;
+    }
+    if ( errors.phone ) {
+      showToast("Error", errors.phone,"red");
+      return;
+    }
+    if ( errors.email ) {
+      showToast("Error", errors.email,"red");
+      return;
+    }
+    if ( errors.alternateEmail ) {
+      showToast("Error", errors.alternateEmail,"red");
       return;
     }
     try {
@@ -169,8 +162,14 @@ const Setting = () => {
         },
       });
 
+      showToast("Success", "User details updated successfully!", "green");
       console.log("API Response: ", response.data);
     } catch (error) {
+      if (error.response && error.response.data) {
+        showToast("Error", `Failed to update user details: ${error.response.data.message}`);
+      } else {
+        showToast("Error", "An unexpected error occurred. Please try again later.", "red");
+      }
       console.error("Error:", error);
     }
   };
@@ -178,16 +177,13 @@ const Setting = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      // const reader = new FileReader();
-      // reader.onloadend = () => {
       setUserUpdateData((prevData) => ({
         ...prevData,
         profileImage: file,
       }));
-      // };
-      // reader.readAsDataURL(file); // Convert file to base64 string
     }
   };
+
   return (
     <>
       <SettingComponent
