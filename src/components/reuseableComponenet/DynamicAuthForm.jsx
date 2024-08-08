@@ -55,7 +55,7 @@ const DynamicAuthForm = ({
           </div>
         ),
       });
-      if ( response.data.data.user.role === "business") {
+      if (formType === "login" && response.data.data.user.role === "business") {
         router.push("/pricing");
       } else {
         router.push(btnLink);  // Redirect on success
