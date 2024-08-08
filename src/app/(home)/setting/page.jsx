@@ -1,14 +1,17 @@
 "use client";
 import SettingComponent from "@/components/reuseableComponenet/Setting";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectUser } from "@/redux/auth/authSlice";
 import axiosInstance from "@/axiosInstance";
 import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation"; 
 
 const Setting = () => {
   const user = useSelector(selectUser);
+  const router = useRouter();
   const { toast } = useToast();
+
   const [userUpdateData, setUserUpdateData] = useState({
     name: "",
     city: "",
@@ -17,16 +20,18 @@ const Setting = () => {
     alternateEmail: "",
     profileImage: "",
   });
+
   const [details, setDetails] = useState([
-    { placeholder: "Enter your name", value: userUpdateData.name },
-    { placeholder: "Enter your city", value: userUpdateData.city },
+    { placeholder: "Enter your name", value: "" },
+    { placeholder: "Enter your city", value: "" },
   ]);
+  const [imgUrl, setImgUrl]= useState()
   const [contactDetail, setContactDetail] = useState([
-    { placeholder: "Mobile/Telephone", value: userUpdateData.phone },
+    { placeholder: "Mobile/Telephone", value: "" },
     { placeholder: "Facebook handle", value: "" },
-    { placeholder: "Email address", value: userUpdateData.email },
+    { placeholder: "Email address", value: "" },
     { placeholder: "Instagram handle", value: "" },
-    { placeholder: "Alternate Email address", value: userUpdateData.alternateEmail },
+    { placeholder: "Alternate Email address", value: "" },
     { placeholder: "Snapchat handle", value: "" },
   ]);
 
@@ -41,12 +46,91 @@ const Setting = () => {
   const phoneRegex = /^\d{1,12}$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const showToast = (title, description, color = "red") => {
+  const getUser = async () => {
+    try {
+      const response = await axiosInstance.get("auth/getCurrentUser", {
+        withCredentials: true,
+      });
+      setImgUrl(response.data.data.profileImage);
+      setUserUpdateData({
+        name: response.data.data.name,
+        city: response.data.data.city,
+        phone: response.data.data.phone,
+        email: response.data.data.email,
+        alternateEmail: response.data.data.alternateEmail,
+        profileImage: response.data.data.profileImage,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+      router.push("/auth/login");
+      return;
+    }
+    getUser();
+  }, [router]);
+  
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  useEffect(() => {
+    setDetails([
+      { placeholder: "Enter your name", value: userUpdateData.name },
+      { placeholder: "Enter your city", value: userUpdateData.city },
+    ]);
+  }, [userUpdateData.name, userUpdateData.city]);
+
+  useEffect(() => {
+    setContactDetail([
+      { placeholder: "Mobile/Telephone", value: userUpdateData.phone },
+      { placeholder: "Facebook handle", value: "" },
+      { placeholder: "Email address", value: userUpdateData.email },
+      { placeholder: "Instagram handle", value: "" },
+      {
+        placeholder: "Alternate Email address",
+        value: userUpdateData.alternateEmail,
+      },
+      { placeholder: "Snapchat handle", value: "" },
+    ]);
+  }, [userUpdateData.phone, userUpdateData.email, userUpdateData.alternateEmail]);
+
+  const handleOnclick = () => {
+    return setUserUpdateData({
+      name: "",
+      city: "",
+      phone: "",
+      email: "",
+      alternateEmail: "",
+      profileImage: "",
+    });
+  };
+
+  const showToast = (description) => {
     toast({
-      title: <p className={`text-${color}-500 text-xl`}>{title}</p>,
       description: (
-        <div className={`mt-2 w-[280px] rounded-md border-2 border-${color}-500 p-2`}>
-          <p className={`text-${color}-500 text-lg text-center`}>{description}</p>
+        <div
+          className={`mt-2 w-[280px] rounded-md border-2 border-red-500 p-2`}
+        >
+          <p className={`text-red-500 text-base text-center`}>{description}</p>
+        </div>
+      ),
+    });
+  };
+
+  const showToastSuccess = (description) => {
+    toast({
+      description: (
+        <div
+          className={`mt-2 w-[280px] rounded-md border-2 border-green-500 p-2`}
+        >
+          <p className={`text-green-500 text-base text-center`}>
+            {description}
+          </p>
         </div>
       ),
     });
@@ -121,27 +205,27 @@ const Setting = () => {
       userUpdateData.alternateEmail.trim() === "" ||
       userUpdateData.profileImage === ""
     ) {
-      showToast("Error", "All fields must be filled out.","red");
+      showToast("All fields must be filled out.");
       return;
     }
     if (userUpdateData.email === userUpdateData.alternateEmail) {
-      showToast("Error", "Email and Alternate Email can't be same.","red");
+      showToast("Email and Alternate Email can't be same.");
       return;
     }
-    if ( errors.name ) {
-      showToast("Error", errors.name,"red");
+    if (errors.name) {
+      showToast(errors.name);
       return;
     }
-    if ( errors.phone ) {
-      showToast("Error", errors.phone,"red");
+    if (errors.phone) {
+      showToast(errors.phone);
       return;
     }
-    if ( errors.email ) {
-      showToast("Error", errors.email,"red");
+    if (errors.email) {
+      showToast(errors.email);
       return;
     }
-    if ( errors.alternateEmail ) {
-      showToast("Error", errors.alternateEmail,"red");
+    if (errors.alternateEmail) {
+      showToast(errors.alternateEmail);
       return;
     }
     try {
@@ -162,13 +246,15 @@ const Setting = () => {
         },
       });
 
-      showToast("Success", "User details updated successfully!", "green");
+      showToastSuccess("User details updated successfully!");
       console.log("API Response: ", response.data);
     } catch (error) {
       if (error.response && error.response.data) {
-        showToast("Error", `Failed to update user details: ${error.response.data.message}`);
+        showToast(
+          `Failed to update user details: ${error.response.data.message}`
+        );
       } else {
-        showToast("Error", "An unexpected error occurred. Please try again later.", "red");
+        showToast("An unexpected error occurred. Please try again later.");
       }
       console.error("Error:", error);
     }
@@ -187,6 +273,8 @@ const Setting = () => {
   return (
     <>
       <SettingComponent
+        handleOnclick={handleOnclick}
+        imgUrl={imgUrl}
         type="user"
         details={details}
         reviews={[

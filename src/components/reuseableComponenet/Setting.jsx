@@ -117,7 +117,7 @@ const LocationIcon = ({ className }) => {
   );
 };
 
-const SettingComponent = ({ onImageChange,saveBtnFunc, type, details, reviews, contactDetail, onDetailsChange, onContactDetailChange,}) => {
+const SettingComponent = ({ imgUrl, onImageChange,saveBtnFunc, type, details, reviews, contactDetail, onDetailsChange, onContactDetailChange,}) => {
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [localReviews, setLocalReviews] = useState(reviews);
   const [isImageUploading, setIsImageUploading] = useState(false);
@@ -143,8 +143,8 @@ const SettingComponent = ({ onImageChange,saveBtnFunc, type, details, reviews, c
           setIsImageUploading(false);
           toast({
             description: (
-              <div className="mt-2 w-full sm:w-[280px] rounded-md  border-2 border-darkMahron p-2">
-                <p className="text-darkMahron text-lg text-center">
+              <div className={`mt-2 w-[280px] rounded-md border-2 border-green-500 p-2`} >
+                <p className={`text-green-500 text-base text-center`}>
                   Image Successfully Uploaded
                 </p>
               </div>
@@ -153,10 +153,9 @@ const SettingComponent = ({ onImageChange,saveBtnFunc, type, details, reviews, c
         }, 2000);
       } else {
         toast({
-          title: (<p className="text-red-500 text-xl ">Error</p>),
           description: (
-            <div className="mt-2 w-full sm:w-[280px] rounded-md  border-2 border-red-500 p-2">
-              <p className="text-red-500 text-lg text-center">
+            <div className={`mt-2 w-[280px] rounded-md border-2 border-red-500 p-2`} >
+              <p className={`text-red-500 text-base text-center`}>
                 Please upload an image file <b>(PNG, JPG, JPEG)</b>.
               </p>
             </div>
@@ -192,6 +191,7 @@ const SettingComponent = ({ onImageChange,saveBtnFunc, type, details, reviews, c
                   <input
                     type="text"
                     placeholder={detail.placeholder}
+                    // onClick={handleOnClick}
                     value={detail.value || ""}
                     onChange={(e) => onDetailsChange(index, e.target.value)}
                     className="p-2 w-full"
@@ -203,6 +203,7 @@ const SettingComponent = ({ onImageChange,saveBtnFunc, type, details, reviews, c
                   key={index}
                   type="text"
                   placeholder={detail.placeholder}
+                  // onClick={handleOnClick}
                   value={detail.value || ""}
                   onChange={(e) => onDetailsChange(index, e.target.value)}
                   className="w-full p-2 mb-4 border-b-2 border-darkMahron rounded"
@@ -290,7 +291,7 @@ const SettingComponent = ({ onImageChange,saveBtnFunc, type, details, reviews, c
                           htmlFor="file-upload"
                           className="cursor-pointer flex flex-col items-center"
                         >
-                          {isImageUploaded ? <ChangeImge /> : <Add />}
+                          {isImageUploaded || imgUrl ? <ChangeImge /> : <Add />}
                         </label>
                         <input
                           id="file-upload"
@@ -340,6 +341,7 @@ const SettingComponent = ({ onImageChange,saveBtnFunc, type, details, reviews, c
                 <input
                   key={index}
                   type="text"
+                  // onClick={handleOnClick}
                   placeholder={info.placeholder}
                   value={info.value || ""}
                   onChange={(e) => onContactDetailChange(index, e.target.value)}

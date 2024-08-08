@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import SignupFormField from "./InputFormField";
-import { useRouter } from 'next/navigation';
-import { setUser, setStatus, setError } from '@/redux/auth/authSlice';
+import { useRouter } from "next/navigation";
+import { setUser, setStatus, setError } from "@/redux/auth/authSlice";
 import { useDispatch } from "react-redux";
 const DynamicAuthForm = ({
   formType,
@@ -28,48 +28,56 @@ const DynamicAuthForm = ({
     defaultValues: {
       name: "",
       email: "",
-      password: ""
+      password: "",
     },
   });
 
   async function handleSubmit(data) {
     try {
-      console.log('User Input:', data); // Print user input
-      dispatch(setStatus('loading'));
+      console.log("User Input:", data); // Print user input
+      dispatch(setStatus("loading"));
       const response = await onSubmit(data);
-      console.log('API Response:', response); // Print API response
+      console.log("API Response:", response); // Print API response
       localStorage.setItem("accessToken", response.data.data.accessToken);
       dispatch(setUser(response.data.data.user));
-      dispatch(setStatus('succeeded'));
-  
+      dispatch(setStatus("succeeded"));
+
       toast({
-        title: (<p className="text-darkMahron text-xl">Success</p>),
         description: (
-          <div className="mt-2 w-[340px] rounded-md border-2 border-darkMahron  p-2">
-            <p className="text-darkMahron text-lg text-center">{JSON.stringify(response.data.message, null, 2)}</p>
+          <div className="w-[200px] rounded-md bg-green-600 py-1 px-2 flex justify-between items-center">
+            <p className="h-4 w-4 bg-white text-green-500 rounded-sm text-center font-bold">
+              ✓
+            </p>
+            <p className="text-white text-base text-center">
+              {JSON.stringify(response.data.message, null, 2)}
+            </p>
           </div>
         ),
       });
-  if (formType === "login"&&response.data.data.user.role === 'business' ) {
-    router.push('/pricing');
-  }else{
-    router.push(btnLink);  // Redirect on success
-  }
+      if (formType === "login" && response.data.data.user.role === "business") {
+        router.push("/pricing");
+      } else {
+        router.push(btnLink);  // Redirect on success
+      }
     } catch (error) {
-      console.error('API call error:', error);
+      console.error("API call error:", error);
       dispatch(setError(error.message)); // Ensure dispatching only serializable data
-      dispatch(setStatus('failed'));
+      dispatch(setStatus("failed"));
       toast({
-        title: (<p className="text-red-500 text-xl">Error</p>),
         description: (
-          <div className="mt-2 w-[340px] rounded-md  border-2 border-red-500 p-2">
-            <p className="text-red-500 text-lg text-center">Something Went Wrong</p>
+          <div className="w-[200px] rounded-md bg-red-600 py-1 px-2 flex justify-between items-center">
+            <p className="h-4 w-4 bg-white text-red-500 rounded-sm text-center font-bold">
+              X
+            </p>
+            <p className="text-white text-base text-center">
+              {JSON.stringify(error.response.data.message, null, 2)}
+            </p>
           </div>
         ),
       });
     }
   }
-  
+
   return (
     <div className="flex flex-col items-center justify-center px-4 md:px-0">
       <h3 className="py-4 text-[#351120] text-3xl mb-4">{title}</h3>
@@ -114,8 +122,8 @@ const DynamicAuthForm = ({
           )}
           <SignupFormField
             name="email"
-              placeholder="Email"
-              formControl={form.control}
+            placeholder="Email"
+            formControl={form.control}
           />
           {["signup", "login"].includes(formType) && (
             <SignupFormField
@@ -131,6 +139,20 @@ const DynamicAuthForm = ({
               <Link href={linkHref} className="text-[#351120] font-bold">
                 Click here
               </Link>
+              {formType === "signup" ? (
+                <>
+                  {" "}
+                  or{" "}
+                  <Link
+                    href={"/auth/login"}
+                    className="text-[#351120] font-bold"
+                  >
+                    Login
+                  </Link>
+                </>
+              ) : (
+                ""
+              )}
             </div>
           )}
           <div className="flex justify-center items-center">
