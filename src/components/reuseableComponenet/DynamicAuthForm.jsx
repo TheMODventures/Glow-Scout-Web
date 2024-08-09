@@ -58,7 +58,7 @@ const DynamicAuthForm = ({
           </div>
         ),
       });
-        router.push(btnLink);  // Redirect on success
+        router.push(formType === "login" && response.data.data.user.role === "business" ? "/pricing" : btnLink);  // Redirect on success
 
     } catch (error) {
       console.error("API call error:", error);

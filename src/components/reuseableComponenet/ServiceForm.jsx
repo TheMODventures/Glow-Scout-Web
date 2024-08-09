@@ -47,9 +47,9 @@ const ServiceForm = ({ isEdit, initialData }) => {
     goal: "",
     price: 0,
   });
-  
+
   const headerText = isEdit ? "Update Treatment" : "Create Treatment";
-  
+
   useEffect(() => {
     if (isEdit && initialData) {
       setUpdataTreatmentData({
@@ -66,7 +66,9 @@ const ServiceForm = ({ isEdit, initialData }) => {
     event.preventDefault();
 
     try {
-      const apiUrl = isEdit ? `/treatment/${initialData.id}` : "/treatment";
+      const apiUrl = isEdit
+        ? `/treatment/update/${initialData.id}`
+        : "/treatment/create";
       const method = isEdit ? "put" : "post";
 
       const formData = new FormData();
@@ -123,7 +125,13 @@ const ServiceForm = ({ isEdit, initialData }) => {
                     objectFit="cover"
                     className="absolute rounded-md inset-0 w-full h-full object-cover opacity-70"
                   />
-                  <input onChange={handleFileChange} type="file" className="hidden" />
+                  <input
+                    id="image"
+                     name="image"
+                    onChange={handleFileChange}
+                    type="file"
+                    className="hidden"
+                  />
                 </>
               ) : (
                 <div className="bg-gray-100 flex justify-center items-center border-2 border-darkMahron rounded-lg h-40 w-full max-w-[300px]">
@@ -131,6 +139,8 @@ const ServiceForm = ({ isEdit, initialData }) => {
                     <Add />
                     <span className="text-darkMahron">Add Image</span>
                     <input
+                     name="image"
+                      id="image"
                       onChange={handleFileChange}
                       type="file"
                       className="hidden"
@@ -143,10 +153,7 @@ const ServiceForm = ({ isEdit, initialData }) => {
                   <label className="flex flex-col items-center">
                     <EditImageIcon />
                     <span className="text-black">Edit Image</span>
-                    <input
-                      type="file"
-                      className="hidden"
-                    />
+                    <input name="image" id="image" type="file" className="hidden" />
                   </label>
                 </div>
               )}
@@ -155,6 +162,8 @@ const ServiceForm = ({ isEdit, initialData }) => {
           <form onSubmit={handleFormSubmit} className="grid grid-cols-2 gap-4">
             <div className="mb-4 col-span-2 sm:col-span-1">
               <input
+                id="title"
+                name="title"
                 value={updateTreatmentData.title}
                 onChange={handleInputChange}
                 type="text"
@@ -164,6 +173,8 @@ const ServiceForm = ({ isEdit, initialData }) => {
             </div>
             <div className="mb-4 col-span-2 sm:col-span-1">
               <select
+                id="goal"
+                name="goal"
                 value={updateTreatmentData.goal}
                 onChange={handleInputChange}
                 className="w-full p-2 border border-darkMahron rounded-full focus:outline-none focus:border-darkMahron"
@@ -178,6 +189,8 @@ const ServiceForm = ({ isEdit, initialData }) => {
             </div>
             <div className="mb-4 col-span-2 sm:col-span-1">
               <input
+                id="description"
+                name="description"
                 value={updateTreatmentData.description}
                 onChange={handleInputChange}
                 type="text"
@@ -187,6 +200,8 @@ const ServiceForm = ({ isEdit, initialData }) => {
             </div>
             <div className="mb-4 col-span-2 sm:col-span-1">
               <input
+                id="price"
+                name="price"
                 value={updateTreatmentData.price}
                 onChange={handleInputChange}
                 type="tel"

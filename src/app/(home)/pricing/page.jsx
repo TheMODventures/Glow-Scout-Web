@@ -29,8 +29,9 @@ const data = [
   {icon: <CheckIcon/>, label: "Lorem Ipsum"},
 ]
 const handleNext = () =>{
+  const id = localStorage.getItem("id");
   if (selectedPlan) {
-    router.push(`/business-dashboard/1`)
+    router.push(`/business-dashboard/${id}`)
   }
 }
   return (
