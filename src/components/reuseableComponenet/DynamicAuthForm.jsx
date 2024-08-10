@@ -23,14 +23,15 @@ const DynamicAuthForm = ({
   const { toast } = useToast();
   const router = useRouter();
   const dispatch = useDispatch();
-  const defaultValues = formType === "login" 
-  ? { email: "", password: "" } 
-  : { name: "", email: "", password: "" };
+  let form;
 
-const form = useForm({
-  resolver: yupResolver(schema),
-  defaultValues,
-});
+ form = useForm({   
+    resolver: yupResolver(schema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
   async function handleSubmit(data) {
     try {
