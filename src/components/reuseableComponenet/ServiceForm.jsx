@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import axiosInstance from "@/axiosInstance";
+import { useToast } from "../ui/use-toast";
 
 const Add = () => {
   return (
@@ -41,6 +42,9 @@ const EditImageIcon = () => {
 };
 
 const ServiceForm = ({ isEdit, initialData }) => {
+  const { toast } = useToast();
+  const [isImageUploaded, setIsImageUploaded] = useState(false);
+  const [isImageUploading, setIsImageUploading] = useState(false);
   const [updateTreatmentData, setUpdataTreatmentData] = useState({
     title: "",
     description: "",
@@ -71,11 +75,11 @@ const ServiceForm = ({ isEdit, initialData }) => {
     // Append each field individually
     formData.append('title', updateTreatmentData.title);
     formData.append('description', updateTreatmentData.description);
-    formData.append('goal', initialData.goal);
+    formData.append('goal', "65dfc081aaf4e436bc208510");
     formData.append('price', updateTreatmentData.price);
-    // if (updateTreatmentData.image) {
-    //   formData.append('image', updateTreatmentData.image); // This assumes 'image' is a File object
-    // }
+    if (!isEdit && updateTreatmentData.image) {
+      formData.append('image', updateTreatmentData.image); 
+    }
   
     try {
       const apiUrl = isEdit
@@ -104,11 +108,47 @@ const ServiceForm = ({ isEdit, initialData }) => {
   };
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0];
+    const file = event.target.files[0]
+    if (file) {
+      const allowedTypes = ["image/png", "image/jpeg", "image/jpg"];
+      if (allowedTypes.includes(file.type)) {
+     
     setUpdataTreatmentData({
       ...updateTreatmentData,
       image: file,
     });
+        setIsImageUploading(true);
+
+        setTimeout(() => {
+          setIsImageUploaded(true);
+          setIsImageUploading(false);
+          toast({
+            description: (
+              <div
+                className={`mt-2 w-[280px] rounded-md border-2 border-green-500 p-2`}
+              >
+                <p className={`text-green-500 text-base text-center`}>
+                  Image Successfully Uploaded
+                </p>
+              </div>
+            ),
+          });
+        }, 2000);
+      } else {
+        toast({
+          description: (
+            <div
+              className={`mt-2 w-[280px] rounded-md border-2 border-red-500 p-2`}
+            >
+              <p className={`text-red-500 text-base text-center`}>
+                Please upload an image file <b>(PNG, JPG, JPEG)</b>.
+              </p>
+            </div>
+          ),
+        });
+      }
+    }
+    
   };
 
   return (
@@ -141,11 +181,18 @@ const ServiceForm = ({ isEdit, initialData }) => {
                     className="hidden"
                   />
                 </>
-              ) : (
-                <div className="bg-gray-100 flex justify-center items-center border-2 border-darkMahron rounded-lg h-40 w-full max-w-[300px]">
+              ) : ( isImageUploading ? (<p className="text-sm text-darkMahron">Uploading-----</p>) :
+               ( <div className="bg-gray-100 flex justify-center items-center border-2 border-darkMahron rounded-lg h-40 w-full max-w-[300px]">
                   <label className="flex flex-col items-center cursor-pointer">
-                    <Add />
-                    <span className="text-darkMahron">Add Image</span>
+                  {isImageUploaded ? (
+                            <EditImageIcon />
+                          ) : (
+                            <Add />
+                          )}
+                    <span className="text-darkMahron">
+                    {isImageUploaded ? "Change" : "Add"} profile
+                    Images
+                      </span>
                     <input
                       name="image"
                       id="image"
@@ -154,7 +201,7 @@ const ServiceForm = ({ isEdit, initialData }) => {
                       className="hidden"
                     />
                   </label>
-                </div>
+                </div>)
               )}
               {isEdit && (
                 <div className="absolute inset-0 flex items-center rounded-md justify-center border-2 border-darkMahron">

@@ -306,7 +306,6 @@ const SettingComponent = ({
                        className="hidden"
                        onChange={handleFileChange}
                      />
-                     
                      <Image
                        src={imgUrl}
                        alt="Profile Image"
@@ -314,7 +313,6 @@ const SettingComponent = ({
                        objectFit="cover"
                        className="absolute inset-0 w-full h-full object-cover opacity-65"
                      />
-                   
                      <label
                        htmlFor="file-upload"
                        className="cursor-pointer flex flex-col items-center z-10"
