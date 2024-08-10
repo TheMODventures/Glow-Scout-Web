@@ -12,7 +12,7 @@
     "node": "=20.12.2"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.6.0",
+    "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
@@ -40,6 +40,7 @@
     "react-redux": "^9.1.2",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
+    "yup": "^1.4.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

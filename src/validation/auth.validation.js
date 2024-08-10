@@ -1,30 +1,28 @@
-import { z } from "zod";
+import * as Yup from "yup";
 
-export const SignupSchema = z.object({
-  name: z.string().min(2, {
-    message: "name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Invalid email address.",
-  }),
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+
+export const SignupSchema = Yup.object().shape({
+  name: Yup.string().min(2, "Name must be at least 2 characters."),
+  email: Yup.string().email("Invalid email address."),
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters.")
+    .matches(
+      passwordRegex,
+      "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
+    ),
 });
 
-export const LoginSchema = z.object({
-  email: z.string().email({
-    message: "Invalid email address.",  
-  }),
-  password: z.string().min(8, {
-    message: "Password must be at least 8 characters.",
-  }),
+export const LoginSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email address."),
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters.")
+    .matches(
+      passwordRegex,
+      "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
+    ),
 });
 
-export const ForgotSchema = z.object({
-  email: z.string().email({
-    message: "Invalid email address.",
-  }),
+export const ForgotSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email address."),
 });
-
-

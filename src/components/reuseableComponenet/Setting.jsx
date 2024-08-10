@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import Image from "next/image";
 const Add = () => (
   <svg
     className="w-8 h-8 p-2 text-darkMahron border-2 border-darkMahron rounded-lg mb-2"
@@ -17,10 +18,10 @@ const Add = () => (
     ></path>
   </svg>
 );
-const ChangeImge = () => {
+const ChangeImge = ({ Color }) => {
   return (
     <svg
-      className="w-12 h-12 text-darkMahron mb-2"
+    className={"w-12 h-12 text-darkMahron mb-2"} 
       viewBox="0 0 512 512"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -34,8 +35,8 @@ const ChangeImge = () => {
       <g id="SVGRepo_iconCarrier">
         <style type="text/css">
           {`
-            .st0{fill:#351120;}
-            .st1{fill:none;stroke:#351120;stroke-width:0.00512;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+            .st0{fill:${Color};}
+            .st1{fill:none;stroke:;stroke-width:0.00512;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
           `}
         </style>
         <g id="Layer_1"></g>
@@ -117,7 +118,17 @@ const LocationIcon = ({ className }) => {
   );
 };
 
-const SettingComponent = ({ imgUrl, onImageChange,saveBtnFunc, type, details, reviews, contactDetail, onDetailsChange, onContactDetailChange,}) => {
+const SettingComponent = ({
+  imgUrl,
+  onImageChange,
+  saveBtnFunc,
+  type,
+  details,
+  reviews,
+  contactDetail,
+  onDetailsChange,
+  onContactDetailChange,
+}) => {
   const [isImageUploaded, setIsImageUploaded] = useState(false);
   const [localReviews, setLocalReviews] = useState(reviews);
   const [isImageUploading, setIsImageUploading] = useState(false);
@@ -143,7 +154,9 @@ const SettingComponent = ({ imgUrl, onImageChange,saveBtnFunc, type, details, re
           setIsImageUploading(false);
           toast({
             description: (
-              <div className={`mt-2 w-[280px] rounded-md border-2 border-green-500 p-2`} >
+              <div
+                className={`mt-2 w-[280px] rounded-md border-2 border-green-500 p-2`}
+              >
                 <p className={`text-green-500 text-base text-center`}>
                   Image Successfully Uploaded
                 </p>
@@ -154,7 +167,9 @@ const SettingComponent = ({ imgUrl, onImageChange,saveBtnFunc, type, details, re
       } else {
         toast({
           description: (
-            <div className={`mt-2 w-[280px] rounded-md border-2 border-red-500 p-2`} >
+            <div
+              className={`mt-2 w-[280px] rounded-md border-2 border-red-500 p-2`}
+            >
               <p className={`text-red-500 text-base text-center`}>
                 Please upload an image file <b>(PNG, JPG, JPEG)</b>.
               </p>
@@ -282,8 +297,34 @@ const SettingComponent = ({ imgUrl, onImageChange,saveBtnFunc, type, details, re
                   Profile picture
                 </h2>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-                  <div className="w-full sm:w-1/3 h-44 flex flex-col items-center justify-center border-2 bg-gray-100 border-darkMahron rounded-full">
-                    {isImageUploading ? (
+                  <div className="w-full sm:w-1/3 h-44 flex flex-col items-center justify-center border-2 bg-gray-100 border-darkMahron rounded-full relative overflow-hidden">
+                    {imgUrl ? (
+                     <div className="relative w-full h-full flex justify-center items-center">
+                     <input
+                       id="file-upload"
+                       type="file"
+                       className="hidden"
+                       onChange={handleFileChange}
+                     />
+                     
+                     <Image
+                       src={imgUrl}
+                       alt="Profile Image"
+                       layout="fill"
+                       objectFit="cover"
+                       className="absolute inset-0 w-full h-full object-cover opacity-65"
+                     />
+                   
+                     <label
+                       htmlFor="file-upload"
+                       className="cursor-pointer flex flex-col items-center z-10"
+                     >
+                       <ChangeImge Color={"#351120"} />
+                       <span className="text-darkMahron text-sm mt-2">Change profile Images</span>
+                     </label>
+                   </div>
+                   
+                    ) : isImageUploading ? (
                       <p>Uploading...</p>
                     ) : (
                       <div className="flex flex-col items-center justify-center">
@@ -291,7 +332,12 @@ const SettingComponent = ({ imgUrl, onImageChange,saveBtnFunc, type, details, re
                           htmlFor="file-upload"
                           className="cursor-pointer flex flex-col items-center"
                         >
-                          {isImageUploaded || imgUrl ? <ChangeImge /> : <Add />}
+                          {isImageUploaded || imgUrl ? (
+                            <ChangeImge Color={"#351120"}
+                            />
+                          ) : (
+                            <Add />
+                          )}
                         </label>
                         <input
                           id="file-upload"
@@ -300,7 +346,8 @@ const SettingComponent = ({ imgUrl, onImageChange,saveBtnFunc, type, details, re
                           onChange={handleFileChange}
                         />
                         <span className="text-darkMahron text-sm mt-2">
-                          {isImageUploaded ? "Change" : "Add"} profile Images
+                          {imgUrl || isImageUploaded ? "Change" : "Add"} profile
+                          Images
                         </span>
                       </div>
                     )}

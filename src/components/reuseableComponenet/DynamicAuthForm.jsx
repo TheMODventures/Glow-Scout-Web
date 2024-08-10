@@ -1,6 +1,6 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
+import { yupResolver } from "@hookform/resolvers/yup"; 
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,15 +23,25 @@ const DynamicAuthForm = ({
   const { toast } = useToast();
   const router = useRouter();
   const dispatch = useDispatch();
-  const form = useForm({
-    resolver: zodResolver(schema),
+  let form;
+if (formType === "login") {
+ form = useForm({   
+    resolver: yupResolver(schema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+} else{
+   form = useForm({   
+    resolver: yupResolver(schema),
     defaultValues: {
       name: "",
       email: "",
       password: "",
     },
   });
-
+}
   async function handleSubmit(data) {
     try {
       console.log("User Input:", data); // Print user input

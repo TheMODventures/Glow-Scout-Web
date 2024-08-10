@@ -25,7 +25,7 @@ const AuthCommon = ({ params }) => {
       linkText: "Are you a user? ",
       linkHref: "/auth/user",
       onSubmit: (data) => axiosInstance.post('/auth/register', { ...data, role: 'business', loginType: 'EMAIL_PASSWORD' },{withCredentials:true}),
-      btnLink: "/pricing",
+      btnLink: "/auth/login",
     },
     "login": {
       formType: "login",

@@ -20,10 +20,11 @@ const Add = () => {
     </svg>
   );
 };
+
 const EditImageIcon = () => {
   return (
     <svg
-      className="w-8 h-8 text-darkMahron  rounded-lg mb-2"
+      className="w-8 h-8 text-darkMahron rounded-lg mb-2"
       viewBox="0 0 24 24"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
@@ -64,29 +65,36 @@ const ServiceForm = ({ isEdit, initialData }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+  
+    const formData = new FormData();
+  
+    // Append each field individually
+    formData.append('title', updateTreatmentData.title);
+    formData.append('description', updateTreatmentData.description);
+    formData.append('goal', initialData.goal);
+    formData.append('price', updateTreatmentData.price);
+    // if (updateTreatmentData.image) {
+    //   formData.append('image', updateTreatmentData.image); // This assumes 'image' is a File object
+    // }
+  
     try {
       const apiUrl = isEdit
         ? `/treatment/update/${initialData.id}`
         : "/treatment/create";
       const method = isEdit ? "put" : "post";
-
-      const formData = new FormData();
-      for (const key in updateTreatmentData) {
-        formData.append(key, updateTreatmentData[key]);
-      }
-
+  
       const response = await axiosInstance[method](apiUrl, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });
-
+  
       console.log("Response:", response.data);
       alert("Operation successful");
     } catch (error) {
       console.error("Error submitting form: ", error);
     }
   };
-
+  
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUpdataTreatmentData({
@@ -127,7 +135,7 @@ const ServiceForm = ({ isEdit, initialData }) => {
                   />
                   <input
                     id="image"
-                     name="image"
+                    name="image"
                     onChange={handleFileChange}
                     type="file"
                     className="hidden"
@@ -139,7 +147,7 @@ const ServiceForm = ({ isEdit, initialData }) => {
                     <Add />
                     <span className="text-darkMahron">Add Image</span>
                     <input
-                     name="image"
+                      name="image"
                       id="image"
                       onChange={handleFileChange}
                       type="file"
