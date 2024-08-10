@@ -23,25 +23,15 @@ const DynamicAuthForm = ({
   const { toast } = useToast();
   const router = useRouter();
   const dispatch = useDispatch();
-  let form;
-if (formType === "login") {
- form = useForm({   
-    resolver: yupResolver(schema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
-} else{
-   form = useForm({   
-    resolver: yupResolver(schema),
-    defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-    },
-  });
-}
+  const defaultValues = formType === "login" 
+  ? { email: "", password: "" } 
+  : { name: "", email: "", password: "" };
+
+const form = useForm({
+  resolver: yupResolver(schema),
+  defaultValues,
+});
+
   async function handleSubmit(data) {
     try {
       console.log("User Input:", data); // Print user input
