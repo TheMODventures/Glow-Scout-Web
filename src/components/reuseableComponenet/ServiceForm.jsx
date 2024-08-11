@@ -77,7 +77,7 @@ const ServiceForm = ({ isEdit, initialData }) => {
     formData.append('description', updateTreatmentData.description);
     formData.append('goal', "65dfc081aaf4e436bc208510");
     formData.append('price', updateTreatmentData.price);
-    if (!isEdit && updateTreatmentData.image) {
+    if ( updateTreatmentData.image) {
       formData.append('image', updateTreatmentData.image); 
     }
   
