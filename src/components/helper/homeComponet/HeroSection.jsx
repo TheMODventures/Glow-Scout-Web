@@ -13,13 +13,13 @@ const Raleway1 = Raleway({
 const HeroSection = () => {
 
   return (
-    <div className="relative h-full  lg:h-[90vh] flex flex-col md:flex-row">
-      <div className="flex-1 min-h-max text-center lg:text-left lg:pl-12  flex flex-col justify-center xl:pt-24 xl:pb-44  pb-10 items-start px-4 lg:px-0 ">
-        <h1 className={`mt-6 ${Raleway1.className}  md:mt-0 text-[40px] leading-10 lg:leading-[45px] text-start lg:text-5xl xl:text-5xl 2xl:text-8xl font-[100]  text-darkMahron 2xl:mb-6`}>
+    <div className="relative h-full justify-center  flex flex-col md:flex-row">
+      <div className="min-h-max text-center lg:text-left lg:pl-12  flex flex-col justify-center xl:pt-24 xl:pb-44  pb-10 items-start px-4 lg:px-0 ">
+        <h1 className={`mt-6 ${Raleway1.className}  md:mt-0 text-[40px] leading-10 lg:leading-[60px] text-start lg:text-5xl xl:text-[4rem] font-[100]  text-darkMahron`}>
           REVEAL YOUR <br />
           BEAUTY WITH
         </h1>
-        <h2 className="text-[56px] text-start lg:text-6xl xl:text-[62px] 2xl:text-[125px] font-medium font-valky text-darkMahron leading-tight xl:leading-[70px] 2xl:mb-6">
+        <h2 className="text-[56px] text-start lg:text-6xl xl:text-[5.2rem] md:pt-4  font-medium font-valky text-darkMahron leading-tight xl:leading-[70px] 2xl:mb-6">
           Glow Scout
         </h2>
         <p className="text-base text-start max-w-[500px] 2xl:max-w-[700px] md:text-base lg:text-lg xl:text-lg 2xl:text-2xl font-normal font-raleway mb-4 text-darkMahron ">
@@ -37,7 +37,7 @@ const HeroSection = () => {
         </Link>
       </div>
       {/* <div className="w-full max-w-[10%]"></div> */}
-      <div className="w-full md:w-1/2  max-w-[550px] 2xl:max-w-[750px]  h-[500px] md:h-[600px] lg:h-auto relative">
+      <div className="w-full h-[500px] md:h-[600px] lg:w-[700px] md:w-[500px] lg:h-[700px] relative">
         <Image
           src="/images/home/Hero.png"
           alt="Woman"

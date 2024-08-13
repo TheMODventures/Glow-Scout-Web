@@ -2,7 +2,7 @@ import Image from "next/image";
 const TreatmentCard = ({ image, imageAlt, label, title, description }) => {
   return (
     <div className="my-3">
-      <div className="relative h-52 w-44  2xl:h-64 2xl:w-52 rounded-xl">
+      <div className="relative  rounded-xl">
         <Image
           className="rounded-xl static w-full h-full object-cover shadow-md"
           src={image}

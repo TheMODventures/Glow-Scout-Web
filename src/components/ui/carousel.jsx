@@ -163,7 +163,7 @@ const CarouselPrevious = React.forwardRef(({ className, variant = "outline", siz
       disabled={!canScrollPrev}
       onClick={scrollPrev}
       {...props}>
-      <ChevronLeftIcon className="h-6 w-6 text-darkMahron" />
+      <ChevronLeftIcon className="h-7 w-7 hidden md:block text-darkMahron" />
       <span className="sr-only">Previous slide</span>
     </Button>)
   );
@@ -184,7 +184,7 @@ const CarouselNext = React.forwardRef(({ className, variant = "outline", size = 
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}>
-      <ChevronRightIcon className="h-6 w-6 text-darkMahron" />
+      <ChevronRightIcon className="h-7 w-7 text-darkMahron hidden md:block" />
       <span className="sr-only">Next slide</span>
     </Button>)
   );
@@ -231,7 +231,7 @@ const CarouselDots = React.forwardRef((props, ref) => {
             className={`mx-1 mt-4 h-2 w-2 rounded-full p-0 transition-transform duration-200 ${
               i === currentSlide
                 ? "scale-150 transform bg-[#351120] hover:bg-[#351120]"
-                : "scale-100 bg-[#351120] hover:bg-gray-400"
+                : "scale-100 bg-gray-400 hover:bg-[#351120]"
             }`}
             aria-label={`Go to slide ${i + 1}`}
             onClick={() => api?.scrollTo(i)}

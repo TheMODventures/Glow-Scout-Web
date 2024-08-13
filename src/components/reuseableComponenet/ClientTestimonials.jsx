@@ -15,7 +15,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { Raleway } from "next/font/google";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 const Raleway1 = Raleway({
-  weight: "400",
+  weight: "300",
   subsets: ["latin"],
 });
 const ClientTestimonials = () => {
@@ -55,16 +55,15 @@ const ClientTestimonials = () => {
   ];
 
   return (
-    <div className="mx-auto py-10 md:py-0 font-raleway bg-[#FEF5E3] md:h-screen w-screen flex justify-center items-center">
+    <div className="mx-auto py-10 md:py-40 font-raleway bg-[#FEF5E3] md:min-h-screen w-screen flex justify-center items-center">
       <div className="">
         <div className="text-center text-darkMahron pb-5">
           <h2
-            className={`${Raleway1.className} text-3xl font-thin md:text-4xl 2xl:text-5xl`}
+            className={`text-5xl px-6 font-thin ${Raleway1.className}`}
           >
-            {" "}
-            Client Testimonials{" "}
+            Client’s Testimonials
           </h2>
-          <p className="m-2 text-base 2xl:text-lg">
+          <p className="m-2 text-base 2xl:text-lg  px-10 md:hidden">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
             faucibus.
           </p>
@@ -81,13 +80,13 @@ const ClientTestimonials = () => {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index}>
                   <div className="flex  justify-center items-center gap-2">
-                    <div className="ml-3 md:ml-0 flex-shrink-0 w-40 h-56 md:w-full md:h-full md:max-w-[22%] md:max-h-[40%]">
+                    <div className="ml-3 md:ml-0 flex-shrink-0 w-40 h-56 md:w-full md:h-full md:max-w-[30%] md:max-h-[60%]">
                       <Image
                         src={testimonial.image}
                         alt="testimonial"
-                        width={250}
+                        width={500}
                         height={350}
-                        className="object-cover w-full h-full"
+                        className="object-cover w-[500px] h-full"
                       />
                     </div>
                     <div className="p-2 md:p-6 text-left">
@@ -135,7 +134,7 @@ const ClientTestimonials = () => {
                 <CarouselNext />
               </div>
             </div>
-            <CarouselDots />
+            <CarouselDots className="hidden  md:flex  "/>
           </Carousel>
         </div>
       </div>

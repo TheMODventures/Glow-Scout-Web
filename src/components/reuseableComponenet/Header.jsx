@@ -54,7 +54,7 @@ const Header = () => {
               <button key={i}>
                 <Link
                   href={route.href}
-                  className="font-raleway text-[#351120] font-semibold text-xl"
+                  className="font-raleway text-[#351120] font-semibold text-sm"
                 >
                   {route.label}
                 </Link>
@@ -69,7 +69,7 @@ const Header = () => {
           ) : (
             <div className="relative">
               <button
-                    className="hidden md:block rounded-full font-raleway bg-darkMahron text-[#F6E9CE] px-4 py-1 font-normal text-base 2xl:text-lg"
+                    className="hidden md:block  rounded-full font-raleway bg-darkMahron text-[#F6E9CE] px-4 py-2 font-normal text-base 2xl:text-lg"
                     aria-label="login"
                     onClick={toggleDropdown}
                   >
@@ -145,8 +145,8 @@ const Header = () => {
                       <Link
                         key={i}
                         href={route.href}
-                        onClick={closeSheet} // Close the sheet when a route is clicked
-                        className="block px-2 py-1 text-xl"
+                        onClick={closeSheet}
+                        className="block px-2 py-1 text-sm"
                       >
                         {route.label}
                       </Link>
