@@ -1,15 +1,13 @@
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+"use client";
+import React, { useState } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import TreatmentCard from "./TreatmentCard";
 import Image from "next/image";
-
+import { Raleway } from "next/font/google";
+const Raleway1 = Raleway({
+  weight: "400",
+  subsets: ["latin"],
+});
 const treatments = [
   {
     image: "/images/home/tranding-1.png",
@@ -72,57 +70,85 @@ const treatments = [
     label: "Lorem Ipsum",
   },
 ];
-
 const TrandingTreatment = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev === 0 ? treatments.length - 1 : prev - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev === treatments.length - 1 ? 0 : prev + 1));
+  };
+
   return (
-    <div className="mx-auto py-10 md:py-20  font-raleway relative rounded-full border-0">
+    <div className="relative mx-auto w-full h-screen flex items-center justify-center">
       <Image
         width={300}
         height={300}
         alt="bg"
         src={"/images/shadow-1.png"}
-        className=" absolute top-0 right-0 z-0 hidden md:block"
+        className="absolute top-0 right-0 z-0 hidden md:block"
       />
-
-      <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-5xl md:text-6xl font-thin "> Trending Treatments </h2>
-        <p className="m-2 text-lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
+      <div className="w-full">
+        <div className="py-5 text-center text-darkMahron">
+          <h2
+            className={`${Raleway1.className} text-3xl font-thin md:text-4xl 2xl:text-5xl`}
+          >
+            Trending Treatments
+          </h2>
+          <p className="m-2 text-base 2xl:text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
             faucibus.
-        </p>
-      </div>
-
-      <div className="my-5 md:my-16 z-50 md:container mx-3">
-        <Carousel
-          opts={{ align: "start" }}
-          className="w-full md:container md:ml-8 overflow-hidden"
-        >
-          <CarouselContent className="flex md:space-x-4">
-            {treatments.map((treatment, index) => (
-              <CarouselItem
-                key={index}
-                className="basis-1/2  md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
+          </p>
+        </div>
+        <div className="flex justify-center items-center">
+          <div className="relative overflow-hidden my-5 z-50 w-[100%] xl:w-[80%]">
+            <div className="w-full max-w-3xl">
+              <div
+                className="flex transition-transform ease-in-out  duration-500 gap-x-5 xl:gap-x-14 2xl:gap-x-24 xl:px-10 2xl:px-16 "
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
               >
-                <TreatmentCard {...treatment} />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="hidden  md:block">
-            <CarouselPrevious style={{ left: "0rem" }} />
-            <CarouselNext style={{ right: "0rem" }} />
-          </div>
-        </Carousel>
-      </div>
+                
+                {treatments.map((treatment, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 w-full md:w-1/3 lg:w-1/4 xl:w-1/5 p-2"
+                  >
+                    <TreatmentCard {...treatment} />
+                  </div>
+                ))}
+              </div>
 
+              <div className="hidden md:block">
+              {/* Previous Button */}
+              <button
+                onClick={prevSlide}
+                className=" absolute top-1/2 left-2 transform -translate-y-1/2 text-darkMahron text-2xl font-black"
+              >
+                <FaChevronLeft />
+              </button>
+
+              {/* Next Button */}
+              <button
+                onClick={nextSlide}
+                className="absolute top-1/2 right-2 transform -translate-y-1/2  text-darkMahron text-2xl font-black"
+              >
+                <FaChevronRight />
+              </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <Image
         width={300}
         height={300}
         alt="bg"
         src={"/images/shadow-2.png"}
-        className=" absolute bottom-0 left-0 border-none  rounded-xl z-[-1000] hidden md:block"
+        className="absolute bottom-0 left-0 hidden border-none rounded-xl z-[-1000] md:block"
       />
     </div>
   );
 };
-
 export default TrandingTreatment;
