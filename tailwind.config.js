@@ -20,6 +20,7 @@ module.exports = {
       fontFamily: {
         valky: ['var(--font-valky)'], 
         raleway: ['var(--font-raleway)'],
+        ralewayThin: ['var(--font-raleway-thin)'],
       },
       borderWidth: ['active'],
       colors: {
