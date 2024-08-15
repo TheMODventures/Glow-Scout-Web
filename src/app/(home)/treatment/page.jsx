@@ -44,6 +44,7 @@ const TreatmentPage = () => {
         withCredentials: true,
       });
       setAllTreatment(response.data.data.data);
+      console.log("treatment page======", response.data.data.data)
     } catch (error) {
       console.error("Error fetching treatments: ", error);
     }
@@ -197,29 +198,29 @@ const TreatmentPage = () => {
   }
 
   return (
-    <div className="py-6 md:py-10 md:mt-6 font-raleway relative isolate">
+    <div className="py-6 md:py-10 md:mt-6  relative isolate">
        
-      <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-6xl font-thin">Treatments</h2>
-        <p className="m-2 text-sm md:text-lg">
+      <div className="text-center text-darkMahron md:pb-5">
+        <h2 className="text-4xl md:text-6xl md:font-ralewayThin font-raleway font-thin">Treatments</h2>
+        <p className="m-2 text-sm md:text-lg font-raleway">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
       </div>
 
       <Container>
-        <div className="hidden mx-auto w-full md:max-w-6xl md:flex justify-center items-center flex-col bg-opacity-60  bg-[#F6E9CE] md:bg-transparent">
+        <div className="hidden mx-auto w-full md:max-w-6xl md:flex justify-center items-center flex-col bg-opacity-60  bg-lightbg md:bg-transparent">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
-              <div className="md:bg-[#F6E9CE]  bg-opacity-60  pl-5  py-1 md:rounded-full h-[60px] flex flex-col md:flex-row items-center  mt-6">
+              <div className="md:bg-lightbg  bg-opacity-60 shadow-[#0000001A] shadow-lg pl-5  py-1 md:rounded-full h-[60px] flex flex-col md:flex-row items-center mb-4   mt-6">
                 <div className="flex justify-between items-center flex-col md:flex-row">
                   <FormSelect
                     selectItems={selectItems}
                     placeholder="Filters"
                     name="goal"
-                    customClass="min-w-60"
+                    customClass="min-w-60 py-[18px]"
                   />
-                  <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
+                  <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block mx-5">
                     |
                   </span>
                   <div>
@@ -233,7 +234,7 @@ const TreatmentPage = () => {
                       </Button>
                     </Link>
                   </div>
-                  <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
+                  <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block mx-5">
                     |
                   </span>
                 </div>
@@ -260,19 +261,22 @@ const TreatmentPage = () => {
             </form>
           </Form>
         </div>
-      </Container>
+      
 
 
       <div className="container my-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
           
           {allTreatment.map((item, index) => (
-          <Link href={'/spas'} key={index}>
-            <TreatmentCard key={index} {...item} imageHeightWeb={"[350px]"} />
+            <div className="md:mb-8">
+          <Link href={`/treatment/${index}`} key={index}>
+            <TreatmentCard key={index} {...item} imageHeightWeb={"h-60"} />
             </Link>  
+            </div>
           ))}
 
         </div>
+        
       </div>
       
       <div className="md:hidden flex justify-end items-end sticky bottom-3 mr-3">
@@ -280,7 +284,7 @@ const TreatmentPage = () => {
     Compare
   </Link>
 </div>
-
+</Container>
     </div>
   );
 };
