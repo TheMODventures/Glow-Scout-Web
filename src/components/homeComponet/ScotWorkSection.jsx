@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "../../reuseableComponenet/Container";
-import { Button } from "../../ui/button";
+import Container from "@/components/reuseableComponenet/Container";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Raleway } from 'next/font/google'
 

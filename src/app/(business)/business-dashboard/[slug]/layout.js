@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import BusinessHeader from "@/components/helper/businessDashboard/BusinessHeader";
+import BusinessHeader from "@/components/businessDashboard/BusinessHeader";
 import { Toaster } from "@/components/ui/toaster";
 import localFont from "next/font/local";
 import Image from "next/image";

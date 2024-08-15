@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import AnalyticsComponent from "@/components/helper/businessDashboard/AnalyticsComponent";
-import ServicesComponent from "@/components/helper/businessDashboard/ServicesComponent";
+import AnalyticsComponent from "@/components/businessDashboard/AnalyticsComponent";
+import ServicesComponent from "@/components/businessDashboard/ServicesComponent";
 import SettingComponent from "@/components/reuseableComponenet/Setting";
 
 const Page = () => {

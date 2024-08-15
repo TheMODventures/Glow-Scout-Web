@@ -42,7 +42,7 @@ const HeroSection = () => {
           src="/images/home/Hero.png"
           alt="Woman"
           className="w-full h-full"
-          layout="fill"
+          fill
         />
       </div>
       <div className="px-3 absolute bottom-4 lg:bottom-8  left-1/2 transform -translate-x-1/2 z-20 w-full md:max-w-[800px] 2xl:max-w-[1100px]">
