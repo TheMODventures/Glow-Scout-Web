@@ -7,7 +7,7 @@ import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import Container from "./Container";
 import { BookSchema } from "@/validation/common.validation";
-import FormSelect from "./FormSelect";
+import FilterSelect from "./FilterSelect";
 import Link from "next/link";
 
 function SelectForm() {
@@ -58,44 +58,40 @@ function SelectForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className=" w-full">
-        <div className="bg-[#F6E9CE99]  shadow-lg py-3 rounded-xl md:rounded-full grid grid-cols-2 md:grid-cols-5 gap-1 md:gap-2 md:flex-row md:container px-4 grid-flow-row-dense items-center justify-center">
-          <div class="md:col-span-2 flex w-full">
-            <FormSelect
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <div className="bg-[#F6E9CE99]  shadow-lg py-[8px] rounded-xl md:rounded-full grid grid-cols-2 md:grid-cols-5 gap-1 md:gap-2 md:flex-row px-3 2xl:px-5 grid-flow-row-dense items-center justify-center">
+          <div class="md:col-span-2 flex">
+            <FilterSelect
               selectItems={goalData}
               placeholder="Select your Goals"
               name="goal"
               Control={form.control}
-              customClass="w-full"
             />
-            <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block ">
-              |
-            </span>
+            <p className="text-xl 2xl:text-3xl  hidden text-gray-400 lg:block ml-4  2xl:ml-16">
+              {" "}
+              |{" "}
+            </p>
           </div>
 
           <div class="md:col-span-2 w-full">
-            <FormSelect
+            <FilterSelect
               selectItems={itemsDate}
               placeholder="Select your Location"
               name="location"
               Control={form.control}
-              customClass="w-full"
             />
           </div>
 
-          <div className="col-span-2 md:col-span-1 flex justify-center w-full">
-  <Link href={'/spa-single/1'} className="w-full">
-    <Button
-      type="submit"
-      variant="myCustom"
-      size="lg"
-      className="rounded-full w-full"
-    >
-      Book Now!
-    </Button>
-  </Link>
-</div>
-
+          <div className="col-span-2 md:col-span-1 flex justify-center w-full ">
+            <Link href={"/spa-single/1"}>
+              <button
+                type="submit"
+                className="rounded-full w-full md:w-auto max-w-fit bg-darkMahron px-7 2xl:px-10 text-white h-[32px] 2xl:h-[42px] text-base"
+              >
+                Book Now!
+              </button>
+            </Link>
+          </div>
         </div>
       </form>
     </Form>

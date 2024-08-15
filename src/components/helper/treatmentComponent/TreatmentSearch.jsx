@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
-import { FilterSelect } from "../../reuseableComponenet/FormSelect";
+import { FilterSelect } from "../../reuseableComponenet/FilterSelect";
 import Search from "../../reuseableComponenet/Search";
 
 function TreatmentSearch() {
