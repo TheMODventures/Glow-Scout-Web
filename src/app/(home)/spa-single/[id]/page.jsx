@@ -4,7 +4,7 @@ import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import VisitSpa from "@/components/helper/spasComponent/VisitSpa";
+import VisitSpa from "@/components/spasComponent/VisitSpa";
 import Image from "next/image";
 import React, { useState } from "react";
 
