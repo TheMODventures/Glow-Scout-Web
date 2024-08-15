@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from 'next/navigation';
+import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import ProfileButton from "@/components/reuseableComponenet/ProfileButton";
 import { useState } from "react";
@@ -10,8 +10,6 @@ const Header = () => {
   const [currentUser, setCurrentUser] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const pathname = usePathname();
-  const border = pathname === '/';
 
   const routes = [
     { href: "/", label: "Home" },
@@ -38,7 +36,7 @@ const Header = () => {
   };
 
   return (
-    <header className={`sm:flex sm:justify-between py-3 px-4 bg-[#F8F8F8] ${!border ? "border-b-2 border-darkMahron" : "" } `}>
+    <header className={`sm:flex sm:justify-between py-3 px-4 bg-[#F8F8F8] border-b-2 border-darkMahron`}>
       <div className="relative  sm:px-6 lg:px-8 flex h-16 items-center justify-between w-full z-50">
         <div className="flex items-center justify-between">
           <Link href="/">
@@ -49,12 +47,12 @@ const Header = () => {
         </div>
 
         <div className="flex items-center">
-          <nav className="mx-6 items-center space-x-5 lg:space-x-16 hidden md:block font-normal">
+          <nav className="mx-6 items-center space-x-1 lg:space-x-16 hidden md:block font-normal">
             {routes.map((route, i) => (
               <button key={i}>
                 <Link
                   href={route.href}
-                  className="font-raleway text-[#351120] font-semibold text-sm"
+                  className="font-raleway text-[#351120] font-normal text-xl"
                 >
                   {route.label}
                 </Link>
@@ -69,7 +67,7 @@ const Header = () => {
           ) : (
             <div className="relative">
               <button
-                    className="hidden md:block  rounded-full font-raleway bg-darkMahron text-[#F6E9CE] px-4 py-2 font-normal text-base 2xl:text-lg"
+                    className="hidden md:block rounded-full font-raleway bg-darkMahron text-[#F6E9CE] px-4 py-2 font-normal text-lg"
                     aria-label="login"
                     onClick={toggleDropdown}
                   >
@@ -145,8 +143,8 @@ const Header = () => {
                       <Link
                         key={i}
                         href={route.href}
-                        onClick={closeSheet}
-                        className="block px-2 py-1 text-sm"
+                        onClick={closeSheet} // Close the sheet when a route is clicked
+                        className="block px-2 py-1 text-xl"
                       >
                         {route.label}
                       </Link>

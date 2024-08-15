@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import Search from "@/components/reuseableComponenet/Search";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import FormSelect from "./FilterSelect";
+import FormSelect from "./FormSelect";
 import Container from "./Container";
 
 function FilterSearch({

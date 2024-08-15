@@ -1,10 +1,11 @@
 import Image from "next/image";
-const TreatmentCard = ({ image, imageAlt, label, title, description }) => {
+const TreatmentCard = ({ image, imageAlt, label, title, description, imageHeightWeb }) => {
   return (
+    
     <div className="my-3">
-      <div className="relative  rounded-xl">
+      <div className={`relative w-full h-56 md:h-${imageHeightWeb} xl:h-80 rounded-xl`}>
         <Image
-          className="rounded-xl static w-full h-full object-cover shadow-md"
+          className="rounded-xl static w-full h-full object-cover"
           src={image}
           alt={imageAlt}
           height={1000}
@@ -17,12 +18,12 @@ const TreatmentCard = ({ image, imageAlt, label, title, description }) => {
         ) : null}
       </div>
       <div className="pt-2">
-        <h3 className="text-start text-base md:text-lg 2xl:text-xl  font-semibold text-darkMahron font-raleway">
-          {title}
-        </h3>
-        <p className="text-start text-sm md:text-base font-raleway">{description}</p>
+        <h3 className="text-start text-lg md:text-2xl  font-semibold text-darkMahron font-raleway ">{title}</h3>
+        <p className="text-start text-sm md:text-base font-raleway ">{description}</p>
       </div>
     </div>
+    
   );
 };
+
 export default TreatmentCard;

@@ -10,7 +10,7 @@ import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 import Search from "@/components/reuseableComponenet/Search";
-import FormSelect from "@/components/reuseableComponenet/FilterSelect";
+import FormSelect from "@/components/reuseableComponenet/FormSelect";
 import Container from "@/components/reuseableComponenet/Container";
 
 const SpaPage = () => {

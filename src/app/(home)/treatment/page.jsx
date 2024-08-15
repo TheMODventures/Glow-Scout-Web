@@ -2,7 +2,7 @@
 
 import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
 import FilterSearch from "@/components/reuseableComponenet/FilterSearch";
-import FilterSelect from "@/components/reuseableComponenet/FilterSelect";
+import FilterSelect from "@/components/reuseableComponenet/FormSelect";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import Search from "@/components/reuseableComponenet/Search";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import FormSelect from "@/components/reuseableComponenet/FilterSelect";
+import FormSelect from "@/components/reuseableComponenet/FormSelect";
 import Container from "@/components/reuseableComponenet/Container";
 import Image from "next/image";
 import { useEffect, useState } from "react";
