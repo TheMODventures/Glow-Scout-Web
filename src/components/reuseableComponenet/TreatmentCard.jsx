@@ -1,17 +1,17 @@
 import Image from "next/image";
-const TreatmentCard = ({ image, imageAlt, label, title, description }) => {
+const TreatmentCard = ({ image, imageAlt, label, title, description ,imageHeightWeb }) => {
   return (
     <div className="my-3">
       <div className="relative  rounded-xl">
         <Image
-          className="rounded-xl static w-full h-full object-cover shadow-md"
+          className={`rounded-xl static w-full ${imageHeightWeb}  object-cover shadow-md`}
           src={image}
           alt={imageAlt}
-          height={1000}
-          width={800}
+          height={500}
+          width={500}
         />
         {label ? (
-          <p className="absolute font-raleway top-0 right-0 p-3 bg-lighttext rounded-b-lg rounded-tr-lg">
+          <p className="absolute font-raleway top-0 right-0 md:px-6 p-2 bg-lightbg rounded-bl-lg rounded-tr-lg">
             {label}
           </p>
         ) : null}

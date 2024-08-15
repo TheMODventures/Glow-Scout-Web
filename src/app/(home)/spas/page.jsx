@@ -169,38 +169,38 @@ const SpaPage = () => {
   }
 
   return (
-    <div className="py-6 md:py-10 md:mt-6 font-raleway relative isolate">
-      <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-6xl font-thin"> Salons & Spas </h2>
-        <p className="m-2 text-lg">
+    <div className="py-6 md:py-10 md:mt-6 relative isolate">
+      <div className="text-center text-darkMahron md:pb-5">
+        <h2 className="text-4xl md:text-6xl font-ralewayThin md:font-light font-normal"> Salons & Spas </h2>
+        <p className="m-2 text-lg font-raleway">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
       </div>
 
       <Container>
-        <div className="hidden mx-auto w-full md:max-w-6xl md:flex justify-center bg-opacity-60  items-center flex-col bg-[#F6E9CE] md:bg-transparent">
+        <div className="hidden mx-auto w-full md:max-w-6xl md:flex justify-center bg-opacity-60  items-center flex-col bg-lightbg md:bg-transparent">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
-              <div className="md:bg-[#F6E9CE] bg-opacity-60  pl-5  py-1 md:rounded-full h-[60px] flex flex-col md:flex-row items-center  mt-6">
+              <div className="md:bg-[#FEF5E3] shadow-[#0000001A] shadow-lg bg-opacity-60  pl-5  py-1 md:rounded-full h-[60px] flex flex-col md:flex-row items-center mb-4  mt-6">
                 <div className="flex justify-between  items-center flex-col md:flex-row">
                   <FormSelect
                     selectItems={selectItems}
                     placeholder="Filters"
                     name="goal"
-                    customClass=""
+                    customClass="py-[18px]"
                   />
-                  <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
+                  <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block mx-5">
                     |
                   </span>
                   <div>
                     <Input
                       placeholder="Please enter your location"
                       type="search"
-                      className="border-darkMahron border-2 text-darkMahron  px-4  rounded-full mb-4 md:mb-0 md:mr-4 py-3 w-60 h-10"
+                      className="border-darkMahron border-[1.5px] text-darkMahron  px-4  rounded-full mb-4 md:mb-0 md:mr-4 py-3 w-60 h-10"
                     />
                   </div>
-                  <span className="h-full w-[1px] text-2xl text-darkMahron hidden md:block mx-5">
+                  <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block mx-5">
                     |
                   </span>
                 </div>
@@ -208,7 +208,7 @@ const SpaPage = () => {
                   <div>
                     <Search
                       name="goal"
-                      placeholder="Search for Treatment"
+                      placeholder="Search by Treatment or Spa"
                       formControl={form.control}
                     />
                   </div>
@@ -227,17 +227,20 @@ const SpaPage = () => {
             </form>
           </Form>
         </div>
-      </Container>
+      
 
-      <div className="container my-5">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
+      <div className=" my-5 mx-4 md:mx-0">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4  mt-6 mb-2">
           {dummyData.map((item, index) => (
             <Link href={`spa-single/${index}`} key={index}>
+              <div className="md:mb-8">
               <TreatmentCard key={index} {...item} />
+              </div>
             </Link>
           ))}
         </div>
       </div>
+      </Container>
     </div>
   );
 };
