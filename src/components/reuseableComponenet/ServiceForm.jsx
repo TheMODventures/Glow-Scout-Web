@@ -3,6 +3,7 @@ import Image from "next/image";
 import axiosInstance from "@/axiosInstance";
 import { useToast } from "../ui/use-toast";
 
+
 const Add = () => {
   return (
     <svg
@@ -69,36 +70,36 @@ const ServiceForm = ({ isEdit, initialData }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-  
+
     const formData = new FormData();
-  
+
     // Append each field individually
-    formData.append('title', updateTreatmentData.title);
-    formData.append('description', updateTreatmentData.description);
-    formData.append('goal', "65dfc081aaf4e436bc208510");
-    formData.append('price', updateTreatmentData.price);
-    if ( updateTreatmentData.image) {
-      formData.append('image', updateTreatmentData.image); 
+    formData.append("title", updateTreatmentData.title);
+    formData.append("description", updateTreatmentData.description);
+    formData.append("goal", "65dfc081aaf4e436bc208510");
+    formData.append("price", updateTreatmentData.price);
+    if (updateTreatmentData.image) {
+      formData.append("image", updateTreatmentData.image);
     }
-  
+
     try {
       const apiUrl = isEdit
         ? `/treatment/update/${initialData.id}`
         : "/treatment/create";
       const method = isEdit ? "put" : "post";
-  
+
       const response = await axiosInstance[method](apiUrl, formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });
-  
+
       console.log("Response:", response.data);
       alert("Operation successful");
     } catch (error) {
       console.error("Error submitting form: ", error);
     }
   };
-  
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUpdataTreatmentData({
@@ -108,15 +109,14 @@ const ServiceForm = ({ isEdit, initialData }) => {
   };
 
   const handleFileChange = (event) => {
-    const file = event.target.files[0]
+    const file = event.target.files[0];
     if (file) {
       const allowedTypes = ["image/png", "image/jpeg", "image/jpg"];
       if (allowedTypes.includes(file.type)) {
-     
-    setUpdataTreatmentData({
-      ...updateTreatmentData,
-      image: file,
-    });
+        setUpdataTreatmentData({
+          ...updateTreatmentData,
+          image: file,
+        });
         setIsImageUploading(true);
 
         setTimeout(() => {
@@ -148,17 +148,16 @@ const ServiceForm = ({ isEdit, initialData }) => {
         });
       }
     }
-    
   };
 
   return (
-    <div className="mx-auto min-h-screen font-raleway relative md:px-4">
+    <div className="mx-auto min-h-screen  relative md:px-4">
       <div className="mt-10 lg:mt-20 xl:mt-30 flex items-center justify-center">
         <div className="bg-white border-2 border-darkMahron rounded-lg px-8 py-4 sm:py-8 sm:px-20 w-full h-full md:max-w-[70%] md:max-h-[50%]">
-          <h1 className="text-3xl sm:text-5xl font-raleway font-thin mb-6 text-center text-darkMahron">
+          <h1 className="text-3xl sm:text-5xl font-ralewayThin font-thin mb-6 text-center text-darkMahron">
             {headerText}
           </h1>
-          <div className="mb-6 flex justify-center">
+          <div className="mb-6 flex justify-center font-raleway">
             <div className="relative w-64 h-40 border rounded-lg overflow-hidden">
               {isEdit && updateTreatmentData.image ? (
                 <>
@@ -181,18 +180,15 @@ const ServiceForm = ({ isEdit, initialData }) => {
                     className="hidden"
                   />
                 </>
-              ) : ( isImageUploading ? (<p className="text-sm text-darkMahron">Uploading-----</p>) :
-               ( <div className="bg-gray-100 flex justify-center items-center border-2 border-darkMahron rounded-lg h-40 w-full max-w-[300px]">
+              ) : isImageUploading ? (
+                <p className="text-sm text-darkMahron">Uploading-----</p>
+              ) : (
+                <div className="bg-gray-100 flex justify-center items-center border-2 border-darkMahron rounded-lg h-40 w-full max-w-[300px]">
                   <label className="flex flex-col items-center cursor-pointer">
-                  {isImageUploaded ? (
-                            <EditImageIcon />
-                          ) : (
-                            <Add />
-                          )}
+                    {isImageUploaded ? <EditImageIcon /> : <Add />}
                     <span className="text-darkMahron">
-                    {isImageUploaded ? "Change" : "Add"} profile
-                    Images
-                      </span>
+                      {isImageUploaded ? "Change" : "Add"} profile Images
+                    </span>
                     <input
                       name="image"
                       id="image"
@@ -201,20 +197,28 @@ const ServiceForm = ({ isEdit, initialData }) => {
                       className="hidden"
                     />
                   </label>
-                </div>)
+                </div>
               )}
               {isEdit && (
                 <div className="absolute inset-0 flex items-center rounded-md justify-center border-2 border-darkMahron">
                   <label className="flex flex-col items-center">
                     <EditImageIcon />
                     <span className="text-black">Edit Image</span>
-                    <input name="image" id="image" type="file" className="hidden" />
+                    <input
+                      name="image"
+                      id="image"
+                      type="file"
+                      className="hidden"
+                    />
                   </label>
                 </div>
               )}
             </div>
           </div>
-          <form onSubmit={handleFormSubmit} className="grid grid-cols-2 gap-4">
+          <form
+            onSubmit={handleFormSubmit}
+            className="grid grid-cols-2 gap-4 font-raleway"
+          >
             <div className="mb-4 col-span-2 sm:col-span-1">
               <input
                 id="title"
@@ -227,6 +231,7 @@ const ServiceForm = ({ isEdit, initialData }) => {
               />
             </div>
             <div className="mb-4 col-span-2 sm:col-span-1">
+              
               <select
                 id="goal"
                 name="goal"
