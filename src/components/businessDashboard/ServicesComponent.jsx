@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
 import ServiceForm from "@/components/reuseableComponenet/ServiceForm";
 import axiosInstance from "@/axiosInstance";
+import { Plus } from 'lucide-react';
 
 const ServicesComponent = () => {
   const [currentView, setCurrentView] = useState("list");
@@ -34,22 +35,22 @@ const ServicesComponent = () => {
   };
 
   return (
-    <div className="container my-5">
+    <div className=" my-5">
       {currentView === "list" && (
         <>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
             {allTreatment.map((item, index) => (
               <button key={index} onClick={() => handleEditClick(item)}>
-                <TreatmentCard {...item} imageHeightWeb={"[100px]"} />
+                <TreatmentCard {...item} imageHeightWeb={"h-60"} />
               </button>
             ))}
           </div>
           <div className="flex justify-end items-end sticky bottom-3 left-3">
             <button
               onClick={handleAddClick}
-              className="py-2 px-4 text-xl bg-darkMahron text-white rounded-full shadow-md transform transition-transform hover:scale-105"
+              className="py-2 px-2 text-xl bg-darkMahron text-white rounded-full shadow-md transform transition-transform hover:scale-105"
             >
-              +
+              <Plus size={32} color="#F6E9CE" strokeWidth={2.5} />
             </button>
           </div>
         </>
