@@ -4,7 +4,6 @@ import ServiceForm from "@/components/reuseableComponenet/ServiceForm";
 import axiosInstance from "@/axiosInstance";
 import { Plus } from 'lucide-react';
 
-
 const ServicesComponent = () => {
   const [currentView, setCurrentView] = useState("list");
   const [selectedTreatment, setSelectedTreatment] = useState(null);
@@ -20,7 +19,6 @@ const ServicesComponent = () => {
         withCredentials: true,
       });
       setAllTreatment(response.data.data.data);
-      console.log(response.data.data.data)
     } catch (error) {
       console.error("Error fetching treatments: ", error);
     }
