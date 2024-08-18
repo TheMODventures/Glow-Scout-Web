@@ -59,7 +59,7 @@ function SelectForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="bg-[#F6E9CE99]  shadow-lg py-[8px] rounded-xl md:rounded-full grid grid-cols-2 md:grid-cols-5 gap-1 md:gap-2 md:flex-row px-3 2xl:px-5 grid-flow-row-dense items-center justify-center">
+        <div className="bg-[#F6E9CE99]   shadow-lg py-[8px] rounded-xl md:rounded-full grid grid-cols-2 md:grid-cols-5 gap-1 md:gap-2 md:flex-row px-3 2xl:px-5 grid-flow-row-dense items-center justify-center">
           <div className="md:col-span-2 flex">
             <FilterSelect
               selectItems={goalData}
@@ -86,7 +86,7 @@ function SelectForm() {
             <Link href={"/spa-single/1"}>
               <button
                 type="submit"
-                className="rounded-full w-full md:w-auto max-w-fit bg-darkMahron px-7 2xl:px-10 text-white h-[32px] 2xl:h-[42px] text-base"
+                className="font-raleway  rounded-full w-full md:w-auto max-w-fit bg-darkMahron px-7 2xl:px-10 text-white h-[32px] 2xl:h-[42px]"
               >
                 Book Now!
               </button>

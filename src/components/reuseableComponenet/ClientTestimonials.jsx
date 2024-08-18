@@ -90,7 +90,7 @@ const ClientTestimonials = () => {
                       />
                     </div>
                     <div className="p-2 md:p-6 text-left">
-                      <h3 className="text-[#351120] text-xl md:text-2xl font-bold pb-3">
+                      <h3 className="text-[#351120] text-xl md:text-3xl font-bold pb-3 font-raleway">
                         {testimonial.name}
                       </h3>
                       <p className="py-3 w-full md:w-[300px] text-sm md:text-base">

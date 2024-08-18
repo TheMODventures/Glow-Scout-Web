@@ -54,7 +54,7 @@ const Header = () => {
               <button key={i}>
                 <Link
                   href={route.href}
-                  className="font-raleway text-[#351120] font-semibold text-sm"
+                  className="font-raleway text-[#351120] font-semibold text-lg"
                 >
                   {route.label}
                 </Link>

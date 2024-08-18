@@ -8,8 +8,8 @@ import { Card } from "@/components/ui/card";
 const VisitSpa = () => {
   const [favourite, setFavourite] = useState(false);
   return (
-    <div className="border-b border-darkMahron pb-5 mb-20">
-      <h1 className="text-4xl text-darkMahron  mt-6">Crystal Calm</h1>
+    <div className="border-b border-darkMahron pb-5 mb-20 font-raleway">
+      <h1 className="text-4xl text-darkMahron   mt-6">Crystal Calm</h1>
       <div className="grid grid-cols-1 md:grid-cols-5 md:gap-6 mb-2">
         <div className="col-span-2">
           <div className="relative">

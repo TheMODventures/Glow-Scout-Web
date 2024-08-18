@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 
 const SinupAsBusiness = () => {
   return (
-    <div className=" mx-auto py-20 md:mt-6 font-raleway border-b-darkMahron">
+    <div className=" mx-auto py-20 md:mt-6  border-b-darkMahron">
       <div className="text-center">
-        <h2 className="text-4xl md:text-5xl text-darkMahron font-thin">Are you a business?</h2>
-        <p className="py-10 text-lg">
+        <h2 className="text-4xl md:text-5xl text-darkMahron font-[300] font-ralewayThin">Are you a business?</h2>
+        <p className="py-10 text-lg font-raleway">
           People are seeking for the specialist. <br /> Join us now and serve
           your skills
         </p>

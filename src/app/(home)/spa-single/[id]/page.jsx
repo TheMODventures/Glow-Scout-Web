@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import VisitSpa from "@/components/spasComponent/VisitSpa";
 import Image from "next/image";
 import React, { useState } from "react";
+import Container from "@/components/reuseableComponenet/Container";
 
 function Star1({ filled, onClick }) {
   return (
@@ -104,37 +105,38 @@ const SpaSingle = ({ params }) => {
   ];
 
   return (
-    <div className=" font-raleway mx-auto px-4 max-w-screen-2xl">
+    <div className="mx-auto px-4 max-w-screen-2xl">
       <VisitSpa />
 
-      <div className="py-4 font-raleway md:pb-36 border-b border-darkMahron">
+      <div className="py-4  md:pb-36 border-b font-ralewayThin md:font-thin border-darkMahron">
         <div className="text-center text-darkMahron pb-5">
           <h2 className="text-4xl md:text-6xl font-thin">
             {" "}
             Treatments Offered{" "}
           </h2>
-          <p className="m-2 text-lg">
+          <p className="m-2 text-lg font-raleway">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
             faucibus.
           </p>
         </div>
 
         <div className="my-3">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
+          <div className="container grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
             {dummyData.map((item, index) => (
-              <TreatmentCard key={index} {...item} imageHeightWeb={56} />
+              <TreatmentCard key={index} {...item} imageHeightWeb={"md:h-[300px]"} />
             ))}
           </div>
         </div>
       </div>
 
-      <div className="py-6 md:mt-6 font-raleway">
+      <div className="py-6 md:mt-6">
         <div className="text-center pb-5">
-          <h2 className="text-4xl md:text-6xl font-raleway font-semibold  text-darkMahron ">
+          <h2 className="text-4xl md:text-6xl font-ralewayThin md:font-thin  text-darkMahron  ">
             Reviews
           </h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-5 mt-2 md:mt-5">
+        <Container>
+        <div className="grid md:grid-cols-2 gap-5 mt-2 md:mt-5 font-raleway">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
@@ -149,10 +151,10 @@ const SpaSingle = ({ params }) => {
                   className="block md:hidden w-40 h-56 rounded-xl object-cover mb-4 md:mb-0"
                 />
                 <div className="px-6 py-3">
-                  <h3 className="text-darkMahron md:text-5xl text-2xl font-bold md:pb-3 pb-1">
+                  <h3 className="text-darkMahron md:text-5xl text-2xl  md:pb-3 pb-1">
                     {testimonial.name}
                   </h3>
-                  <p className="md:py-3 w-full md:w-[550px] md:text-xl text-[12px] font-normal">
+                  <p className="md:py-3 w-full  md:text-xl text-[12px] font-normal">
                     {testimonial.review}
                   </p>
                   <div className="mt-2 md:mt-0 relative">
@@ -180,7 +182,7 @@ const SpaSingle = ({ params }) => {
             </div>
           ))}
         </div>
-
+        </Container>
         <div className="flex justify-center items-center my-16">
           <Button
             type="submit"
@@ -194,12 +196,12 @@ const SpaSingle = ({ params }) => {
 
         <div className="border border-darkMahron text-darkMahron rounded-xl py-5 px-4 my-8 ">
           <div className="pb-10">
-            <h2 className="text-5xl">Add your review</h2>
+            <h2 className="md:text-5xl text-2xl font-raleway">Add your review</h2>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
   <Input
     placeholder="Write your review here....."
-    className="border-b text-xl border-darkMahron w-full md:w-auto md:min-w-[1024px]"
+    className="border-b-1 bordeer-t-0  border-darkMahron w-full md:w-auto md:min-w-[600px]"
   />
   <div className="flex flex-row items-center">
     <p className="text-lg text-darkMahron mr-2 mb-2">Ratings</p>
