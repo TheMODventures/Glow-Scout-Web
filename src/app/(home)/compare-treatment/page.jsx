@@ -7,7 +7,7 @@ const CompareTreatments = () => {
     <div className="flex flex-col items-center px-3 md:px-8 py-10 ">
       
       <div className="text-center text-darkMahron pb-6">
-        <h2 className="text-4xl md:text-5xl font-thin font-raleway">Compare Treatments </h2>
+        <h2 className="text-4xl md:text-5xl font-ralewayLight">Compare Treatments </h2>
         <p className="m-2 text-sm md:text-lg font-light font-raleway">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.

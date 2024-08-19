@@ -9,6 +9,7 @@ import SignupAsBusiness from "@/components/homeComponet/SinupAsBusiness";
 export default function page() {
   return (
     <>
+    <div className=" overflow-x-hidden">
       <HeroSection />
       {/* <div className="mb-5">
         <BookNow />
@@ -42,6 +43,7 @@ export default function page() {
       <SignupAsBusiness />
 
       {/* signup for business section  end*/}
+      </div>
     </>
   );
 }

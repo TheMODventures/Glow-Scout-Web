@@ -108,9 +108,9 @@ const SpaSingle = ({ params }) => {
     <div className="mx-auto px-4 max-w-screen-2xl">
       <VisitSpa />
 
-      <div className="py-4  md:pb-36 border-b font-ralewayThin md:font-thin border-darkMahron">
+      <div className="py-4  md:pb-36 border-b font-ralewayLight md:font-thin border-darkMahron">
         <div className="text-center text-darkMahron pb-5">
-          <h2 className="text-4xl md:text-6xl font-thin">
+          <h2 className="text-4xl md:text-6xl font-ralewayLight">
             {" "}
             Treatments Offered{" "}
           </h2>
@@ -131,7 +131,7 @@ const SpaSingle = ({ params }) => {
 
       <div className="py-6 md:mt-6">
         <div className="text-center pb-5">
-          <h2 className="text-4xl md:text-6xl font-ralewayThin md:font-thin  text-darkMahron  ">
+          <h2 className="text-4xl md:text-6xl font-ralewayLight  text-darkMahron  ">
             Reviews
           </h2>
         </div>
@@ -196,7 +196,7 @@ const SpaSingle = ({ params }) => {
 
         <div className="border border-darkMahron text-darkMahron rounded-xl py-5 px-4 my-8 ">
           <div className="pb-10">
-            <h2 className="md:text-5xl text-2xl font-raleway">Add your review</h2>
+            <h2 className="md:text-5xl text-2xl font-ralewayLight">Add your review</h2>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
   <Input
@@ -204,7 +204,7 @@ const SpaSingle = ({ params }) => {
     className="border-b-1 bordeer-t-0  border-darkMahron w-full md:w-auto md:min-w-[600px]"
   />
   <div className="flex flex-row items-center">
-    <p className="text-lg text-darkMahron mr-2 mb-2">Ratings</p>
+    <p className="text-lg text-darkMahron font-raleway mr-2">Ratings</p>
     <div className="flex gap-2">
       {Array.from({ length: 5 }, (_, starIndex) => (
         <Star1

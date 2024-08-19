@@ -92,7 +92,7 @@ const page = () => {
     <div className=" py-10 md:mt-6 ">
       
       <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-6xl font-ralewayThin font-light">  Select Goal for your Skin </h2>
+        <h2 className="text-4xl md:text-6xl font-ralewayLight">  Select Goal for your Skin </h2>
         <p className="m-2 text-lg">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.

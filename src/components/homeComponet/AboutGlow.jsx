@@ -19,7 +19,7 @@ const AboutGlow = () => {
       </div>
       <d>
       <div className="mx-[10%] py-2 items-center text-center md:text-left ">
-        <h2  className={`text-3xl  md:text-5xl 2xl:text-5xl text-center font-ralewayThin font-thin`}>
+        <h2  className={`text-3xl  md:text-5xl 2xl:text-5xl text-center font-ralewayLight`}>
           About
           <br />
           &rdquo;Glow Scout&rdquo;

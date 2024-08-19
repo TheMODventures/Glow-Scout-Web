@@ -5,7 +5,7 @@ const page = () => {
     <div className="container py-10  md:mt-6   mb-4">
       
       <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-6xl md:font-thin font-ralewayThin "> About Us </h2>
+        <h2 className="text-4xl md:text-6xl font-ralewayLight "> About Us </h2>
         <p className="m-2 text-lg font-raleway">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.

@@ -9,7 +9,7 @@ const VisitSpa = () => {
   const [favourite, setFavourite] = useState(false);
   return (
     <div className="border-b border-darkMahron pb-5 mb-20 font-raleway">
-      <h1 className="text-4xl text-darkMahron   mt-6">Crystal Calm</h1>
+      <h1 className="text-5xl text-darkMahron font-ralewayLight mt-6  md:mt-10">Crystal Calm</h1>
       <div className="grid grid-cols-1 md:grid-cols-5 md:gap-6 mb-2">
         <div className="col-span-2">
           <div className="relative">
@@ -46,7 +46,7 @@ const VisitSpa = () => {
         <div className="col-span-2 py-5">
           <Card className="p-6 border-darkMahron h-full flex flex-col max-h-[600px]">
             <div>
-              <h2 className="text-3xl md:text-4xl font-medium mb-4  text-darkMahron ">Crystal Calm Spa</h2>
+              <h2 className="text-3xl md:text-4xl font-medium mb-4  text-darkMahron font-ralewayLight ">Crystal Calm Spa</h2>
               <div className="flex justify-between items-center md:mb-4 mb-2">
                 <p className="text-darkMahron text-base md:text-lg font-semibold">Add to favourites</p>
                 <button onClick={() => setFavourite(!favourite)}>
@@ -64,11 +64,11 @@ const VisitSpa = () => {
                   <p className="text-[12px] ml-2">(5,212)</p>
                 </div>
                 <div className="md:py-14 py-4 border-b border-darkMahron gap-y-7">
-                  <p className="flex gap-2 items-center mb-2 text-darkMahron text-base md:text-xl font-semibold">
+                  <p className="flex gap-2 items-center mb-2 text-darkMahron text-base md:text-xl">
                     <Clock size={26} strokeWidth={1} />
                     Open until 12:00p.m.
                   </p>
-                  <address className="flex gap-2 items-center mb-2 not-italic text-darkMahron font-semibold text-base md:text-xl">
+                  <address className="flex gap-2 items-center mb-2 not-italic text-darkMahron text-base md:text-xl">
                     <MapPin size={26} strokeWidth={1} />
                     13th Street 47 W 13th St, New York
                   </address>

@@ -171,7 +171,7 @@ const SpaPage = () => {
   return (
     <div className="py-6 md:py-10 md:mt-6 relative isolate">
       <div className="text-center text-darkMahron md:pb-5">
-        <h2 className="text-4xl md:text-6xl font-ralewayThin md:font-light font-normal"> Salons & Spas </h2>
+        <h2 className="text-4xl md:text-6xl font-ralewayLight"> Salons & Spas </h2>
         <p className="m-2 text-lg font-raleway">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
