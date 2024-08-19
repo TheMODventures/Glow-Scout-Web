@@ -49,7 +49,7 @@ const ScotWorkSection = () => {
             type="submit"
             variant="myCustom"
             size="lg"
-            className="rounded-full mt-8"
+            className="rounded-full mt-8 md:text-lg"
           >
             Get Started
           </Button>

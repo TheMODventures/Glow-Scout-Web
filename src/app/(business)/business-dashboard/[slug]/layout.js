@@ -4,6 +4,14 @@ import { Toaster } from "@/components/ui/toaster";
 import localFont from "next/font/local";
 import Image from "next/image";
 import ReduxProvider from "@/app/ReduxProvider";
+import { Raleway } from 'next/font/google'
+
+const RalewayThin = Raleway({
+  weight: '300',
+  subsets: ['latin'],
+  variable: "--font-raleway-thin",
+})
+
 const valky = localFont({
   src: [
     {
@@ -34,7 +42,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${valky.variable} ${raleway.variable} font-sans`}
+      className={`${valky.variable} ${raleway.variable} ${RalewayThin.variable} font-sans`}
     >
       <body>
         <ReduxProvider>

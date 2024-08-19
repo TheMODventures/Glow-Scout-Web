@@ -20,7 +20,7 @@ const raleway = localFont({
   src: [
     {
       path: "../../../public/fonts/Raleway-Regular.ttf",
-      weight: "400",
+      weight: "100",
     },
   ],
   variable: "--font-raleway",
@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${valky.variable} ${raleway.variable} font-sans`}
+      className={`${valky.variable} ${raleway.variable}  font-sans`}
     >
       <body>
         <ReduxProvider>

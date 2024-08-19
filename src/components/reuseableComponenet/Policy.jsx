@@ -13,7 +13,7 @@ const Policy = ({ title, content }) => {
       </div>
         <p className="px-1 md:px-6">
           This {title} outlines the manner in which{" "}
-          <Link href={"/"} className=" font-bold text-darkMahron">
+          <Link href={"/"} className=" font-bold text-darkMahron"> 
             Glow Scout
           </Link>{" "}
           collects, uses, maintains, and discloses information gathered from

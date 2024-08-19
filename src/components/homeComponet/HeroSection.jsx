@@ -28,7 +28,7 @@ const HeroSection = () => {
           ut nibh faucibus."
         </p>
         <Link href={"auth/user"}>
-          <button className="bg-transparent rounded-full border-[1.5px] font-normal 2xl:px-6 2xl:py-2 px-3 py-1 text-lg 2xl:text-2xl border-darkMahron">
+          <button className=" font-raleway bg-transparent rounded-full border-[1.5px] font-semibold 2xl:px-6 2xl:py-2 px-3 py-1 text-lg 2xl:text-2xl border-darkMahron">
             Sign Up
             <span className="text-sm text-white p-1 bg-[#351120] rounded-full mx-2 inline-flex items-center justify-center">
               <ArrowUpRight size={15} color="#fff" />

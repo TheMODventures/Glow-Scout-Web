@@ -52,11 +52,11 @@ const page = () => {
     },
   ];
   return (
-    <div className="container py-10  font-raleway  mb-4">
+    <div className="container py-10    mb-4">
       <div className="border-b border-darkMahron">
       <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-6xl font-thin"> Blogs by Glow Scout </h2>
-        <p className="m-2 text-lg">
+        <h2 className="text-4xl md:text-6xl md:font-thin font-ralewayThin"> Blogs by Glow Scout </h2>
+        <p className="m-2 text-lg font-raleway">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
@@ -71,10 +71,10 @@ const page = () => {
             />
             </Suspense>
           <div className="flex justify-center items-start flex-col gap-4 p-5">
-            <h2 className="text-2xl md:text-4xl font-light">
+            <h2 className="text-2xl md:text-4xl font-light font-raleway">
               10-Must Have Skin <br /> Care Products for <br /> Radiant Skin
             </h2>
-            <p className="mt-2 text-lg">
+            <p className="mt-2 text-lg font-raleway">
               Explore the essential skincare products that can transform your
               daily routine. From hydrating serums to powerful antioxidants,
               discover the secrets to achieving radiant and healthy skin.
@@ -96,14 +96,14 @@ const page = () => {
       </div>
 
       <div className="text-center pt-20">
-        <h2 className="text-6xl">Trending Topics</h2>
-        <p className="mt-2 text-xl">
+        <h2 className="text-6xl font-ralewayThin md:font-thin">Trending Topics</h2>
+        <p className="mt-2 text-xl font-raleway">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
       </div>
 
-      <div className="my-5">
+      <div className="my-5 font-raleway">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 mb-2">
           {dummyData.map((item, index) => (
             <Link href={`blog-single/${index}`} key={index}>

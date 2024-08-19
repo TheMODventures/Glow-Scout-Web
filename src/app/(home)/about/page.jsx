@@ -2,17 +2,17 @@ import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
 
 const page = () => {
   return (
-    <div className="container py-10  md:mt-6 font-raleway  mb-4">
+    <div className="container py-10  md:mt-6   mb-4">
       
       <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-6xl font-thin"> About Us </h2>
-        <p className="m-2 text-lg">
+        <h2 className="text-4xl md:text-6xl md:font-thin font-ralewayThin "> About Us </h2>
+        <p className="m-2 text-lg font-raleway">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
         </p>
       </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4 font-raleway">
           <div className=" ">
             <TreatmentCard
               image="/images/about-page-1.png"
@@ -36,7 +36,7 @@ const page = () => {
             </p>
           </div>
         </div>
-        <p className="px-1 md:px-6">
+        <p className="px-1 md:px-6 font-raleway">
           This About Us outlines the manner in which Glow Scout collects, uses,
           maintains, and discloses information gathered from users
           (&rdquo;you&rdquo; or &rdquo;your&rdquo;) of our website, products,
@@ -46,7 +46,7 @@ const page = () => {
         </p>
     
 
-      <div className="my-5">
+      <div className="my-5 font-raleway">
         <div className="p-1 md:p-6 text-darkMahron">
           <div className="space-y-6">
             <div>
