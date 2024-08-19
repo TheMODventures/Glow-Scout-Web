@@ -90,7 +90,7 @@ const TrandingTreatment = () => {
       />
 
       <div className="text-center">
-        <h2 className={`text-5xl px-6 md:mt-16 font-thin ${Raleway1.className}`}>Trending Treatments</h2>
+        <h2 className={`text-5xl px-6 md:mt-16 font-ralewayLight`}>Trending Treatments</h2>
         <p className="mt-2 text-lg px-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.

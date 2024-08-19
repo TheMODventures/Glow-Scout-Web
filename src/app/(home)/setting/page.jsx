@@ -2,7 +2,7 @@
 import SettingComponent from "@/components/reuseableComponenet/Setting";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectUser } from "@/redux/auth/authSlice";
+import { selectUser } from "@/redux/user/authSlice";
 import axiosInstance from "@/axiosInstance";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation"; 

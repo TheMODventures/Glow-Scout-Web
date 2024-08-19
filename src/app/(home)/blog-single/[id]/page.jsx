@@ -9,7 +9,7 @@ const page = ({ params }) => {
     <div className="container py-10  font-raleway mb-4 relative">
   
         <div className="text-center py-10">
-          <h2 className="text-4xl md:text-6xl font-thin text-darkMahron  ">
+          <h2 className="text-4xl md:text-6xl font-ralewayLight text-darkMahron  ">
             Reviewing the latest beauty <br /> innovations in 2024
           </h2>
           {/* <p> blog id: {id}</p> */}

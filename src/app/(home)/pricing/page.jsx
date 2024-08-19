@@ -39,7 +39,7 @@ const PlanAndPricing = () => {
       <div className="flex justify-center items-center min-h-screen">
         <div className="md:p-6 py-6 rounded-lg w-full">
           <div className="text-center text-darkMahron pb-5">
-            <h2 className="text-4xl md:text-6xl font-raleway md:font-ralewayThin font-thin">
+            <h2 className="text-4xl md:text-6xl font-ralewayLight">
               {" "}
               Plans & Pricing{" "}
             </h2>

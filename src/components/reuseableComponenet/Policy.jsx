@@ -6,7 +6,7 @@ const Policy = ({ title, content }) => {
     <div className="container py-6 font-raleway  mb-4">
       <div>
       <div className="text-center text-darkMahron pb-5">
-        <h2 className="text-4xl md:text-6xl font-thin">  {title} </h2>
+        <h2 className="text-4xl md:text-6xl font-ralewayLight">  {title} </h2>
         <p className="m-2 text-sm md:text-lg">
          {content}
         </p>

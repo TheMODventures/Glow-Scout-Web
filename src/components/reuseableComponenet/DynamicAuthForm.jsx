@@ -10,8 +10,9 @@ import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import InputFormField from "./InputFormField";
+import UserOtp from "./UserOtp";
 import { useRouter } from "next/navigation";
-import { setUser, setStatus, setError } from "@/redux/auth/authSlice";
+import { setUser, setStatus, setError } from "@/redux/user/authSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import {
@@ -23,7 +24,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { usePathname  } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const DynamicAuthForm = ({
   formType,
@@ -39,27 +40,25 @@ const DynamicAuthForm = ({
   const dispatch = useDispatch();
   let form;
   const [passwordType, setPasswordType] = useState("password");
-  const currentRoute= usePathname();
+  const currentRoute = usePathname();
 
- form = useForm({   
+  form = useForm({
     resolver: zodResolver(schema),
-    
   });
 
   async function handleSubmit(data) {
-      
     try {
-      console.log("User Input:", data); 
+      console.log("User Input:", data);
+      console.log(formType)
       dispatch(setStatus("loading"));
       const response = await onSubmit(data);
-      console.log("API Response:", response); 
-      localStorage.setItem("accessToken", response.data.data.accessToken);
-      if (formType === "login") {
-        localStorage.setItem("id", response.data.data.user._id);
-      }
+      console.log("API Response:", response);
 
-      dispatch(setUser(response.data.data.user));
-      dispatch(setStatus("succeeded"));
+      if (formType === "login") {
+        localStorage.setItem("accessToken", response.data.data.accessToken);
+        localStorage.setItem("id", response.data.data.user._id);
+        dispatch(setUser(response.data.data.user));
+      }
 
       toast({
         description: (
@@ -73,11 +72,23 @@ const DynamicAuthForm = ({
           </div>
         ),
       });
-        router.push(formType === "login" && response.data.data.user.role === "business" ? "/pricing" : btnLink);  // Redirect on success
 
+      router.push(
+        formType === "login" && response.data?.data?.user?.role === "business"
+          ? "/pricing"
+          : formType === "forgot-password"
+          ? "/auth/verify-otp"
+          : formType === "login" && response.data?.data?.user?.role === "user"
+          ? "/setting"
+          : btnLink
+      );
+      
+
+      dispatch(setStatus("succeeded"));
+      dispatch(setError(false));
     } catch (error) {
       console.error("API call error:", error);
-      dispatch(setError(error.message)); // Ensure dispatching only serializable data
+      dispatch(setError(error.message));
       dispatch(setStatus("failed"));
       toast({
         description: (
@@ -86,7 +97,8 @@ const DynamicAuthForm = ({
               X
             </p>
             <p className="text-white text-base text-center">
-              {JSON.stringify(error.response.data.message, null, 2) || JSON.stringify(error.response.message, null, 2)}
+              {JSON.stringify(error.response.data.message, null, 2) ||
+                JSON.stringify(error.response.message, null, 2)}
             </p>
           </div>
         ),
@@ -94,22 +106,24 @@ const DynamicAuthForm = ({
     }
   }
 
-  function handleGoogleSubmit(){
-    alert("sign as google")
+  function handleGoogleSubmit() {
+    alert("sign as google");
   }
 
-  function handleFacebookSubmit(){
-    alert("sign as facebook")
+  function handleFacebookSubmit() {
+    alert("sign as facebook");
   }
 
   return (
     <div className="flex flex-col items-center justify-center px-4 md:px-0">
       <h3 className="py-4 text-[#351120] text-3xl mb-4">{title}</h3>
 
-      
       {["signup"].includes(formType) && (
         <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 mb-4 flex-wrap md:flex-nowrap items-center justify-center">
-          <Button className="bg-white flex items-center justify-center w-full md:w-auto" onClick={handleGoogleSubmit}>
+          <Button
+            className="bg-white flex items-center justify-center w-full md:w-auto"
+            onClick={handleGoogleSubmit}
+          >
             <Image
               src="/images/auth/search-2.png"
               alt="Google"
@@ -119,7 +133,10 @@ const DynamicAuthForm = ({
             />
             Sign up with Google
           </Button>
-          <Button className="bg-white flex items-center justify-center w-full md:w-auto" onClick={handleFacebookSubmit}>
+          <Button
+            className="bg-white flex items-center justify-center w-full md:w-auto"
+            onClick={handleFacebookSubmit}
+          >
             <Image
               src="/images/auth/facebook-1.png"
               alt="Facebook"
@@ -139,135 +156,150 @@ const DynamicAuthForm = ({
           onSubmit={form.handleSubmit(handleSubmit)}
           className="w-full md:w-2/3 space-y-6"
         >
-          {formType !== "login" && formType !== "forgot-password" && (
+          {formType === "verify-otp" && (
+            <UserOtp name="otp" formControl={form.control} />
+          )}
+          {formType !== "login" &&
+            formType !== "forgot-password" &&
+            formType !== "verify-otp" && (
+              <InputFormField
+                name="name"
+                placeholder="Full Name"
+                formControl={form.control}
+                inputType="text"
+              />
+            )}
+          {formType !== "verify-otp" && (
             <InputFormField
-              name="name"
-              placeholder="Full Name"
+              name="email"
+              placeholder="Email"
               formControl={form.control}
-              inputType="text"
+              inputType="email"
             />
           )}
-          <InputFormField
-            name="email"
-            placeholder="Email"
-            formControl={form.control}
-            inputType="email"
-          />
-          
+
           {["signup", "login"].includes(formType) && (
             <div className=" relative">
-            <InputFormField
-              name="password"
-              placeholder="Password"
-              inputType={passwordType}
-              formControl={form.control}
-            />
-            <span className="absolute right-2 top-4  cursor-pointer">
-              {passwordType === "password" ? (
-                <FaRegEyeSlash
-                  onClick={() => setPasswordType("text")}
-                  className="cursor-pointer text-gray-300"
-                />
-              ) : (
-                <FaRegEye
-                  onClick={() => setPasswordType("password")}
-                  className="cursor-pointer"
-                />
-              )}
-            </span>
-          </div>
+              <InputFormField
+                name="password"
+                placeholder="Password"
+                inputType={passwordType}
+                formControl={form.control}
+              />
+              <span className="absolute right-2 top-4  cursor-pointer">
+                {passwordType === "password" ? (
+                  <FaRegEyeSlash
+                    onClick={() => setPasswordType("text")}
+                    className="cursor-pointer text-gray-300"
+                  />
+                ) : (
+                  <FaRegEye
+                    onClick={() => setPasswordType("password")}
+                    className="cursor-pointer"
+                  />
+                )}
+              </span>
+            </div>
           )}
-          
-          
+
           {linkText && (
             <div className="text-zinc-500 mb-4 text-sm">
               {linkText}
-              <Link href={linkHref} className="text-[#351120] font-bold text-sm hover:underline">
-                {formType=="login" && "Reset Now"}
+              <Link
+                href={linkHref}
+                className="text-[#351120] font-bold text-sm hover:underline"
+              >
+                {formType == "login" && "Reset Now"}
               </Link>
               {formType === "signup" && (
                 <>
                   <Link
-                    href={ currentRoute=="/auth/user" ? "/auth/business" : "/auth/user"}
+                    href={
+                      currentRoute == "/auth/user"
+                        ? "/auth/business"
+                        : "/auth/user"
+                    }
                     className="text-[#351120] font-bold"
                   >
                     Sign Up here
                   </Link>
                 </>
-              ) }
+              )}
             </div>
           )}
 
-{formType !== "forgot-password" && formType =="login" && (
-        <div className="text-center text-zinc-500 my-4">- or -</div>
-      )}
-      {["login"].includes(formType) && (
-        <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 mb-4 flex-wrap md:flex-nowrap items-center justify-center">
-          <Button className="bg-white flex items-center justify-center w-full md:w-auto" onClick={handleGoogleSubmit}>
-            <Image
-              src="/images/auth/search-2.png"
-              alt="Google"
-              className="mr-2"
-              width={20}
-              height={20}
-            />
-            Sign up with Google
-          </Button>
-          <Button className="bg-white flex items-center justify-center w-full md:w-auto" onClick={handleFacebookSubmit}>
-            <Image
-              src="/images/auth/facebook-1.png"
-              alt="Facebook"
-              className="mr-2"
-              width={20}
-              height={20}
-            />
-            Sign up with Facebook
-          </Button>
-        </div>
-      )}
-          <div className="flex justify-center items-center py-8">
-            {
-              formType == "forgot-password" && (
-                <Link href="/auth/login">
+          {formType !== "forgot-password" && formType == "login" && (
+            <div className="text-center text-zinc-500 my-4">- or -</div>
+          )}
+          {["login"].includes(formType) && (
+            <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 mb-4 flex-wrap md:flex-nowrap items-center justify-center">
               <Button
-                variant="outline"
-                size="lg"
-                className=" rounded-full mx-2"
+                className="bg-white flex items-center justify-center w-full md:w-auto"
+                onClick={handleGoogleSubmit}
               >
-                Sign Up new account
+                <Image
+                  src="/images/auth/search-2.png"
+                  alt="Google"
+                  className="mr-2"
+                  width={20}
+                  height={20}
+                />
+                Sign up with Google
               </Button>
-            </Link>
-              )
-            }
-          {
-            formType === "login" && (
+              <Button
+                className="bg-white flex items-center justify-center w-full md:w-auto"
+                onClick={handleFacebookSubmit}
+              >
+                <Image
+                  src="/images/auth/facebook-1.png"
+                  alt="Facebook"
+                  className="mr-2"
+                  width={20}
+                  height={20}
+                />
+                Sign up with Facebook
+              </Button>
+            </div>
+          )}
+          <div className="flex justify-center items-center py-8">
+            {formType == "forgot-password" && (
+              <Link href="/auth/login">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className=" rounded-full mx-2"
+                >
+                  Sign Up new account
+                </Button>
+              </Link>
+            )}
+            {formType === "login" && (
               <Link as="#" href="">
-              <NavigationMenu>
-                <NavigationMenuList>
-                  <NavigationMenuItem className="outline rounded-full text-[#351120] mx-4">
-                    <NavigationMenuTrigger>Sign Up</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <Link href="/auth/user" legacyBehavior passHref>
-                        <NavigationMenuLink
-                          className={navigationMenuTriggerStyle()}
-                        >
-                          Sign Up As User
-                        </NavigationMenuLink>
-                      </Link>
-                      <Link href="/auth/business" legacyBehavior passHref>
-                        <NavigationMenuLink
-                          className={navigationMenuTriggerStyle()}
-                        >
-                          Sign Up As Business
-                        </NavigationMenuLink>
-                      </Link>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                </NavigationMenuList>
-              </NavigationMenu>
-            </Link>
-            )
-          }
+                <NavigationMenu>
+                  <NavigationMenuList>
+                    <NavigationMenuItem className="outline rounded-full text-[#351120] mx-4">
+                      <NavigationMenuTrigger>Sign Up</NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <Link href="/auth/user" legacyBehavior passHref>
+                          <NavigationMenuLink
+                            className={navigationMenuTriggerStyle()}
+                          >
+                            Sign Up As User
+                          </NavigationMenuLink>
+                        </Link>
+                        <Link href="/auth/business" legacyBehavior passHref>
+                          <NavigationMenuLink
+                            className={navigationMenuTriggerStyle()}
+                          >
+                            Sign Up As Business
+                          </NavigationMenuLink>
+                        </Link>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </Link>
+            )}
 
             <Button
               type="submit"
@@ -275,16 +307,14 @@ const DynamicAuthForm = ({
               size="lg"
               className="rounded-full"
             >
-              {formType==="signup"  && "Get Started"}
-              {formType === "login" && "Log In" }
-              {formType ==="forgot-password" && "Send Code"}
+              {formType === "signup" && "Get Started"}
+              {formType === "login" && "Log In"}
+              {formType === "forgot-password" && "Send Code"}
+              {formType === "verify-otp" && "Verify OTP"}
             </Button>
-            
           </div>
         </form>
       </Form>
-      
-      
     </div>
   );
 };

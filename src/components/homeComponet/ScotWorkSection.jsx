@@ -16,7 +16,7 @@ const ScotWorkSection = () => {
   return (
     <div className=" bg-[#FEF5E3] text-center py-20 rounded-t-3xl border">
       <Container>
-        <h2 className={` ${Raleway1.className} text-6xl md:text-5xl mb-8 mt-8  font-thin`}>
+        <h2 className={` font-ralewayLight text-6xl md:text-5xl mb-8 mt-8`}>
           How Glow Scout Works
         </h2>
         <div className=" px-5 flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4 gap-6">

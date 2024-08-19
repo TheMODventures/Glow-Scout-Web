@@ -5,9 +5,14 @@ import { usePathname } from 'next/navigation';
 import { Menu } from "lucide-react";
 import ProfileButton from "@/components/reuseableComponenet/ProfileButton";
 import { useState } from "react";
+import { useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
-  const [currentUser, setCurrentUser] = useState(false);
+  // const [currentUser, setCurrentUser] = useState(false);
+  const currentUser = useSelector((state) => state.auth.user);
+
+  console.log("thies",currentUser)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const pathname = usePathname();

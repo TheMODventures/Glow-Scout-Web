@@ -26,6 +26,16 @@ const raleway = localFont({
   variable: "--font-raleway",
 });
 
+const ralewayLight = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/Raleway-light.ttf",
+      weight: "300",
+    },
+  ],
+  variable: "--font-raleway-light",
+});
+
 export const metadata = {
   title: "Glow Scout",
   description:
@@ -37,7 +47,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${valky.variable} ${raleway.variable}  font-sans`}
+      className={`${valky.variable} ${raleway.variable} ${ralewayLight.variable} font-sans`}
     >
       <body>
         <ReduxProvider>

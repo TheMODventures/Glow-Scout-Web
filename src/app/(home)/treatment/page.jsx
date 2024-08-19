@@ -201,7 +201,7 @@ const TreatmentPage = () => {
     <div className="py-6 md:py-10 md:mt-6  relative isolate">
        
       <div className="text-center text-darkMahron md:pb-5">
-        <h2 className="text-4xl md:text-6xl md:font-ralewayThin font-raleway font-thin">Treatments</h2>
+        <h2 className="text-4xl md:text-6xl md:font-ralewayLight font-raleway font-thin">Treatments</h2>
         <p className="m-2 text-sm md:text-lg font-raleway">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
           faucibus.
