@@ -55,8 +55,8 @@ const DynamicAuthForm = ({
       console.log("API Response:", response);
 
       if (formType === "login") {
-        localStorage.setItem("accessToken", response.data.data.accessToken);
-        localStorage.setItem("id", response.data.data.user._id);
+        // localStorage.setItem("accessToken", response.data.data.accessToken);
+        // localStorage.setItem("id", response.data.data.user._id);
         dispatch(setUser(response.data.data.user));
       }
 
