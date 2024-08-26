@@ -1,8 +1,5 @@
 import localFont from "next/font/local";
 
-
-
-
 const valky = localFont({
     src: [
       {
@@ -26,7 +23,7 @@ const valky = localFont({
   const ralewayLight = localFont({
     src: [
       {
-        path: "../../public/fonts/Raleway-light.ttf",
+        path: "../../public/fonts/Raleway-Light.ttf",
         weight: "300",
       },
     ],

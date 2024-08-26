@@ -4,7 +4,7 @@ import React from 'react'
 import { Input } from "@/components/ui/input"
 import { useRef } from 'react';
 
-const Upload = ({text ,control}) => {
+const Upload = ({text}) => {
 
     const Add = () => {
    

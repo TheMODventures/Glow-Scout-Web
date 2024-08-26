@@ -24,14 +24,13 @@ const UserOtp = ({ name, formControl }) => {
           <FormItem className="flex flex-col justify-center items-center">
             <FormLabel>One-Time Password</FormLabel>
             <FormControl>
-              <InputOTP maxLength={6} {...field}>
+              <InputOTP maxLength={5} {...field}>
                 <InputOTPGroup>
                   <InputOTPSlot index={0} />
                   <InputOTPSlot index={1} />
                   <InputOTPSlot index={2} />
                   <InputOTPSlot index={3} />
                   <InputOTPSlot index={4} />
-                  <InputOTPSlot index={5} />
                 </InputOTPGroup>
               </InputOTP>
             </FormControl>
