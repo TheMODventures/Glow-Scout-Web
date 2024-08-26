@@ -11,6 +11,16 @@ const ReduxProvider = dynamic(
 import {valky, raleway , ralewayLight} from "@/helper/fonts.js"
 
 
+const ralewayLight = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/Raleway-Light.ttf",
+      weight: "300",
+    },
+  ],
+  variable: "--font-raleway-light",
+});
+
 export const metadata = {
   title: "Glow Scout",
   description:
@@ -18,7 +28,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html
       lang="en"
