@@ -11,6 +11,9 @@ import { useDispatch } from "react-redux";
 const Header = () => {
   // const [currentUser, setCurrentUser] = useState(false);
   const currentUser = useSelector((state) => state.auth.user);
+  const token = localStorage.getItem('accessToken');
+  console.log(token);
+
 
   console.log("thies",currentUser)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -69,7 +72,7 @@ const Header = () => {
         </div>
 
         <div className="flex">
-          {currentUser ? (
+          {currentUser && token ? (
             <ProfileButton />
           ) : (
             <div className="relative">

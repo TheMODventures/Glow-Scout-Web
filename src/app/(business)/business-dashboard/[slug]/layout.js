@@ -1,10 +1,14 @@
 import "@/app/globals.css";
 import BusinessHeader from "@/components/businessDashboard/BusinessHeader";
+import dynamic from "next/dynamic";
 import { Toaster } from "@/components/ui/toaster";
 import localFont from "next/font/local";
 import Image from "next/image";
-import ReduxProvider from "@/app/ReduxProvider";
 import { Raleway } from 'next/font/google'
+const ReduxProvider = dynamic(
+  () => import('@/app/ReduxProvider'),
+  { ssr: false }
+);
 
 const RalewayThin = Raleway({
   weight: '300',
