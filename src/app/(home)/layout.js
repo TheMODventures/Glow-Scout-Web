@@ -29,7 +29,7 @@ const raleway = localFont({
 const ralewayLight = localFont({
   src: [
     {
-      path: "../../../public/fonts/Raleway-light.ttf",
+      path: "../../../public/fonts/Raleway-Light.ttf",
       weight: "300",
     },
   ],
@@ -43,7 +43,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
   return (
     <html
       lang="en"
