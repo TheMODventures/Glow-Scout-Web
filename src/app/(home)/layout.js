@@ -1,15 +1,30 @@
 import "../globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import dynamic from "next/dynamic";
+import localFont from "next/font/local";
 import Header from "@/components/reuseableComponenet/Header";
 import Footer from "@/components/reuseableComponenet/Footer";
 import Image from "next/image";
-const ReduxProvider = dynamic(
-  () => import('@/app/ReduxProvider'),
-  { ssr: false }
-);
-import {valky, raleway , ralewayLight} from "@/helper/fonts.js"
+import ReduxProvider from "@/app/ReduxProvider";
 
+const valky = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/ValkyRegular.ttf",
+      weight: "400",
+    },
+  ],
+  variable: "--font-valky",
+});
+
+const raleway = localFont({
+  src: [
+    {
+      path: "../../../public/fonts/Raleway-Regular.ttf",
+      weight: "100",
+    },
+  ],
+  variable: "--font-raleway",
+});
 
 const ralewayLight = localFont({
   src: [

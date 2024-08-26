@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
+import ServiceForm from "@/components/reuseableComponenet/ServiceForm";
 import axiosInstance from "@/axiosInstance";
 import { Plus } from 'lucide-react';
-import CreateTreatment from "./CreatTreatment";
-import UpdateTreatment from "./UpdateTreatment";
-import { creatTreatment } from "@/API/business.api";
 
 const ServicesComponent = () => {
   const [currentView, setCurrentView] = useState("list");
@@ -21,24 +19,19 @@ const ServicesComponent = () => {
         withCredentials: true,
       });
       setAllTreatment(response.data.data.data);
-      console.log(response.data.data.data)
     } catch (error) {
       console.error("Error fetching treatments: ", error);
     }
   };
 
   const handleAddClick = () => {
+    setSelectedTreatment(null);
     setCurrentView("add");
   };
 
   const handleEditClick = (treatment) => {
     setSelectedTreatment(treatment);
-    console.log("Selected Treatment: ", treatment);
     setCurrentView("edit");
-  };
-
-  const handleDiscard = () => {
-    setCurrentView("list");
   };
 
   return (
@@ -63,10 +56,10 @@ const ServicesComponent = () => {
         </>
       )}
 
-      {currentView === "add" && <CreateTreatment onSubmit={creatTreatment} onDiscard={handleDiscard}/>}
+      {currentView === "add" && <ServiceForm isEdit={false} />}
 
-      {currentView === "edit"  && (
-        <UpdateTreatment treatment={selectedTreatment} onDiscard={handleDiscard}/>
+      {currentView === "edit" && selectedTreatment && (
+        <ServiceForm isEdit={true} initialData={selectedTreatment} />
       )}
     </div>
   );

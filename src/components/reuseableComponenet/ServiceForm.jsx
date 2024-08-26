@@ -49,6 +49,7 @@ const ServiceForm = ({ isEdit, initialData }) => {
   const [updateTreatmentData, setUpdataTreatmentData] = useState({
     title: "",
     description: "",
+    image: "",
     goal: "",
     price: 0,
   });
@@ -74,7 +75,6 @@ const ServiceForm = ({ isEdit, initialData }) => {
 
     // Append each field individually
     formData.append("title", updateTreatmentData.title);
-    console.log(updateTreatmentData.image)
     formData.append("description", updateTreatmentData.description);
     formData.append("goal", "65dfc081aaf4e436bc208510");
     formData.append("price", updateTreatmentData.price);

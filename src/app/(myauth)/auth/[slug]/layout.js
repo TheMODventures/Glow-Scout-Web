@@ -1,19 +1,14 @@
 import "@/app/globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import localFont from "next/font/local";
-import { Raleway } from "next/font/google";
-import dynamic from "next/dynamic";
-
-const ReduxProvider = dynamic(
-  () => import('@/app/ReduxProvider'),
-  { ssr: false }
-);
+import ReduxProvider from "@/app/ReduxProvider";
+import { Raleway } from 'next/font/google'
 
 const RalewayThin = Raleway({
-  weight: "300",
-  subsets: ["latin"],
+  weight: '300',
+  subsets: ['latin'],
   variable: "--font-raleway-thin",
-});
+})
 const valky = localFont({
   src: [
     {

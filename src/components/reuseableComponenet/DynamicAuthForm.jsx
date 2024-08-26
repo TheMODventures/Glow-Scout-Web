@@ -15,7 +15,6 @@ import { useRouter } from "next/navigation";
 import { setUser, setStatus, setError } from "@/redux/user/authSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -26,7 +25,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { usePathname } from "next/navigation";
-
 
 const DynamicAuthForm = ({
   formType,
@@ -43,8 +41,6 @@ const DynamicAuthForm = ({
   let form;
   const [passwordType, setPasswordType] = useState("password");
   const currentRoute = usePathname();
-  const currentUser = useSelector((state) => state.auth.user);
-
 
   form = useForm({
     resolver: zodResolver(schema),
@@ -52,26 +48,16 @@ const DynamicAuthForm = ({
 
   async function handleSubmit(data) {
     try {
-      console.log("User data:", data);
+      console.log("User Input:", data);
+      console.log(formType)
       dispatch(setStatus("loading"));
       const response = await onSubmit(data);
       console.log("API Response:", response);
 
       if (formType === "login") {
-        localStorage.setItem(
-          "accessToken",
-          response?.data?.data?.accessToken || ""
-        );
-        localStorage.setItem("id", response.data?.data?.user?._id || "");
+        localStorage.setItem("accessToken", response.data.data.accessToken);
+        localStorage.setItem("id", response.data.data.user._id);
         dispatch(setUser(response.data.data.user));
-      }
-
-      if (formType === "forgot-password") {
-        localStorage.setItem("email", data.email || "");
-      }
-
-      if (formType === "verify-otp") {
-        localStorage.setItem("verifyToken", response?.data || "");
       }
 
       toast({
@@ -81,13 +67,7 @@ const DynamicAuthForm = ({
               ✓
             </p>
             <p className="text-white text-base text-center">
-              
-              {
-                formType === "signup" && (
-                  JSON.stringify(response.data.message, null, 2)
-                )
-              }
-              {JSON.stringify(response.message, null, 2)}
+              {JSON.stringify(response.data.message, null, 2)}
             </p>
           </div>
         ),
@@ -100,10 +80,9 @@ const DynamicAuthForm = ({
           ? "/auth/verify-otp"
           : formType === "login" && response.data?.data?.user?.role === "user"
           ? "/setting"
-          : formType === "verify-otp"
-          ? "/auth/reset-password"
-          : "/auth/login"
+          : btnLink
       );
+      
 
       dispatch(setStatus("succeeded"));
       dispatch(setError(false));
@@ -178,15 +157,11 @@ const DynamicAuthForm = ({
           className="w-full md:w-2/3 space-y-6"
         >
           {formType === "verify-otp" && (
-            <>
-            <p>{currentUser?.otp || "otp"}</p>
             <UserOtp name="otp" formControl={form.control} />
-            </>
           )}
           {formType !== "login" &&
             formType !== "forgot-password" &&
-            formType !== "verify-otp" &&
-            formType !== "reset-password" && (
+            formType !== "verify-otp" && (
               <InputFormField
                 name="name"
                 placeholder="Full Name"
@@ -194,7 +169,7 @@ const DynamicAuthForm = ({
                 inputType="text"
               />
             )}
-          {formType !== "verify-otp" && formType !== "reset-password" && (
+          {formType !== "verify-otp" && (
             <InputFormField
               name="email"
               placeholder="Email"
@@ -226,32 +201,6 @@ const DynamicAuthForm = ({
               </span>
             </div>
           )}
-
-          {
-            formType === "reset-password" && (
-              <div className=" relative">
-              <InputFormField
-                name="password"
-                placeholder="Enter New Password"
-                inputType={passwordType}
-                formControl={form.control}
-              />
-              <span className="absolute right-2 top-4  cursor-pointer">
-                {passwordType === "password" ? (
-                  <FaRegEyeSlash
-                    onClick={() => setPasswordType("text")}
-                    className="cursor-pointer text-gray-300"
-                  />
-                ) : (
-                  <FaRegEye
-                    onClick={() => setPasswordType("password")}
-                    className="cursor-pointer"
-                  />
-                )}
-              </span>
-            </div>
-            )
-          }
 
           {linkText && (
             <div className="text-zinc-500 mb-4 text-sm">
@@ -362,12 +311,10 @@ const DynamicAuthForm = ({
               {formType === "login" && "Log In"}
               {formType === "forgot-password" && "Send Code"}
               {formType === "verify-otp" && "Verify OTP"}
-              {formType === "reset-password" && "Reset Password"}
             </Button>
           </div>
         </form>
       </Form>
-      
     </div>
   );
 };

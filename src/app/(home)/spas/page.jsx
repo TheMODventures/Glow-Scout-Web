@@ -2,19 +2,18 @@
 
 import TreatmentCard from "@/components/reuseableComponenet/TreatmentCard";
 import Link from "next/link";
+import { SearchSchema } from "@/validation/common.validation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
+import Search from "@/components/reuseableComponenet/Search";
+import FormSelect from "@/components/reuseableComponenet/FilterSelect";
 import Container from "@/components/reuseableComponenet/Container";
-import  SelectField  from "@/components/reuseableComponenet/Select";
-import axiosInstance from '@/axiosInstance';
-
 
 const SpaPage = () => {
-
-  const spas= axiosInstance.get("/spas");
-  
-
   let dummyData = [
     {
       image: "/images/salon-spas/salon-1.png",
@@ -147,7 +146,27 @@ const SpaPage = () => {
 
   const { toast } = useToast();
 
-  
+  const form = useForm({
+    resolver: zodResolver(SearchSchema),
+  });
+
+  function handleSubmit(data) {
+    try {
+      console.log(data);
+      toast({
+        title: "Form submitted!",
+        description: "Your form has been submitted successfully.",
+        status: "success",
+      });
+    } catch (error) {
+      toast({
+        title: "An error occurred.",
+        description:
+          "There was an error submitting your form. Please try again.",
+        status: "error",
+      });
+    }
+  }
 
   return (
     <div className="py-6 md:py-10 md:mt-6 relative isolate">
@@ -161,12 +180,14 @@ const SpaPage = () => {
 
       <Container>
         <div className="hidden mx-auto w-full md:max-w-6xl md:flex justify-center bg-opacity-60  items-center flex-col bg-lightbg md:bg-transparent">
-          
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleSubmit)}>
               <div className="md:bg-[#FEF5E3] shadow-[#0000001A] shadow-lg bg-opacity-60  pl-5  py-1 md:rounded-full h-[60px] flex flex-col md:flex-row items-center mb-4  mt-6">
                 <div className="flex justify-between  items-center flex-col md:flex-row">
-                  <SelectField
+                  <FormSelect
                     selectItems={selectItems}
                     placeholder="Filters"
+                    name="goal"
                     customClass="py-[18px]"
                   />
                   <span className="h-full w-[1px] text-2xl text-[#35112033] hidden md:block mx-5">
@@ -185,11 +206,10 @@ const SpaPage = () => {
                 </div>
                 <div className="flex relative mt-4 md:mt-0 h-auto">
                   <div>
-                    <Input
+                    <Search
                       name="goal"
                       placeholder="Search by Treatment or Spa"
-                      className="border-darkMahron border-[1.5px] text-darkMahron  px-4 min-w-70 rounded-full mb-4 md:mb-0 md:mr-4 py-1 md:w-52 lg:w-72 xl:w-96 h-11"
-                      
+                      formControl={form.control}
                     />
                   </div>
                   <div className=" absolute right-2 md:right-6 bottom-6 md:bottom-[6px]">
@@ -204,7 +224,8 @@ const SpaPage = () => {
                   </div>
                 </div>
               </div>
-            
+            </form>
+          </Form>
         </div>
       
 

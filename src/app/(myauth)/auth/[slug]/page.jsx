@@ -2,14 +2,11 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import DynamicAuthForm from "@/components/reuseableComponenet/DynamicAuthForm";
-import { LoginSchema, SignupSchema, ForgotSchema ,OtpSchema ,resetSchema } from "@/validation/auth.validation";
+import { LoginSchema, SignupSchema, ForgotSchema ,OtpSchema } from "@/validation/auth.validation";
 import axiosInstance from '@/axiosInstance';
-import { verifyOtp ,resetPassword } from "@/API/auth.api";
 
 const AuthCommon = ({ params }) => {
   const slug = params.slug;
-  const currentUserEmail= localStorage.getItem('email');
-  console.log(currentUserEmail)
 
   const forms = {
     "user": {
@@ -54,17 +51,8 @@ const AuthCommon = ({ params }) => {
       schema: OtpSchema,
       linkText: null,
       linkHref: "/auth/verify-otp",
-      onSubmit: verifyOtp,
+      onSubmit: (data) => axiosInstance.post('/auth/verify-otp', data),
       btnLink: "/auth/verify-otp",
-    },
-    "reset-password":{
-      formType: "reset-password",
-      title: "Reset Password?",
-      schema: resetSchema,
-      linkText: null,
-      linkHref: "/auth/reset-password",
-      onSubmit: resetPassword,
-      btnLink: "/auth/reset-password",
     }
   };
 
@@ -82,7 +70,7 @@ const AuthCommon = ({ params }) => {
         className="absolute rotate-[60deg] opacity-50 top-[-150px] left-0 border-none rounded-xl hidden md:block"
       />
       <div className="bg-[#351120] text-lighttext px-20 py-16 md:py-28 md:w-1/2 flex flex-col justify-center">
-        <h1 className="text-2xl md:text-6xl  mb-4 font-ralewayLight font-thin">
+        <h1 className="text-2xl md:text-6xl  mb-4 font-ralewayLight">
           REVEAL YOUR <br />
           BEAUTY WITH
         </h1>

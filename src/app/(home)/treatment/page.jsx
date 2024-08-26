@@ -50,7 +50,128 @@ const TreatmentPage = () => {
     }
   };
 
-
+  // let dummyData = [
+  //   {
+  //     image: "/images/home/tranding-1.png",
+  //     title: "Laser Resurfacing",
+  //     description: "Lorem ipsum dolor sit amet.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-2.png",
+  //     title: "Botox Injections",
+  //     description: "Consectetur adipiscing elit.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-3.png",
+  //     title: "Chemical Peel",
+  //     description: "Ut ut nibh faucibus.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-4.png",
+  //     title: "Microdermabrasion",
+  //     description: "Etiam sed dolor ac diam.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-5.png",
+  //     title: "Dermal Fillers",
+  //     description: "Pellentesque at vehicula elit.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-5.png",
+  //     title: "Dermal Fillers",
+  //     description: "Pellentesque at vehicula elit.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-5.png",
+  //     title: "Dermal Fillers",
+  //     description: "Pellentesque at vehicula elit.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-2.png",
+  //     title: "Botox Injections",
+  //     description: "Consectetur adipiscing elit.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-3.png",
+  //     title: "Chemical Peel",
+  //     description: "Ut ut nibh faucibus.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-4.png",
+  //     title: "Microdermabrasion",
+  //     description: "Etiam sed dolor ac diam.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-1.png",
+  //     title: "Laser Resurfacing",
+  //     description: "Lorem ipsum dolor sit amet.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-2.png",
+  //     title: "Botox Injections",
+  //     description: "Consectetur adipiscing elit.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-3.png",
+  //     title: "Chemical Peel",
+  //     description: "Ut ut nibh faucibus.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-4.png",
+  //     title: "Microdermabrasion",
+  //     description: "Etiam sed dolor ac diam.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-1.png",
+  //     title: "Laser Resurfacing",
+  //     description: "Lorem ipsum dolor sit amet.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-2.png",
+  //     title: "Botox Injections",
+  //     description: "Consectetur adipiscing elit.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-3.png",
+  //     title: "Chemical Peel",
+  //     description: "Ut ut nibh faucibus.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-4.png",
+  //     title: "Microdermabrasion",
+  //     description: "Etiam sed dolor ac diam.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-4.png",
+  //     title: "Microdermabrasion",
+  //     description: "Etiam sed dolor ac diam.",
+  //     label: "Lorem Ipsum",
+  //   },
+  //   {
+  //     image: "/images/home/tranding-1.png",
+  //     title: "Laser Resurfacing",
+  //     description: "Lorem ipsum dolor sit amet.",
+  //     label: "Lorem Ipsum",
+  //   },
+  // ];
 
   const { toast } = useToast();
 

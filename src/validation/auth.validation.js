@@ -29,16 +29,6 @@ export const ForgotSchema = z.object({
 
 export const OtpSchema = z.object({
   otp: z.string()
-    .length(5, "OTP must be exactly 5 digits")
+    .length(6, "OTP must be exactly 6 digits")
     .regex(/^\d+$/, "OTP must be a number")
-});
-
-
-export const resetSchema = z.object({
-  password: z.string()
-    .min(8, "Password must be at least 8 characters.")
-    .regex(
-      passwordRegex,
-      "Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special character."
-    ),
 });
