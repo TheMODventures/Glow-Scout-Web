@@ -1,6 +1,8 @@
 "use client";
 
 import axiosInstance from "@/axiosInstance";
+import { parseCookies, destroyCookie } from "nookies";
+
 
 const verifyOtp = async (data) => {
   let currentEmail;
@@ -30,9 +32,8 @@ const verifyOtp = async (data) => {
 
 const resetPassword = async (data) => {
   let resetPasswordToken;
-  if (typeof window !== "undefined") {
-    resetPasswordToken = localStorage.getItem("resetPasswordToken");
-  }
+    const cookies = parseCookies();
+    resetPasswordToken = cookies.resetPasswordToken;
   try {
     const response = await axiosInstance.put(
       "/auth/reset-password",
@@ -52,4 +53,26 @@ const resetPassword = async (data) => {
   }
 };
 
-export { verifyOtp, resetPassword };
+
+const logout = async () => {  
+  try {
+    await axiosInstance.post("/auth/logout");
+    localStorage.removeItem("email");
+    destroyCookie(null, "resetPasswordToken");
+    destroyCookie(null, "accessToken");
+    localStorage.clear();
+    console.log("User logged out successfully");
+  } catch (error) {
+    if (error.response) {
+      console.error("Error response:", error.response.data);
+      console.error("Status code:", error.response.status);
+    } else if (error.request) {
+      console.error("Error request:", error.request);
+    } else {
+      console.error("Error message:", error.message);
+    }
+  }
+};
+
+
+export { verifyOtp, resetPassword ,logout };

@@ -19,7 +19,7 @@ const RalewayThin = Raleway({
 const valky = localFont({
   src: [
     {
-      path: "../../../../../public/fonts/ValkyRegular.ttf",
+      path: "../../../../public/fonts/ValkyRegular.ttf",
       weight: "400",
     },
   ],
@@ -29,7 +29,7 @@ const valky = localFont({
 const raleway = localFont({
   src: [
     {
-      path: "../../../../../public/fonts/Raleway-Regular.ttf",
+      path: "../../../../public/fonts/Raleway-Regular.ttf",
       weight: "400",
     },
   ],

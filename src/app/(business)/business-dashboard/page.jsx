@@ -4,8 +4,7 @@ import AnalyticsComponent from "@/components/businessDashboard/AnalyticsComponen
 import ServicesComponent from "@/components/businessDashboard/ServicesComponent";
 import SettingComponent from "@/components/reuseableComponenet/Setting";
 
-const Page = ({params}) => {
-  const slug = params.slug;
+const Page = () => {
    
   const [activeTab, setActiveTab] = useState("analytics");
 
