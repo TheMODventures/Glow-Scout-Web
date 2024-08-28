@@ -6,14 +6,16 @@ import { Menu } from "lucide-react";
 import ProfileButton from "@/components/reuseableComponenet/ProfileButton";
 import { useState } from "react";
 import { useSelector} from "react-redux";
-import { parseCookies } from "nookies";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
+  // const [currentUser, setCurrentUser] = useState(false);
   const currentUser = useSelector((state) => state.auth.user);
-  const cookies = parseCookies();
-  const token = cookies.accessToken;
-  
-  console.log("current user==== ",currentUser)
+  const token = localStorage.getItem('accessToken');
+  console.log(token);
+
+
+  console.log("thies",currentUser)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const pathname = usePathname();
@@ -71,9 +73,7 @@ const Header = () => {
 
         <div className="flex">
           {currentUser && token ? (
-           <div className="hidden md:block">
             <ProfileButton />
-           </div>
           ) : (
             <div className="relative">
               <button
@@ -115,11 +115,6 @@ const Header = () => {
             </button>
             {isSheetOpen && (
               <div className="fixed right-0 top-0 w-full h-screen bg-white shadow-lg z-50 md:hidden">
-              {currentUser && token ? (
-           <div className="px-4 mt-4 md:hidden block">
-            <ProfileButton />
-            </div>
-              ):(
                 <div className="relative p-4">
                   <button
                     className="rounded-full font-raleway bg-darkMahron text-[#F6E9CE] px-6 py-2 font-black bg-myCustom text-lg"
@@ -152,8 +147,6 @@ const Header = () => {
                     </div>
                   )}
                 </div>
-                )
-              }
                 <div className="h-screen flex justify-center items-center">
                   <nav className="flex flex-col justify-center items-center gap-4">
                     {routes.map((route, i) => (

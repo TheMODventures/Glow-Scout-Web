@@ -1,12 +1,18 @@
+"use client";
 
 import axiosInstance from "@/axiosInstance";
 
 const creatTreatment = async (data) => {
+  let accessToken;
+  if (typeof window !== "undefined") {
+    accessToken = localStorage.getItem("accessToken");
+  }
+
   try {
     const response = await axiosInstance.post("/treatment/create", data, {
-      withCredentials: true, 
       headers: {
-        "Content-Type": "multipart/form-data" 
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "multipart/form-data"
       },
     });
     return response.data;
@@ -22,10 +28,18 @@ const creatTreatment = async (data) => {
   }
 };
 
+
 const getTreatment = async (id) => {
+  let accessToken;
+  if (typeof window !== "undefined") {
+    accessToken = localStorage.getItem("accessToken");
+  }
+
   try {
     const response = await axiosInstance.get(`/treatment/${id}`, {
-      withCredentials: true  
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
     return response.data;
   } catch (error) {
@@ -34,11 +48,16 @@ const getTreatment = async (id) => {
 };
 
 const updateTreatment = async (id, data) => {
+  let accessToken;
+  if (typeof window !== "undefined") {
+    accessToken = localStorage.getItem("accessToken");
+  }
+
   try {
     const response = await axiosInstance.put(`/treatment/update/${id}`, data, {
-      withCredentials: true,  
       headers: {
-        "Content-Type": "multipart/form-data"  
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "multipart/form-data"
       },
     });
     return response.data;
@@ -47,4 +66,5 @@ const updateTreatment = async (id, data) => {
   }
 };
 
-export { creatTreatment, getTreatment, updateTreatment };
+
+export { creatTreatment ,getTreatment ,updateTreatment};
