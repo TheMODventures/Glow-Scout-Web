@@ -58,7 +58,7 @@ const ClientTestimonials = () => {
   ];
 
   return (
-    <div className="mx-auto py-10 md:py-40  bg-[#FEF5E3] md:min-h-screen w-screen flex justify-center items-center">
+    <div className="mx-auto py-20 md:py-40  bg-[#FEF5E3] md:min-h-screen w-screen flex justify-center items-center">
       <div className="">
         <div className="text-center text-darkMahron pb-5">
           <h2
@@ -137,7 +137,7 @@ const ClientTestimonials = () => {
                 <CarouselNext />
               </div>
             </div>
-            <CarouselDots className="hidden  md:flex  "/>
+            <CarouselDots/>
           </Carousel>
         </div>
       </div>
