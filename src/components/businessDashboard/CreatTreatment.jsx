@@ -4,15 +4,20 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast"
 import FilterSelect from "../reuseableComponenet/FilterSelect";
 import InputFormField from "../reuseableComponenet/InputFormField";
 import { CreatTreatmentSchema } from "@/validation/business.validation";
 import { Input } from "@/components/ui/input"
 import { useRef, useState } from 'react';
+import Image from "next/image";
+import { RotatingLines } from "react-loader-spinner";
 
 const CreateTreatment = ({ onSubmit ,onDiscard  }) => {
   const { toast } = useToast();
   const [selectedFile, setSelectedFile] = useState({});
+  const [uploadedImage, setUploadedImage] = useState(null);
+const [loading, setLoading] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(CreatTreatmentSchema),
@@ -27,6 +32,7 @@ const CreateTreatment = ({ onSubmit ,onDiscard  }) => {
     const allowedTypes = ["image/png", "image/jpeg", "image/jpg"];
     if (file && allowedTypes.includes(file.type)) {
       setSelectedFile(file);
+      setUploadedImage(URL.createObjectURL(file));
       console.log("Selected file:", file);
     } else {
       console.error("Unsupported file type.");
@@ -46,32 +52,35 @@ const CreateTreatment = ({ onSubmit ,onDiscard  }) => {
     } else {
         console.error("No file selected");
     }
-
+    setLoading(true); 
     try {
         const response = await onSubmit(formData);
-        console.log(response);
-        toast({
+        console.log("response=== ",response);
+        if(response){
+          toast({
             description: (
                 <div className="w-[200px] rounded-md bg-green-600 py-1 px-2 flex justify-between items-center">
                     <p className="h-4 w-4 bg-white text-green-500 rounded-sm text-center font-bold">
                         ✓
                     </p>
-                    <p className="text-white text-base text-center">Submitted</p>
+                    <p className="text-white text-base text-center">Treatment created successfully</p>
                 </div>
             ),
         });
+        onDiscard()  
+        }
+        
+       
     } catch (error) {
-        console.error("API call error:", error);
-        toast({
-            description: (
-                <div className="w-[200px] rounded-md bg-red-600 py-1 px-2 flex justify-between items-center">
-                    <p className="h-4 w-4 bg-white text-red-500 rounded-sm text-center font-bold">
-                        X
-                    </p>
-                    <p className="text-white text-base text-center">Error</p>
-                </div>
-            ),
-        });
+      console.error("API call error:", error);
+      toast({
+        variant: "destructive",
+        title: error.message,
+        description: "There was a problem with your request.",
+        action: <ToastAction altText="Try again">Try again</ToastAction>,
+      })
+    }finally {
+      setLoading(false);
     }
 }
 
@@ -113,15 +122,33 @@ function getGoalId(goal) {
 
   return (
     <div className="mx-auto min-h-screen relative md:px-4">
+      {loading && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <RotatingLines
+            strokeColor="#351120"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="70"
+            visible={true}
+          />
+        </div>
+      )}
       <div className="mt-10 lg:mt-20 xl:mt-30 flex items-center justify-center">
         <div className="bg-white border-2 border-darkMahron rounded-lg px-8 py-4 sm:py-8 sm:px-20 w-full h-full md:max-w-[70%] md:max-h-[50%]">
           <h1 className="text-3xl sm:text-5xl font-ralewayLight font-thin mb-6 text-center text-darkMahron">
             Create Treatment
           </h1>
           <div className="mb-6 flex justify-center font-raleway">
-            <div className="flex flex-col justify-center items-center text-center rounded-xl bg-[#F0F0F0] w-64 h-40 border-2 border-darkMahron">
+            <div className=" relative flex flex-col justify-center items-center text-center rounded-xl bg-[#F0F0F0] w-64 h-40 border-2 border-darkMahron">
+              {
+                uploadedImage && (
+                  <div className=" absolute z-0 bottom-2 ">
+            <Image alt="img" src={uploadedImage} width={170} height={100} className=" rounded-xl opacity-60 w-[240px] h-[140px]"/>
+            </div>
+                )
+              }
               <div
-                className="mb-2 cursor-pointer"
+                className="mb-2 cursor-pointer z-10"
                 onClick={() => filePickerRef.current.click()}
               >
                 <Input
@@ -132,10 +159,13 @@ function getGoalId(goal) {
                   className="hidden"
                   onChange={handleFileChange}
                 />
-                <Add />
+                <svg className="w-8 h-8 p-2 text-darkMahron border-2 border-darkMahron rounded-lg mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                </svg>
+                
               </div>
-              <p className="text-sm md:ext-base font-raleway font-semibold text-darkMahron">
-                Upload Image
+              <p className="text-sm md:text-base font-raleway font-semibold text-darkMahron z-10">
+                 {uploadedImage ? "Image Updated" : "Update Image" }
               </p>
             </div>
           </div>

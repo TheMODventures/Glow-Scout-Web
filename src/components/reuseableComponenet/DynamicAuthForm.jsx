@@ -26,9 +26,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { usePathname } from "next/navigation";
-import { setCookie } from 'nookies';
-
-
+import { setCookie } from "nookies";
 
 const DynamicAuthForm = ({
   formType,
@@ -47,7 +45,6 @@ const DynamicAuthForm = ({
   const currentRoute = usePathname();
   const currentUser = useSelector((state) => state.auth.user);
 
-
   form = useForm({
     resolver: zodResolver(schema),
   });
@@ -60,14 +57,14 @@ const DynamicAuthForm = ({
       console.log("API Response:", response);
 
       if (formType === "login") {
-        const token=response?.data?.data?.accessToken
-          setCookie(null, 'accessToken', token, {
-            maxAge: 2 * 24 * 60 * 60, 
-            path: '/',
-            secure: process.env.NODE_ENV === 'production',
-            httpOnly: false, 
-            sameSite: 'strict',
-          });
+        const token = response?.data?.data?.accessToken;
+        setCookie(null, "accessToken", token, {
+          maxAge: 2 * 24 * 60 * 60,
+          path: "/",
+          secure: process.env.NODE_ENV === "production",
+          httpOnly: false,
+          sameSite: "strict",
+        });
         dispatch(setUser(response.data.data.user));
       }
 
@@ -76,33 +73,32 @@ const DynamicAuthForm = ({
       }
 
       if (formType === "verify-otp") {
-        const token=response.data
-          setCookie(null, 'resetPasswordToken', token, {
-            maxAge: 1 * 24 * 60 * 60, 
-            path: '/',
-            secure: process.env.NODE_ENV === 'production',
-            httpOnly: false, 
-            sameSite: 'strict',
-          });
+        const token = response.data;
+        setCookie(null, "resetPasswordToken", token, {
+          maxAge: 1 * 24 * 60 * 60,
+          path: "/",
+          secure: process.env.NODE_ENV === "production",
+          httpOnly: false,
+          sameSite: "strict",
+        });
       }
 
       toast({
         description: (
           <div className="w-[250px] rounded-md bg-green-600 py-1 px-2 flex justify-between items-center">
             <p className="text-white text-base text-center">
-            <span className="pr-4">✓</span>
-              {
-                formType === "login" && (
-                  JSON.stringify(response.data.message, null, 2)
-                )
-              }
+              <span className="pr-4">✓</span>
+              {formType === "login" &&
+                JSON.stringify(response.data.message, null, 2)}
+
+              {formType === "signup" &&
+                JSON.stringify(response.data.message, null, 2)}
 
               {
-                formType === "signup"  || formType==="verify-otp" || formType === "forgot-password" && (
-                  JSON.stringify(response.message, null, 2)
+                formType === "forgot-password" && (
+                  "OTP generated sucessfully"
                 )
               }
-
               {JSON.stringify(response.message, null, 2)}
             </p>
           </div>
@@ -111,7 +107,7 @@ const DynamicAuthForm = ({
 
       router.push(
         formType === "login" && response.data?.data?.user?.role === "business"
-          ? "/pricing"
+          ? "/business-dashboard"
           : formType === "forgot-password"
           ? "/auth/verify-otp"
           : formType === "login" && response.data?.data?.user?.role === "user"
@@ -192,8 +188,8 @@ const DynamicAuthForm = ({
         >
           {formType === "verify-otp" && (
             <>
-            <p>{currentUser?.otp || "otp"}</p>
-            <UserOtp name="otp" formControl={form.control} />
+              <p>{currentUser?.otp || "otp"}</p>
+              <UserOtp name="otp" formControl={form.control} />
             </>
           )}
           {formType !== "login" &&
@@ -240,9 +236,8 @@ const DynamicAuthForm = ({
             </div>
           )}
 
-          {
-            formType === "reset-password" && (
-              <div className=" relative">
+          {formType === "reset-password" && (
+            <div className=" relative">
               <InputFormField
                 name="password"
                 placeholder="Enter New Password"
@@ -263,8 +258,7 @@ const DynamicAuthForm = ({
                 )}
               </span>
             </div>
-            )
-          }
+          )}
 
           {linkText && (
             <div className="text-zinc-500 mb-4 text-sm">
@@ -382,7 +376,6 @@ const DynamicAuthForm = ({
           </div>
         </form>
       </Form>
-      
     </div>
   );
 };

@@ -3,11 +3,20 @@ import { parseCookies, destroyCookie } from 'nookies';
 import {jwtDecode} from 'jwt-decode';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://128.199.30.51:5007/api',
+  baseURL: 'https://gs.yameenyousuf.com/api',
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+// console.log("tttttttttt",process.env.BACKEND_URI);
+// const axiosInstance = axios.create({
+//   baseURL: `${process.env.BACKEND_URI}/api`,
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
+
 
 
 const isTokenExpired = (token) => {
