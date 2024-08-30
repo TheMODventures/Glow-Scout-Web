@@ -80,7 +80,7 @@ const treatments = [
 
 const TrandingTreatment = () => {
   return (
-    <div className="mx-auto py-20  font-raleway relative rounded-full border-0">
+    <div className="mx-auto py-10 md:py-20  font-raleway relative rounded-full border-0">
       <Image
         width={300}
         height={300}
@@ -97,10 +97,10 @@ const TrandingTreatment = () => {
         </p>
       </div>
 
-      <div className="my-16 z-50 container flex justify-center items-center">
+      <div className="mt-6 md:my-16 z-50 pl-6 md:pl-0 md:container flex justify-center items-center">
         <Carousel
           opts={{ align: "start" }}
-          className="w-full md:container ml-8 overflow-hidden"
+          className="w-full md:container md:ml-8 overflow-hidden"
         >
           <CarouselContent className="flex">
             {treatments.map((treatment, index) => (

@@ -5,20 +5,25 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
+import { ToastAction } from "@/components/ui/toast";
 import FilterSelect from "../reuseableComponenet/FilterSelect";
 import InputFormField from "../reuseableComponenet/InputFormField";
 import { CreatTreatmentSchema } from "@/validation/business.validation";
 import { Input } from "@/components/ui/input";
 import { updateTreatment } from "@/API/business.api";
+import Image from "next/image";
+import { RotatingLines, ThreeDots } from "react-loader-spinner";
 
-const UpdateTreatment = ({ treatment ,onDiscard }) => {
+const UpdateTreatment = ({ treatment, onDiscard }) => {
   const { toast } = useToast();
   const [selectedFile, setSelectedFile] = useState(null);
   const filePickerRef = useRef();
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(CreatTreatmentSchema),
-    defaultValues: treatment, // Initialize form with treatment data
+    defaultValues: treatment,
   });
 
   const handleFileChange = (e) => {
@@ -26,6 +31,7 @@ const UpdateTreatment = ({ treatment ,onDiscard }) => {
     const allowedTypes = ["image/png", "image/jpeg", "image/jpg"];
     if (file && allowedTypes.includes(file.type)) {
       setSelectedFile(file);
+      setUploadedImage(URL.createObjectURL(file));
       console.log("Selected file:", file);
     } else {
       console.error("Unsupported file type.");
@@ -44,36 +50,42 @@ const UpdateTreatment = ({ treatment ,onDiscard }) => {
       formData.append("image", selectedFile);
     }
 
+    setLoading(true);
+
     try {
       const response = await updateTreatment(treatment._id, formData);
       console.log(response);
-      if(respons)
-      toast({
-        description: (
-          <div className="w-[200px] rounded-md bg-green-600 py-1 px-2 flex justify-between items-center">
-            <p className="h-4 w-4 bg-white text-green-500 rounded-sm text-center font-bold">✓</p>
-            <p className="text-white text-base text-center">Updated Successfully</p>
-          </div>
-        ),
-      });
+      if (response.ok) {
+        toast({
+          description: "Treatment Updated successfully.",
+        });
+      }
+
+      if (!response.ok) {
+        toast({
+          description: response.message,
+        });
+      }
+
+      onDiscard();
     } catch (error) {
       console.error("API call error:", error);
       toast({
-        description: (
-          <div className="w-[200px] rounded-md bg-red-600 py-1 px-2 flex justify-between items-center">
-            <p className="h-4 w-4 bg-white text-red-500 rounded-sm text-center font-bold">X</p>
-            <p className="text-white text-base text-center">Error</p>
-          </div>
-        ),
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+        action: <ToastAction altText="Try again">Try again</ToastAction>,
       });
+    } finally {
+      setLoading(false);
     }
   }
 
   function getGoalId(goal) {
     const goalsMap = {
-      "goal1": "64e1f8b34e5c35a2c4567890",
-      "goal2": "64e1f8b34e5c35a2c4567891",
-      "goal3": "64e1f8b34e5c35a2c4567892",
+      goal1: "64e1f8b34e5c35a2c4567890",
+      goal2: "64e1f8b34e5c35a2c4567891",
+      goal3: "64e1f8b34e5c35a2c4567892",
     };
     return goalsMap[goal] || goal;
   }
@@ -86,15 +98,38 @@ const UpdateTreatment = ({ treatment ,onDiscard }) => {
 
   return (
     <div className="mx-auto min-h-screen relative md:px-4">
+      {loading && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <ThreeDots
+            visible={true}
+            height="80"
+            width="80"
+            color="#351120"
+            radius="9"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        </div>
+      )}
       <div className="mt-10 lg:mt-20 xl:mt-30 flex items-center justify-center">
         <div className="bg-white border-2 border-darkMahron rounded-lg px-8 py-4 sm:py-8 sm:px-20 w-full h-full md:max-w-[70%] md:max-h-[50%]">
           <h1 className="text-3xl sm:text-5xl font-ralewayLight font-thin mb-6 text-center text-darkMahron">
             Update Treatment
           </h1>
           <div className="mb-6 flex justify-center font-raleway">
-            <div className="flex flex-col justify-center items-center text-center rounded-xl bg-[#F0F0F0] w-64 h-40 border-2 border-darkMahron">
+            <div className=" relative flex flex-col justify-center items-center text-center rounded-xl bg-[#F0F0F0] w-64 h-40 border-2 border-darkMahron">
+              <div className=" absolute z-0 bottom-2 ">
+                <Image
+                  alt="img"
+                  src={uploadedImage || treatment.image}
+                  width={170}
+                  height={100}
+                  className=" rounded-xl opacity-60 w-[240px] h-[140px]"
+                />
+              </div>
               <div
-                className="mb-2 cursor-pointer"
+                className="mb-2 cursor-pointer z-10"
                 onClick={() => filePickerRef.current.click()}
               >
                 <Input
@@ -105,12 +140,23 @@ const UpdateTreatment = ({ treatment ,onDiscard }) => {
                   className="hidden"
                   onChange={handleFileChange}
                 />
-                <svg className="w-8 h-8 p-2 text-darkMahron border-2 border-darkMahron rounded-lg mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+                <svg
+                  className="w-8 h-8 p-2 text-darkMahron border-2 border-darkMahron rounded-lg mb-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 4v16m8-8H4"
+                  />
                 </svg>
               </div>
-              <p className="text-sm md:text-base font-raleway font-semibold text-darkMahron">
-                Upload Image
+              <p className="text-sm md:text-base font-raleway font-semibold text-darkMahron z-10">
+                {uploadedImage ? "Image Updated" : "Update Image"}
               </p>
             </div>
           </div>
