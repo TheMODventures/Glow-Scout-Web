@@ -6,15 +6,11 @@ import { selectUser } from "@/redux/user/authSlice";
 import axiosInstance from "@/axiosInstance";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation"; 
-import { parseCookies } from "nookies";
 
 const Setting = () => {
   const user = useSelector(selectUser);
   const router = useRouter();
   const { toast } = useToast();
-  const cookies=parseCookies();
-  let accessToken = cookies.accessToken;
-  
 
   const [userUpdateData, setUserUpdateData] = useState({
     name: "",
@@ -69,7 +65,14 @@ const Setting = () => {
     }
   };
 
-  
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (!accessToken) {
+      router.push("/auth/login");
+      return;
+    }
+    getUser();
+  }, [router]);
   
   useEffect(() => {
     getUser();
@@ -84,9 +87,9 @@ const Setting = () => {
 
   useEffect(() => {
     setContactDetail([
-      { placeholder: "Mobile/Telephone", value: userUpdateData?.phone || "" },
+      { placeholder: "Mobile/Telephone", value: userUpdateData.phone },
       { placeholder: "Facebook handle", value: "" },
-      { placeholder: "Email address", value: userUpdateData?.email || ""},
+      { placeholder: "Email address", value: userUpdateData.email },
       { placeholder: "Instagram handle", value: "" },
       {
         placeholder: "Alternate Email address",
@@ -195,11 +198,11 @@ const Setting = () => {
 
   const handleSave = async () => {
     if (
-      userUpdateData.name?.trim() === "" ||
-      userUpdateData.city?.trim() === "" ||
-      userUpdateData.phone?.trim() === "" ||
-      userUpdateData.email?.trim() === "" ||
-      userUpdateData.alternateEmail?.trim() === "" ||
+      userUpdateData.name.trim() === "" ||
+      userUpdateData.city.trim() === "" ||
+      userUpdateData.phone.trim() === "" ||
+      userUpdateData.email.trim() === "" ||
+      userUpdateData.alternateEmail.trim() === "" ||
       userUpdateData.profileImage === ""
     ) {
       showToast("All fields must be filled out.");

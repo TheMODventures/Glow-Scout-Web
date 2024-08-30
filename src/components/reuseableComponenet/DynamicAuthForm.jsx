@@ -26,8 +26,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { usePathname } from "next/navigation";
-import { setCookie } from 'nookies';
-
 
 
 const DynamicAuthForm = ({
@@ -60,14 +58,11 @@ const DynamicAuthForm = ({
       console.log("API Response:", response);
 
       if (formType === "login") {
-        const token=response?.data?.data?.accessToken
-          setCookie(null, 'accessToken', token, {
-            maxAge: 2 * 24 * 60 * 60, 
-            path: '/',
-            secure: process.env.NODE_ENV === 'production',
-            httpOnly: false, 
-            sameSite: 'strict',
-          });
+        localStorage.setItem(
+          "accessToken",
+          response?.data?.data?.accessToken || ""
+        );
+        localStorage.setItem("id", response.data?.data?.user?._id || "");
         dispatch(setUser(response.data.data.user));
       }
 
@@ -76,33 +71,22 @@ const DynamicAuthForm = ({
       }
 
       if (formType === "verify-otp") {
-        const token=response.data
-          setCookie(null, 'resetPasswordToken', token, {
-            maxAge: 1 * 24 * 60 * 60, 
-            path: '/',
-            secure: process.env.NODE_ENV === 'production',
-            httpOnly: false, 
-            sameSite: 'strict',
-          });
+        localStorage.setItem("verifyToken", response?.data || "");
       }
 
       toast({
         description: (
-          <div className="w-[250px] rounded-md bg-green-600 py-1 px-2 flex justify-between items-center">
+          <div className="w-[200px] rounded-md bg-green-600 py-1 px-2 flex justify-between items-center">
+            <p className="h-4 w-4 bg-white text-green-500 rounded-sm text-center font-bold">
+              ✓
+            </p>
             <p className="text-white text-base text-center">
-            <span className="pr-4">✓</span>
+              
               {
-                formType === "login" && (
+                formType === "signup" && (
                   JSON.stringify(response.data.message, null, 2)
                 )
               }
-
-              {
-                formType === "signup"  || formType==="verify-otp" || formType === "forgot-password" && (
-                  JSON.stringify(response.message, null, 2)
-                )
-              }
-
               {JSON.stringify(response.message, null, 2)}
             </p>
           </div>
@@ -129,7 +113,10 @@ const DynamicAuthForm = ({
       dispatch(setStatus("failed"));
       toast({
         description: (
-          <div className="w-[250px] rounded-md bg-red-600 py-1 px-2 flex justify-between items-center">
+          <div className="w-[200px] rounded-md bg-red-600 py-1 px-2 flex justify-between items-center">
+            <p className="h-4 w-4 bg-white text-red-500 rounded-sm text-center font-bold">
+              X
+            </p>
             <p className="text-white text-base text-center">
               {JSON.stringify(error.response.data.message, null, 2) ||
                 JSON.stringify(error.response.message, null, 2)}
@@ -300,7 +287,6 @@ const DynamicAuthForm = ({
               <Button
                 className="bg-white flex items-center justify-center w-full md:w-auto"
                 onClick={handleGoogleSubmit}
-                type="button"
               >
                 <Image
                   src="/images/auth/search-2.png"
@@ -314,7 +300,6 @@ const DynamicAuthForm = ({
               <Button
                 className="bg-white flex items-center justify-center w-full md:w-auto"
                 onClick={handleFacebookSubmit}
-                type="button"
               >
                 <Image
                   src="/images/auth/facebook-1.png"

@@ -1,44 +1,18 @@
-import { NextResponse } from "next/server";
-
+import { NextResponse } from 'next/server'
+ 
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
-  const path = request.nextUrl.pathname;
+    // if(request.nextUrl.pathname==="/business-dashboard/1"){
+    //     return NextResponse.redirect(new URL('/', request.url))
+    // }
+//   return NextResponse.redirect(new URL('/', request.url))
 
-  const privatePaths = ["/setting", "/appointment", "/business-dashboard"];
+//    const path= request.nextUrl.pathname;
 
-  const publicPath = [
-    "/auth/login",
-    "/auth/user",
-    "/auth/business",
-    "/auth/forgot-password",
-    "/auth/verify-otp",
-    "/auth/reset-password",
-  ];
-
-  const isPrivatePath = privatePaths.includes(path);
-  const isPublicPath = publicPath.includes(path);
-
-  const token = request.cookies.get("accessToken")?.value;
-
-  if (isPrivatePath && !token) {
-    return NextResponse.redirect(new URL("/auth/login", request.url));
-  }
-
-  if (isPublicPath && token) {
-    return NextResponse.redirect(new URL("/", request.url));
-  }
+//    const isPublic= path==="/login" || path===""  
 }
-
-export const config = {
-  matcher: [
-    "/setting",
-    "/appointment",
-    "/business-dashboard",
-    "/auth/login",
-    "/auth/user",
-    "/auth/business",
-    "/auth/forgot-password",
-    "/auth/verify-otp",
-    "/auth/reset-password",
-  ],
-};
+ 
+// See "Matching Paths" below to learn more
+// export const config = {
+//   matcher: '/business-dashboard/1', 
+// }

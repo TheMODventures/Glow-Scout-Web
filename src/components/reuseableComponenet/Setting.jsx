@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import Image from "next/image";
-import { Input } from "../ui/input";
 const Add = () => (
   <svg
     className="w-8 h-8 p-2 text-darkMahron border-2 border-darkMahron rounded-lg mb-2"
@@ -215,14 +214,14 @@ const SettingComponent = ({
                   <LocationIcon className="w-6 h-6 text-darkMahron" />
                 </div>
               ) : (
-                <Input
+                <input
                   key={index}
                   type="text"
                   placeholder={detail.placeholder}
                   // onClick={handleOnClick}
                   value={detail.value || ""}
                   onChange={(e) => onDetailsChange(index, e.target.value)}
-                  className="w-full p-2 mb-4 border-b border-darkMahron rounded"
+                  className="w-full p-2 mb-4 border-b-2 border-darkMahron rounded"
                 />
               )
             )}
@@ -384,14 +383,14 @@ const SettingComponent = ({
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {contactDetail.map((info, index) => (
-                <Input
+                <input
                   key={index}
                   type="text"
                   // onClick={handleOnClick}
                   placeholder={info.placeholder}
                   value={info.value || ""}
                   onChange={(e) => onContactDetailChange(index, e.target.value)}
-                  className="p-2 border-b border-darkMahron rounded"
+                  className="p-2 border-b-2 border-darkMahron rounded"
                 />
               ))}
             </div>
