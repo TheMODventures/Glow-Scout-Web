@@ -24,25 +24,38 @@ const ProfileButton = () => {
       console.log(error.message);
     }
   };
-  
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="focus:outline-none">
         <Avatar className="mx-5">
-          <AvatarImage src={currentUser.profileImage
-} />
+          <AvatarImage src={currentUser.profileImage} />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">
-          <Link href="/setting">Profile</Link>
+        {currentUser.role === "business" && (
+          <>
+          <DropdownMenuItem className="cursor-pointer">
+            <Link href="/business-dashboard">Dashboard</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer">
+          <Link href="/treatment">Treatments</Link>
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
-          Select Goal
-        </DropdownMenuItem>
+          </>
+        )}
+        {currentUser.role === "user" && (
+          <>
+            <DropdownMenuItem className="cursor-pointer">
+              <Link href="/setting">Profile</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              Select Goal
+            </DropdownMenuItem>
+          </>
+        )}
         <DropdownMenuSeparator />
         <DropdownMenuItem className="cursor-pointer" onClick={handleSignout}>
           Log Out

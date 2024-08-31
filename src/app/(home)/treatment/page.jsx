@@ -19,8 +19,10 @@ import { useEffect, useState } from "react";
 import axiosInstance from "@/axiosInstance";
 
 const TreatmentPage = () => {
-
-  const [allTreatment, setAllTreatment] = useState([]);
+  const [allTreatments, setAllTreatments] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
   useEffect(() => {
     getTreatments();
   }, []);
@@ -38,15 +40,35 @@ const TreatmentPage = () => {
       label: "Save Both",
     },
   ];
-  const getTreatments = async () => {
+  useEffect(() => {
+    getTreatments(currentPage);
+  }, [currentPage]);
+
+  const getTreatments = async (page) => {
+    if (isFetching) return;
+    setIsFetching(true);
+    
     try {
-      const response = await axiosInstance.get("/treatment", {
+      const response = await axiosInstance.get(`/treatment?page=${page}`, {
         withCredentials: true,
       });
-      setAllTreatment(response.data.data.data);
-      console.log("treatment page======", response.data.data.data)
+      const newTreatments = response.data.data.data;
+
+      setAllTreatments((prevTreatments) => {
+        const newUniqueTreatments = newTreatments.filter(
+          (newTreatment) =>
+            !prevTreatments.some(
+              (existingTreatment) => existingTreatment.id === newTreatment.id
+            )
+        );
+        return [...prevTreatments, ...newUniqueTreatments];
+      });
+
+      setHasNextPage(response.data.data.pagination.hasNextPage);
     } catch (error) {
       console.error("Error fetching treatments: ", error);
+    } finally {
+      setIsFetching(false); // Reset fetching status
     }
   };
 
@@ -75,6 +97,12 @@ const TreatmentPage = () => {
       });
     }
   }
+
+  const handleViewMore = () => {
+    if (hasNextPage && !isFetching) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
 
   return (
     <div className="py-6 md:py-10 md:mt-6  relative isolate">
@@ -144,9 +172,9 @@ const TreatmentPage = () => {
 
 
       <div className="container my-5">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 ">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 ">
           
-          {allTreatment.map((item, index) => (
+          {allTreatments.map((item, index) => (
             <div className="md:mb-8">
           <Link href={`/treatment/${index}`} key={index}>
             <TreatmentCard key={index} {...item} imageHeightWeb={"h-60"} />
@@ -155,7 +183,18 @@ const TreatmentPage = () => {
           ))}
 
         </div>
-        
+        {hasNextPage && (
+            <div className="flex justify-center items-center mt-10">
+              <Button
+                onClick={handleViewMore}
+                variant="myCustom"
+                className="px-6 rounded-full py-[20px] font-raleway font-bold"
+                disabled={isFetching}
+              >
+                {isFetching ? "Loading..." : "View More"}
+              </Button>
+            </div>
+          )}
       </div>
       
       <div className="md:hidden flex justify-end items-end sticky bottom-3 mr-3">
