@@ -10,7 +10,7 @@ const GoalCard = ({ number, name, img }) => {
         <div>
           <div>
             <h2 className=" font-bold text-xl md:text-[28px] pb-2 font-raleway text-[#351120]">{number}</h2>
-            <h3 className="text-lg md:text-xl text-[#351120]">{name}</h3>
+            <h3 className="text-lg md:text-xl font-raleway text-[#351120]">{name}</h3>
           </div>
           <div className="mt-2 flex items-end justify-end">
           <Image
