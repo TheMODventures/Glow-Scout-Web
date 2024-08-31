@@ -6,6 +6,7 @@ import CreateTreatment from "./CreatTreatment";
 import UpdateTreatment from "./UpdateTreatment";
 import { creatTreatment } from "@/API/business.api";
 import { Button } from "../ui/button";
+import { useSelector } from "react-redux";
 
 const ServicesComponent = () => {
   const [currentView, setCurrentView] = useState("list");
@@ -14,24 +15,31 @@ const ServicesComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
+  const currentUser = useSelector((state) => state.auth.user);
+
 
   useEffect(() => {
     getTreatments(currentPage);
   }, [currentPage]);
 
   const getTreatments = async (page) => {
-    if (isFetching) return; // Prevents multiple API calls for the same page
+    if (isFetching) return;
     setIsFetching(true);
     
     try {
-      const response = await axiosInstance.get(`/treatment?page=${page}`, {
+      const response = await axiosInstance.get(`/spas/SimilarTreatments/${currentUser._id}`, {
         withCredentials: true,
       });
       const newTreatments = response.data.data.data;
 
+      const filterTreatments = newTreatments.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+
+      // const userTreatments = newTreatments.filter(
+      //   (treatment) => treatment.creatorId === currentUser._id
+      // );
+
       setAllTreatments((prevTreatments) => {
-        // Filter out any duplicate treatments based on a unique identifier, e.g., id
-        const newUniqueTreatments = newTreatments.filter(
+        const newUniqueTreatments = filterTreatments.filter(
           (newTreatment) =>
             !prevTreatments.some(
               (existingTreatment) => existingTreatment.id === newTreatment.id
@@ -44,9 +52,36 @@ const ServicesComponent = () => {
     } catch (error) {
       console.error("Error fetching treatments: ", error);
     } finally {
-      setIsFetching(false); // Reset fetching status
+      setIsFetching(false);
     }
   };
+  //   try {
+  //     const response = await axiosInstance.get(`/treatment?page=${page}`, {
+  //       withCredentials: true,
+  //     });
+  //     const newTreatments = response.data.data.data;
+
+  //     // const userTreatments = newTreatments.filter(
+  //     //   (treatment) => treatment.creatorId === currentUser._id
+  //     // );
+
+  //     setAllTreatments((prevTreatments) => {
+  //       const newUniqueTreatments = newTreatments.filter(
+  //         (newTreatment) =>
+  //           !prevTreatments.some(
+  //             (existingTreatment) => existingTreatment.id === newTreatment.id
+  //           )
+  //       );
+  //       return [...prevTreatments, ...newUniqueTreatments];
+  //     });
+
+  //     setHasNextPage(response.data.data.pagination.hasNextPage);
+  //   } catch (error) {
+  //     console.error("Error fetching treatments: ", error);
+  //   } finally {
+  //     setIsFetching(false);
+  //   }
+  // };
 
   const handleAddClick = () => {
     setCurrentView("add");
@@ -84,7 +119,7 @@ const ServicesComponent = () => {
                 onClick={handleViewMore}
                 variant="myCustom"
                 className="px-6 rounded-full py-[20px] font-raleway font-bold"
-                disabled={isFetching} // Disable the button while fetching data
+                disabled={isFetching}
               >
                 {isFetching ? "Loading..." : "View More"}
               </Button>

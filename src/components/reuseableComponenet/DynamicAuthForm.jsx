@@ -107,7 +107,7 @@ const DynamicAuthForm = ({
 
       router.push(
         formType === "login" && response.data?.data?.user?.role === "business"
-          ? "/business-dashboard"
+          ? "/pricing"
           : formType === "forgot-password"
           ? "/auth/verify-otp"
           : formType === "login" && response.data?.data?.user?.role === "user"
@@ -146,7 +146,7 @@ const DynamicAuthForm = ({
 
   return (
     <div className="flex flex-col items-center justify-center px-4 md:px-0">
-      <h3 className="py-4 text-[#351120] text-3xl mb-4">{title}</h3>
+      <h3 className="py-4 text-[#351120] text-3xl md:text-[34px] mb-4 font-raleway">{title}</h3>
 
       {["signup"].includes(formType) && (
         <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 mb-4 flex-wrap md:flex-nowrap items-center justify-center">

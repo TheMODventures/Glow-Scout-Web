@@ -135,7 +135,7 @@ function getGoalId(goal) {
       )}
       <div className="mt-10 lg:mt-20 xl:mt-30 flex items-center justify-center">
         <div className="bg-white border-2 border-darkMahron rounded-lg px-8 py-4 sm:py-8 sm:px-20 w-full h-full md:max-w-[70%] md:max-h-[50%]">
-          <h1 className="text-3xl sm:text-5xl font-ralewayLight font-thin mb-6 text-center text-darkMahron">
+          <h1 className="text-3xl sm:text-5xl font-ralewayThin font-thin mb-6 md:mb-12 text-center text-darkMahron">
             Create Treatment
           </h1>
           <div className="mb-6 flex justify-center font-raleway">

@@ -1,12 +1,24 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
+import { useSelector } from "react-redux";
 import AnalyticsComponent from "@/components/businessDashboard/AnalyticsComponent";
 import ServicesComponent from "@/components/businessDashboard/ServicesComponent";
 import SettingComponent from "@/components/reuseableComponenet/Setting";
+import { useRouter } from "next/navigation";
+
 
 const Page = () => {
    
   const [activeTab, setActiveTab] = useState("analytics");
+  const currentUser = useSelector((state) => state.auth.user);
+  const route=useRouter();
+
+  useEffect(()=>{
+    if(currentUser.role !== "business"){
+      return route.push("/")
+    }
+  })
+
 
   const [details, setDetails] = useState([
     { placeholder: "Enter Spa name", value:  "" },
