@@ -30,7 +30,7 @@ const PlanAndPricing = () => {
   const handleNext = () => {
     const id = localStorage.getItem("id");
     if (selectedPlan) {
-      router.push(`/business-dashboard/${id}`);
+      router.push(`/business-dashboard`);
     }
   };
   return (
