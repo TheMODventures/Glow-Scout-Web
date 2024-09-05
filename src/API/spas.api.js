@@ -1,18 +1,28 @@
 import axiosInstance from "@/axiosInstance";
 
+const getSpas = async () => {
+  try {
+    const response = await axiosInstance.get("/spas", {
+      withCredentials: true,
+    });
+    return response;
+  } catch (error) {
+    console.error("Error message: ", error.message);
+  }
+};
 
-const getSpas= async ()=>{
+const updateSpa = async (id, data) => {
+  try {
+    const response = await axiosInstance.put(`/spas/update/${id}`, data, {
+      withCredentials: true,
+      // headers: {
+      //   "Content-Type": "multipart/form-data",
+      // },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating Business spa user:", error);
+  }
+};
 
-
-    try {
-        const response = await axiosInstance.get("/spas", {
-            withCredentials: true,
-          });
-          return response;  
-    } catch (error) {
-        console.error("Error message: ", error.message);
-    }
-}
-
-
-export {getSpas};
+export { getSpas, updateSpa };

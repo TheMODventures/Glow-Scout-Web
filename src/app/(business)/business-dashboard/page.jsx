@@ -5,6 +5,7 @@ import AnalyticsComponent from "@/components/businessDashboard/AnalyticsComponen
 import ServicesComponent from "@/components/businessDashboard/ServicesComponent";
 import SettingComponent from "@/components/reuseableComponenet/Setting";
 import { useRouter } from "next/navigation";
+import BusinessSettings from "@/components/businessDashboard/BusinessSettings";
 
 
 const Page = () => {
@@ -63,16 +64,18 @@ const Page = () => {
         return <AnalyticsComponent />;
       case "services":
         return <ServicesComponent />;
+        
       case "account":
         return (
-          <SettingComponent
-            type="business"
-            details={details}
-              contactDetail={contactDetail}
-              onDetailsChange={handleDetailsChange}
-              onContactDetailChange={handleContactDetailChange}
-              saveBtnFunc = {handleSave}
-          />
+          // <SettingComponent
+          //   type="business"
+          //   details={details}
+          //     contactDetail={contactDetail}
+          //     onDetailsChange={handleDetailsChange}
+          //     onContactDetailChange={handleContactDetailChange}
+          //     saveBtnFunc = {handleSave}
+          // />
+           <BusinessSettings/>
         );
       default:
         return null;

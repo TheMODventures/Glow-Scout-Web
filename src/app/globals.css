@@ -69,6 +69,19 @@
   }
 }
 
+/* Hide the default clock icon */
+input[type="time"]::-webkit-inner-spin-button,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+input[type="time"] {
+  /* Add additional styling to ensure consistent appearance */
+  background: none; /* Remove background if necessary */
+   /* Adjust padding if the default icon causes extra space */
+}
+
 
 /* home page css start */
 
