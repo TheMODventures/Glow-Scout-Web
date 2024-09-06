@@ -7,6 +7,9 @@ import axiosInstance from "@/axiosInstance";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation"; 
 import { parseCookies } from "nookies";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/user/authSlice";
+
 
 const Setting = () => {
   const user = useSelector(selectUser);
@@ -14,6 +17,10 @@ const Setting = () => {
   const { toast } = useToast();
   const cookies=parseCookies();
   let accessToken = cookies.accessToken;
+  const [loading, setLoading] = useState(false);
+  const currentUser = useSelector((state) => state.auth.user);
+  const dispatch= useDispatch();
+
   
 
   const [userUpdateData, setUserUpdateData] = useState({
@@ -55,6 +62,8 @@ const Setting = () => {
       const response = await axiosInstance.get("auth/getCurrentUser", {
         withCredentials: true,
       });
+        dispatch(setUser(response.data.data));
+        console.log("data..",response.data.data)
       setImgUrl(response.data.data.profileImage);
       setUserUpdateData({
         name: response.data.data.name,
@@ -225,6 +234,7 @@ const Setting = () => {
       showToast(errors.alternateEmail);
       return;
     }
+    setLoading(true);
     try {
       const formData = new FormData();
       formData.append("name", userUpdateData.name);
@@ -232,7 +242,7 @@ const Setting = () => {
       formData.append("phone", userUpdateData.phone);
       formData.append("email", userUpdateData.email);
       formData.append("alternateEmail", userUpdateData.alternateEmail);
-      if (userUpdateData.profileImage) {
+      if (userUpdateData.profileImage>0) {
         formData.append("profileImage", userUpdateData.profileImage);
       }
 
@@ -254,6 +264,8 @@ const Setting = () => {
         showToast("An unexpected error occurred. Please try again later.");
       }
       console.error("Error:", error);
+    }finally{
+      setLoading(false);
     }
   };
 
@@ -270,6 +282,7 @@ const Setting = () => {
   return (
     <>
       <SettingComponent
+        loading={loading}
         handleOnclick={handleOnclick}
         imgUrl={imgUrl}
         type="user"

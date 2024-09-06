@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import Image from "next/image";
 import { Input } from "../ui/input";
+import { ThreeDots } from "react-loader-spinner";
+
 const Add = () => (
   <svg
     className="w-8 h-8 p-2 text-darkMahron border-2 border-darkMahron rounded-lg mb-2"
@@ -120,6 +122,7 @@ const LocationIcon = ({ className }) => {
 };
 
 const SettingComponent = ({
+  loading,
   imgUrl,
   onImageChange,
   saveBtnFunc,
@@ -134,6 +137,10 @@ const SettingComponent = ({
   const [localReviews, setLocalReviews] = useState(reviews);
   const [isImageUploading, setIsImageUploading] = useState(false);
   const { toast } = useToast();
+  const [uploadedImage, setUploadedImage] = useState(null);
+  
+
+
 
   const handleStarClick = (reviewIndex, starIndex) => {
     setLocalReviews((prevReviews) =>
@@ -147,6 +154,7 @@ const SettingComponent = ({
     if (file) {
       const allowedTypes = ["image/png", "image/jpeg", "image/jpg"];
       if (allowedTypes.includes(file.type)) {
+        setUploadedImage(URL.createObjectURL(file));
         onImageChange(event);
         setIsImageUploading(true);
 
@@ -187,6 +195,20 @@ const SettingComponent = ({
   ];
   return (
     <div className={`flex flex-col items-center md:p-8 font-raleway`}>
+      {loading && (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+      <ThreeDots
+        visible={true}
+        height="80"
+        width="80"
+        color="#351120"
+        radius="9"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      />
+    </div>
+  )}
       <div className="p-4 sm:p-8 my-10 mx-auto bg-white rounded-xl border-2 border-darkMahron max-w-full lg:max-w-4xl">
         <h1 className="text-3xl sm:text-5xl font-raleway font-thin mb-6 text-center text-darkMahron">
           Settings
@@ -308,7 +330,7 @@ const SettingComponent = ({
                        onChange={handleFileChange}
                      />
                      <Image
-                       src={imgUrl}
+                       src={uploadedImage || imgUrl}
                        alt="Profile Image"
                        layout="fill"
                        objectFit="cover"
