@@ -1,9 +1,11 @@
 import { useRef } from "react";
 import { Input } from "../ui/input";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const ImageUpload = ({ id, image, handleFileChange }) => {
     const filePickerRef = useRef();
+    const currentUser=useSelector((auth)=>auth.user);
   
     return (
       <div className="relative flex flex-col justify-center items-center text-center rounded-xl bg-[#F0F0F0] w-64 h-40 border-2 border-darkMahron">

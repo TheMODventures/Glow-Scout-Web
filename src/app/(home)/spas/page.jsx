@@ -7,12 +7,19 @@ import { useToast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
 import Container from "@/components/reuseableComponenet/Container";
 import  SelectField  from "@/components/reuseableComponenet/Select";
-import axiosInstance from '@/axiosInstance';
-
+import { getSpas } from "@/API/spas.api";
+import { useEffect, useState } from "react";
 
 const SpaPage = () => {
 
-  const spas= axiosInstance.get("/spas");
+  const [ allSpas , setAllSpas]=useState(getSpas);
+
+
+  // useEffect(()=>{
+  //   setAllSpas(getSpas())
+  // },[])
+
+  console.log("spas", allSpas)
   
 
   let dummyData = [

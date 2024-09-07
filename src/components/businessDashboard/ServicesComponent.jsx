@@ -7,6 +7,7 @@ import UpdateTreatment from "./UpdateTreatment";
 import { creatTreatment } from "@/API/business.api";
 import { Button } from "../ui/button";
 import { useSelector } from "react-redux";
+import SkeletonCard from "../reuseableComponenet/SkeletonCard";
 
 const ServicesComponent = () => {
   const [currentView, setCurrentView] = useState("list");
@@ -34,9 +35,6 @@ const ServicesComponent = () => {
 
       const filterTreatments = newTreatments.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
 
-      // const userTreatments = newTreatments.filter(
-      //   (treatment) => treatment.creatorId === currentUser._id
-      // );
 
       setAllTreatments((prevTreatments) => {
         const newUniqueTreatments = filterTreatments.filter(
@@ -55,33 +53,7 @@ const ServicesComponent = () => {
       setIsFetching(false);
     }
   };
-  //   try {
-  //     const response = await axiosInstance.get(`/treatment?page=${page}`, {
-  //       withCredentials: true,
-  //     });
-  //     const newTreatments = response.data.data.data;
-
-  //     // const userTreatments = newTreatments.filter(
-  //     //   (treatment) => treatment.creatorId === currentUser._id
-  //     // );
-
-  //     setAllTreatments((prevTreatments) => {
-  //       const newUniqueTreatments = newTreatments.filter(
-  //         (newTreatment) =>
-  //           !prevTreatments.some(
-  //             (existingTreatment) => existingTreatment.id === newTreatment.id
-  //           )
-  //       );
-  //       return [...prevTreatments, ...newUniqueTreatments];
-  //     });
-
-  //     setHasNextPage(response.data.data.pagination.hasNextPage);
-  //   } catch (error) {
-  //     console.error("Error fetching treatments: ", error);
-  //   } finally {
-  //     setIsFetching(false);
-  //   }
-  // };
+  
 
   const handleAddClick = () => {
     setCurrentView("add");
@@ -107,7 +79,11 @@ const ServicesComponent = () => {
       {currentView === "list" && (
         <>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
-            {allTreatments.map((item, index) => (
+            {
+              isFetching
+                ? Array(8).fill().map((_, index) => <SkeletonCard key={index} />):
+            
+            allTreatments.map((item, index) => (
               <button key={index} onClick={() => handleEditClick(item)}>
                 <TreatmentCard {...item} imageHeightWeb={"h-60"} />
               </button>
