@@ -12,7 +12,7 @@ import { CreatTreatmentSchema } from "@/validation/business.validation";
 import { Input } from "@/components/ui/input";
 import { updateTreatment } from "@/API/business.api";
 import Image from "next/image";
-import { RotatingLines, ThreeDots } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 
 const UpdateTreatment = ({ treatment, onDiscard }) => {
   const { toast } = useToast();

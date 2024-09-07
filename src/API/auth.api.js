@@ -75,4 +75,20 @@ const logout = async () => {
 };
 
 
-export { verifyOtp, resetPassword ,logout };
+const updateUser = async (formData)=>{
+  try {
+
+    const response = await axiosInstance.put("/users/update", formData, {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error updating  user:", error);
+  } 
+}
+
+
+export { verifyOtp, resetPassword ,logout ,updateUser };

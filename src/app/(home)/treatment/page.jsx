@@ -17,12 +17,15 @@ import Container from "@/components/reuseableComponenet/Container";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import axiosInstance from "@/axiosInstance";
+import SkeletonCard from "@/components/reuseableComponenet/SkeletonCard";
+
 
 const TreatmentPage = () => {
   const [allTreatments, setAllTreatments] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [hasNextPage, setHasNextPage] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     getTreatments();
   }, []);
@@ -45,6 +48,7 @@ const TreatmentPage = () => {
   }, [currentPage]);
 
   const getTreatments = async (page) => {
+    setIsLoading(true);
     if (isFetching) return;
     setIsFetching(true);
     
@@ -68,7 +72,8 @@ const TreatmentPage = () => {
     } catch (error) {
       console.error("Error fetching treatments: ", error);
     } finally {
-      setIsFetching(false); // Reset fetching status
+      setIsFetching(false); 
+      setIsLoading(false);
     }
   };
 
@@ -174,7 +179,10 @@ const TreatmentPage = () => {
       <div className="container my-5">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 ">
           
-          {allTreatments.map((item, index) => (
+          {
+          isLoading || !allTreatments.length
+          ? Array(10).fill().map((_, index) => <SkeletonCard key={index} />):
+          allTreatments.map((item, index) => (
             <div className="md:mb-8">
           <Link href={`/treatment/${index}`} key={index}>
             <TreatmentCard key={index} {...item} imageHeightWeb={"h-60"} />
