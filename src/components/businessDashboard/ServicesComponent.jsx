@@ -88,7 +88,17 @@ const ServicesComponent = () => {
                 <TreatmentCard {...item} imageHeightWeb={"h-60"} />
               </button>
             ))}
+            
           </div>
+          <>
+          {
+              allTreatments.length===0 && (
+                <div className="flex justify-center items-center h-10 w-full text-center font-raleway">
+                  <p>You have not created any Treatment</p>
+                </div>
+              )
+            }
+          </>
           {hasNextPage && (
             <div className="flex justify-center items-center mt-10">
               <Button

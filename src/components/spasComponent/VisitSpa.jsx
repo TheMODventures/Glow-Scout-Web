@@ -5,16 +5,17 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-const VisitSpa = () => {
+const VisitSpa = ({data}) => {
+  console.log("spaData  ",data)
   const [favourite, setFavourite] = useState(false);
   return (
     <div className="border-b border-darkMahron pb-5 mb-20 font-raleway">
-      <h1 className="text-5xl text-darkMahron font-ralewayLight mt-6  md:mt-10">Crystal Calm</h1>
+      <h1 className="text-5xl text-darkMahron font-ralewayLight mt-6  md:mt-10">{data?.name}</h1>
       <div className="grid grid-cols-1 md:grid-cols-5 md:gap-6 mb-2">
         <div className="col-span-2">
           <div className="relative">
             <Image
-              src="/images/salon-spas/spa-1.png"
+              src={data?.showcaseImages[0] || `/images/salon-spas/spa-1.png`}
               alt="Main Spa Image"
               width={600}
               height={400}
@@ -28,14 +29,14 @@ const VisitSpa = () => {
 
         <div className="md:col-span-1 flex md:flex-col gap-4 md:py-5 justify-center items-center">
           <Image
-            src="/images/salon-spas/spa-2.png"
+            src={data?.showcaseImages[1] || "/images/salon-spas/spa-2.png"}
             alt="Spa"
             width={100}
             height={200}
             className="w-full md:h-[295px] rounded-xl"
           />
           <Image
-            src="/images/salon-spas/spa-3.png"
+            src={data?.profileImage || "/images/salon-spas/spa-3.png"}
             alt="Spa"
             width={100}
             height={200}
@@ -46,7 +47,7 @@ const VisitSpa = () => {
         <div className="col-span-2 py-5">
           <Card className="p-6 border-darkMahron h-full flex flex-col max-h-[600px]">
             <div>
-              <h2 className="text-3xl md:text-4xl font-medium mb-4  text-darkMahron font-ralewayLight ">Crystal Calm Spa</h2>
+              <h2 className="text-3xl md:text-4xl font-medium mb-4  text-darkMahron font-ralewayLight ">{data?.name}</h2>
               <div className="flex justify-between items-center md:mb-4 mb-2">
                 <p className="text-darkMahron text-base md:text-lg font-semibold">Add to favourites</p>
                 <button onClick={() => setFavourite(!favourite)}>
@@ -70,7 +71,7 @@ const VisitSpa = () => {
                   </p>
                   <address className="flex gap-2 items-center mb-2 not-italic text-darkMahron text-base md:text-xl">
                     <MapPin size={26} strokeWidth={1} />
-                    13th Street 47 W 13th St, New York
+                    {data?.city || "Not updated yet."}
                   </address>
                   <Link
                     href="#"
