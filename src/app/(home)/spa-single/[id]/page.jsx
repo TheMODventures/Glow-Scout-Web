@@ -6,8 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import VisitSpa from "@/components/spasComponent/VisitSpa";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "@/components/reuseableComponenet/Container";
+import { getSingleSpas } from "@/API/spas.api";
+import { VisitSpaSkeleton } from "@/components/reuseableComponenet/VisitSpaSkeleton";
 
 function Star1({ filled, onClick }) {
   return (
@@ -25,6 +27,24 @@ function Star1({ filled, onClick }) {
   );
 }
 const SpaSingle = ({ params }) => {
+  const id = params.id;
+  const [spaData, setSpaData] = useState({});
+
+  const fatchData = async () => {
+    try {
+      const data = await getSingleSpas(id);
+      setSpaData(data);
+    } catch (error) {
+      console.error("Error fetching single spa:", error);
+    }
+  };
+
+  useEffect(() => {
+    fatchData();
+  }, []);
+
+  console.log("spa data ", spaData)
+
   const [localReviews, setLocalReviews] = useState([
     { rating: 0 },
     { rating: 0 },
@@ -39,7 +59,6 @@ const SpaSingle = ({ params }) => {
       )
     );
   };
-  const id = params.id;
 
   let dummyData = [
     {
@@ -106,7 +125,11 @@ const SpaSingle = ({ params }) => {
 
   return (
     <div className="mx-auto px-4 max-w-screen-2xl">
-      <VisitSpa />
+      {spaData && Object.keys(spaData).length > 0 ? (
+  <VisitSpa data={spaData} />
+) : (
+  <VisitSpaSkeleton />
+)}
 
       <div className="py-4  md:pb-36 border-b font-ralewayLight md:font-thin border-darkMahron">
         <div className="text-center text-darkMahron pb-5">
@@ -123,7 +146,11 @@ const SpaSingle = ({ params }) => {
         <div className="my-3">
           <div className="container grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 mb-2">
             {dummyData.map((item, index) => (
-              <TreatmentCard key={index} {...item} imageHeightWeb={"md:h-[300px]"} />
+              <TreatmentCard
+                key={index}
+                {...item}
+                imageHeightWeb={"md:h-[300px]"}
+              />
             ))}
           </div>
         </div>
@@ -136,52 +163,55 @@ const SpaSingle = ({ params }) => {
           </h2>
         </div>
         <Container>
-        <div className="grid md:grid-cols-2 gap-5 mt-2 md:mt-5 font-raleway">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="grid grid-cols-1 md:grid-cols gap-5 items-center"
-            >
-              <div className="flex justify-between items-center">
-                <Image
-                  width={160}
-                  height={200}
-                  src={testimonial.path}
-                  alt={testimonial.name}
-                  className="block md:hidden w-40 h-56 rounded-xl object-cover mb-4 md:mb-0"
-                />
-                <div className="px-6 py-3">
-                  <h3 className="text-darkMahron md:text-5xl text-2xl  md:pb-3 pb-1">
-                    {testimonial.name}
-                  </h3>
-                  <p className="md:py-3 w-full  md:text-xl text-[12px] font-normal">
-                    {testimonial.review}
-                  </p>
-                  <div className="mt-2 md:mt-0 relative">
-                    <div className="flex md:gap-2 gap-x-1">
-                      {Array.from({ length: 5 }, (_, index) => (
-                        <Star
-                          fill="#111"
-                          strokeWidth={0}
-                          key={`star-${index}`}
-                        />
-                      ))}
-                    </div>
-                    <div className="flex md:gap-2 gap-x-1 absolute top-0">
-                      {Array.from({ length: testimonial.stars }, (_, index) => (
-                        <Star
-                          fill="#E5BA1F"
-                          strokeWidth={0}
-                          key={`filled-star-${index}`}
-                        />
-                      ))}
+          <div className="grid md:grid-cols-2 gap-5 mt-2 md:mt-5 font-raleway">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className="grid grid-cols-1 md:grid-cols gap-5 items-center"
+              >
+                <div className="flex justify-between items-center">
+                  <Image
+                    width={160}
+                    height={200}
+                    src={testimonial.path}
+                    alt={testimonial.name}
+                    className="block md:hidden w-40 h-56 rounded-xl object-cover mb-4 md:mb-0"
+                  />
+                  <div className="px-6 py-3">
+                    <h3 className="text-darkMahron md:text-5xl text-2xl  md:pb-3 pb-1">
+                      {testimonial.name}
+                    </h3>
+                    <p className="md:py-3 w-full  md:text-xl text-[12px] font-normal">
+                      {testimonial.review}
+                    </p>
+                    <div className="mt-2 md:mt-0 relative">
+                      <div className="flex md:gap-2 gap-x-1">
+                        {Array.from({ length: 5 }, (_, index) => (
+                          <Star
+                            fill="#111"
+                            strokeWidth={0}
+                            key={`star-${index}`}
+                          />
+                        ))}
+                      </div>
+                      <div className="flex md:gap-2 gap-x-1 absolute top-0">
+                        {Array.from(
+                          { length: testimonial.stars },
+                          (_, index) => (
+                            <Star
+                              fill="#E5BA1F"
+                              strokeWidth={0}
+                              key={`filled-star-${index}`}
+                            />
+                          )
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
         </Container>
         <div className="flex justify-center items-center my-16">
           <Button
@@ -196,27 +226,30 @@ const SpaSingle = ({ params }) => {
 
         <div className="border border-darkMahron text-darkMahron rounded-xl py-5 px-4 my-8 ">
           <div className="pb-10">
-            <h2 className="md:text-5xl text-2xl font-ralewayLight">Add your review</h2>
+            <h2 className="md:text-5xl text-2xl font-ralewayLight">
+              Add your review
+            </h2>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-  <Input
-    placeholder="Write your review here....."
-    className="border-b-1 bordeer-t-0  border-darkMahron w-full md:w-auto md:min-w-[600px]"
-  />
-  <div className="flex flex-row items-center">
-    <p className="text-lg text-darkMahron font-raleway mr-2">Ratings</p>
-    <div className="flex gap-2">
-      {Array.from({ length: 5 }, (_, starIndex) => (
-        <Star1
-          key={starIndex}
-          filled={starIndex < localReviews[0].rating}
-          onClick={() => handleStarClick(0, starIndex)}
-        />
-      ))}
-    </div>
-  </div>
-</div>
-
+            <Input
+              placeholder="Write your review here....."
+              className="border-b-1 bordeer-t-0  border-darkMahron w-full md:w-auto md:min-w-[600px]"
+            />
+            <div className="flex flex-row items-center">
+              <p className="text-lg text-darkMahron font-raleway mr-2">
+                Ratings
+              </p>
+              <div className="flex gap-2">
+                {Array.from({ length: 5 }, (_, starIndex) => (
+                  <Star1
+                    key={starIndex}
+                    filled={starIndex < localReviews[0].rating}
+                    onClick={() => handleStarClick(0, starIndex)}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,17 +1,28 @@
 import axiosInstance from "@/axiosInstance";
 
-const getSpas = async () => {
+const getSpas = async (page) => {
   try {
-    const response = await axiosInstance.get("/spas", {
+    const response = await axiosInstance.get(`/spas?page=${page}`, {
       withCredentials: true,
     });
     console.log( response.data.data.data    );
     return response.data.data.data;
     
   } catch (error) {
-    console.error("Error message: ", error.message);
+    console.error("Error message: ", error);
   }
 };
+
+const getSingleSpas= async(id)=>{
+  try {
+    const response= await axiosInstance.get(`/spas/${id}`, {
+      withCredentials: true,
+    });
+    return response.data.data;
+  } catch (error) {
+    console.error("Error message: ", error);
+  }
+}
 
 const updateSpa = async (id, data) => {
   try {
@@ -27,4 +38,4 @@ const updateSpa = async (id, data) => {
   }
 };
 
-export { getSpas, updateSpa };
+export { getSpas, updateSpa , getSingleSpas};
