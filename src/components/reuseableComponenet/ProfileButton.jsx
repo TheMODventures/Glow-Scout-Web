@@ -12,14 +12,17 @@ import { useDispatch } from "react-redux";
 import { signoutSuccess } from "@/redux/user/authSlice";
 import { useSelector } from "react-redux";
 import { logout } from "@/API/auth.api";
+import { useRouter } from "next/router";
 
 const ProfileButton = () => {
+  const router = useRouter()
   const currentUser = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const handleSignout = async () => {
     try {
       await logout();
       dispatch(signoutSuccess());
+      router.push("/auth/login")
     } catch (error) {
       console.log(error.message);
     }

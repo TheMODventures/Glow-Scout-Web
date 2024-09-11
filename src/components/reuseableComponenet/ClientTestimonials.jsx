@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { Star, StarHalf } from "lucide-react";
 import {
@@ -13,68 +13,52 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Raleway } from 'next/font/google'
+import { getClientTestimonials } from "@/API/clientTestimonial.api";
 
 const Raleway1 = Raleway({
-
   weight: '300',
-
   subsets: ['latin'],
+});
 
-})
 const ClientTestimonials = () => {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+  const [testimonials, setTestimonials] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const testimonials = [
-    {
-      name: "Ashley K.",
-      image: "/images/home/testimonial-1.png",
-      review:
-        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
-    },
-    {
-      name: "Ashley F.",
-      image: "/images/home/testimonial-1.png",
-      review:
-        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
-    },
-    {
-      name: "Ashley F.",
-      image: "/images/home/testimonial-1.png",
-      review:
-        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
-    },
-    {
-      name: "Ashley F.",
-      image: "/images/home/testimonial-1.png",
-      review:
-        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
-    },
-    {
-      name: "Ashley F.",
-      image: "/images/home/testimonial-1.png",
-      review:
-        "“It’s a long established fact that glowscout is doing such a great job. It’s a long established fact that glowscout is doing such a great job.”",
-    },
-  ];
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const data = await getClientTestimonials();
+        setTestimonials(data); // Assuming the response is an array of testimonials
+      } catch (error) {
+        console.error('Failed to fetch testimonials:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; // Or any other loading state component
+  }
 
   return (
-    <div className="mx-auto py-20 md:py-40  bg-[#FEF5E3] md:min-h-screen w-screen flex justify-center items-center">
+    <div className="mx-auto py-20 md:py-40 bg-[#FEF5E3] md:min-h-screen w-screen flex justify-center items-center">
       <div className="">
         <div className="text-center text-darkMahron pb-5">
-          <h2
-            className={`text-4xl md:text-6xl px-6 font-ralewayLight`}
-          >
+          <h2 className={`text-4xl md:text-6xl px-6 font-ralewayLight`}>
             Client’s Testimonials
           </h2>
-          <p className="m-2 text-base 2xl:text-lg  px-10 md:hidden font-raleway">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh
-            faucibus.
+          <p className="m-2 text-base 2xl:text-lg px-10 md:hidden font-raleway">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut nibh faucibus.
           </p>
         </div>
         <div className="pt-8 container flex flex-col items-center">
           <Carousel
             opts={{ align: "start" }}
-            className=" md:w-[600px] lg:w-[700px] w-screen mx-2"
+            className="md:w-[600px] lg:w-[700px] w-screen mx-2"
             onMouseEnter={plugin.current.stop}
             onMouseLeave={plugin.current.reset}
             plugins={[plugin.current]}
@@ -82,7 +66,7 @@ const ClientTestimonials = () => {
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index}>
-                  <div className="flex  justify-center items-center gap-2 font-raleway">
+                  <div className="flex justify-center items-center gap-2 font-raleway">
                     <div className="ml-3 md:ml-0 flex-shrink-0 w-40 h-56 md:w-full md:h-full md:max-w-[30%] md:max-h-[60%]">
                       <Image
                         src={testimonial.image}
@@ -123,21 +107,14 @@ const ClientTestimonials = () => {
               ))}
             </CarouselContent>
             <div className="hidden md:block">
-              {/* Previous Button */}
-              <div
-                className=" absolute top-1/2 left-2 transform -translate-y-1/2 text-darkMahron text-2xl font-black"
-              >
-                <CarouselPrevious  />
+              <div className="absolute top-1/2 left-2 transform -translate-y-1/2 text-darkMahron text-2xl font-black">
+                <CarouselPrevious />
               </div>
-
-              {/* Next Button */}
-              <div
-                className="absolute top-1/2 right-2 transform -translate-y-1/2  text-darkMahron text-2xl font-black"
-              >
+              <div className="absolute top-1/2 right-2 transform -translate-y-1/2 text-darkMahron text-2xl font-black">
                 <CarouselNext />
               </div>
             </div>
-            <CarouselDots/>
+            <CarouselDots />
           </Carousel>
         </div>
       </div>

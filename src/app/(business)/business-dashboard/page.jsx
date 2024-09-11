@@ -3,7 +3,6 @@ import React, { useState , useEffect} from "react";
 import { useSelector } from "react-redux";
 import AnalyticsComponent from "@/components/businessDashboard/AnalyticsComponent";
 import ServicesComponent from "@/components/businessDashboard/ServicesComponent";
-import SettingComponent from "@/components/reuseableComponenet/Setting";
 import { useRouter } from "next/navigation";
 import BusinessSettings from "@/components/businessDashboard/BusinessSettings";
 
@@ -67,14 +66,6 @@ const Page = () => {
         
       case "account":
         return (
-          // <SettingComponent
-          //   type="business"
-          //   details={details}
-          //     contactDetail={contactDetail}
-          //     onDetailsChange={handleDetailsChange}
-          //     onContactDetailChange={handleContactDetailChange}
-          //     saveBtnFunc = {handleSave}
-          // />
            <BusinessSettings/>
         );
       default:

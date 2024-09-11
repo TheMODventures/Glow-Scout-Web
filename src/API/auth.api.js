@@ -1,8 +1,10 @@
 "use client";
 
 import axiosInstance from "@/axiosInstance";
+import { useRouter } from "next/navigation";
 import { parseCookies, destroyCookie } from "nookies";
 
+// const router = useRouter();
 
 const verifyOtp = async (data) => {
   let currentEmail;
@@ -62,6 +64,7 @@ const logout = async () => {
     destroyCookie(null, "accessToken");
     localStorage.clear();
     console.log("User logged out successfully");
+    // router.push("/auth/login");
   } catch (error) {
     if (error.response) {
       console.error("Error response:", error.response.data);

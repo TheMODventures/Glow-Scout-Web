@@ -47,9 +47,10 @@ const updateSpaSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters."),
     email: z.string().email("Invalid email address."),
     alternateEmail: z.string().email("Invalid alternate email address.").optional(),
-    phone: z.string().optional(),
+    phone: z.string().regex(/^\d{12}$/, "Phone number must be exactly 12 digits."),
     links: z.array(socialLinksSchema).optional(),
     city: z.string().optional(),
 });
+
 
 export default updateSpaSchema;

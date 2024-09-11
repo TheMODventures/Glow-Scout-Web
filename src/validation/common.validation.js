@@ -1,8 +1,5 @@
 import { z } from "zod";
 
-
-
-
 export const FilterSchema = z.object({
     goal: z.string({ message: "Please select a Filters." }),
   });

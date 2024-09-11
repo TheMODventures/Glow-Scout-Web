@@ -139,11 +139,11 @@
         );
       });
 
-      formData.append("name", data.name);
-      formData.append("email", data.email);
-      formData.append("phone", data.phone);
-      formData.append("city", data.city);
-      formData.append("alternateEmail", data.alternateEmail);
+      formData.append("name", data?.name);
+      formData.append("email", data?.email);
+      formData.append("phone", data?.phone);
+      formData.append("city", data?.city);
+      formData.append("alternateEmail", data?.alternateEmail);
 
       Object.keys(formattedTimings).forEach((day) => {
         formData.append(`businessTiming.${day}.ON`, formattedTimings[day].ON);
@@ -303,7 +303,7 @@
                         name="phone"
                         placeholder="Enter Phone number"
                         formControl={form.control}
-                        inputType="text"
+                        inputType="number"
                         className="w-full"
                       />
                       <InputFormField
